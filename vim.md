@@ -27,7 +27,7 @@ C-c = C-[ = Esc 切回普通模式
 ## 文本对象(操作分隔符, 操作文本块)  
 - 和操作符连用，表范围 eg：ya) 复制括号内内容，含括号
 - 操作分隔符-分隔符文本对象-范围文本对象(标点...):   
-    a_ 选择一对xx的范围，含xx eg: a( = a) 一对圆括号(); at 一对XML标签; a< a' a]...  
+    a_ 选择一对xx的范围，含xx eg: a( = a) 一对圆括号(); at 一对XML标签; `a<` `a'` `a]`...  
     i_ 选择一对xx内部，不含xx eg: i( = i) 圆括号内部; ...  
 - 操作文本块(w s p...) :   
     a_ 选择当前xx及一个空格 eg: aW 当前字串+空格; as 当前句子+空格; ap当前段落+空格 ...  
@@ -35,7 +35,7 @@ C-c = C-[ = Esc 切回普通模式
   
 ## 位置标记相关  
 - vim的自动位置标记  
-`` 上次跳转动作之前的位置  
+`` 上次跳转动作之前的位置``  
 `. 上次修改的位置;  
 `^ 上次插入位;  
 `[ 上次修改or复制的起始位;  `] 上次修改or复制的结束位;  
@@ -43,7 +43,7 @@ C-c = C-[ = Esc 切回普通模式
   
 - 位置标记   
 m[a-zA-Z] 用选定的字母标记当前光标位置  
-`[mark] 跳转到标记字母mark标记的位置  
+`[mark] 跳转到标记字母mark标记的位置`  
     小写字母: 作用范围当前活动窗口  
     大写字母: 作用范围全局(eg: 用于当前窗口内, 在文件间跳转)  
   
@@ -51,7 +51,7 @@ m[a-zA-Z] 用选定的字母标记当前光标位置
 - 匹配的xx之间跳转  
 % 作用于() {} [] (在范围命令里%表示全文or全路径匹配？梳理一下%的所有作用)  
     括号常用: dt(%r[``r] 找到(, 提前找到跳的配对括号, 改前, 跳转, 改后个  
-激活matchit插件, 在vimrc中, % 增强作用于配对的关键字, eg: if/end  
+激活matchit插件, 在vimrc中, % 增强作用于配对的关键字, eg: if/end``  
 - 跳转列表  
 C-o 光标转到上一个跳转位置;  C-i 下一个;  
 跳转: 任何改变当前窗口中活动文件的命令, 如 nG %匹配..., hjkl不算  
@@ -75,7 +75,7 @@ c 剪切, 切为插入模式(eg:caw dl yap段落...)
 d 剪切  
 y 复制到寄存器  
 g~ 反转当行all字母的大小写, ~反转当前光标下字符;  gu 行转小;  gU 行转大;  
-> 加缩进;  < 减缩进;  = 自动缩进;   
+> 加缩进;  < 减缩进;  = 自动缩进;   `
 ! 过滤动作跨越的行  
 双写作用于当前行(dd >> gUU yy...)  
   
@@ -143,8 +143,8 @@ range: 单个;  _,_ 范围(eg: 3,5);
     1 第一行;  $ 最后一行;  0 第一行上方虚拟行;  
     . 光标所在行;  'm 包含位置标记m的行;  
     '< 高亮起始行;   
-    '> 高亮结束行;  
-    % 整个文件;  
+    '> 高亮结束行; ' 
+    %  整个文件; >
     eg:.+3,$-5 当前往下第三行, 到倒数5行  
 :noh = :nohlsearch 暂时关闭高亮直到下次查找 no highlight(另: insearch功能在查找时预览第一处匹配)  
 :行号 跳到n行 = nG  
@@ -166,7 +166,7 @@ range: 单个;  _,_ 范围(eg: 3,5);
   
 ## 缓冲区  
 * 占位通配符, 作用于指定目录;  ** 递归进入指定目录的子目录;  
-    eg: **/*.js 匹配当前目录含.js的, 子目录含/和.js的;  
+    eg: `**/*.js` 匹配当前目录含.js的, 子目录含/和.js的;  
 :ls 显示所有缓冲区  
     % 当前窗口可见;  # 可用C-^轮换的一个缓冲区;  a active活动缓冲区;  h hidden隐藏的缓冲区;  
 :bpnext = :bn 移到后一个缓冲区buffer   :bprev = :bp 前一个;    
@@ -183,7 +183,7 @@ range: 单个;  _,_ 范围(eg: 3,5);
   
 :normal 指定范围内全执行normal命令   
     eg: %normalA; 全文执行"A;"; 3,5normal. 3~5行执行.  
-    VG :'<,'>normal @a 在高亮区域每行执行寄存器a里存的宏   
+    VG :`'<,'>normal @a` 在高亮区域每行执行寄存器a里存的宏  
   
 ## 替换  
 :substitute = :s 语法 :[range]s/原词pattern/替换词string/[flags]   
@@ -273,7 +273,7 @@ q[register] 开始录制, 内容保存到寄存器, 再次按q结束录制
     寄存器名小写: 覆盖; 大写: 追加;  
 n@[register] 执行指定寄存器的内容n次  
 @@ 重复调用最近一次宏  
-    VG :'<,'>normal @a 在高亮区域（当前到文末）每行执行寄存器a里存的宏     
+    VG :`'<,'>normal @a` 在高亮区域（当前到文末）每行执行寄存器a里存的宏 
   
   
 ## global命令相关  
@@ -322,43 +322,41 @@ nnoremap 按键映射
   有效类型的查看目录：$VIMRUNTIME/syntax目录;
 - vim无语法高亮定义
 
-ref:[*06.2* 颜色显示不出来或者显示出错误的颜色怎么办？](https://blog.csdn.net/ysm_sd/article/details/51145332)
+[*06.2* 颜色显示不出来或者显示出错误的颜色怎么办？](https://blog.csdn.net/ysm_sd/article/details/51145332)
   
 # 配置问题们
-
-## 一般
-
-"关闭自动备份的.~文件
-set noundofile
-set nobackup
-"设置backup file后缀+备份保存目录
-"set backupext=.bak
-"set backupdir=C:\otherSoft\Vim\vim_bak
-
-"set noswapfile
-"undodir=~/.undodir
-
+- 详见_vimrc
 
 "中文字符乱码问题 编辑
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
-set fileencodings=ucs-bom,utf-8,chinese,cp936
+set fileencodings=ucs-bom,utf-8,chinese
+set ambiwidth=double
 
 " 菜单语言
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
-" 
+" consle输出乱码
 language messages zh_CN.utf-8
+
+" https://www.ibm.com/developerworks/cn/linux/l-tip-vim1/index.html
+" https://blog.csdn.net/rehung/article/details/1794293
+
+"**************************************
 
 "显示行号
 set number
 
+"关闭自动备份的.~文件
+set noundofile
+set nobackup
+
 "设置默认文件路径 路径中别有空格
 "exec 'cd' . fnameescape('C:\Users\Andra\Desktop')
 "cd C:\Users\Andra\Desktop
-cd D:\study
+cd D:\softscape\publicStudy
 
 "自动切换目录为当前编辑文件所在目录 au = autocmd
 au BufRead,BufNewFile,BufEnter * cd %:p:h
@@ -366,21 +364,20 @@ au BufRead,BufNewFile,BufEnter * cd %:p:h
 "设置tab键为4个空格
 set tabstop=4
 
-"开启自动控制缩进 新行和上行保持一致 C-d取消当前缩进
+"自动对齐 将当前行的缩进拷贝到新行 
 set autoindent
 
-"针对C语言语法的自动缩进
+"自动缩进 按照C语言语法调整 即新行加一个TABSTOP的值 还会根据括号加减TAB
 "set cindent
 
-"依据上面的对其格式，智能选择对齐方式
-"set smartindent
+"在输入 tab 后, vim 用恰当的空格来填充这个 tab
+set expandtab 
 
-"打开语法高亮
-"syntax enable
+"C-d取消当前缩进
 
-
-"使用Vundle插件管理工具*******************************
+"***************使用Vundle插件管理工具***************
 "https://www.cnblogs.com/wldragon/p/4509820.html
+"https://github.com/VundleVim/Vundle.vim
 "vundle start
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -393,7 +390,7 @@ let path='$VIM/bundle'
 call vundle#begin(path)
 
 Plugin 'VundleVim/Vundle.vim'      " Vundle自身管理 
-"Plugin 'scrooloose/nerdtree'      " NerdTree插件
+"Plugin 'scrooloose/nerdtree'   " NerdTree插件
 
 Plugin 'godlygeek/tabular'        " 对齐插件(不必须)
 Plugin 'plasticboy/vim-markdown'  " markdown语法高亮插件
@@ -405,17 +402,7 @@ call vundle#end()            " required
 
 filetype plugin indent on    " required
 
-"vundle end********************************************
-
-
-"配置python解释器
-autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"  
-autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m  
-"运行绑定到F5 编译绑定到F6
-"autocmd BufRead *.py nmap <F5> :!python %<CR>   
-"autocmd BufRead *.py nmap <F6> :make<CR>  
-"autocmd BufRead *.py copen      "如果是py文件，则同时打开编译信息窗口 
-
+""***************vundle end***************
 
 
 ## markdown 

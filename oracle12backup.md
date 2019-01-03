@@ -175,3 +175,27 @@ alter system archive log current;
     alter system archive log current  会对数据库中的所有实例执行日志切换。  
 >  
   
+
+# 导出数据为文本？sqlplus - spool命令
+
+ SPOOL
+ -----
+ Stores query results in a file, or optionally sends the file to a printer.
+
+ SPO[OL] [file_name[.ext] [CRE[ATE] | REP[LACE] | APP[END]] | OFF | OUT]
+
+
+
+Spool是Oracle的命令而不是sql语句。
+Spool命令是将在这期间oracle所有的操作结果写入到指定的文件中。其实可以理解为spool命令将创建一个新文件，在接下来对oracle所有的操作及操作接口都将输入到该文件中。
+SPOOL是 SQLPLUS的命令,必须在SQLPLUS中使用，主要完成以标准输出方式输出SQLPLUS的命令及执行结果，一般常用户格式化导出ORACLE表数据
+
+
+
+[Sqlplus命令：spool 使用详解](https://www.cnblogs.com/cymm/p/3390357.html)
+
+如何导入？
+
+
+
+

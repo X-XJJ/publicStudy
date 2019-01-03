@@ -1,13 +1,17 @@
 
-# 创建测试用户
-使用数据库实例test
-- 创建测试用户testbak，口令testbak，并授权
-create user testbak identified by testbak;
-grant dba to testbak;
+# sqlplus
+- 登陆sqlplus
+ - sqlplus / as sysdba
+ - sqlplus 用户名/密码
+ - ...
 
-select * from user_role_privs; 查看当前用户or角色所拥有的角色
+- 切换用户
+  conn 用户名/密码
 
-- 创建测试表test，
+- 启动数据库（按当前环境变量里的ORACLE_SID寻找实例名启动）
+ - startup
+ - shutdown
+
 
 
 # 其他

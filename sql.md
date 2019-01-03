@@ -112,10 +112,10 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
   - NOT in() <==> NOT exists() <==> !=all();
 - 不相关嵌套：每层只执行一次，结果用于父查询;
   eg：select a from A where b<some (select b from A where c=3)
-      在表A中查询，*比*在c=3条件下的b小 的b 对应的a们的值;
+      在表A中查询，*比*在c=3条件下的b小 的b 对应的a们的值; >
 - 相关嵌套：子查询的where查询条件依赖于父查询
   eg：select a from A where b<(select b from B where A.c=B.c)
-      子查询每次执行都从外层查询中取出表A的一个元组，外层将c的值传送给子查询，子查询执行次数 = 父查询元组数;
+      子查询每次执行都从外层查询中取出表A的一个元组，外层将c的值传送给子查询，子查询执行次数 = 父查询元组数; >
 
 ## 集合查询
 - 操作对象：多个select语句的查询结果，列数必相同，对应项数据类型必相同;
@@ -136,7 +136,6 @@ insert into 表名 [(属性列1 [,属性列2...])] values (常量1 [,常量2 ...])
 insert into 表名 [(属性列们)] 子查询
   - 复制表数据  select * into 新表名 from 原表名
   - 复制表结构  select * into 新表名 from 原表名 where 一个不存在的条件
-
 ## 删除数据 
 delete from 表名 [where 条件] 
 
