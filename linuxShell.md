@@ -6,15 +6,6 @@ Linux相关 暂存
 -a = --all 短选项和长选项，-为连字符
 -at 两个短选项a和t串联使用，短选项顺序无要求
 
-# suse
-- suse真机环境中，在图形界面和文本界面间切换  
-1. 图形界面切换到文本界面   
-Ctrl+Alt+F(n) , 其中F(n)为F1-F6，为6个控制台；  
-2. 文本界面切换到图形界面   
-Ctrl+ALT+F7
-
-
-
 # shell相关
 - shell是一个程序，接受键盘输入的命令，传递给操作系统来执行
 sh csh bash ksh等shell的区别与联系
@@ -92,13 +83,19 @@ drwxr-xr-x 2 oracle-xue oinstall 4.0K Dec 16 21:49 .skel
 ? 匹配任一单个字符（不包括0个）
 []
 
-cp 复制
+- cp 复制
+ - cp item1 item2 将单个文件or目录item1复制到文件or目录item2中
+ - cp item1 item2 item3 item... directory 将多个项目复制进一个目录中
+ - 参数
+   -a = --archive 复制文件和目录及其属性
+ 
 mv 移动、重命名
 mkdir 创建目录
 rm 移除
 in 创建硬链接、符号链接（软连接）
 
 
+iconv 改文件编码
 
 # 重定向
 ">" 重定向符
@@ -147,10 +144,8 @@ groff 文档格式化系统
 双引号，单引号，转义字符
 
 
-# 
 clear 清屏
 history 查看历史列表的记录
-
 
 # 权限
 ## 系统安全
@@ -173,7 +168,12 @@ history 查看历史列表的记录
   参数：-g = --group 用户所属群组的ID;  -G = --groups 用户所属附属群组的ID;
   输出含义：uid 用户ID，与用户名一一映射;  gid 有效组ID即用户所属群组的ID，用户同时也可归属于其他组;  groups 用户所属附加群组的ID;
 - chmod 更改文件模式
-  参数：
+ - 参数
+  - -R
+
+linux 下执行.sh文件总是提示permission denied
+如果你是root登陆的话（不是的话，切换到root用户，对*.sh赋可执行的权限） 
+chmod 777 *.sh   or   chmod +x  *.sh，然后运行就OK了
 
 chown 更改文件所有者
 chgrp 更改文件所属群组

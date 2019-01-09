@@ -13,6 +13,10 @@
  - shutdown
 
 
+sqlpuls 退格、方向键问题
+(https://www.cnblogs.com/mengfanrong/p/4680281.html)
+(https://www.cnblogs.com/jinshoucai/archive/2011/11/16/2251245.html)
+
 
 # 其他
 ## 各种“名”
