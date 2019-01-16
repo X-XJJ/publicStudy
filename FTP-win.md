@@ -82,6 +82,8 @@ win7 IIS中 FTP防火墙支持，主机主页里的“支持”可配置，网�
   - ...
 - cmd中切换用户 `runas /user:username cmd`
 
+- Linux下命令一致？
+
 ## 参考
 - [windows server2008 R2搭建ftp服务器](https://blog.csdn.net/qq_28189423/article/details/82221018)
 - [用IIS搭建安全的ftp服务](http://www.cppblog.com/huyutian/articles/212273.html)

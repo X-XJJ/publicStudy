@@ -73,7 +73,7 @@ p 粘贴在光标后;  P 粘贴在光标前;
 ## 操作符 (+范围动作命令)  
 c 剪切, 切为插入模式(eg:caw dl yap段落...)  
 d 剪切  
-y 复制到寄存器  
+y 复制到寄存器  C-Insert 复制到无名寄存器" Shift-Insert粘贴到光标
 g~ 反转当行all字母的大小写, ~反转当前光标下字符;  gu 行转小;  gU 行转大;  
 > 加缩进;  < 减缩进;  = 自动缩进;   `
 ! 过滤动作跨越的行  
@@ -97,14 +97,14 @@ s = cl 剪切当前字符 切模;  S = C 剪切行 切模;
   
 ## 寄存器相关  
 :reg [register]= :register [register] 查看寄存器内容  
-"[register] 作为命令前缀指定要使用的寄存器名  
-"" 无名寄存器, 未指定时默认使用  
-"0 复制专用, 即y专用  
-"a-"z 有名寄存器, 小写正常用, 使用"A-"Z则会添加新内容到原内容之后  
-"_ 黑洞寄存器, 使用即删除文本且不保存任何副本  
-"+ 系统剪贴板, 复制vim的到外部or从外部复制进来  
-"= 表达式寄存器(具体在前)  
-    其他寄存器暂略  
+"[register] `"`作为命令前缀指定要使用的寄存器名  如"" "0 "a ...
+" 无名寄存器, 未指定时默认使用  
+0 复制专用, 即y专用  
+a-z 有名寄存器, 小写正常用, 使用"A-"Z则会添加新内容到原内容之后  
+_ 黑洞寄存器, 使用即删除文本且不保存任何副本  
++ 系统剪贴板, 复制vim的到外部or从外部复制进来  
+= 表达式寄存器(具体在前)  
+   其他寄存器暂略  
   
   
   
@@ -154,6 +154,7 @@ range: 单个;  _,_ 范围(eg: 3,5);
 :set   
   
 ## 文件命令:  
+:f 显示当前文件名
 :open 在缓冲区中打开文件  
 :edit = :e 按文件路径读入缓冲区  
     % 活动缓冲区的完整文件路径; :h 修饰符, 保留去除文件名的部分;  
@@ -170,10 +171,10 @@ range: 单个;  _,_ 范围(eg: 3,5);
     eg: `**/*.js` 匹配当前目录含.js的, 子目录含/和.js的;  
 :ls 显示所有缓冲区  
     % 当前窗口可见;  # 可用C-^轮换的一个缓冲区;  a active活动缓冲区;  h hidden隐藏的缓冲区;  
-:bpnext = :bn 移到后一个缓冲区buffer   :bprev = :bp 前一个;    
-:bfirst = :bf 开头;  :blast = :bl 结尾;  
-:buffer [n/bufname name1...] = :b 按编号/路径字符跳转缓冲区, 路径字符可Tab补全  
-:[range] bdelete [n/bufname] = :bd 删除缓冲区(们)  
+:bn = :bpnext 移到后一个缓冲区buffer   :bp = :bprev 前一个;    
+:bf = :bfirst 开头;  :bl = :blast 结尾;  
+:b [n/bufname name1...] = :buffer 按编号/路径字符跳转缓冲区, 路径可Tab补全  
+:[range] bd [n/bufname] = :bdelete 删除缓冲区(们)  
 :wn 保存第n个缓冲区  
   
 ## 文本相关  
@@ -221,13 +222,15 @@ range: 单个;  _,_ 范围(eg: 3,5);
   
 ## 窗口相关window  
 C-ws 水平切分, standard;  C-wv 垂直切分, vertical;    
-:sp [file] = :split [file] 水平切分, 新窗口载入file  
+:sp [file] = :split [file] 水平切分, 新窗口载入file, split分裂分开  
 :vsp [file] = :vsplit [file] 垂直切分, 新窗口载入file  
 :clo = :close = C-wc 关闭当前窗口;  :on = :only = C-wo 只保留活动窗口;  
 C-ww 窗口间循环切换  
-C-w(h/j/k/l) 切到左/下/上/右的窗口  
+C-wh/wj/wk/wl) 光标切到左/下/上/右的窗口  
+C-wH/wJ/wK/wL) 调整当前活动窗口的位置 向左/向下/向上/向右  
 :bn 在当前窗口切到下一个缓冲区/文件; :bp 上一个;  
   
+
 ## 标签页  
 :tabe = :tabedit 新标签页中打开file, 若无参数则打开一个空标签空缓冲区  
 C-wT 当前窗口移动到新标签页  
@@ -441,8 +444,12 @@ https://www.ibm.com/developerworks/cn/linux/l-tip-vim1/index.html
    marker  对文中的标志折叠
 
 - 快捷键
-zc 折叠cuttle当前行; zC 折叠范围内所有嵌套的折叠
+zc 折叠cuttle当前折叠？; zC 折叠范围内所有嵌套的折叠
 zo 展开open当前折叠; zO 展开范围内所有嵌套的折叠
+[z 到当前打开的折叠开始处
+z] 到当前打开的折叠末尾处
+zj 移动到下一个折叠开始处
+zk 移动到上一个折叠末尾处
 ...
 zi 打开/关闭折叠所有折叠？
 zv 查看此行？

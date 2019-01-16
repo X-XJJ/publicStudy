@@ -70,4 +70,70 @@ Ctrl+Alt+F(n) , 其中F(n)为F1-F6，为6个控制台；
 Ctrl+ALT+F7
 
 
+# xshell连接相关
+- suse防火墙 初始设置都是空的  
+`vim /etc/sysconfig/SuSEfirewall2`  
+FW_SERVICES_EXT_TCP="ssh"可以定义基于TCP的开放ssh的服务
+（服务们的名字和各自的默认端口可在 /etc/services中查看）
+
+- 启动ssh服务
+2. 修改sshd_config文件，命令为：vi /etc/ssh/sshd_config 注释去掉
+Port 22
+AddressFamily any
+ListenAddress 0.0.0.0
+ListenAddress ::
+2. 将#PasswordAuthentication
+no的注释去掉，并且将NO修改为YES 即将使用key登陆修改为使用密码登陆  
+将#PermitRootLogin yes的注释去掉 允许root用户远程登陆
+3. 重新启动SSH服务，命令为：/etc/init.d/sshd restart 或service sshd start/restart
+4. 验证SSH服务状态，命令为：/etc/init.d/sshd status
+--------------------- 
+参考：[SUSE开启ssh服务](https://blog.csdn.net/clj198606061111/article/details/22983357)  
+[解决xshell无法远程连接suse虚拟机的问题](https://my.oschina.net/dkvirus/blog/1814904)
+
+扩展：[Linux系统中ssh与sshd服务](https://blog.csdn.net/qq_42036824/article/details/82943088)
+>openssh
+在主机中开启了openssh服务，那么就对外开放了远程连接的接口
+openssh的服务端：sshd
+openssh的客户端：ssh
+ssh————————————>sshd
+client 　　　　 server
+ssh= secure shell
+可以让远程主机通过网络访问sshd服务，开始一个安全shell,并对其进行操控
+sshd
+可以通过网络在主机中开启shell的服务
+
+
+## 网络配置
+/etc/sysconfig/network/ifcfg-eth0 （suse9为network下的routes文件？）
+BOOTPROTO='static' ? #静态IP 'dhcp'则为DHCP模式
+BROADCAST='' ? #广播地址
+IPADDR='192.168.168.129' ? #IP地址（此处为suse11的设置）
+NETMASK='255.255.255.0' ? #子网掩码
+NETWORK='192.168.21.0' ? #网段地址
+STARTMODE='auto' ? ?#开机启动网络
+--------------------- 
+将IPADDR修改为对应的网址ip
+将NETMASK修改为对应的子网掩码
+将NETWORK修改为对应的网口段
+将BROADCAST修改为最高网段
+
+虚拟机连主机 网段设置问题？？
+网段如何设置
+
+2、设置默认网关
+vi /etc/sysconfig/network/routes #编辑文件
+default 192.168.21.2
+
+3、设置DNS
+vi /etc/resolv.conf   #编辑文件
+nameserver=8.8.8.8
+nameserver=8.8.4.4
+
+配置生效：source ifcfg-eth0
+
+rcnetwork restart   #重启网络
+service network restart #重启网络
+/etc/init.d/network restart #重启网络
+
 

@@ -12,6 +12,7 @@
  - startup
  - shutdown
 
+- show database
 
 sqlpuls 退格、方向键问题
 (https://www.cnblogs.com/mengfanrong/p/4680281.html)
