@@ -270,6 +270,8 @@ df 磁盘驱动器;  free 可用内存;
 linux下查看磁盘分区的文件系统格式 https://www.cnblogs.com/youbiyoufang/p/7607174.html
 
 # 网络
+ip []
+ifconfig
 ping 向网络主机发送ICMP ECHO_REQUEST数据包
 traceroute 显示数据包到网络主机的路由路径（Windows为tracert）
 netstat 显示网络连接、路由表、网络接口数据、伪连接、多点传送成员等信息
@@ -279,6 +281,7 @@ wget 非交互式网络下载器
 ssh 远程系统登陆命令，OpenSSH版的ssh客户端
 scp 远程复制文件，secure copy
 sftp 安全的文件传输
+netstat -nape|grep 端口号
 
 ## curl 
 命令行综合传输工具工具，基于URL规则进行数据or文件的传输
@@ -304,7 +307,8 @@ bzip2 块排序文件压缩工具
 
 ## tar 磁带归档工具
 - tar [-cxtzjvfpPN] 文件与目录 ...
-tar -zcvf 打包后生成的文件名全路径 要打包的目录
+- tar -zcvf 打包后生成的文件名全路径.tar 要打包的目录
+    tar -zcvf Z07-develop.tgz Z07/*
 - tar zxvf XXX.tar.gz  解压文件到当前
  -c ：建立一个压缩文件的参数指令(create的意思)；
  -x ：解开一个压缩文件的参数指令！
@@ -315,6 +319,7 @@ tar -zcvf 打包后生成的文件名全路径 要打包的目录
  -j ：是否同时具有 bzip2 的属性？亦即是否需要用 bzip2 压缩？
  -v ：压缩的过程中显示文件！这个常用，但不建议用在背景执行过程！
  -f ：使用档名，请留意，在 f 之后要立即接档名喔！不要再加参数！
+ tvf 查看压缩包内文件列表
 
 
 zip 打包和压缩文件

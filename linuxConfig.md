@@ -49,8 +49,9 @@ IPV6_PEERROUTES=yes
 
 
 
-## 无ifconfig命令
+## 无ifconfig netstat等一系列命令
 最小安装下 值安装了命令为ip
+yum -y install net-tools
 
 ## 修改bash当前路径显示为全路径
  - /etc/bashrc

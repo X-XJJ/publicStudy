@@ -2,9 +2,16 @@ git相关 暂存
 
 [官方手册（中文）](https://git-scm.com/book/zh/v2)
 
-#配置账号 --global --system
-git config --global user.name 'name'
-git config --global user.email email@xxx.xxx
+#配置账号 
+全局配置--global  当前系统？用户？--system
+git config --global user.name "用户名"
+git config --global user.email 邮箱地址
+
+项目根目录下单独配置 针对公司项目 则在当前项目下会优先使用当前项目配置
+git config user.name "用户名"
+git config user.email 邮箱地址
+
+git config --list 查看当前配置 全局配置+当前项目配置？
 
 #基本操作？
 git clone <repoURL> <directory> 克隆仓库repository到指定目录
