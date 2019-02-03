@@ -6,16 +6,18 @@ Linux相关 暂存
 -a = --all 短选项和长选项，-为连字符
 -at 两个短选项a和t串联使用，短选项顺序无要求
 
+<Esc> 进入vi模式，可直接运行vi命令 如/word 查找缓冲区命令中出现的含word命令
+
 expr
 
 # shell相关
-- shell是一个程序，接受键盘输入的命令，传递给操作系统来执行
+- shell是一个程序，接受键盘/输入的命令，传递给操作系统来执行
 sh csh bash ksh等shell的区别与联系
 [linux几种常见的Shell：sh、bash、csh、tcsh、ash](https://blog.csdn.net/whatday/article/details/78929247)
 
 - 一些命令和使用？
 命令种类：可执行程序、shell内置命令、shell函数、alias命令
-date 时间日期;  cal 当月日历;  
+date 时间日期;  cal 当月日历;  ntpdate立即同步时间，生产慎用 ntpd平滑同步，客户端与标准时间服务器同步 
 type 显示命令类型
 which 显示可执行程序的路径位置
 help 显示shell内置命令帮助文档
@@ -58,6 +60,7 @@ g = 1G 跳开头;  G 跳结尾;  /abc 查找字符串abc;  n 查找下一个abc;
 -S 按文件大小对结果排序;
   -hlS 长格式大小排序且可读结果;
 -t 按修改时间排序;
+常用 ls -lrt
 
 ## 长列表格式
 显示文件&文件夹的各种不同字段信息;
@@ -236,6 +239,17 @@ Red Hat的.rpm技术：CentOS，Fedora，Red Hat，openSUSE ...
 
 .deb类工具：低级dpkg，高级apt-get、aptitude
 .rpm类工具：低级rpm，高级yum
+-l 显示软件包中的文件列表
+-c 显示配置文件列表
+-ql 包名 查看具体安装路径
+
+Directory |Contents of Directory
+----------|---------------------
+/etc |一些配置文件的目录，例如/etc/init.d/mysql
+/usr/bin |一些可执行文件
+/usr/lib |一些程序使用的动态函数库
+/usr/share/doc |一些基本的软件使用手册与帮助文档
+/usr/share/man |一些man page文件
 
 查找
 安装
@@ -308,7 +322,7 @@ bzip2 块排序文件压缩工具
 ## tar 磁带归档工具
 - tar [-cxtzjvfpPN] 文件与目录 ...
 - tar -zcvf 打包后生成的文件名全路径.tar 要打包的目录
-    tar -zcvf Z07-develop.tgz Z07/*
+    `tar -zcvf Z07-develop.tgz Z07/*`
 - tar zxvf XXX.tar.gz  解压文件到当前
  -c ：建立一个压缩文件的参数指令(create的意思)；
  -x ：解开一个压缩文件的参数指令！
@@ -321,18 +335,23 @@ bzip2 块排序文件压缩工具
  -f ：使用档名，请留意，在 f 之后要立即接档名喔！不要再加参数！
  tvf 查看压缩包内文件列表
 
-
 zip 打包和压缩文件
 
-
 rsync 远程文件和目录的同步
-
 
 
 # 编译程序
 make 维护程序工具
 
-gcc C的编译器
+## gcc C的编译器
+ 
+gdb命令 zoe程序 core生成的文件
+gdb zoe core  段错误查看
+where
+
+编译参数 gcc -g  ——与makefile文件内配置
+
+ulimit -c
 
 linker 链接器
 
@@ -352,7 +371,6 @@ linker 链接器
 
 其他的估计暂时用不到，再看再看
 
-      
 
 
 -------------------------------
@@ -371,7 +389,7 @@ linker 链接器
 /media  |媒体挂载点   |可移除媒体设备 自动挂载 如USB CD-ROM等
 /mnt    |临时挂载点   |文件系统/可移除设备挂载 可手动挂载 
 /opt    |主机额外软件 |在主机安装其他可选的软件
-/var    |变化的文件   |系统执行过程中经常变化 如日志、邮件、各种数据库等
+/var    |变化的文件   |系统执行过程中经常变化的 如日志、邮件、各种数据库等
 /srv    |数据目录     |若Linux作为服务器 在服务启动后访问的数据目录
 /tmp    |临时文件     |重启清空
 /proc   |虚拟文件系统 |内存中建立的虚拟目录 提供系统实时信息
