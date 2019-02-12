@@ -6,6 +6,9 @@ sp_help
 
 不同数据库内置工具不同？
 
+[Select count(*)、Count(1)、Count(0)的区别和执行效率比较](https://www.cnblogs.com/sueris/p/6650301.html)
+[Select count(*)和Count（1）的区别和执行方式](https://www.cnblogs.com/CareySon/p/DifferenceBetweenCountStarAndCount1.html)
+
 ## 数据类型
 - mysql
 

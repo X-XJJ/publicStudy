@@ -77,12 +77,12 @@ win7 IIS中 FTP防火墙支持，主机主页里的“支持”可配置，网�
 - ftp命令：`ftp ipAddress`连接到ip为ipAddress的ftp服务器，`ftp`调起ftp程序
 - ftp内部命令  
   - [windows：常用ftp命令](https://blog.csdn.net/kaever/article/details/68941845)
+  - open 连接远程
   - ?   查看命令帮助
   - lcd 切换本地下载目录，默认为c:\User\yourAccount\，Linux为当前登陆目录
   - get 远程目录要下载的文件名 [下载到本地当前目录的文件名]  下载单个文件
   - put 本地目录要上传的文件名 [上传到远程当前目录的文件名]  上传单个文件
   - mget mput 多个文件
-  - open IP 连接远程
   - user [username][password] 切换用户登陆
   - !   从远程ftp服务器暂时进入本地shell
   - exit 从本地shell返回远程ftp
