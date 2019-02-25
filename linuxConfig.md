@@ -1,4 +1,4 @@
-
+﻿
 # 编译调试
 gcc
 - [Makefile 使用总结](https://www.cnblogs.com/wang_yb/p/3990952.html)
@@ -136,5 +136,9 @@ nameserver=8.8.4.4
 rcnetwork restart   #重启网络
 service network restart #重启网络
 /etc/init.d/network restart #重启网络
+
+
+
+
 
 

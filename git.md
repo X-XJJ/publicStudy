@@ -12,16 +12,40 @@ Windows ：选择git bush工具，或Windows自带powershell
 [root@localhost /home/usr/softscape/Z07] # git init 
 [root@localhost /home/usr/softscape/Z07] # git add .
 [root@localhost /home/usr/softscape/Z07] # git commit -m '财政取数接口测试完成四分之三'
-
 [root@localhost /home/usr/softscape/Z07] # git remote add Z07 http://8.8.0.0:3000/softscape/Z07.git
 git remote
 git status
 
 [root@localhost /home/usr/softscape/Z07] # git push Z07 master
 
+您的姓名和邮件地址基于登录名和主机名进行了自动设置。请检查它们正确
+与否。您可以通过下面的命令对其进行明确地设置以免再出现本提示信息：
+
+    git config --global user.name "Your Name"
+    git config --global user.email you@example.com
+
+设置完毕后，您可以用下面的命令来修正本次提交所使用的用户身份：
+
+    git commit --amend --reset-author
+
+## 撤销commit操作 git reset --soft HEAD^
+HEAD^的意思是上一个版本，也可以写成HEAD~1
+如果你进行了2次commit，想都撤回，可以使用HEAD~2
+--mixed 
+意思是：不删除工作空间改动代码，撤销commit，并且撤销git add . 操作
+这个为默认参数,git reset --mixed HEAD^ 和 git reset HEAD^ 效果是一样的。
+--soft  
+不删除工作空间改动代码，撤销commit，不撤销git add . 
+--hard
+删除工作空间改动代码，撤销commit，撤销git add . 
+注意完成这个操作后，就恢复到了上一次的commit状态。
+顺便说一下，如果commit注释写错了，只是想改一下注释，只需要：
+git commit --amend
+此时会进入默认vim编辑器，修改注释完毕后保存就好了。
 
 #配置账号 
-全局配置--global  当前系统用户--system  当前项目目录 不加参数
+全局配置--global  当前系统用户--system  当前项目目录--local可略
+读取的优先级依次 --system < --global < --local >
 git config --global user.name "用户名"
 git config --global user.email 邮箱地址
 
@@ -30,6 +54,8 @@ git config user.name "用户名"
 git config user.email 邮箱地址
 
 git config --list 查看当前配置 全局配置+当前项目配置？
+--global 对git的操作git config内容保存在.gitconfig的文件下
+  --local对git的操作git config内容保存在.git/config的文件下
 
 #基本操作？
 git clone <repoURL> <directory> 克隆仓库repository到指定目录
@@ -54,6 +80,11 @@ git status [...] 查看项目的当前状态
 
 git add file (file1 file2...) 添加文件(们)到暂存区(缓存)
 git add . 添加当前项目所有文件到暂存区
+
+git add --ignore-removal <pathspec>
+不会 将删除操作提交至暂存区
+git add --all <pathspec>
+将删除操作提交至暂存区
 
 git diff [...] (commit commit1 .. HEAD)查看本地和暂存区改动的区别
 	--cached 已存入暂存区的改动;
@@ -89,6 +120,63 @@ git fetch 从远程拉取最新版到本地，不merge
 # 多账号管理
 
 
+-------------------------
+# 忽略提交
+[Git忽略提交规则 - .gitignore配置运维总结](https://www.cnblogs.com/kevingrace/p/5690241.html)
+## 匹配规则
+
+## 三种方式
+- 项目的文件夹下定义.gitignore文件
+一行一个忽略规则，从上到下顺序匹配；
+对.gitignore所在文件夹进行忽略
+
+- 项目设置中指定 .git/info/exclude文件
+写入要忽略提交的文件规则
+
+- 全局定义.gitignore文件
+.gitignore可以放在任意位置
+git config --global core.excludesfile ~/.gitignore
+
+## 配置失效常见解决
+- .gitignore中已经标明忽略的文件目录下的文件，git push的时候还会出现在push的目录中，或者用git status查看状态，想要忽略的文件还是显示被追踪状态。
+- 原因：在git忽略目录中，新建的文件在git中会有缓存，如果某些文件已经被纳入了版本管理中，就算是在.gitignore中已经声明了忽略路径也是不起作用的，
+- 1）.gitignore只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改.gitignore是无效的。
+- 2）想要.gitignore起作用，必须要在这些文件不在暂存区中才可以，.gitignore文件只是忽略没有被staged(cached)文件，对于已经被staged文件，加入ignore文件时一定要先从staged移除，才可以忽略。 
+-
+- 解决：这时候我们就应该先把本地缓存删除，然后再进行git的提交，这样就不会出现忽略的文件了。
+-
+- 1、 git清除本地缓存（改变成未track状态），然后再提交:
+[root@kevin ~]# git rm -r --cached .
+[root@kevin ~]# git add .
+[root@kevin ~]# git commit -m 'update .gitignore'
+[root@kevin ~]# git push -u origin master
+
+- 2、在每个clone下来的仓库中手动设置不要检查特定文件的更改情况。
+[root@kevin ~]# git update-index --assume-unchanged PATH                  //在PATH处输入要忽略的文件
+
+## 在使用.gitignore文件后如何删除远程仓库中以前上传的此类文件而保留本地文件
+在使用git和github的时候，之前没有写.gitignore文件，就上传了一些没有必要的文件，在添加了.gitignore文件后，就想删除远程仓库中的文件却想保存本地的文件。这时候不可以直接使用"git rm directory"，这样会删除本地仓库的文件。可以使用"git rm -r –cached directory"来删除缓冲，然后进行"commit"和"push"，这样会发现远程仓库中的不必要文件就被删除了，以后可以直接使用"git add -A"来添加修改的内容，上传的文件就会受到.gitignore文件的内容约束。
+
+
+## git库所在的文件夹中的文件大致有4种状态
+Untracked: 
+未跟踪, 此文件在文件夹中, 但并没有加入到git库, 不参与版本控制. 通过git add 状态变为Staged.
+ 
+Unmodify: 
+文件已经入库, 未修改, 即版本库中的文件快照内容与文件夹中完全一致. 这种类型的文件有两种去处, 如果它被修改, 
+而变为Modified. 如果使用git rm移出版本库, 则成为Untracked文件
+ 
+Modified: 
+文件已修改, 仅仅是修改, 并没有进行其他的操作. 这个文件也有两个去处, 通过git add可进入暂存staged状态, 
+使用git checkout 则丢弃修改过, 返回到unmodify状态, 这个git checkout即从库中取出文件, 覆盖当前修改
+ 
+Staged: 
+暂存状态. 执行git commit则将修改同步到库中, 这时库中的文件和本地文件又变为一致, 文件为Unmodify状态. 
+执行git reset HEAD filename取消暂存, 文件状态为Modified
+ 
+Git 状态 untracked 和 not staged的区别
+1）untrack     表示是新文件，没有被add过，是为跟踪的意思。
+2）not staged  表示add过的文件，即跟踪文件，再次修改没有add，就是没有暂存的意思
 
 -------------------------
 部分添加暂存区

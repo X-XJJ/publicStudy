@@ -51,7 +51,7 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
 [where 条件表达式] 
 [group by 列名1 [having [聚函][条件表达式]] [,列名2...]]  --？存疑，能多个吗
 [order by 列名 [ASC | DESC]]
----
+
 - "distinct" 消除列中重复行;  all 不取消重复，all为默认值;
 - "as 别名"  --取该查询结果列的别名，可省略，别名为空字符串即按默认;
 - "目标列表达式" 可选格式：
@@ -64,8 +64,8 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
     使用：select 函数关键字([all|distinct]列名) 或者 having 函数关键字([all|distinct]列名)，除了select count(*) 是直接使用;
     函数名：
       - count() 统计列中非NULL值的个数;  count(*) 统计含NULL元组个数;
-      - SUM() 计算一列值总和;  AVG() 计算一列平均值;  此二列需为数值型;
- - MAX() MIN() 求一列值中的最大、最小值;
+      - sum() 计算一列值总和;  avg() 计算一列平均值;  此二列需为数值型;
+ - max() min() 求一列值中的最大、最小值;
 - "where 条件表达式" 条件表达式可选格式："having"和where作用相同;
   列名 比较运算符 常量|列名| [any | all](select语句)  --比较;
      [NOT] between 常量|列名| [any|all](select语句) AND 常量|列名| [any|all](select语句)                            --确定范围，between上限and下限;
