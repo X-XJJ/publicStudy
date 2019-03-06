@@ -186,10 +186,11 @@ range: 单个;  _,_ 范围(eg: 3,5);
 :bf = :bfirst 开头;  :bl = :blast 结尾;  
 :b [n/bufname name1...] = :buffer 按编号/路径字符跳转缓冲区, 路径可Tab补全  
 :[range] bd [n/bufname] = :bdelete 删除缓冲区(们)  
-:wn 保存第n个缓冲区  
+:wn 保存第n个缓冲区?
+:n :N 切换到下一个文件?切换到上一个文件? wn 保存且切换?  用于非缓冲区载入的文件切换?比如直接vim file1 fil这样的? 
   
 ## 文本相关  
-:r 复制到当前缓冲区的光标or目的地下  :[目的地] r filename 源头eg被复制的文件名  :r! {cmd} 运行命令并把结果插入缓冲区
+:[目的地] r filename 把文件内容复制到当前缓冲区的光标or目的地下:r! {cmd} 运行命令并把结果插入缓冲区
   
  运行命令并把结果插入缓冲区:copy = :t 复制粘贴copy to(不涉及寄存器, normal模式的y复制到寄存器)  
 :move = :m 剪切粘贴  
@@ -351,6 +352,7 @@ nnoremap 按键映射
   
 # 配置问题们
 - 详见_vimrc
+- MarkdownPreview的显示问题：这个显示，第一层和第二层之间，空一格就能显示，但markdown规则并非这样，正常来说`-`层级之间区别是空2格
 
 "中文字符乱码问题 编辑
 set encoding=utf-8

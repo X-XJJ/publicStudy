@@ -6,6 +6,10 @@ gcc
 
 # 一些通用的
 
+单行注释 #
+
+复合命令 IF then
+
 /etc/profile
 /etc/bashrc
 ~/.bashrc
@@ -14,8 +18,22 @@ gcc
 [Linux中profile、bashrc、bash_profile之间的区别和联系](https://blog.csdn.net/chenchong08/article/details/7833242)
 
 
+# 定制shell提示符
+提示符由环境变量PS1决定，prompt string 1，
+包含 转义字符，可添加颜色，等等，具体的可随时查，
+常用的：
+提示符设为用户和完整路径的设置：
+如：
+（找个实例）
+
+
+
+
+
+
+
 # centos7 minimal最小安装
-单行注释 #
+
 ## 网卡默认禁用
 - 完事重启网络服务 service network restart
 - 使用UI界面设置
