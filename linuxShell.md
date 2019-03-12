@@ -9,6 +9,7 @@ $ 一般用户的shell提示符 # 超级用户的shell提示符
 
 <Esc> 进入vi模式，可直接运行vi命令 如/word 查找缓冲区命令中出现的含word命令
 
+- md5sum 计算MD5校验码
 expr
 
 
@@ -19,13 +20,21 @@ sh csh bash ksh等shell的区别与联系
 
 ## 一些命令和使用？
 命令种类：可执行程序、shell内置命令、shell函数、alias命令
-date 时间日期;  cal 当月日历;  ntpdate立即同步时间，生产慎用 ntpd平滑同步，客户端与标准时间服务器同步 
+
+## 时间日期
+- 在Linux运行过程中，系统时间和硬件时间以异步的方式运行，互不干扰
+- 硬件时间运行靠BIOS电池，系统时间用CPU Tick维持。开机时系统自动从BIOS中取得硬件时间，设置为系统时间
+- date 系统时间日期 -s 修改 有多种格式修改，可同时改年月日时分秒，也可分开
+cal 当月日历
+- ntp服务器
+  - ntpdate 系统时间设为mtp服务器时间，生产慎用
+  - ntpd平滑同步，客户端与标准时间服务器同步 
 tzselect 设置时区
-hwclock 硬件时间相关
- -r = --show 显示当前硬件时间
- --set --date="2017-02-03 08:09:04" 设置当前硬件时间
- -s = --hctosys 同步硬件时间到系统时间
- -w = --systohc 同步系统时间到硬件时间
+- hwclock 硬件时间相关
+  - -r = --show 显示当前硬件时间，缺省为此
+  - --set --date="2017-02-03 08:09:04" 修改当前硬件时间
+  - -s = --hctosys 以硬件时间为准，修改系统时间
+  - -w = --systohc <== 系统时间 to hc？ 以系统时间为准，修改硬件时间>
 
 whereis
 -b binary
@@ -412,7 +421,7 @@ x    |允许文件被执行，脚本文件必同时有r r-x   |允许进入目�
 文件模式|--- |--x |-w- |-wx |r-- |r-x |rw- |rwx
   - rwx可利用八进制设定数字表示，每个八进制数字对应3个二进制数字，文件模式刚好3类8种组合
   - 首先使用二进制表示文件模式，再将对应二进制表示为八进制
-  - r = 4，w = 2，x = 1，常用7 6 5 4 0
+  - r = 4，w = 2，x = 1，- = 0，常用7 6 5 4 0
     - eg：rw--r--r--即644，rw-=6，r--=4
 
 #### umask 设置文件默认权限
@@ -715,13 +724,23 @@ free 输出存储器的使用情况
 
 - fsck  检查修复文件系统
   - 启动时自动监测
-  - 修复文件系统，设备先卸载，fsck 设备名；已修复的文件放在根目录下lost+found目录中
+  - fsck 设备名：修复文件系统，设备先卸载；已修复的文件放在根目录下lost+found目录中
 
-fdformat 格式化软盘
-dd 向设备直接写入面向块数据
-md5sum 计算MD5校验码
-genisoimage（mkisofs） 创建一个ISO 9600映像文件
-wodim（cdrecord） 向光存储介质写入数据
+- fdformat 设备名：格式化软盘
+
+- dd 直接向设备写入面向块的数据data definition
+  - dd if=input_file of=output_file [bs=block_size [count=blocks]]
+  - 如 克隆设备，两个容量一样的u盘从sdb复制到sdc：dd if=/dev/sdb of=/dev/sdc
+  - 如 先克隆到文件 dd if=/dev/sdb/ of=temp.img
+
+- 创建CD-ROM映像
+  - 创建ISO，即CD-ROM的文件系统映像
+    - dd，从光盘创建iso，适用于数据类DVD，音频类使用cdrdao
+    - 从文件集合中创建iso，使用enisoimage，genisoimage？ genisoimage（mkisofs） 创建一个ISO 9600映像文件
+  - 将ISO写入CD-ROM只读光盘介质中
+    - 不写入介质，只使用即可——挂载iso，mount的参数-o loop ...
+    - 擦除并写入介质，wodim，wodim（cdrecord） 向光存储介质写入数据
+
 
 df 磁盘驱动器;  free 可用内存;
 
@@ -731,37 +750,55 @@ linux下查看磁盘分区的文件系统格式 https://www.cnblogs.com/youbiyou
 
 
 # 网络
-ip []
-ifconfig
-ping 向网络主机发送ICMP ECHO_REQUEST数据包
-traceroute 显示数据包到网络主机的路由路径（Windows为tracert）
+IP Internet protocol, host and domain name 主机名和域名, URI Uniform resource identifier 统一资源标识符, URL 
 
-- netstat 显示网络连接、路由表、网络接口数据、伪连接、多点传送成员等信息
- - netstat -nape|grep 端口号
--a 显示所有(否则不显示LISTEN状态)
--l 仅显示LISTEN状态
--n 显示数字(否则显示别名)
--t 仅显示TCP套接字
--u 仅显示UDP套接字
--x 仅显示UNIX套接字
--p 显示进程信息
--e 显示扩展信息
--r 显示路由信息
--i 显示接口信息
--s 按协议统计
--c 持续显示
-如：
-tcp  0  0  192.168.100.61:11003  10.10.10.1:32849  ESTABLISHED 1000  3760904  25506/linker 
+## 检查、监测网络
+- ifconfig (win-ipconfig)
+  - 显示ip信息
+  - 此命令一般默认预装，但某些时候Linux某些mini版没有，需自行安装，另有命令 ip
+  - [Centos7 ifconfig这个命令没找到的解决方法](https://blog.csdn.net/u011277123/article/details/54846422)
 
+- ping 
+  - 向网络主机发送ICMP ECHO_REQUEST数据包，时间间隔默认1s
+  - 数据链路层，
+  - 显示：返回包？字节 from 域名（ip）：icmp_seq ttl time
+  - 通常默认情况被设置为阻碍ICMP通信，降低主机被攻击风险
 
-ftp 文件传输命令
+- traceroute或tracepath，win-tracert
+  - 跟踪数据包到网络主机的路由路径
+  - 显示：主机名？域名？ip，运行状态信息，3次往返时间？三次握手？
+  - 不提供身份信息的地方使用*表示
 
+- netstat
+  - 显示各种网络设置和相关统计数据，网络连接、路由表、网络接口数据、伪连接、多点传送成员等信息
+  - netstat -nape|grep 端口号
+  - -a 显示所有(否则不显示LISTEN状态) - -l 仅显示LISTEN状态 - -n 显示数字(否则显示别名) - -t 仅显示TCP套接字 - -u 仅显示UDP套接字 - -x 仅显示UNIX套接字 - -p 显示进程信息 - -e 显示扩展信息 - -r 显示路由信息 - -i 显示接口信息 - -s 按协议统计 - -c 持续显示
+  - 如：
+  - tcp  0  0  192.168.100.61:11003  10.10.10.1:32849  ESTABLISHED 1000  3760904  25506/linker 
 
-lftp 改善后的文件传输命令
-wget 非交互式网络下载器
-ssh 远程系统登陆命令，OpenSSH版的ssh客户端
-scp 远程复制文件，secure copy
-sftp 安全的文件传输
+## 文件传输
+- FTP协议
+  - ftp命令，传统ftp客户端，使用FTP文件传输协议，file transfer protocol
+  - lftp命令，比ftp强大，支持包括多协议、下载失败自动重新尝试、后台进程支持、tab补全等等
+
+- wget
+  - 非交互式网络下载器
+  - 既可从网站下载，也支持ftp站点下载
+  - 单个文件，多个文件，整个网站，都支持，递归下载、后台文件、继续下载等
+
+## 远程安全通信
+- SSH
+  - Secure Shell 安全登陆远程系统
+  - 身份验证-避免中间人攻击，通信加密-安全传输
+  - 多数采用OpenSSH版方法
+  - 远程主机为ssh服务端，监听22端口；申请连接的主机为ssh客户端
+  - ssh 远程主机；ssh 用户名@远程主机（主机名orIPor域名...）
+  - 更多内容暂略，如密钥，
+  -
+  - OpenSSH内含网络间文件复制程序
+    - scp 源路径 目的路径：远程复制文件，secure copy，路径为远程时，需要加“主机名:”，即“10.12.1.1:~/test.txt”
+    - sftp 安全的文件传输，ftp的安全版本，只需要ssh服务器即可，无需ftp服务器
+  - Windows的ssh客户端：PuTTY，Xshell等
 
 
 ## curl 
@@ -770,9 +807,18 @@ sftp 安全的文件传输
 选项<参数>    |功能
 --------------|----
 -X <command>  |= --request 指定什么命令 如-X POST 
--d <data>     |HTTP POST方式传送数据 如-d "cat 1" 传送文件1输出的内容
+-d <data>     |HTTP POST方式传送数据 如-d "`cat 1`" 传送文件1输出的内容 注意双引号内的反引号
 -H <头部信息> |添加一个或多个HTTP头部信息 如-H "TD-Charset:utf-8" -H "33"
 
+如文件1：
+curl http://10.129.22.230:8096/sp1/bms -X POST -d "`cat body`"\
+    -H "TD-Charset:utf-8"\
+    -H "TD-Account:BANK_YN_SBJF_ZGNYYH"\
+    -H "TD-Timestamp:1530178791371"\
+    -H "TD-Authorization:"\
+    -H "Content-Type:application/json"\
+    -H "TD-UrlEn-Topic:"
+之后shell内“sourse 1”
 
 # 文件搜索
 locate 通过文件名查找

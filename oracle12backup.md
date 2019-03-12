@@ -1,7 +1,13 @@
 oracle数据库 备份相关  
   
 [Oracle备份与恢复](http://blog.51cto.com/982439641/2104212)  
+
+[oracle的备份与恢复](https://blog.csdn.net/q547550831/article/details/50074973)
   
+
+
+[oracle---用户管理（权限）以及备份](https://blog.csdn.net/qq_40075229/article/details/78706095)
+
 # 策略  
 ## 完全备份  
 全库备份，没有用于记录级别的信息;  

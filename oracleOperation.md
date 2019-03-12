@@ -78,6 +78,14 @@ sqlpuls 退格、方向键问题
      SQL>select * from v$instance;
 - sqlplus中，命令加不加分号";"都可以，SQL语句必须加;
 
+[Oracle创建用户、角色、授权、建表](https://www.cnblogs.com/roger112/p/7685307.html)
 
+[SQL*Plus用法指南](https://www.cnblogs.com/itcui/p/5626565.html)
+
+[查看Oracle数据库及表信息](https://blog.csdn.net/gavinli2588/article/details/78343157)
+
+[【Oracle数据库】Oracle SQL*Plus环境下的简单操作](https://blog.csdn.net/qq_33591903/article/details/81053842)
+
+[Oracle用户创建及权限设置](https://www.cnblogs.com/buxingzhelyd/p/7865194.html)
 
 

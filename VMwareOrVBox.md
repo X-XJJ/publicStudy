@@ -3,6 +3,9 @@
 共享文件夹
 /mnt/
 
+[在 Linux 虚拟机中手动安装 VMware Tools](https://docs.vmware.com/cn/VMware-Workstation-Pro/14.0/com.vmware.ws.using.doc/GUID-08BB9465-D40A-4E16-9E15-8C016CC8166F.html)
+
+[vmware centos7 minimal 配置共享文件夹](https://www.jianshu.com/p/b7a541262ae7)
 
   - 桥接模式  
 root权限下，suse内配置静态ip地址 8.0.3.2（softscape内部网段）  

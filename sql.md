@@ -51,6 +51,12 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
 [where 条件表达式] 
 [group by 列名1 [having [聚函][条件表达式]] [,列名2...]]  --？存疑，能多个吗
 [order by 列名 [ASC | DESC]]
+？limit a,b  从select结果的第a+1行开始，返回b条记录，显示id从a+1开始——居然没写么……翻笔记去
+返回指定的记录数（行数）,前一个参数表示偏移，后一个表示最多查出的数据条数
+SELECT * FROM table
+使用LIMIT约束后，变成：
+SELECT * FROM table LIMIT 0，-1
+LIMIT后的第一个参数0限定偏移量，后面的-1表示数据库表中最后一条数据，因为SQL中id是从1开始，所以返回了全部数据行
 
 - "distinct" 消除列中重复行;  all 不取消重复，all为默认值;
 - "as 别名"  --取该查询结果列的别名，可省略，别名为空字符串即按默认;

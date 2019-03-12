@@ -12,7 +12,8 @@ Windows ：选择git bush工具，或Windows自带powershell
 [root@localhost /home/usr/softscape/Z07] # git init 
 [root@localhost /home/usr/softscape/Z07] # git add .
 [root@localhost /home/usr/softscape/Z07] # git commit -m '财政取数接口测试完成四分之三'
-[root@localhost /home/usr/softscape/Z07] # git remote add Z07 http://8.8.0.0:3000/softscape/Z07.git
+[root@localhost /home/usr/softscape/Z07] # git remote add Z07 http://8.8.0.0:3000/softscape/Z07.git 
+  - 上面是，把这个http://8.8.0.0:3000/softscape/Z07.git远程地址关联为Z07
 git remote
 git status
 
@@ -27,6 +28,17 @@ git status
 设置完毕后，您可以用下面的命令来修正本次提交所使用的用户身份：
 
     git commit --amend --reset-author
+
+### 拉取远程分支更新本地代码，预防push冲突
+- 查看远程地址 git remote -v
+- fetch拉去远程主分支，并拉到本地temp作为暂存分支 git fetch Z07 master:temp
+- 查看当前指针指向哪个分支 *表示当前 git branch
+- 将temp合并到当前指针指向的分支 git merge temp
+- 推送push远程仓库 git push Z07 master
+- 删除暂存分支 git branch -d temp
+- 再次查看本地分支 git branch
+
+
 
 ## 撤销commit操作 git reset --soft HEAD^
 HEAD^的意思是上一个版本，也可以写成HEAD~1
@@ -43,9 +55,12 @@ HEAD^的意思是上一个版本，也可以写成HEAD~1
 git commit --amend
 此时会进入默认vim编辑器，修改注释完毕后保存就好了。
 
-#配置账号 
-全局配置--global  当前系统用户--system  当前项目目录--local可略
-读取的优先级依次 --system < --global < --local >
+# 配置账号 
+[git config配置](https://www.cnblogs.com/fireporsche/p/9359130.html)
+
+全局配置系统级别--global  当前系统用户级别--system  当前项目仓库级别--local，缺省为local
+读取的优先级依次 --local > --global > --system
+
 git config --global user.name "用户名"
 git config --global user.email 邮箱地址
 
@@ -237,6 +252,7 @@ Git 状态 untracked 和 not staged的区别
     
 ###### git add
      在提交之前,Git有一个暂存区(staging area),可以放入新添加的文件或者加入新的改动. commit时提交的改动是上一次加入到staging area中的改动,而不是我们disk上的改动.
+     git add 文件名
      git add .
      会递归地添加当前工作目录中的所有文件.
  
@@ -267,7 +283,7 @@ Git 状态 untracked 和 not staged的区别
  
 ###### git commit
      提交已经被add进来的改动.
-     git commit -m “the commit message"
+     git commit -m “the commit message" 只提交刚才使用git add的文件
      git commit -a 会先把所有已经track的文件的改动add进来,然后提交(有点像svn的一次提交,不用先暂存). 对于没有track的文件,还是需要git add一下.
      git commit --amend 增补提交. 会使用与当前提交节点相同的父节点进行一次新的提交,旧的提交将会被取消.
  
@@ -412,3 +428,7 @@ Git 状态 untracked 和 not staged的区别
 ###### 特殊符号:
      ^代表父提交,当一个提交有多个父提交时,可以通过在^后面跟上一个数字,表示第几个父提交: ^相当于^1.
      ~<n>相当于连续的<n>个^.
+
+
+## 一些总结性
+[Github搭建个人博客（2018最新版,亲测）](https://blog.csdn.net/xudailong_blog/article/details/78762262)

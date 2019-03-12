@@ -1,4 +1,7 @@
 ﻿
+# shell脚本
+[Linux脚本中利用sed修改文件内容的多种技巧](https://blog.csdn.net/sunny05296/article/details/71173467)
+
 # 编译调试
 gcc
 - [Makefile 使用总结](https://www.cnblogs.com/wang_yb/p/3990952.html)

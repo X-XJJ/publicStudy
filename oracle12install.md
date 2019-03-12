@@ -1,4 +1,7 @@
 
+
+[DBCA静默方式建库](http://www.cnblogs.com/hftian/p/6618551.html)
+
 # 初始环境
 
 

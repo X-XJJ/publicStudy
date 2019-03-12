@@ -3,6 +3,9 @@ ftp
 scp
 samba
 nfs
-rzsz
+
+
+# rz,sz
+-y 覆盖
 
 
