@@ -12,6 +12,10 @@ $ 一般用户的shell提示符 # 超级用户的shell提示符
 - md5sum 计算MD5校验码
 expr
 
+xargs 从标准输入中建立、执行命令行
+touch 更改文件的日期时间
+stat 显示文件or文件系统的状态
+
 
 # shell相关
 - shell是一个程序，接受键盘/输入的命令，传递给操作系统来执行
@@ -820,13 +824,23 @@ curl http://10.129.22.230:8096/sp1/bms -X POST -d "`cat body`"\
     -H "TD-UrlEn-Topic:"
 之后shell内“sourse 1”
 
-# 文件搜索
-locate 通过文件名查找
-find 在文件系统目录框架中查找
+# 文件搜索 常与grep等连用
+- 文件名查找 locate
+  -  通过文件名查找，文件名可带路径，如locate bin/zip 查找到文件所在最后一级目录应为bin/
+  - 衍生 slocate mlocate
 
-xargs 从标准输入中建立、执行命令行
-touch 更改文件的日期时间
-stat 显示文件or文件系统的状态
+## 复杂查找 find
+- find path -option [-print] [-exec -ok command] {} \
+- find 在文件系统目录框架中查找，依据文件的各种属性在既定目录&子目录里查找
+- find 一个or多个目录名 在此目录范围内搜索 如find ~ 列出主目录下的文件
+- 三类选项 test action options
+- 参数相当多啊……
+- [Linux中find常见用法示例](https://www.cnblogs.com/archoncap/p/6144369.html)
+常用：
+- test类
+  - -type
+
+
 
 # 归档和备份，管理文件集合
 gzip 压缩解压文件工具
@@ -930,7 +944,6 @@ runlevel 查看系统当前运行级别
 
 在linux中安装软件通常要用root身份，软件安装到/usr里，可以为系统的所有用户使用； 如果是用户自己安装自己的软件通常安放到/home/$user/..里，不会影响其它用户；
 
-查找 find
 
 [Linux软件安装，RPM与YUM](http://www.cnblogs.com/shijiaqi1066/p/3843955.html)
 
