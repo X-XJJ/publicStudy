@@ -128,6 +128,11 @@ git fetch 从远程拉取最新版到本地，不merge
 
 #远程仓库
 
+在push代码时，出现“git master branch has no upstream branch”问题的原因是没有将本地的分支与远程仓库的分支进行关联
+
+[Git master branch has no upstream branch的解决](https://blog.csdn.net/benben_2015/article/details/78803753)
+
+
 #分支管理
 
 
