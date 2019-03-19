@@ -5,19 +5,31 @@ Windows ：选择git bush工具，或Windows自带powershell
 
 [官方手册（中文）](https://git-scm.com/book/zh/v2)
 
+# 一些概念
+工作区
+暂存区
+版本库
 
-[root@localhost /home/usr/softscape] # git clone http://8.8.0.0:3000/softscape/Z08.git
+提交
+合并
+冲突
+分支branch
+fork
+
+
+## example
+[root@localhost /home/usr/hhh] # git clone http://8.8.0.0:3000/hhh/Z08.git
 
 初始化Z07仓
-[root@localhost /home/usr/softscape/Z07] # git init 
-[root@localhost /home/usr/softscape/Z07] # git add .
-[root@localhost /home/usr/softscape/Z07] # git commit -m '财政取数接口测试完成四分之三'
-[root@localhost /home/usr/softscape/Z07] # git remote add Z07 http://8.8.0.0:3000/softscape/Z07.git 
-  - 上面是，把这个http://8.8.0.0:3000/softscape/Z07.git远程地址关联为Z07
+[root@localhost /home/usr/hhh/Z07] # git init 
+[root@localhost /home/usr/hhh/Z07] # git add .
+[root@localhost /home/usr/hhh/Z07] # git commit -m '财政取数接口测试完成四分之三'
+[root@localhost /home/usr/hhh/Z07] # git remote add Z07 http://8.8.0.0:3000/hhh/Z07.git 
+  - 上面是，把这个http://8.8.0.0:3000/hhh/Z07.git远程地址关联为Z07
 git remote
 git status
 
-[root@localhost /home/usr/softscape/Z07] # git push Z07 master
+[root@localhost /home/usr/hhh/Z07] # git push Z07 master
 
 您的姓名和邮件地址基于登录名和主机名进行了自动设置。请检查它们正确
 与否。您可以通过下面的命令对其进行明确地设置以免再出现本提示信息：
@@ -72,17 +84,25 @@ git config --list 查看当前配置 全局配置+当前项目配置？
 --global 对git的操作git config内容保存在.gitconfig的文件下
   --local对git的操作git config内容保存在.git/config的文件下
 
-#基本操作？
+# 基本操作？
 git clone <repoURL> <directory> 克隆仓库repository到指定目录
 git init 当前目录作为本地仓库初始化，可管理的空仓库
 git init -bare 初始化裸库，不生成.git目录，只生成.git目录下的版本历史纪录文件
+
+## ssh和http方式 连接远程
+- ssh key 
+配置免密登录
+
+http smart？
+
+
 
 ### .git下的版本历史记录文件
 |-- HEAD         # 这个git项目当前处在哪个分支里
 |-- config       # 项目的配置信息，git config命令会改动它
 |-- description  # 项目的描述信息
 |-- hooks/       # 系统默认钩子脚本目录
-|-- index        # 索引文件
+|-- index        # 索引文件 暂存区？
 |-- logs/        # 各个refs的历史信息
 |-- objects/     # Git本地仓库的所有对象 (commits, trees, blobs, tags)
 |-- refs/        # 标识你项目里的每个分支指向了哪个提交(commit)。
@@ -127,6 +147,10 @@ git pull 从远程拉取最新版到本地，自动merge = fetch + merge
 git fetch 从远程拉取最新版到本地，不merge
 
 #远程仓库
+
+关联远程仓库
+
+创建远程仓库
 
 在push代码时，出现“git master branch has no upstream branch”问题的原因是没有将本地的分支与远程仓库的分支进行关联
 
@@ -437,3 +461,12 @@ Git 状态 untracked 和 not staged的区别
 
 ## 一些总结性
 [Github搭建个人博客（2018最新版,亲测）](https://blog.csdn.net/xudailong_blog/article/details/78762262)
+
+
+## 与svn区别
+svn 集成
+各个版本信息记录在服务器，只有一个集中服务器
+
+git 分布式
+各个版本信息记录在所有拥有此仓库的地方，可远程连接、对外开放的地方，都可以当成服务器
+

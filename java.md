@@ -5,3 +5,42 @@
 - 类：类是一个模板，它描述一类对象的行为和状态。
 - 方法：方法就是行为，一个类可以有很多方法。逻辑运算、数据修改以及所有动作都是在方法中完成的。
 - 实例变量：每个对象都有独特的实例变量，对象的状态由这些实例变量的值决定。
+
+# eslint/fontmin
+es：ECMAScripe javaScripe标准之一
+JS代码格式等的检查工具，如定义不允许存在var，空格检查，缩进检查等等
+工作目录 npm install eslint
+node_modules/.bin/eslint
+
+fontmin 程序协助，有选择性在原字体文件中选用需要的内容，生成所需的新字体文件
+
+
+# 0305
+## react
+UI框架，前端，开发高效灵活，配合度高
+声明式 逻辑+html 模块化
+传递参数，声明函数？渲染html
+
+工具：Node.js
+npm install -g cleate-react-app 安装react
+
+- 组件
+  - 属性props 由外部jsx传入
+  - 状态state 如动画变化等，控制界面状态，更新不用刷新整个界面，为局部即时
+
+-
+- JSX语法
+  - 即js+xml
+-
+- 虚拟dom
+  - 组件state改变后，自动调用某方法，返回到组StaffPaymentDetail件，自动更新，再更新浏览器的dom
+-
+- 单向数据传递
+-
+-
+-
+-
+
+
+
+
