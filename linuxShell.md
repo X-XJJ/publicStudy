@@ -867,21 +867,7 @@ zip 打包和压缩文件
 rsync 远程文件和目录的同步
 
 
-# 编译程序
-make 维护程序工具
-
-## gcc C的编译器
- 
-gdb命令 zoe程序 core生成的文件
-gdb zoe core  段错误查看
-where
-
-编译参数 gcc -g  ——与makefile文件内配置
-
-ulimit -c
-
-linker 链接器
-
+# 编译程序-详见linuxConfig.md
 
 # shell脚本
 编写--脚本文件权限为允许执行--脚本放置位置最好在没指定路径时shell能自动发现的地方(如PATH环境变量中包含的目录)

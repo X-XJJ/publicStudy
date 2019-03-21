@@ -1,4 +1,6 @@
 ﻿
+终端分屏工具 tmux
+
 # shell脚本
 [Linux脚本中利用sed修改文件内容的多种技巧](https://blog.csdn.net/sunny05296/article/details/71173467)
 
@@ -6,6 +8,26 @@
 gcc
 - [Makefile 使用总结](https://www.cnblogs.com/wang_yb/p/3990952.html)
  - 只有行注释#
+
+make 维护程序工具
+
+## gcc C的编译器
+ 
+编译参数 gcc -g  ——与makefile文件内配置
+
+ulimit -c 查看段错误文件大小 0即没有
+ulimit -c unlimited 
+
+gdb工具需安装yum install -y gdb
+程序运行后，生成core.XXX文件
+gdb zoe core文件名  段错误查看，zoe为程序名
+进入后输入where，显示段错误出现的层次路径位置
+
+
+linker 链接器
+
+
+
 
 # 一些通用的
 
