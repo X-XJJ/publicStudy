@@ -1,4 +1,6 @@
-虚拟机们相关
+虚拟机们相关总结补充
+
+参考课件、网络
 
 共享文件夹
 /mnt/
@@ -7,7 +9,14 @@
 
 [vmware centos7 minimal 配置共享文件夹](https://www.jianshu.com/p/b7a541262ae7)
 
-  - 桥接模式  
+# 网络模式
+## NAT
+
+## host-only
+
+## （仅VirtualBox）
+
+## 桥接  
 root权限下，suse内配置静态ip地址 8.0.3.2（softscape内部网段）  
 `ifconfig eht0 8.0.3.2 netmask 255.0.0.0` 
 图形界面Network下，YaST2下配置为静态ip

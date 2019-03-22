@@ -234,6 +234,44 @@ deny
 # 触发器 trigger
 暂放
 
+# 事务和事务级别
+
+事务：数据库事务（简称：事务）是数据库管理系统执行过程中的一个逻辑单位，由一个有限的数据库操作序列构成
+
+transaction isdation
+- 级别区分：关系型数据库的一堆标准 数据库选用不一，如oracle只支持2 4
+    - 1 未提交读 uncommitted read 没提交就可以读出
+    - 2 已提交读 commited read 
+    - 3 可重复读 repeatable read 
+    - 4 串行化读 serializable 
+
+数据库中有相同事务进行多线程运作时，对数据库增删查改等的控制，
+多个线程接入同一个事务，对多方操作进行控制
+
+#查看事务隔离级别.
+mysql> select @@global.tx_isolation;
+mysql> select @@session.tx_isolation;
+#设置事务隔离级别.
+mysql> set global transaction isolation level $level;
+mysql> set session transaction isolation level $level;
+#可选事务隔离级别.
+READ-UNCOMMITTED
+READ-COMMITTED
+REPEATABLE-READ
+SERIALIZABLE
+#查看是否自动提交.
+mysql> select @@autocommit;
+#设置是否自动提交.
+mysql> set autocommit=0;
+#开始事务.
+mysql> start transaction;
+#提交事务.
+mysql> commit;
+#回滚事务.
+mysql> rollback;
+
+[](https://www.jianshu.com/p/aa35c8703d61)
+[](https://www.cnblogs.com/fjdingsd/p/5273008.html)
 
 （基于笔记，慢慢补充）
 

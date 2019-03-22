@@ -6,6 +6,35 @@
 - 方法：方法就是行为，一个类可以有很多方法。逻辑运算、数据修改以及所有动作都是在方法中完成的。
 - 实例变量：每个对象都有独特的实例变量，对象的状态由这些实例变量的值决定。
 
+
+# meven工具
+- 管理jar包，类似还有tomact
+- 目录 
+  - bin lib .ML ...
+- 全局配置文档settings.xml
+- .ML文件夹下，
+优先级 mvn→/.ML/settings.xml/→conf/settings.xml
+- 创建mvn项目：脚手架创建 archetype
+  - 目录结构 有默认，也可以自己配置
+  - 默认 src-main-java，resources，...
+- POM.xml配置文件
+  - groupId 公司域名
+  - artifactId 功能命名
+  - version 版本号
+  - packaging 打包方式，默认jar包
+  - description 版权
+  - dependency内：
+    - type 设置打包类型
+    - scope 控制管理的？依赖的使用时刻，是否打入jar
+      - compile 编译时使用
+      - test 测试时使用
+      - provided 编译使用，不打入jar
+      - runtime 运行时使用，编译时不用，打入jar
+      - system 可直接当成本地jar访问
+      - ...
+  - ...
+
+
 # eslint/fontmin
 es：ECMAScripe javaScripe标准之一
 JS代码格式等的检查工具，如定义不允许存在var，空格检查，缩进检查等等
