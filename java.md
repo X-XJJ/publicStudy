@@ -6,6 +6,23 @@
 - 方法：方法就是行为，一个类可以有很多方法。逻辑运算、数据修改以及所有动作都是在方法中完成的。
 - 实例变量：每个对象都有独特的实例变量，对象的状态由这些实例变量的值决定。
 
+# 程序过程
+.java
+↓
+.class
+↓
+classloader 封装Class类，加载
+
+
+
+# java反射机制
+将编译出的字节码文件封装到另一个对象（类），并对其进行操作
+
+[Java中反射机制详解](https://www.cnblogs.com/whgk/p/6122036.html)
+
+
+
+
 
 # meven工具
 - 管理jar包，类似还有tomact
@@ -26,14 +43,19 @@
   - dependency内：
     - type 设置打包类型
     - scope 控制管理的？依赖的使用时刻，是否打入jar
-      - compile 编译时使用
-      - test 测试时使用
-      - provided 编译使用，不打入jar
-      - runtime 运行时使用，编译时不用，打入jar
-      - system 可直接当成本地jar访问
-      - ...
+      - compile 编译时使用 - test 测试时使用 - provided 编译使用，不打入jar - runtime 运行时使用，编译时不用，打入jar - system 可直接当成本地jar访问 - ...
   - ...
+### 一些命令
+mvn 插件名:参数
 
+- 使用meven创建java项目
+- mvn archetype:create -D 组名-包名 [-D artifactId=项目名 ...] 需指定参数
+- mvn archetype:generate [-D 组名-包名 -D artifactId=项目名 ...] 可在运行中输入这些参数
+- -D interactivemode=false 交互模式 true false 即是否可在运行中才输参数
+
+mvn dependency tree 查看依赖树
+mvn dependency resolve 查看依赖
+mvn install -x 追踪依赖轨迹
 
 # eslint/fontmin
 es：ECMAScripe javaScripe标准之一
@@ -44,7 +66,6 @@ node_modules/.bin/eslint
 fontmin 程序协助，有选择性在原字体文件中选用需要的内容，生成所需的新字体文件
 
 
-# 0305
 ## react
 UI框架，前端，开发高效灵活，配合度高
 声明式 逻辑+html 模块化

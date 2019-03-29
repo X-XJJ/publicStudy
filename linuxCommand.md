@@ -10,6 +10,7 @@ $ 一般用户的shell提示符 # 超级用户的shell提示符
 <Esc> 进入vi模式，可直接运行vi命令 如/word 查找缓冲区命令中出现的含word命令
 
 - md5sum 计算MD5校验码
+[https://blog.csdn.net/kenkao/article/details/46875571l[linux shell 命令获取字符串/文件的MD5值](https://blog.csdn.net/ydyang1126/article/details/71171541)
 expr
 
 xargs 从标准输入中建立、执行命令行
@@ -109,15 +110,15 @@ H 设置硬限制
   - ↑↓ = C-p C-n：利用缓冲区选择历史命令
   - C-r 逆向递增搜索历史记录，输入查找内容后继续C-r到查找的下一条
   -
-  - Esc 进入缓存区 可用vim的/寻找命令——特殊的？普遍的？
+  - Esc 进入缓存区 可用vim的/寻找最近一次？历史命令——特殊的？普遍的？
 
 - shift+↑↓：滚屏
 
 - 移动光标
 C-a 移动光标到行首; C-e 移到行尾
-Alt-f 光标前移一字; Alt-b 光标后移一字
 C-b = ← 光标左移一位; C-f = → 光标右移一位
 C-l = clear 清屏
+Alt-f 光标前移一字; Alt-b 光标后移一字
 
 - 编辑命令
 C-d 删除光标处的字符
@@ -624,6 +625,7 @@ PATH 可执行程序的目录列表们
 图形界面编辑器gedit
 
 export 将环境导出到随后要运行的程序中，shell的子进程使用指定环境or变量的内容
+path 在脚本中
 
 source filepath/name <==> . filepath/name，使当前shell读入路径为filepath的shell文件并依次执行文件中的所有语句，通常用于重新执行刚修改的初始化文件，使之立即生效，而不必注销并重新登录
 
@@ -773,6 +775,7 @@ IP Internet protocol, host and domain name 主机名和域名, URI Uniform resou
   - 显示：主机名？域名？ip，运行状态信息，3次往返时间？三次握手？
   - 不提供身份信息的地方使用*表示
 
+
 - netstat
   - 显示各种网络设置和相关统计数据，网络连接、路由表、网络接口数据、伪连接、多点传送成员等信息
   - netstat -nape|grep 端口号
@@ -804,6 +807,11 @@ IP Internet protocol, host and domain name 主机名和域名, URI Uniform resou
     - sftp 安全的文件传输，ftp的安全版本，只需要ssh服务器即可，无需ftp服务器
   - Windows的ssh客户端：PuTTY，Xshell等
 
+## telnet 远程登录服务，基于TCP/IP协议族
+telnet 域名:端口号
+如telnet www.baidu.com 1999
+
+
 
 ## curl 
 命令行综合传输工具工具，基于URL规则进行数据or文件的传输
@@ -814,15 +822,17 @@ IP Internet protocol, host and domain name 主机名和域名, URI Uniform resou
 -d <data>     |HTTP POST方式传送数据 如-d "`cat 1`" 传送文件1输出的内容 注意双引号内的反引号
 -H <头部信息> |添加一个或多个HTTP头部信息 如-H "TD-Charset:utf-8" -H "33"
 
+[Linux curl 命令模拟 POST/GET 请求](https://blog.csdn.net/ithomer/article/details/82156402)
 如文件1：
 curl http://10.129.22.230:8096/sp1/bms -X POST -d "`cat body`"\
     -H "TD-Charset:utf-8"\
     -H "TD-Account:BANK_YN_SBJF_ZGNYYH"\
     -H "TD-Timestamp:1530178791371"\
-    -H "TD-Authorization:"\
-    -H "Content-Type:application/json"\
-    -H "TD-UrlEn-Topic:"
+    -H "Content-Type:application/json"
 之后shell内“sourse 1”
+
+[curl返回常见错误码](https://blog.csdn.net/kenkao/article/details/46875571)
+[cURL在发送post请求后，返回Empty reply from server](https://blog.csdn.net/igaming/article/details/50739075)
 
 # 文件搜索 常与grep等连用
 - 文件名查找 locate

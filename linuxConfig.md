@@ -1,7 +1,37 @@
 ﻿
-终端分屏工具 tmux
+
+
+# 终端分屏工具 tmux 
+
+
 
 # shell脚本
+## 运行
+- 脚本文件 命名无规定规则，带不带后缀都可以，一般为.sh
+- 需要可操作权限
+  - 执行 ./xxx.sh 或 绝对路径
+  - 或path配置
+- 无权限时
+  - 使用source或bash或sh 运行 xxx.sh
+
+## 编写
+开头
+
+```
+#!bin/sh
+#!bin/bash
+```
+- 重定向 >
+标准输出，绑定，
+如 1 > file 2 
+
+- C语言：打开进程后，文件系统配置 三个文件描述符
+  - 标准输入：0，标准输出：1，标准错误输出？：2
+  - 默认情况标准输出会打印到终端
+
+如：
+
+
 [Linux脚本中利用sed修改文件内容的多种技巧](https://blog.csdn.net/sunny05296/article/details/71173467)
 
 # 编译调试
@@ -11,17 +41,25 @@ gcc
 
 make 维护程序工具
 
-## gcc C的编译器
+## gcc C的编译器 跳转到匹配的另一半括号处
  
 编译参数 gcc -g  ——与makefile文件内配置
 
-ulimit -c 查看段错误文件大小 0即没有
+ulimit [-c] 查看段错误文件大小 0即没有
 ulimit -c unlimited 
 
 gdb工具需安装yum install -y gdb
 程序运行后，生成core.XXX文件
 gdb zoe core文件名  段错误查看，zoe为程序名
 进入后输入where，显示段错误出现的层次路径位置
+
+
+  - 2、检查段错误 
+  - ulimit -c unlimited
+  - 再次运行dgm --... 生成core文件
+  - gdb zoe core.xxx 
+  - 进入后where
+关闭ulimit -c 0
 
 
 linker 链接器
