@@ -4,6 +4,19 @@
 - 运行D:\win7C\setup.exe
 - 如果需要，最好还是单独分一个区作为系统盘，方便管理
 
+# 激活win10
+slmgr.vbs /upk
+slmgr /ipk $license
+slmgr /skms zh.us.to
+slmgr /ato
+
+slmgr.vbs -xpr
+
+如
+[使用kms激活win10企业版400年教程](http://www.xitongzu.com/jc/19471.html)
+slmgr /ipk YYVX9-NTFWV-6MDM3-9PT4T-4M68B
+slmgr /skms kms.03k.org
+slmg /ato
 
 
 # 快捷键
@@ -34,6 +47,28 @@ shift切换中英文时
 C-c=C-Insert复制 C-v=Shift-Insert粘贴
 “Win+E”启动资源管理器“Win+D”在窗口最小化和显示桌面之间来回切换
 
+Win-r $program 打开程序
+如
+net start mssqlserver 开启Sql Server服务
+net stop mssqlserver 关闭Sql Server服务
+msconfig 电脑启动配置
+regedit.exe 注册表
+explorer 打开资源管理器
+cliconfg SQL SERVER 客户端网络实用程序
+sndrec32 录音机
+notepad 打开记事本
+logoff 注销命令
+shutdown /s /t 30倒计时关机命令
+shutdown -a 取消关机命令
+calc 启动计算器
+ipconfig 查看本机IP（在DOS窗体的情况下输入）
+ipconfig /all 查看本机IP（详细信息）
+mspaint 画图板
+osk 打开屏幕键盘
+mstsc 远程桌面连接
+winver 检查Windows版本
+msconfig 系统设置（关闭开机自启动）
 
 # 系统备份还原
+
 

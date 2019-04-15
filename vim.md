@@ -1,28 +1,30 @@
-﻿vim 暂存
-
+﻿
 # shell内启动vim
 vim 直接启动
 vim filename 打开vim并创建文件(可选择带后缀格式名)
 vim file (file1 file2 ...) 打开文件(多个)
-vim ./ 使用netrw文件管理器查看当前目录, <CR>打开or进入下级, -返回, 更多命令会有显示;
+vim ./ 使用netrw文件管理器查看当前目录(目录列表存入缓冲区), <CR>打开or进入下级, -返回, 更多命令会有显示;
+命令模式
 :e. = :edit . 打开文件管理器, 显示当前工作目录
 :E = :Explore 打开文件管理器, 显示活动缓冲区所在目录
-C-^ 切回上个缓冲区 好像不是./ 文件目录Orz;
+C-^ 切回上个缓冲区;
+:h $commend 查找帮助
 
 n_ n行/字/词 3j aw 5G ...
 
 
 # Nomal 普通模式: 
-## 实际行移动(加前缀g 操作屏幕行gh gj...)
-h 前;  j 下;  k 上;  l 后; (J 合并两行)
+## 实际行移动
+h 前列;  j 下行;  k 上行;  l 后列; (J 合并两行 其他大写暂略 用再:h 查)
 w 到后一词头word;  b 向前找词头back;  e 向后找词尾;  ge 到前一词尾;
-W B E gE 同样作用, 面向包括特殊符号的字符串
-    字串: 只有空格分隔;
-    单词: 字母、数字、下划线、标点符号等都作为单独的单词, 空格分隔;
+W B E gE 同样作用, 只是在词中包括了特殊符号，如标点、括号等包含到词内
+    字串: 只有空白字符分隔;
+    单词: 字母、数字、下划线、标点符号等都作为单独的单词, 空白字符分隔;
 0 = <HOME> 到行首字符;  ^ 到非空行首;  $ 到行尾;
 [[ = gg 到文件头;  ]] = G 到文件尾;  nG = :n  到第n行;
 C-c = C-[ = Esc 切回普通模式
 利用查找移动
+屏幕行移动：加前缀g 如gh gj g0 g$
 
 ## 文本对象(操作分隔符, 操作文本块)
 - 和操作符连用，表范围 eg：ya) 复制括号内内容，含括号
@@ -65,13 +67,13 @@ g; 光标转到上一个改变列表的位置; g, 下一个;
 
 ## 滚屏
 C-d 下去半屏;  C-u 上去半屏;
-C-f 下一; C-b 上一;
+C-f 下页;  C-b 上页
 C-e 下行; C-y 上行;
 zz 当前输入行显示到屏幕中间(ZZ = wq)
 
 ## 撤销粘贴
 u 撤销;  C-r 回滚;
-p 粘贴在光标后;  P 粘贴在光标前;
+p 粘贴在光标后;  P 粘贴在光标前; 如100p粘贴100行
 
 ## 操作符 (+范围动作命令)
 c 剪切, 切为插入模式(eg:caw dl yap段落...)
@@ -84,7 +86,7 @@ gf 打开光标处所指的有路径的文件
 ! 过滤动作跨越的行
 双写作用于当前行(dd >> gUU yy...)
 
-C-a 当前数字+1 
+C-a 当前数字+1
 C-x 当前数字-1
 
 
@@ -92,14 +94,14 @@ C-x 当前数字-1
 f(char) 当前行找字符;  F 反向找;  其中，; 重复向后找;  , 重复向前找
 t(char) 当前行找字符, 光标停在其前;  T 反向找;(常用dt. ct, 等, f_dt_ 剪切除从_到_的内容)
     f t :/ 查找都可以和d c 等操作符结合, 寻找d c 等的范围, eg: v/ge<CR> 可视模式选中到"ge"的位置;
-    * 全文中找当前光标词
+* 全文中找当前光标词
 /查找中  n 调到下一个任何查找结果的匹配项;  N 前一个？;
 
 ## 各种插入和等价
 i 插前切模 插当前位置前;  I 插行首切模;
 a 插后切模 插当前位置后;  A 插行尾切模; (ea 单词结尾添加文本)
 o 插下切模 当前之下插行;  O 插上行切模;
-r(char) 替换当前字符为char;  R(chars)
+r(char) 替换当前字符为char;  R(chars) 连续替换
 x = dl 剪切当前字符;  X 剪切前一个字符;
 s = cl 剪切当前字符 切模;  S = C 剪切行 切模; 
 
@@ -118,13 +120,10 @@ s = cl 剪切当前字符 切模;  S = C 剪切行 切模;
 -    其他寄存器暂略
 
 
-
 # Insert 插入模式  
 Cv(u)nnn  以(Unicode)编码号写入字符
-C-k(charchar) 以二合字母插入字符 
+C-k(harchar) 以二合字母插入字符 
 C-r[register] 粘贴寄存器内容到光标后, eg: C-r" 粘无名寄存器的; C-r0 粘复制寄存器的
-
-
 
 
 # Visual 可视模式  
@@ -162,10 +161,12 @@ range: 单个;  _,_ 范围(eg: 3,5);
     %  整个文件; >
     eg:.+3,$-5 当前往下第三行, 到倒数5行
 :noh = :nohlsearch 暂时关闭高亮直到下次查找 no highlight(另: insearch功能在查找时预览第一处匹配)
+:set hls 打开高亮；:set nohls 关闭高亮
 :行号 跳到n行 = nG
 <Tab> 自动补全顺序滚动;  C-d 显示可用的补全列表
 
-:set 
+:set nu = :set number 打开行号
+:set nonu = :set nu! = :set nonumber 关闭行号
 
 ## 文件命令:  
 :f 显示当前文件名
@@ -179,6 +180,7 @@ range: 单个;  _,_ 范围(eg: 3,5);
 :q 离开vim (:wq = ZZ = :x 保存并离开 zz 当前行挪到屏幕中间);  :qall = :qa 关闭全部并离开;
 :h help
 :pwd 打印当前工作目录print working directory
+
 
 ## 缓冲区  
 * 占位通配符, 作用于指定目录;  ** 递归进入指定目录的子目录;
@@ -237,6 +239,7 @@ range: 单个;  _,_ 范围(eg: 3,5);
 :next 遍历下一个参数列表文件;  :prev 上一个;  :argdo 列表中每个缓冲区执行同一条命令;
 :argdo write = :wall 全部保存; 
 
+
 ## 当前窗口相关window  
 C-ws 水平切分, standard;  C-wv 垂直切分, vertical;
 :sp [file] = :split [file] 水平切分, 新窗口载入file, split分裂分开
@@ -273,7 +276,7 @@ C-n 补全普通关键字, 显示自动补全列表, 默认选中第一个; C-p 
 
 - 具体按某某补全: C-x C-某某
     某某: n 当前缓冲区关键字; f 文件名补全; l 整行补全; i 包含文件一起找(如c语言包含的头文件); ] 标签文件一起找(如补全编程语言对象, 函数名类名); o 全能补全, 更智能的根据上下文选择补全内容; k 字典查找; ...
-- 补全列表交互: 
+- 补全列表交互:
     C-n 使用下一个; C-p 上一个; <UP> 选择上一个; <DOWN> 下一个...
     C-e 终止放弃所有选择
 
@@ -330,7 +333,6 @@ zug 撤销zg或zw命令;
 
 
 # 其他&备注  
-
 nnoremap 按键映射
 
 以上内容中, 其他感觉不常用的略过辽
@@ -350,6 +352,43 @@ nnoremap 按键映射
 - vim无语法高亮定义
 
 [*06.2* 颜色显示不出来或者显示出错误的颜色怎么办？](https://blog.csdn.net/ysm_sd/article/details/51145332)
+
+# 折叠
+- :set foldmethod=* <==> :set fmd=*
+ - 可在.vimrc配置
+- 六种折叠方式（不兼容）
+ - manual  手工定义折叠（默认）
+   indent  更多的缩进表示更高级别的折叠
+   expr    用表达式来定义折叠
+   syntax  用语法高亮来定义折叠
+   diff    对没有更改的文本进行折叠
+   marker  对文中的标志折叠
+
+设置foldlevelstart为99后，打开默认没有折叠
+
+- 快捷键
+zc 折叠cuttle当前折叠？; zC 折叠范围内所有嵌套的折叠
+zo = l = → 展开当前折叠open; zO 展开范围内所有嵌套的折叠
+[z 到当前打开的折叠开始处
+z] 到当前打开的折叠末尾处
+zj 移动到下一个折叠开始处
+zk 移动到上一个折叠末尾处
+...
+zi 打开/关闭折叠所有折叠？
+zv 查看此行？
+
+zr 打开当前之前的折叠
+zm 关闭所有折叠
+
+暂时先用着
+
+[Vim 折叠](https://www.jianshu.com/p/16e0b822b682)
+
+# 一些总结性
+
+[有多少种方式可以在vim中插入递增的数字](https://blog.csdn.net/sodaslay/article/details/51098752)
+
+---
 
 # 配置问题们
 - 详见_vimrc
@@ -433,7 +472,7 @@ filetype plugin indent on    " required
 ""***************vundle end***************
 
 
-### 没想好叫啥
+## 插件管理
 [如何在 Linux 上使用 Vundle 管理 Vim 插件](https://linux.cn/article-9416-1.html)
 [【vim】插件管理及代码智能提示与补全环境的配置](https://www.cnblogs.com/zzqcn/p/4660615.html)
 
@@ -458,41 +497,5 @@ https://www.jianshu.com/p/5de863537d99
 https://www.jianshu.com/p/edd8aad3adc7
 
 https://www.ibm.com/developerworks/cn/linux/l-tip-vim1/index.html
-
-
-# 折叠
-- :set foldmethod=* <==> :set fmd=*
- - 可在.vimrc配置
-- 六种折叠方式（不兼容）
- - manual  手工定义折叠（默认）
-   indent  更多的缩进表示更高级别的折叠
-   expr    用表达式来定义折叠
-   syntax  用语法高亮来定义折叠
-   diff    对没有更改的文本进行折叠
-   marker  对文中的标志折叠
-
-设置foldlevelstart为99后，打开默认没有折叠
-
-- 快捷键
-zc 折叠cuttle当前折叠？; zC 折叠范围内所有嵌套的折叠
-zo = l = → 展开当前折叠open; zO 展开范围内所有嵌套的折叠
-[z 到当前打开的折叠开始处
-z] 到当前打开的折叠末尾处
-zj 移动到下一个折叠开始处
-zk 移动到上一个折叠末尾处
-...
-zi 打开/关闭折叠所有折叠？
-zv 查看此行？
-
-zr 打开当前之前的折叠
-zm 关闭所有折叠
-
-暂时先用着
-
-[Vim 折叠](https://www.jianshu.com/p/16e0b822b682)
-
-# 一些总结性
-
-[有多少种方式可以在vim中插入递增的数字](https://blog.csdn.net/sodaslay/article/details/51098752)
 
 

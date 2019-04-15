@@ -258,7 +258,6 @@ Git 状态 untracked 和 not staged的区别
     ---------------------
 
  
- 
 ###### git log
      show commit history of a branch.
      git log --oneline --number: 每条log只显示一行,显示number条.
@@ -326,7 +325,7 @@ Git 状态 untracked 和 not staged的区别
      git reset --hard
      unstage files AND undo any changes in the working directory since last commit.
      使用git reset —hard HEAD进行reset,即上次提交之后,所有staged的改动和工作目录的改动都会消失,还原到上次提交的状态.
-     这里的HEAD可以被写成任何一次提交的SHA-1.
+     这里的HEAD可以被写成任何一次提交的SHA-1.，修改HEAD的指向位置
      不带soft和hard参数的git reset,实际上带的是默认参数mixed.
  
      总结:

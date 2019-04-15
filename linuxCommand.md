@@ -11,10 +11,14 @@ $ 一般用户的shell提示符 # 超级用户的shell提示符
 
 - md5sum 计算MD5校验码
 [https://blog.csdn.net/kenkao/article/details/46875571l[linux shell 命令获取字符串/文件的MD5值](https://blog.csdn.net/ydyang1126/article/details/71171541)
-expr
+expr 一般用于整数值计算，但也可用于字符串操作
 
 xargs 从标准输入中建立、执行命令行
+
 touch 更改文件的日期时间
+- 缺省则创建文件，文件存在则修改时间戳为当前
+- -t $datetime 修改文件时间
+
 stat 显示文件or文件系统的状态
 
 
@@ -41,11 +45,7 @@ tzselect 设置时区
   - -s = --hctosys 以硬件时间为准，修改系统时间
   - -w = --systohc <== 系统时间 to hc？ 以系统时间为准，修改硬件时间>
 
-whereis
--b binary
--m manual
--s source
-
+# 查找程序
 watch -n 2 ls
 
 strings /lib64/libc.so.6 | grep GLIBC
@@ -81,6 +81,14 @@ H 设置硬限制
 ## 帮助型命令
 - `type 命令名` 显示命令类型
 - `which 命令名` 显示可执行程序的路径位置
+which $command 检验、查看命令是否存在、存在位置
+如witch ls 找到ls的配置？安装？路径 /usr/bin/ls
+
+whereis $commmand 查找程序信息，打印可执行程序位置、man文档位置、源代码位置
+-b binary = which
+-m manual
+-s source
+
 - help 显示shell内置命令帮助文档; help 命令名 获得该命令帮助文档
  - 命令参数 --help
  - 版本参数 --version
@@ -95,7 +103,6 @@ H 设置硬限制
 
 ## 当前屏相关
 - 库Readline：实现编辑命令行，供不同的应用程序共享使用的线程集合
-
 - Tab 自动补齐
   - 双击Tab = Alt-$ 在结果不唯一时显示所有可能的自动补齐列表
   - Alt-* 插入所有可能的匹配项
@@ -134,6 +141,9 @@ Alt-d 剪切，从光标到词尾
 Alt-Backspace 剪切，从光标到词头，光标在开头则剪上一个
 C-y 把kill-ring缓冲区中存的剪切文本粘贴到光标位置
 
+C-s 锁屏，光标不移动
+C-q 解锁
+
 
 # 查看目录、文件
 ## 少的
@@ -142,17 +152,18 @@ C-y 把kill-ring缓冲区中存的剪切文本粘贴到光标位置
 
 - cd 改变目录：
 . 工作目录;  .. 工作目录的父目录;  若目标文件夹前无指定路径名，默认为./
-~ 当前用户的宿主目录; ~username 跳到username主目录;  - 跳回先前工作目录;  无后缀 跳回用户主目录;
+~ 当前用户的宿主目录; ~username 跳到username家目录;  - 跳回先前工作目录;  无后缀 跳回当前用户主目录;
+!$ 进入上一次操作的目录，如刚刚查看了ls test/usr/ 则这个可以切到
 
 - less filename 分页浏览文本内容：
-q 退出;  h 帮助;  
+q 退出;  h 帮助;
 PgUp 后翻页PageUp;  PgDn 前翻页;  上箭头 向上一行;  下箭头 向下一行;
 g = 1G 跳开头;  G 跳结尾;  /abc 查找字符串abc;  n 查找下一个abc;
 
 ## ls 查看目录内容
 - 显示文件&文件夹的各种不同字段信息;
 - --help 帮助文档
- - /folderPath 如/usr/a列出usr下a文件夹的内容;  
+ - /folderPath 如/usr/a列出usr下a文件夹的内容;
 - -a = -all 列出包括隐藏文件的所有文件; &本级上级目录
 - -A ？ 显示所有文件包括隐藏文件~本级上级目录
 - -d = --directory 列出目录条目而不是内容信息，并且不取消对符号链接的引用;
@@ -175,6 +186,9 @@ g = 1G 跳开头;  G 跳结尾;  /abc 查找字符串abc;  n 查找下一个abc;
 - -i 显示文件系统节点号
  
 常用 ls -lrt
+ls -alF|grep / 列出目录
+ls -alF|grep -v 列出文件
+
 
 长列表格式-在后权限部分
 
@@ -195,19 +209,20 @@ g = 1G 跳开头;  G 跳结尾;  /abc 查找字符串abc;  n 查找下一个abc;
  - eg：`*[![:digit:]]` 不以数字结尾的任一文件;
        `[[:lower:]123]*` 以小写字母或数字1、2、3中的任一一个开头的任一文件;
 
-## cp mv
+## cp mv rm ln
 - cp 复制
  - cp item1 item2 将单个文件or目录item1复制到文件or目录item2中
  - cp item1 item2 item3 item... directory 将多个项目复制进一个目录中
  - 参数
-   -a = --archive 复制文件和目录、所有属性
    -i = --interactive 覆盖前询问，缺省为默认直接覆盖
-   -r = --recursive 递归赋值目录、内容
+   -a = --archive 复制文件和目录、所有属性
+   -r = --recursive 递归赋值目录、内容、所有项
    -u = --update 文件从目录1到目录2的复制，只会复制不存在or有变化的文件
    -v = --verbose 复制文件时显示信息性消息
+   -d 复制时保留链接（类似快捷方式）
  
 - mv 移动（剪切）、重命名
-mv item1 item2 将文件or目录item1移动or重命名为item2
+mv item1 item2 将文件/目录item1移动/重命名为item2
 mv item1 item2 ... directory 将多个item移动到directory目录下
 参数：
  -i 覆盖前询问
@@ -217,11 +232,13 @@ mv item1 item2 ... directory 将多个item移动到directory目录下
 - rm 删除
 rm item ...
 参数：
- -i 删除前询问，缺省默认直接删除？
+ -i 删除前询问，缺省默认直接删除
  -r 递归删除目录
- -f = --force 忽略不存在的文件，直接删除
+ -d 删除空目录
  -v 显示信息性消息
+ -f = --force 没有任何提示，忽略不存在的文件，直接删除
  ？？不可恢复的删除，慎用
+ rm -- $filename 删除以-开头的文件
 
 - ln 创建硬链接、符号链接（软连接）
     ln file link 创建硬链接
@@ -253,6 +270,15 @@ rm item ...
   - 利用cat进行文件拼接，如 cat a.txt.0* > a.txt 所有匹配的文件输出到a.txt中
 - 参数缺省，则cat从标准输入读取内容，C-d结束
   - 利用cat进行标准输入的重定向 
+- -n 打印行号
+- 清空文件内容 cat dev/null > $filepath/name
+
+dev/null 空设备文件
+
+### more
+类似cat
+可分页显示文件内容
+空格space下一页 b上一页
 
 ## 管道重定向相关
 - shell的管道特性：命令从标准输入到读取数据，并将数据发送到标准输出
@@ -295,6 +321,10 @@ cut 从每一行中移除文本区域
 
 
 mkdir 目录1 [目录2 ...] 创建目录
+- -p 创建多层级目录
+- -m $权限值755 设置权限
+- -v 显示信息
+
 iconv 改文件编码
 
 paste 合并文件文本行
@@ -418,7 +448,7 @@ x    |允许文件被执行，脚本文件必同时有r r-x   |允许进入目�
     - 如 +rx 即 a+rx，为文件所有者、所属群组和其他所有用户添加读、执行权
     - 如 g-rw,o=r 删除所属群组的读写权，除所有者和所属群组外的其他所有用户只有读权限
 
-#### 八进制数字表示法
+#### 八进制数字表示法 读写执421
 进制    |无权|执行|写入|写执|读  |读执|读写|读写执
 --------|----|----|----|----|----|----|----|------
 八进制  |0   |1   |2   |3   |4   |5   |6   |7
@@ -538,12 +568,12 @@ STAT   |state状态    ||
 C-c 中断一个程序
 C-z 暂停一个程序
 
+bg 使作业切换到后台运行 缺省显示当前后台运行的作业列表
+fg %作业编号 使作业切换到前台运行
+
 命令+& 在后台开始运行程序
 
 jobs 列出所有活动作业的状态信息
-
-bg 使作业切换到后台运行
-fg %作业编号 使作业切换到前台运行
 
 ## kill [-signal] PID ...
 - 信号signal，可为信号编号or信号名，缺省默认为TERM terminate
@@ -839,8 +869,9 @@ curl http://10.129.22.230:8096/sp1/bms -X POST -d "`cat body`"\
   -  通过文件名查找，文件名可带路径，如locate bin/zip 查找到文件所在最后一级目录应为bin/
   - 衍生 slocate mlocate
 
+
 ## 复杂查找 find
-- find path -option [-print] [-exec -ok command] {} \
+- find $path -option [-print] [-exec -ok command] {} \
 - find 在文件系统目录框架中查找，依据文件的各种属性在既定目录&子目录里查找
 - find 一个or多个目录名 在此目录范围内搜索 如find ~ 列出主目录下的文件
 - 三类选项 test action options

@@ -1,3 +1,5 @@
+# 标准通用标记语言、语法
+
 # JSON格式
 ## 概述
 JavaScript Object Notation 
@@ -60,8 +62,5 @@ JavaScript对象表示法，存储和交换文本信息
 - 其他用法再说
 
 # HTML
-
-
-# JavaScript
 
 

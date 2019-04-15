@@ -1,7 +1,7 @@
 ﻿
-
-
-# 终端分屏工具 tmux 
+# .bashrc .profile
+set -o vi
+设置终端命令可以使用vi的方式编辑
 
 
 

@@ -1,12 +1,14 @@
 sql相关
 
+（基于笔记，慢慢补充）
+
 # 其他
 sql命令内：
 sp_help
 
 不同数据库内置工具不同？
 
-[Select count(*)、Count(1)、Count(0)的区别和执行效率比较](https://www.cnblogs.com/sueris/p/6650301.html)
+[Select count(*)、Count(1)、Count(0)的区别和执行效率比较](https://www.cnblogs.com/sueri/p/6650301.html)
 [Select count(*)和Count（1）的区别和执行方式](https://www.cnblogs.com/CareySon/p/DifferenceBetweenCountStarAndCount1.html)
 
 ## 数据类型
@@ -61,10 +63,10 @@ LIMIT后的第一个参数0限定偏移量，后面的-1表示数据库表中最
 - "distinct" 消除列中重复行;  all 不取消重复，all为默认值;
 - "as 别名"  --取该查询结果列的别名，可省略，别名为空字符串即按默认;
 - "目标列表达式" 可选格式：
-  *       --查all列;  
+  *       --查all列;
   表名.*  --查该表的all列;
-  count ([all | distinct] *)  --查含NULL的元组个数;
-  [表名.]属性列名表达式1 ,表达式2...  
+  count ([all | distinct] *)  --查含NULL的元组个数; *
+  [表名.]属性列名表达式1 ,表达式2...
   - 属性列、作用于列的聚集函数、常量，及他们的任意运算表达式
   - "聚集函数" 
     使用：select 函数关键字([all|distinct]列名) 或者 having 函数关键字([all|distinct]列名)，除了select count(*) 是直接使用;
@@ -182,6 +184,10 @@ create table 表名(
 alter table 表名
   [add 新列名 数据类型 [完整性约束名]]
 等等
+
+联合约束
+
+
 - 删除基本表
 drop table 表明 [restrict|cascade]
 
@@ -236,7 +242,13 @@ deny
 
 # 事务和事务级别
 
-事务：数据库事务（简称：事务）是数据库管理系统执行过程中的一个逻辑单位，由一个有限的数据库操作序列构成
+事务：数据库事务，一系列有限的数据库操作序列，是数据库管理系统执行过程中的一个逻辑单位，
+
+AIDC？原子性 一致性 隔离性 啥啥性
+
+啥啥读
+不可重复读（多or少or再查不一致）
+脏读（不再查，但不一致）
 
 transaction isdation
 - 级别区分：关系型数据库的一堆标准 数据库选用不一，如oracle只支持2 4
@@ -248,30 +260,49 @@ transaction isdation
 数据库中有相同事务进行多线程运作时，对数据库增删查改等的控制，
 多个线程接入同一个事务，对多方操作进行控制
 
-#查看事务隔离级别.
-mysql> select @@global.tx_isolation;
-mysql> select @@session.tx_isolation;
-#设置事务隔离级别.
-mysql> set global transaction isolation level $level;
-mysql> set session transaction isolation level $level;
-#可选事务隔离级别.
-READ-UNCOMMITTED
-READ-COMMITTED
-REPEATABLE-READ
-SERIALIZABLE
-#查看是否自动提交.
-mysql> select @@autocommit;
-#设置是否自动提交.
-mysql> set autocommit=0;
-#开始事务.
-mysql> start transaction;
-#提交事务.
-mysql> commit;
-#回滚事务.
-mysql> rollback;
+- #查看事务隔离级别.
+- mysql> select @@global.tx_isolation;
+- mysql> select @@session.tx_isolation;
+- #设置事务隔离级别.
+- mysql> set global transaction isolation level $level;
+- mysql> set session transaction isolation level $level;
+- #可选事务隔离级别.
+- READ-UNCOMMITTED
+- READ-COMMITTED
+- REPEATABLE-READ
+- SERIALIZABLE
+- #查看是否自动提交.
+- mysql> select @@autocommit;
+- #设置是否自动提交.
+- mysql> set autocommit=0;
+- #开始事务.
+- mysql> start transaction;
+- #提交事务.
+- mysql> commit;
+- #回滚事务.
+- mysql> rollback;
 
 [](https://www.jianshu.com/p/aa35c8703d61)
 [](https://www.cnblogs.com/fjdingsd/p/5273008.html)
 
-（基于笔记，慢慢补充）
+
+# 封锁、并发处理
+## 读写锁
+- 读锁，即共享锁，S锁 share啥啥
+-
+- 写锁，即排它锁，X锁 except啥啥
+-
+
+## 多级封锁策略？
+- 一级
+S
+- 二级
+X
+- 三级
+S
+
+- 两段锁协议
+
+
+## 死锁、活锁
 
