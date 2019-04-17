@@ -21,7 +21,7 @@ yum的不是最新版，有些新特性、功能无法使用，如layout中的�
 
 
 # 默认命令
-## shell下
+## shell下 前缀为tmux
 - tmux 缺省创建新会话
 - tmux ls 查看后台运行中的tmux会话列表，一行一session
 - tmux $字母 若有多种含义 tmux会显示
@@ -34,7 +34,8 @@ yum的不是最新版，有些新特性、功能无法使用，如layout中的�
 
 - tmux kill-session -t $session-name删除会话
 
-- tmux rename -t old_session_name  new_session_name  重命名会话
+- tmux rename-session -t old_session_name  new_session_name  重命名会话
+- 或tmux rename -t aaa bbb 会话默认名是自动递增的序号
 -
 - 退出会话.  - tmux detach
 
@@ -44,6 +45,17 @@ yum的不是最新版，有些新特性、功能无法使用，如layout中的�
 系统操作
 - ? 帮助
 - d 脱离tmux会话，回到shell环境，tmux内程序继续运行，detach
+- s 根据列表切换会话，有会话预览
+- : 进入命令模式，可以操作shell下的tmux命令，不带'tmux'前缀
+命令：
+
+PREFIX : resize-pane -D          当前窗格向下扩大 1 格
+PREFIX : resize-pane -U          当前窗格向上扩大 1 格
+PREFIX : resize-pane -L          当前窗格向左扩大 1 格
+PREFIX : resize-pane -R          当前窗格向右扩大 1 格
+PREFIX : resize-pane -D 20       当前窗格向下扩大 20 格
+PREFIX : resize-pane -t 2 -L 20  编号为 2 的窗格向左扩大 20 格
+
 
 
 窗口操作window
@@ -56,12 +68,8 @@ yum的不是最新版，有些新特性、功能无法使用，如layout中的�
 
 
 - z 当前分屏面板最大化/还原
-
-
 - o 顺序切换分屏
-
 - $ 重命名会话
-
 - s 获取并选择后台会话列表
 - 
 - 其他的修改绑定配置，更符合使用习惯

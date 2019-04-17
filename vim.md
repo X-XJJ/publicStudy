@@ -123,6 +123,8 @@ s = cl 剪切当前字符 切模;  S = C 剪切行 切模;
 Cv(u)nnn  以(Unicode)编码号写入字符
 C-k(harchar) 以二合字母插入字符 
 C-r[register] 粘贴寄存器内容到光标后, eg: C-r" 粘无名寄存器的; C-r0 粘复制寄存器的
+C-x 进入？？模式
+C-w 删除一个单词
 
 
 # Visual 可视模式  
