@@ -88,6 +88,7 @@ $$\begin{align}
 
 \frac{7x+5}{1+y^2}
 
-
+[Markdown数学公式语法](https://www.jianshu.com/p/e74eb43960a1)
+[markdown最全数学公式速查](https://blog.csdn.net/jyfu2_12/article/details/79207643)
 
 

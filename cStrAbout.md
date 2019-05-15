@@ -95,24 +95,56 @@ stdlib.h 有
 比较
 
 strcpy 复制字符串 连结束符一起复制
+char *strcpy(char *dest, const char *src) 把 src 所指向的字符串复制到 dest
+srtncpy 按长度复制，不加\0
 
 strcat
 
 strcmp 比较字符串
 strncmp 比较指定长度的字符
 
-strstr
+strstr(str1,str2) 判断字符串str2是否是str1的子串。如果是，则该函数返回str2在str1中首次出现的地址；否则，返回NULL
 
 memcpy 按长度复制，不理会结束符，基于内存
+void *memcpy(void *str1, const void *str2, size_t n) 从存储区 str2 复制 n 个字符到存储区 str1
 memmove
 
+sprintf 发送格式化输出到str所指向的字符串，已有则覆盖，即从str数组的第一个元素开始写入新的内容，会加结束符'\0'
 
-sprintf 会加结束符'\0'
-sscanf 会加\0
+sscanf 从一个字符串中读进与指定格式相符合的数据，会加\0
 
 malloc 分配空间，不初始化，分配后内容随机
 [C语言中手把手教你动态内存分配](https://blog.csdn.net/qq_29924041/article/details/54897204)
 
+[sprintf，你知道多少？](https://blog.csdn.net/sjf331/article/details/339254)
+
+[C++：strcmp与strncmp的比较](https://blog.csdn.net/u011028345/article/details/76571569)
+
+[strcpy、strncpy与memcpy的区别与使用方法](https://www.cnblogs.com/houjun/p/4913216.html)
+
+[sscanf非常的重要](https://www.cnblogs.com/lanjianhappy/p/6861728.html)会自动加\0
+
+[C语言的字符串查找函数](https://blog.csdn.net/haiross/article/details/45746083)
+
+[C/C++ memmove与memcpy的区别及实现](https://www.cnblogs.com/lyl-312/p/5514988.html)
+
+[sprintf函数详解](https://blog.csdn.net/jobsss/article/details/8131744)
+
+[C语言中时间的处理（一、字符串和时间戳的相互转换）](https://blog.csdn.net/sinat_34357675/article/details/78195615)
+
+[时间格式化函数strftime和strptime使用](https://blog.csdn.net/hittata/article/details/8090228)
+
+[Linux 下c获取当前时间（精确到秒和毫秒或者微秒）](https://blog.csdn.net/deyuzhi/article/details/51814934)
+
+[C语言如何获得精确到毫秒的时间](https://blog.csdn.net/witxjp/article/details/8079751)
+[C语言获取时间的相关函数，包括如果获取微妙、毫秒级时间](https://blog.csdn.net/code_robot/article/details/33305375)
+
+[linux C 获取日期时间](https://blog.csdn.net/rookie_zhu/article/details/8610219)
+
 atoi() 把参数str指向的字符串转换为一个整数，字符串343，转整型343；字符串abs，整型值0
 
+time_t类型 和 time()系列 10位秒级时间戳
+timeval类型 和 gettimeofday()系列 毫秒级时间戳，几位？
+
+[C语言中time函数和localtime获取系统时间和日期](https://blog.csdn.net/qq_22122811/article/details/52741483)
 时间戳 字符串 转换

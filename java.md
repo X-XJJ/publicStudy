@@ -28,6 +28,7 @@ string str2 = new string(value,1,2); //"bc"
 byte[] stb = new byt[]{65,66}; //
 string str3 = new string(stb); //"AB"
 
+string str = "aaa bbb dd";
 str.length(); //求字符串长度
 str.substring(起始取数地 [,取串结束地]); //按位取子串
 int a = str.compareTo(strt); //字符串比较，返回int，相同为0，否则大于0？
@@ -35,6 +36,17 @@ int b = str.compareToIgnore(strt); //相同返回0
 str.equals; 相同返回ture，否则false
 
 string c = "aa".concat("bb"); //字符串连接 "aabb"
+
+str.indexof() 查找字符串
+str.indexof("字符or字符串") 返回int为该字符or字符串起始位置 在原字符串中的下标
+str.indexof("字符",n) ？？
+
+str.toLoverCase() 字符串转小写
+str.toUpperCase() 字符串转大写
+
+str.trim() 去除字符串两端的空格
+
+str.contains("字符串") 返回bool为该字符串参数？是否存在
 
 
 # Flie类
@@ -61,6 +73,16 @@ mkdir() 创建单个目录
 mkdirs() 创建多层级目录
 creatNewfile() 操作文件对象
 file.delecte() 删除文件
+
+- IO流进行文件操作
+按字符读取 Reader() Writter() 文本
+按字节读取 inputStream() outputStream() 文本 音频 视频
+close()
+flush()
+
+inputStreamReader() 转换流 utf8 gbk 文件字符集类型和用于解析的字符类型需一致
+objectInputStream() 序列化流
+?() buffer流
 
 # 位级
 bitSet方法

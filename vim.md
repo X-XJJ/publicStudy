@@ -12,7 +12,12 @@ C-^ 切回上个缓冲区;
 
 n_ n行/字/词 3j aw 5G ...
 
-# Nomal 普通模式: 
+
+# Nomal 普通模式 
+- vim command line quick edit
+q/ = q? 底部打开新窗口，列出查找历史记录
+q: 底部开新窗口，列出命令历史记录
+
 ## 实际行移动
 h 前列;  j 下行;  k 上行;  l 后列; (J 合并两行 其他大写暂略 用再:h 查)
 w 到后一词头word;  b 向前找词头back;  e 向后找词尾;  ge 到前一词尾;
@@ -148,7 +153,7 @@ C-w 删除一个单词
 /  查找提示符(C-r C-w 连按 对单词or词组的查找域自动补全)
 C-r= 查表达式寄存器
 
-C-W ??
+C-W ??好像无功能
 
 :yank [motion] = :y 复制 eg: :yand 112 复制第112行到复制寄存器0
 :sort 将行按规则属性排序 eg: :1,3 sort 按规则(什么规则？)对1~3行排序
@@ -181,6 +186,8 @@ range: 单个;  _,_ 范围(eg: 3,5);
 :q 离开vim (:wq = ZZ = :x 保存并离开 zz 当前行挪到屏幕中间);  :qall = :qa 关闭全部并离开;
 :h help
 :pwd 打印当前工作目录print working directory
+
+:set fileencoding [= 编码名] 查看、转换、设置当前文件的编码格式
 
 
 ## 缓冲区  
@@ -242,14 +249,29 @@ range: 单个;  _,_ 范围(eg: 3,5);
 
 
 ## 当前窗口相关window  
-C-ws 水平切分, standard;  C-wv 垂直切分, vertical;
-:sp [file] = :split [file] 水平切分, 新窗口载入file, split分裂分开
-:vsp [file] = :vsplit [file] 垂直切分, 新窗口载入file
+C-ws 水平切分, standard;  C-wv 垂直切分，垂直vertical;
+:sp [file] = :split 水平切分, 新窗口载入file, split分裂分开
+:vsp [file] = :vsplit = vertical split 垂直切分, 新窗口载入file
 :clo = :close = C-wc 关闭当前窗口;  :on = :only = C-wo 只保留活动窗口;
 C-ww 窗口间循环切换
 C-wh/wj/wk/wl) 光标切到左/下/上/右的窗口
 C-wH/wJ/wK/wL) 调整当前活动窗口的位置 向左/向下/向上/向右
 :bn 在当前窗口切到下一个缓冲区/文件; :bp 上一个;
+
+改变分屏面板大小
+水平：C-w +/- 增加/减少一格窗口尺寸，则<C-W>+ 3"或” :<C-W>-3"
+C-w < 左
+C-w > 右
+C-w + 上
+C-w - 下
+C-w = 恢复均等
+:res = :resize 水平切 :res 20 当前面板变为整体的20%宽度 :res +3 当前扩大三char
+:vertical resize 垂直切
+配置文件： 
+  nmap w= :resize +3<CR>
+  nmap w- :resize -3<CR>
+  nmap w, :vertical resize -3<CR>
+  nmap w. :vertical resize +3<CR>
 
 
 ## 标签页-多窗口

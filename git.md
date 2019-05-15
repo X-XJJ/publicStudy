@@ -44,13 +44,16 @@ git status
 ### 拉取远程分支更新本地代码，预防push冲突
 - 查看远程地址 git remote -v
 - fetch拉去远程主分支，并拉到本地temp作为暂存分支 git fetch Z07 master:temp
-- 查看当前指针指向哪个分支 *表示当前 git branch
+- 查看当前指针指向哪个分支 `*`表示当前 git branch
 - 将temp合并到当前指针指向的分支 git merge temp
 - 推送push远程仓库 git push Z07 master
 - 删除暂存分支 git branch -d temp
 - 再次查看本地分支 git branch
 
 
+# git reset
+重置当前hard指向？
+git reset --hard $该版本摘要前几位
 
 ## 撤销commit操作 git reset --soft HEAD^
 HEAD^的意思是上一个版本，也可以写成HEAD~1
@@ -58,7 +61,7 @@ HEAD^的意思是上一个版本，也可以写成HEAD~1
 --mixed 
 意思是：不删除工作空间改动代码，撤销commit，并且撤销git add . 操作
 这个为默认参数,git reset --mixed HEAD^ 和 git reset HEAD^ 效果是一样的。
---soft  
+--soft
 不删除工作空间改动代码，撤销commit，不撤销git add . 
 --hard
 删除工作空间改动代码，撤销commit，撤销git add . 
@@ -88,6 +91,28 @@ git config --list 查看当前配置 全局配置+当前项目配置？
 git clone <repoURL> <directory> 克隆仓库repository到指定目录
 git init 当前目录作为本地仓库初始化，可管理的空仓库
 git init -bare 初始化裸库，不生成.git目录，只生成.git目录下的版本历史纪录文件
+
+# 标签使用 git tag
+- 轻量级lightweight，轻量级标签-不会变化的分支，指向特定提交对象的引用
+- 含附注annotated，即-a，标签即为独立对象，有自身的校验和信息，包含标签名，电子邮件地址和日期，标签说明，标签本身也允许使用 GNU Privacy Guard (GPG) 来签署或验证
+- git tag 查看所有tag，按字母顺序排列
+  - -l '$带通配符*的tagName 只查看匹配的标签
+- git tag -a $<tagName> -m "$附注信息" 为当前最新版本添加标签
+  - -a $tagName $该版本摘要前几个即commitID 为该版本添加标签
+
+- git push $关联的远程地址名 $tagName 将标签推送到远程仓库
+  - $originName --tags 推送所有未推标签
+- git show $tagName 查看标签版本的具体信息
+- git tag -d $tagName  删除本地标签
+- git push $originName :tefs/tags/$tagName 删除远程标签
+
+- 用 GPG 来签署标签，即添加私钥，只需要把之前的 -a 改为 -s ，即signed
+- git show 缺省则显示最近版本的commit备注信息
+
+
+# git log 
+git log -pretty=oneline --abbrev-commit 查看历史提交的commit id？？
+git log -pretty=oneline
 
 ## ssh和http方式 连接远程
 - ssh key 
