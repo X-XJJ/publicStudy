@@ -6,7 +6,6 @@
 - 来自OpenBSD，采用BSD授权
 
 - 默认命令前缀C-b，激活控制台后，命令快捷键生效
--
 - 和vi搭配使用，也可将命令配置为熟悉的vi方式
 
 - 命令安装
@@ -27,78 +26,73 @@ yum的不是最新版，有些新特性、功能无法使用，如layout中的�
 
 
 # 命令
-## shell下
+## shell下or命令模式
 加**前缀**后：
-命令前缀为tmux
-- 缺省为创建并打开新会话
-    - 底部从左到右为 `[会话名] 窗口序号0:窗口名* 序号1:窗口名 ... 创建时间`
-    - * 表当前操作的窗口
+tmux 命令前缀，如tmux ls，缺省为创建并打开新会话
+  - 底部从左到右为 `[会话名] 窗口序号0:窗口名* 序号1:窗口名 ... 创建时间`
+  - * 表当前操作的窗口，会话名默认是自动递增的序号
 
-- ls = tmux list-session 查看后台运行中的tmux会话列表，一行一session
-- $字母 若有多种含义 tmux会显示
+- tmux ls = tmux list-session 查看后台运行中的tmux会话列表，一行一session
+- tmux $字母 若有多种含义 tmux会显示
 
-- new-session -s $session-name 指定会话名新建会话
-    new -s [会话名]
-- attach-session -t $session-name
-  - a -t $sessionName 从终端返回已存在的会话
+- tmux new -s <会话名> = tmux new-session -s $session-name 指定会话名新建会话
+- tmux a -t [会话序号？会话名？] = attach-session -t $session-name
+  从终端返回已存在的会话
 
-- kill-session -t $session-name删除会话
+- tmux kill-session -t $session-name 关闭会话
+- tmux kill-session -a -t $session-name 关闭除了指定会话之外的所有session
+- tmux tmux kill-server 销毁所有会话并停止tmux
 
-- rename-session -t old_session_name  new_session_name  重命名会话
-- 或rename -t aaa bbb 会话默认名是自动递增的序号
+- tmux rename -t $oldname $newname = tmux rename-session -t 会话名 新会话name 重命名会话
 -
-- detach 退出会话.
+- tmux detach 退出会话.
 
-## tmux会话环境下 可用配置文件修改命令
+## tmux会话环境下 可用配置文件修改命令(bind&unbind)
 加**前缀**后：
-默认快捷键前缀 C-b，可修改
+默认快捷键前缀 C-b，修为C-a
 
-系统操作
+### 会话操作session
 - ? 帮助
 - d 即detach，脱离tmux会话，回到shell环境，
 - s 会话列表+预览、切换
 - w 所有会话+窗口+面板pane预览，任意窗口/会话切换
 - $ 重命名会话
-- , 重命名窗口，窗口名默认为 `登录终端的用户名@主机名`
+- f 搜索关键字
+- t 显示当前时间
+-
+- : 进入命令模式 可以操作shell下的tmux命令，不带'tmux'前缀，如:new -s <sessionName>
 
-- c 创建窗口
+
+### 窗口操作window
+- c 创建窗口 = :new-window
+- 0~9 按序号切换到窗口
+- , 重命名窗口，窗口名默认为 `登录终端的用户名@主机名` = :rename-window
 - 0 切换到0号窗口，使用窗口序号以此类推
-- p n l 切换到上一个/下一个/相邻的窗口
+- p n l 切换到上一个/下一个/相邻的窗口，unbind为
 - & 关闭当前window
 -
--
-- % " 垂直/水平分屏
+
+
+### 面板操作pane
+- % " 垂直/水平分屏，unbind为|-
 - o 依次切换分屏pane
 - ↑ ↓ ← → 按方向切换pane
 - SPACE空格 对当前窗口的所有pane重新排列布局，按一次换一种样式
 - z 最大化/恢复当前pane
 - x 关闭当前pane
+- { } 往左、右移动pane位置
+- ! 移动pane到新的window
+- q 显示pane序号
+- :join-pane -t <windowName> 移动pane合并到某个window
 
+- 以下一格的 = C-b不松手再按↑↓←→
+- :resize-pane -D          当前窗格向下扩大 1 格
+- :resize-pane -U          当前窗格向上扩大 1 格
+- :resize-pane -L          当前窗格向左扩大 1 格
+- :resize-pane -R          当前窗格向右扩大 1 格
+- :resize-pane -D 20       当前窗格向下扩大 20 格
+- :resize-pane -t 2 -L 20  编号为 2 的窗格向左扩大 20 格
 
-- : 进入命令模式，可以操作shell下的tmux命令，不带'tmux'前缀
-命令模式：
-- resize-pane -D          当前窗格向下扩大 1 格
-- resize-pane -U          当前窗格向上扩大 1 格
-- resize-pane -L          当前窗格向左扩大 1 格
-- resize-pane -R          当前窗格向右扩大 1 格
-- resize-pane -D 20       当前窗格向下扩大 20 格
-- resize-pane -t 2 -L 20  编号为 2 的窗格向左扩大 20 格
-
-
-
-窗口操作window
-- c 创建新窗口
-- 0~9 按序号切换到窗口
-
-
-面板操作pane
-
-
-
-- z 当前分屏面板最大化/还原
-- o 顺序切换分屏
-- $ 重命名会话
-- s 获取并选择后台会话列表
 - 
 - 其他的修改绑定配置，更符合使用习惯
 

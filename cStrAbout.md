@@ -7,7 +7,14 @@ INTER使用的低位存储，其他处理器一般使用高位存储
 
 linux使用高位存储？
 
+# 编程？
+&& 逻辑与，即and
+& 按位与，通常使用0x0f来与一个整数进行&运算，来获取该整数的最低4个bit位
+|| 逻辑或，即or
+| 按位或，
 
+[C/C++ &与&& |与|| 的区别](https://www.cnblogs.com/kuihuayou/p/7365075.html)
+[C的|、||、&、&&、异或、~、！运算 位运算](https://www.cnblogs.com/luyi14/p/4117393.html)
 
 
 # 字符编码
@@ -42,7 +49,6 @@ unicode:
     每平面拥有65536个码位置,一共1114112个。
 
     中文的片区是4E00-9FA5;
-
     UTF-BOM->文件前缀会多一个EFBB,这个用来标识他是UTF-8的编码
     UTF-8:->web基本使用这个
     0X00-0X7F->这部分与ascii编码一致，一共127个，完全对应。(最低一字节,最多四字节)
@@ -80,38 +86,87 @@ unicode:
 
 ---
 
+在线工具：[查看字符编码（简体中文）-----GBK内码查询](http://www.mytju.com/classcode/tools/encode_gb2312.asp)
 
-[C语言字符串操作总结大全(超详细)](https://www.cnblogs.com/lidabo/p/5225868.html)
+---
+[[参考]ASCII对照表 及 字符与二进制、十进制、16进制之间的转化（C/C++）](https://www.cnblogs.com/stxs/p/8846545.html)
+
+[聊聊gbk与utf8互转的乱码问题](https://blog.csdn.net/csdn_ds/article/details/79077483)
+[UTF-8和GBK等中文字符编码格式介绍及相互转换](https://blog.csdn.net/Qsir/article/details/78425199)
+
+[彻底搞懂编码 GBK 和 UTF8](https://www.cnblogs.com/hehheai/p/6510879.html)
+
+[【字符编码系列】常用的几种字符编码(GBK，UTF-8，UTF-16)](https://segmentfault.com/a/1190000012470400)
+
+[字符编码笔记：ASCII，Unicode 和 UTF-8](http://www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html)
+
+
+字符范围表
+[Unicode汉字字符符号全角符号特殊字符的范围](https://blog.csdn.net/weixin_43189735/article/details/85628799)
+[Unicode中文和特殊字符的编码范围](https://blog.csdn.net/lb521200200/article/details/53606864)
+[unicode汉字编码](https://www.cnblogs.com/yuanke/p/7889899.html)
+如 http://www.unicode.org/charts/PDF/UFF00.pdf
+
+[各种编码UNICODE、UTF-8、ANSI、ASCII、GB2312、GBK详解](https://blog.csdn.net/lvxiangan/article/details/8151670) 含URL和各种前端错误情况示例
+
+---
+
+
 
 # 库函数
-stdio.h 有
-stdlib.h 有
+
+getenv() 获取参数环境变量的内容
+
+通常为stdio.h stdlib.h 没有的现调找库
+
+来源：source → src
+目的：destination → dest
+把src所指向的字符串复制到dest
+
+函数名  |作用               |\0 |函数返回
+--------|-------------------|---|--------
+strlen  |取字符串长度       |有取字符串二进制or二进制长度的否？
+strcpy  |复制字符串         |√ |
+srtncpy |复制指定长度字符串 |？ |
+strcat  |追加字符串？
+strncat |追加指定长度字符串？
+strcmp  |比较字符串
+strncmp |比较指定长度字符串
+strcasecmp|忽略大小写比较字符串
+strchr  |查找字符
+strrchr |反向查找字符
+strstr  |查找子串    |？|返回str2在str1中首次出现的地址 否则NULL
+strpbrk |查找集合内任意字符 其他不常用 strspn strcspn
+memcpy  |按长度复制 不理结束符 基于内存 从存储区str2复制n个字符到存储区str1
+memmove |
+sprintf |赋值 格式化输出到str所指向的字符串 会覆盖 即从str数组的第一个元素开始写入新的内容|√|
+sscanf  |从一个字符串中读进与指定格式相符合的数据，会加\0
+---|
+strtod  |从字符串中转换double类型？
+strtol  |字符串中传唤long类型？
+atoi    |字符串→int
+atof    |字符串→double
+atol    |字符串→long
+---|字符检查
+isalpha |是否字母 isupper大写字母 islower小写字母
+isdigit |是否数字 isxdigit十六进制数字表示的有效字符
+isalnum |是否字母和数字
+isspace |是否空格
+iscntrl |是否控制字符
+ispunct |是否标点
+isprint |是否可打印字符
+isgraph |是否图形字符 = isalnum | ispunct
+
+- 函数原型（且用且补充）
+char *strcpy(char *dest, const char *src)
+void *memcpy(void *str1, const void *str2, size_t n)
 
 字符串赋值
 复制
 追加
 切割
-末尾\0
 比较
 
-strcpy 复制字符串 连结束符一起复制
-char *strcpy(char *dest, const char *src) 把 src 所指向的字符串复制到 dest
-srtncpy 按长度复制，不加\0
-
-strcat
-
-strcmp 比较字符串
-strncmp 比较指定长度的字符
-
-strstr(str1,str2) 判断字符串str2是否是str1的子串。如果是，则该函数返回str2在str1中首次出现的地址；否则，返回NULL
-
-memcpy 按长度复制，不理会结束符，基于内存
-void *memcpy(void *str1, const void *str2, size_t n) 从存储区 str2 复制 n 个字符到存储区 str1
-memmove
-
-sprintf 发送格式化输出到str所指向的字符串，已有则覆盖，即从str数组的第一个元素开始写入新的内容，会加结束符'\0'
-
-sscanf 从一个字符串中读进与指定格式相符合的数据，会加\0
 
 malloc 分配空间，不初始化，分配后内容随机
 [C语言中手把手教你动态内存分配](https://blog.csdn.net/qq_29924041/article/details/54897204)
@@ -148,3 +203,5 @@ timeval类型 和 gettimeofday()系列 毫秒级时间戳，几位？
 
 [C语言中time函数和localtime获取系统时间和日期](https://blog.csdn.net/qq_22122811/article/details/52741483)
 时间戳 字符串 转换
+
+[c语言中的移位运算符](https://blog.csdn.net/qq_38181018/article/details/78236147)

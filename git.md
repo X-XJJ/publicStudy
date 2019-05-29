@@ -1,4 +1,4 @@
-git相关 暂存
+# git
 
 yum -y install git
 Windows ：选择git bush工具，或Windows自带powershell
@@ -17,10 +17,28 @@ Windows ：选择git bush工具，或Windows自带powershell
 fork
 
 
+# 配置账号 
+[git config配置](https://www.cnblogs.com/fireporsche/p/9359130.html)
+
+全局配置系统级别--global  当前系统用户级别--system  当前项目仓库级别--local，缺省为local
+读取的优先级依次 --local > --global > --system
+
+git config --global user.name "用户名"
+git config --global user.email 邮箱地址
+
+项目根目录下单独配置 针对公司项目 则在当前项目下会优先使用当前项目配置
+git config user.name "用户名"
+git config user.email 邮箱地址
+
+git config --list 查看当前配置 全局配置+当前项目配置？
+--global 对git的操作git config内容保存在.gitconfig的文件下
+  --local对git的操作git config内容保存在.git/config的文件下
+
+
 ## example
 [root@localhost /home/usr/hhh] # git clone http://8.8.0.0:3000/hhh/Z08.git
 
-初始化Z07仓
+初始化Z07仓库
 [root@localhost /home/usr/hhh/Z07] # git init 
 [root@localhost /home/usr/hhh/Z07] # git add .
 [root@localhost /home/usr/hhh/Z07] # git commit -m '财政取数接口测试完成四分之三'
@@ -41,22 +59,30 @@ git status
 
     git commit --amend --reset-author
 
-### 拉取远程分支更新本地代码，预防push冲突
+### 拉取远程分支更新本地代码，再进行推送，预防push冲突
 - 查看远程地址 git remote -v
-- fetch拉去远程主分支，并拉到本地temp作为暂存分支 git fetch Z07 master:temp
-- 查看当前指针指向哪个分支 `*`表示当前 git branch
-- 将temp合并到当前指针指向的分支 git merge temp
-- 推送push远程仓库 git push Z07 master
-- 删除暂存分支 git branch -d temp
-- 再次查看本地分支 git branch
+- git fetch Z07 master:temp 拉取即fetch远程主分支，拉到本地temp作为暂存分支
+- git branch 查看当前指针指向哪个分支 `*`表示当前
+- git merge temp 将temp合并到当前指针指向的分支
+- git push Z07 master 推送push远程仓库
+- git branch -d temp 删除暂存分支
+- git branch 再次查看本地分支
 
+
+[git各种情况的版本回退](https://blog.csdn.net/sinat_29774479/article/details/78599702)
+[]()
 
 # git reset
 重置当前hard指向？
+git reset --hard HEAD^
 git reset --hard $该版本摘要前几位
 
-## 撤销commit操作 git reset --soft HEAD^
-HEAD^的意思是上一个版本，也可以写成HEAD~1
+注：回退某版本之后在git log下就看不到此版本之后的commit信息了，要么提前记录，要么使用git reflog
+
+## 撤销commit操作 
+git reset --soft HEAD^
+HEAD^ = HEAD~1 表示上个版本
+HEAD^^ = HEAD~2 上上个版本，以此类推，上一百个版本写100个^或HEAD~100
 如果你进行了2次commit，想都撤回，可以使用HEAD~2
 --mixed 
 意思是：不删除工作空间改动代码，撤销commit，并且撤销git add . 操作
@@ -70,29 +96,26 @@ HEAD^的意思是上一个版本，也可以写成HEAD~1
 git commit --amend
 此时会进入默认vim编辑器，修改注释完毕后保存就好了。
 
-# 配置账号 
-[git config配置](https://www.cnblogs.com/fireporsche/p/9359130.html)
-
-全局配置系统级别--global  当前系统用户级别--system  当前项目仓库级别--local，缺省为local
-读取的优先级依次 --local > --global > --system
-
-git config --global user.name "用户名"
-git config --global user.email 邮箱地址
-
-项目根目录下单独配置 针对公司项目 则在当前项目下会优先使用当前项目配置
-git config user.name "用户名"
-git config user.email 邮箱地址
-
-git config --list 查看当前配置 全局配置+当前项目配置？
---global 对git的操作git config内容保存在.gitconfig的文件下
-  --local对git的操作git config内容保存在.git/config的文件下
-
 # 基本操作？
 git clone <repoURL> <directory> 克隆仓库repository到指定目录
 git init 当前目录作为本地仓库初始化，可管理的空仓库
 git init -bare 初始化裸库，不生成.git目录，只生成.git目录下的版本历史纪录文件
+git add
+git commit
 
-# 标签使用 git tag
+
+# git log 查看日志、历史记录
+- 显示从最近到最远的提交日志
+- 默认输出：commit版本号(sha1)，Author用户，Date日期，提交的备注
+git log -pretty=oneline --abbrev-commit 查看历史提交的commit id？？
+git log -pretty=oneline 简化输出
+
+## git reflog
+- 记录使用过的命令记录，命令作用的版本commitID
+- 数量？条，如何设置？
+- 范围 版本变更类？commit？pull？push？merge？
+
+# git tag 标签
 - 轻量级lightweight，轻量级标签-不会变化的分支，指向特定提交对象的引用
 - 含附注annotated，即-a，标签即为独立对象，有自身的校验和信息，包含标签名，电子邮件地址和日期，标签说明，标签本身也允许使用 GNU Privacy Guard (GPG) 来签署或验证
 - git tag 查看所有tag，按字母顺序排列
@@ -109,11 +132,6 @@ git init -bare 初始化裸库，不生成.git目录，只生成.git目录下的版本历史纪录文件
 - 用 GPG 来签署标签，即添加私钥，只需要把之前的 -a 改为 -s ，即signed
 - git show 缺省则显示最近版本的commit备注信息
 
-
-# git log 
-git log -pretty=oneline --abbrev-commit 查看历史提交的commit id？？
-git log -pretty=oneline
-
 ## ssh和http方式 连接远程
 - ssh key 
 配置免密登录
@@ -121,16 +139,15 @@ git log -pretty=oneline
 http smart？
 
 
-
-### .git下的版本历史记录文件
-|-- HEAD         # 这个git项目当前处在哪个分支里
-|-- config       # 项目的配置信息，git config命令会改动它
-|-- description  # 项目的描述信息
-|-- hooks/       # 系统默认钩子脚本目录
-|-- index        # 索引文件 暂存区？
-|-- logs/        # 各个refs的历史信息
-|-- objects/     # Git本地仓库的所有对象 (commits, trees, blobs, tags)
-|-- refs/        # 标识你项目里的每个分支指向了哪个提交(commit)。
+### .git/ 下的版本历史记录文件
+- HEAD         # 这个git项目当前处在哪个分支里
+- config       # 项目的配置信息，git config命令会改动它
+- description  # 项目的描述信息
+- hooks/       # 系统默认钩子脚本目录
+- index        # 索引文件 暂存区？
+- logs/        # 各个refs的历史信息
+- objects/     # Git本地仓库的所有对象 (commits, trees, blobs, tags)
+- refs/        # 标识你项目里的每个分支指向了哪个提交(commit)。
 
 
 

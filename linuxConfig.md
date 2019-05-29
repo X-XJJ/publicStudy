@@ -35,13 +35,14 @@ set -o vi
 [Linux脚本中利用sed修改文件内容的多种技巧](https://blog.csdn.net/sunny05296/article/details/71173467)
 
 # 编译调试
-gcc
+## gcc 工具
+- C 的编译器
 - [Makefile 使用总结](https://www.cnblogs.com/wang_yb/p/3990952.html)
  - 只有行注释#
+- gcc -o 
 
 make 维护程序工具
 
-## gcc C的编译器 跳转到匹配的另一半括号处
  
 编译参数 gcc -g  ——与makefile文件内配置
 
