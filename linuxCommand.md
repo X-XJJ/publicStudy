@@ -860,15 +860,25 @@ IP Internet protocol, host and domain name 主机名和域名, URI Uniform resou
   - ssh 远程主机；ssh 用户名@远程主机（主机名orIPor域名...）
   - 更多内容暂略，如密钥，
   -
-  - OpenSSH内含网络间文件复制程序
-    - scp 源路径 目的路径：远程复制文件，secure copy，路径为远程时，需要加“主机名:”，即“10.12.1.1:~/test.txt”
-    - sftp 安全的文件传输，ftp的安全版本，只需要ssh服务器即可，无需ftp服务器
-  - Windows的ssh客户端：PuTTY，Xshell等
+  - ssh免密登录
+  - ssh_keygen -t rsa -P ''
+  - 用户目录下自动生成.ssh目录，下有文件authorized_keys
+  - authorized_keys里存放所有服务器公钥
+  -
+- OpenSSH内含网络间文件复制程序
+- scp 源路径 目的路径：远程复制文件，secure copy，路径为远程时，需要加“主机名:”，即“10.12.1.1:~/test.txt”
+- sftp 安全的文件传输，ftp的安全版本，只需要ssh服务器即可，无需ftp服务器
+- Windows的ssh客户端：PuTTY，Xshell等
 
 ## telnet 远程登录服务，基于TCP/IP协议族
 telnet 域名:端口号
 如telnet www.baidu.com 1999
 
+使用脚本+telnet
+如
+(echo "00BCD400{\"checkDate\":\"20190501\"}";sleep 1)|telnet 127.0.0.1 60120
+sleep 60
+发送socket到地址端口
 
 
 ## curl 

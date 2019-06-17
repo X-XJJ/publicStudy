@@ -1,18 +1,19 @@
 
 # sqlplus
 - 登陆sqlplus
- - sqlplus / as sysdba
- - sqlplus 用户名/密码
- - ...
+  - sqlplus / as sysdba
+  - sqlplus 用户名/密码
+  - ...
 
-- 切换用户
+- 登录/切换用户
   conn 用户名/密码
 
 - 启动数据库（按当前环境变量里的ORACLE_SID寻找实例名启动）
- - startup
- - shutdown
+  - startup
+  - shutdown
 
-- show database
+- 执行.sql脚本
+  - @脚本全路径
 
 sqlpuls 退格、方向键问题
 (https://www.cnblogs.com/mengfanrong/p/4680281.html)
@@ -46,14 +47,40 @@ sqlpuls 退格、方向键问题
 - 创建角色，删除角色
 - 角色赋予权限
 
+
+- 查看所有？用户 select * from dba_users/all_users/user_users;
+-
+- select distinct table_name from user_tab_columns; （查看当前user模式下所有表名）
+-
+- select name from v$tempfile;查询临时表空间文件的绝对路径
+- select name from v$datafile;查询用户表空间文件的绝对路径
+
 [Oracle用户创建及权限设置](https://www.cnblogs.com/buxingzhelyd/p/7865194.html)
 
+[Oracle创建用户、角色、授权、建表](https://www.cnblogs.com/roger112/p/7685307.html)
+[如何查询oracle用户、权限、及角色](https://blog.csdn.net/lx870576109/article/details/79081621)
+
+[SQL*Plus用法指南](https://www.cnblogs.com/itcui/p/5626565.html)
+
+[查看Oracle数据库及表信息](https://blog.csdn.net/gavinli2588/article/details/78343157)
+
+[【Oracle数据库】Oracle SQL*Plus环境下的简单操作](https://blog.csdn.net/qq_33591903/article/details/81053842)
+
+[oracle创建数据库和用户](https://www.cnblogs.com/0201zcr/p/4669548.html)
+[Linux新建Oracle用户和数据库](https://blog.csdn.net/dongyuxu342719/article/details/81670837)
+
+[linux下 oracle常用命令](https://www.cnblogs.com/ldybky/p/5176996.html)
+
+
+
 ## 系统用户
-- sys：超级账户，权限最大，可以完成数据库的所有管理任务；
-- system：创建一些用于产看管理信息的表&视图；
-   登陆Oracle工具（如sql*plus）时，sys只能以sysdba（系统管理员）或者sysoper（系统操作员）权限登陆，system可以直接登陆（normal）；  
-   [用系统用户登录Oracle](https://blog.csdn.net/s___lei/article/details/78474837)
-   PS：scott用户，密码默认tiger，初始状态为锁定的；scott为Oracle创始人之一；
+- sys：超级账户，权限最大，可以完成数据库的所有管理任务
+- system：创建一些用于产看管理信息的表&视图
+   登陆Oracle工具（如sql*plus）时，sys只能以sysdba（系统管理员）或者sysoper（系统操作员）权限登陆，system可以直接登陆（normal）
+
+[用系统用户登录Oracle](https://blog.csdn.net/s___lei/article/details/78474837)
+PS：scott用户，密码默认tiger，初始状态为锁定的；scott为Oracle创始人之一；
+
 - sysdba:数据库管理员身份。权限：打开（关闭）数据库服务器、备份（恢复）数据库、日志功能、会话限制、数据库管理功能等。
     例如：sys用户必须用sysdba才能登陆，system用户用普通用户就可以登陆。
 - sysoper:数据库操作员身份 。权限：打开（关闭）数据库服务器、备份（恢复）数据库、日志功能、会话限制。
@@ -78,14 +105,6 @@ sqlpuls 退格、方向键问题
      SQL>select * from v$instance;
 - sqlplus中，命令加不加分号";"都可以，SQL语句必须加;
 
-[Oracle创建用户、角色、授权、建表](https://www.cnblogs.com/roger112/p/7685307.html)
-
-[SQL*Plus用法指南](https://www.cnblogs.com/itcui/p/5626565.html)
-
-[查看Oracle数据库及表信息](https://blog.csdn.net/gavinli2588/article/details/78343157)
-
-[【Oracle数据库】Oracle SQL*Plus环境下的简单操作](https://blog.csdn.net/qq_33591903/article/details/81053842)
-
-[Oracle用户创建及权限设置](https://www.cnblogs.com/buxingzhelyd/p/7865194.html)
-
+oracle 自增序列号id 用法
+[create sequence 用法](https://www.cnblogs.com/jhtchina/articles/1334955.html)
 

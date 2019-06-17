@@ -18,6 +18,12 @@
 
 
 # JavaScript
+## 异步
+- 不同的机制：
+  - 回调函数
+  - promise
+  - async
+  - *func
 
 
 # CSS

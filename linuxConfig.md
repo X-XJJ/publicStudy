@@ -31,19 +31,27 @@ set -o vi
 
 如：
 
-
 [Linux脚本中利用sed修改文件内容的多种技巧](https://blog.csdn.net/sunny05296/article/details/71173467)
 
+
 # 编译调试
-## gcc 工具
+gcc.exe 编译C
+g++.exe 编译C++
+gdb.exe 调试程序的debug工具
+
+## gcc
 - C 的编译器
 - [Makefile 使用总结](https://www.cnblogs.com/wang_yb/p/3990952.html)
  - 只有行注释#
 - gcc -o 
 
-make 维护程序工具
+gcc 源码文件名 ——默认编译为a.exe
+gcc 源代码文件的名字 -o 编译后程序的名字
 
- 
+make 维护程序工具，简化gcc -o
+- make 源码文件名，不用带后缀
+- make 单用，配合makefile文件
+
 编译参数 gcc -g  ——与makefile文件内配置
 
 ulimit [-c] 查看段错误文件大小 0即没有
@@ -55,17 +63,31 @@ gdb zoe core文件名  段错误查看，zoe为程序名
 进入后输入where，显示段错误出现的层次路径位置
 
 
-  - 2、检查段错误 
-  - ulimit -c unlimited
-  - 再次运行dgm --... 生成core文件
-  - gdb zoe core.xxx 
-  - 进入后where
+- 2、检查段错误 
+- ulimit -c unlimited
+- 再次运行dgm --... 生成core文件
+- gdb zoe core.xxx 
+- 进入后where
 关闭ulimit -c 0
 
 
 linker 链接器
 
+## MinGW-w64
+Minimalist GUN on Windows，将gcc移植到Windows平台
 
+- 使用make命令，win下修改：
+  - 创建gcc.exe的副本cc.exe
+  - 创建mingw32-make.exe的副本make.exe
+
+[MinGW-w64安装教程——著名C/C++编译器GCC的Windows版本](https://www.cnblogs.com/ggg-327931457/p/9694516.html0)
+
+- MinGW 和 MinGw-w64区别和联系
+[MinGW和 MinGW-W64的区别](https://www.jianshu.com/p/adcca97d1962)
+
+[windows下使用vscode编写运行以及调试C/C++](https://www.cnblogs.com/TAMING/p/8560253.html)
+
+[vscode写c语言（windows）](https://my.oschina.net/oisanblog/blog/2209354)
 
 
 # 一些通用的

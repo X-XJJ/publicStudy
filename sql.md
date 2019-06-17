@@ -15,7 +15,19 @@ sp_help
 - mysql
 
 - Oracle
-number 等价于c语言double
+int    整数
+varchar
+decimal 小数
+number 等价于c语言double？
+
+- redis 非关系型数据库 存内存 持久化 key→value
+string: set get del
+list: lpush rpush lpop
+hash: map类型 hset hget hdel
+set: sadd smembers sremove
+socket set: 有序的
+通用type
+
 
 ## 语法约定
 关键字大小写问题--默认设置中可以不分大小写，编译执行时关键字会先转为大写再执行，大写可以省略编译时间
@@ -47,20 +59,18 @@ number 等价于c语言double
 
 # 数据查询
 ## 一般格式
-`
 select [all|distinct] 目标列表达式1 as 别名 ,表达式2 ...
 from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
 [where 条件表达式] 
 [group by 列名1 [having [聚函][条件表达式]] [,列名2...]]  --？存疑，能多个吗
 [order by 列名 [ASC | DESC]]
-`
-？limit a,b  从select结果的第a+1行开始，返回b条记录，显示id从a+1开始——居然没写么……翻笔记去
-返回指定的记录数（行数）,前一个参数表示偏移，后一个表示最多查出的数据条数
-SELECT * FROM table
-使用LIMIT约束后，变成：
-SELECT * FROM table LIMIT 0，-1
-LIMIT后的第一个参数0限定偏移量，后面的-1表示数据库表中最后一条数据，因为SQL中id是从1开始，所以返回了全部数据行
-
+- ？limit a,b  从select结果的第a+1行开始，返回b条记录，显示id从a+1开始——居然没写么……翻笔记去
+- 返回指定的记录数（行数）,前一个参数表示偏移，后一个表示最多查出的数据条数
+- SELECT * FROM table
+- 使用LIMIT约束后，变成：
+- SELECT * FROM table LIMIT 0，-1
+- LIMIT后的第一个参数0限定偏移量，后面的-1表示数据库表中最后一条数据，因为SQL中id是从1开始，所以返回了全部数据行
+- 
 - "distinct" 消除列中重复行;  all 不取消重复，all为默认值;
 - "as 别名"  --取该查询结果列的别名，可省略，别名为空字符串即按默认;
 - "目标列表达式" 可选格式：
@@ -106,24 +116,27 @@ LIMIT后的第一个参数0限定偏移量，后面的-1表示数据库表中最
 
 ## 连接查询
 - 连接：将多表的元组按序组合
+[外连接、内连接区别](https://www.cnblogs.com/superAng/p/5607079.html)
 ### 内连接 
-  形式：from 表1名,表2名 where 连接条件
-        from 表1 inner join 表2或(select语句)选的条件 where 连接条件
-  若无条件的查询则为笛卡儿积匹配（类似全排列？，数据超大啊）;
-  - [非]等值连接
-    where子句中，将两表的可比较的连接字段进行比较，再据此为条件进行连接;
-    <eg：select B.a,b,c from A,B where A.a=B.a and B.d>3  --先连再查
-        表A字段{a,b}，表B字段{a,c,d}，属性列在表们中唯一，即可省略表名前缀;
-	按连接条件A.a=B.a连接表A和B的元组，并查询满足d > 3的查询内容;
-	<==>
-	select C.a,b,c from A,(select * from B where d>3) as C where A.a=C.a
-    （自身连接：给自己的表名or列名取别名进行连接;）
+- 使用比较运算符，根据每个表共有列的值匹配多表中的行，包括相等连接和自然连接（非等值连接）
+形式：from 表1名,表2名 where 连接条件
+      from 表1 inner join 表2或(select语句)选的条件 where 连接条件
+若无条件的查询则为笛卡儿积匹配，交叉连接？（类似全排列？，数据超大啊）;
+- [非]等值连接
+  where子句中，将两表的可比较的连接字段进行比较，再据此为条件进行连接;
+  <eg：select B.a,b,c from A,B where A.a=B.a and B.d>3  --先连再查
+  表A字段{a,b}，表B字段{a,c,d}，属性列在表们中唯一，即可省略表名前缀;
+  按连接条件A.a=B.a连接表A和B的元组，并查询满足d > 3的查询内容;
+  <==>
+  select C.a,b,c from A,(select * from B where d>3) as C where A.a=C.a
+  （自身连接：给自己的表名or列名取别名进行连接;）
 ### 外连接
-  形式：from 表1名 left|right|full [outer] join 表2名 on (连接条件)
-  显示含NULL情况的查询，即被舍弃的元组也保留在结果关系中;
-  - 左外连接 left，列出左边（左表）的全部关系，先查出每一条左边表符合条件的记录，都对应找出右表中所有匹配“连接条件”的记录，与左表该条记录一起显示;无记录则用空补齐
-  - 右外连接 right，列出右边（右表）的全部关系;
-  - 全外连接 full，左右都列出;
+形式：from 表1名 left|right|full [outer] join 表2名 on (连接条件) [where 独立条件]
+- on条件：只进行连接操作，过滤两个连接表笛卡尔积形成中间表的约束条件
+显示含NULL情况的查询，即被舍弃的元组也保留在结果关系中;
+- 左外连接 left，列出左边（左表）的全部符合查询条件（独立where条件下）的值，每个左表出来的值，都都对应找出右表中所有匹配连接条件（on）的记录，与左表该条记录一起显示;右表无符合连接条件的记录则用空补齐
+- 右外连接 right，列出右边（右表）的全部关系;
+- 全外连接 full，左右都列出;
 
 ## 嵌套查询
 - 一个查询块嵌套在另一个查询块的where子句或having短语中的查询;
@@ -241,6 +254,29 @@ deny
 
 # 触发器 trigger
 暂放
+create [or replace] trigger 触发器名
+{before | after }
+{insert | delete | update [of COLUMN [, COLUMN …]]}
+[or {insert | delete | update [of COLUMN [, COLUMN …]]}...]
+on [SCHEMA.]TABLE_NAME | [SCHEMA.]VIEW_NAME
+[referencing {old [as] OLD | new [as] NEW| parent AS PARENT}]
+[for each row ]
+[when CONDITION]
+pl/sql_block | call PROCEDURE_NAME;
+
+
+CREATE TRIGGER 触发器名
+[before|after|instead of] 触发事件
+on 表名或者视图名或者用户名或者数据库名
+[for each row] [触发条件表达式]
+[declare 变量]
+begin
+sentences;
+end 触发器名;
+
+[Oracle触发器及使用举例（几种触发器类型）](https://blog.csdn.net/u013882957/article/details/71305347)
+[Oracle-trigger触发器解读](https://blog.csdn.net/yangshangwei/article/details/51586852)
+
 
 # 事务和事务级别
 

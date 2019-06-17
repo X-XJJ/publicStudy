@@ -44,7 +44,7 @@ git config --list 查看当前配置 全局配置+当前项目配置？
 [root@localhost /home/usr/hhh/Z07] # git commit -m '财政取数接口测试完成四分之三'
 [root@localhost /home/usr/hhh/Z07] # git remote add Z07 http://8.8.0.0:3000/hhh/Z07.git 
   - 上面是，把这个http://8.8.0.0:3000/hhh/Z07.git远程地址关联为Z07
-git remote
+git remote 查看远程地址名 -v查看远程地址的具体信息
 git status
 
 [root@localhost /home/usr/hhh/Z07] # git push Z07 master
@@ -127,7 +127,7 @@ git log -pretty=oneline 简化输出
   - $originName --tags 推送所有未推标签
 - git show $tagName 查看标签版本的具体信息
 - git tag -d $tagName  删除本地标签
-- git push $originName :tefs/tags/$tagName 删除远程标签
+- git push $originName :refs/tags/$tagName 删除远程标签
 
 - 用 GPG 来签署标签，即添加私钥，只需要把之前的 -a 改为 -s ，即signed
 - git show 缺省则显示最近版本的commit备注信息

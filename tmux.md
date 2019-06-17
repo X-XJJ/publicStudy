@@ -38,6 +38,8 @@ tmux 命令前缀，如tmux ls，缺省为创建并打开新会话
 - tmux new -s <会话名> = tmux new-session -s $session-name 指定会话名新建会话
 - tmux a -t [会话序号？会话名？] = attach-session -t $session-name
   从终端返回已存在的会话
+- tmux a 进入会话列表第一个session
+
 
 - tmux kill-session -t $session-name 关闭会话
 - tmux kill-session -a -t $session-name 关闭除了指定会话之外的所有session
@@ -49,7 +51,7 @@ tmux 命令前缀，如tmux ls，缺省为创建并打开新会话
 
 ## tmux会话环境下 可用配置文件修改命令(bind&unbind)
 加**前缀**后：
-默认快捷键前缀 C-b，修为C-a
+默认快捷键前缀 C-b，修改为C-a
 
 ### 会话操作session
 - ? 帮助
@@ -71,7 +73,6 @@ tmux 命令前缀，如tmux ls，缺省为创建并打开新会话
 - p n l 切换到上一个/下一个/相邻的窗口，unbind为
 - & 关闭当前window
 -
-
 
 ### 面板操作pane
 - % " 垂直/水平分屏，unbind为|-
@@ -108,7 +109,6 @@ tmux 命令前缀，如tmux ls，缺省为创建并打开新会话
 你可以在.[bash|zsh]rc设置alias：
 alias takeover="tmux detach -a"
 Workflow：你可以正常连接到会话中，并且如果你被另一个强制缩小tmux窗口大小的会话干扰的话，可以通过使用takeover来解决这个问题。
-
 
 
 ## 修改默认配置

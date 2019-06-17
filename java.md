@@ -87,6 +87,13 @@ objectInputStream() 序列化流
 # 位级
 bitSet方法
 
+# list类的内存分配
+- ArrayList 连续数组结构？
+-
+- LinkedList 二链表内存结构
+-
+
+
 # java反射机制
 将编译出的字节码文件封装到另一个对象（类），并对其进行操作
 
