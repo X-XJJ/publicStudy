@@ -1,8 +1,36 @@
 ﻿
-# .bashrc .profile
+# 环境配置信息文件 .bashrc .profile
+.profile：用于交互式login shell
+.bashrc：用于交互式non-login shell
+- 交互式shell：shell等待用户输入，并执行用户提交的命令，用户签退shell终止
+- 非交互式shell：直接读取文件中的命令并执行，读执到文件结尾，shell终止
+- login shell
+- non-login shell
+
+/etc/pro此文件为系统的每个用户设置环境信息,当第一个用户登录时,该文件被执行.
+并从/etc/profile.d目录的配置文件中搜集shell的设置.
+/etc/bashrc:为每一个运行bash shell的用户执行此文件.当bash shell被打开时,该文件被读取。有些linux版本中的/etc目录下已经没有了bashrc文件。
+~/. pro每个用户都可使用该文件输入专用于自己使用的shell信息,当用户登录时,该
+文件仅仅执行一次!默认情况下,它设置一些环境变量,然后执行用户的.bashrc文件.
+~/.bashrc:该文件包含专用于某个用户的bash shell的bash信息,当该用户登录时以及每次打开新的shell时,该文件被读取.
+另外,/etc/profile中设定的变量(全局)的可以作用于任何用户,而~/.bashrc等中设定的变量(局部)只能继承/etc/profile中的变量,他们是"父子"关系.
+
 set -o vi
 设置终端命令可以使用vi的方式编辑
 
+
+/etc/profile，/etc/bashrc 系统全局环境变量设定
+~/.profile，~/.bashrc用户家目录下的私有环境变量设定
+当登入系统时候获得一个shell进程时，其读取环境设定档有三步
+- 1，首先读入的是全局环境变量设定档/etc/profile，然后根据其内容读取额外的设定的文档，如/etc/profile.d和/etc/inputrc
+- 2，根据不同使用者帐号，去其家目录读取~/.bash_profile，如果这读取不了就读取~/.bash_login，这个也读取不了才会读取~/.profile，这三个文档设定基本上是一样的，读取有优先关系
+- 3，根据用户帐号读取~/.bashrc
+至于~/.profile与~/.bashrc的区别
+都具有个性化定制功能
+~/.profile可以设定本用户专有的路径，环境变量，等，它只能登入的时候执行一次
+~/.bashrc也是某用户专有设定文档，可以设定路径，命令别名，每次shell script的执行都会使用它一次
+
+[理解 bashrc 和 profile](https://wido.me/sunteya/understand-bashrc-and-profile/)
 
 
 # shell脚本
