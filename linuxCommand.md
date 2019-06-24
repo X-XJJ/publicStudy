@@ -380,7 +380,7 @@ SHELL 八大扩展 https://www.cnblogs.com/root-wang/p/3884448.html
 - 路径名扩展：通配符实现
   - 如 ls .[!.]?* 以一个点字符开头的所有文件名，第二个字符不是点，至少包含第三个字符，后面可能有其他字符，即包含隐含文件而不含./和../的当前所有文件名
 - 波浪线：`~用户名` 扩展为指定用户主目录，缺省则为当前用户
-- 花括号扩展：`前导字符{}附言` 按{}内的模式创建多种文本字符串
+- 花括号扩展：`前导字符{模式}附言` 按{}内的模式创建多种文本字符串
   - {}内可包含 一系列“,”分隔的字符串，一系列整数，单个字符，不允许空白
   - 多用于创建一系列文件and目录，有“,”即默认将逗号左右默认为字符串
   - 如 echo {Z..A} 输出逆序排列的字母
@@ -629,7 +629,6 @@ jobs 列出所有活动作业的状态信息
 - xload 图形化界面程序，绘制显示系统时间负载情况图形
 - tload 终端上绘制，类似xload
 
-##
 - shutdown 关机or重启
  -r 重启
  -h 关机
@@ -705,16 +704,16 @@ echo $SP1 输出PS1的值，PS1即提示符的环境变量
 
 - pkName表软件包实际名称，pkFile表包含软件包的文件名
 
-高级工具|.deb类|.rpm类|备注
---------|------|------|----
-从库搜索|apt-get update;apt-cache search 内容|yum search 内容|apt-getf带分号两句一起用
-从库安装|apt-get update;apt-get install 包名|yum install 包名
-从文件安装|dpkg --install pkFile|rpm -i 文件名|不安装依赖关系
-卸载删除|apt-get remove pkName|yum erase pkName
-从库更新|apt-get update;apt-get upgrade|yum update
-从文件更新|dpkg --install pkFile|rpm -U pkFile
-察看已安装包|dpkg --list|rpm -qa
-判断是否安装|dpkg --status pkName|rpm -q pkName
+高级工具      |.deb类|.rpm类|备注
+--------------|------|------|----
+从库搜索      |apt-get update;apt-cache search 内容|yum search 内容|apt-getf带分号两句一起用
+从库安装      |apt-get update;apt-get install 包名|yum install 包名
+从文件安装    |dpkg --install pkFile|rpm -i 文件名|不安装依赖关系
+卸载删除      |apt-get remove pkName|yum erase pkName
+从库更新      |apt-get update;apt-get upgrade|yum update
+从文件更新    |dpkg --install pkFile|rpm -U pkFile
+察看已安装包  |dpkg --list|rpm -qa
+判断是否安装  |dpkg --status pkName|rpm -q pkName
 显示安装信息  |apt-cache show pkName|yum info pkName
 察看文件安装源|dpkg --search file_name|rpm -qf file_name
 
@@ -726,11 +725,11 @@ echo $SP1 输出PS1的值，PS1即提示符的环境变量
 -c 显示配置文件列表
 -ql 包名 查看具体安装路径
 
-Directory |Contents of Directory
-----------|---------------------
-/etc      |一些配置文件的目录，例如/etc/init.d/mysql
-/usr/bin  |一些可执行文件
-/usr/lib  |一些程序使用的动态函数库
+Directory      |Contents of Directory
+---------------|---------------------
+/etc           |一些配置文件的目录，例如/etc/init.d/mysql
+/usr/bin       |一些可执行文件
+/usr/lib       |一些程序使用的动态函数库
 /usr/share/doc |一些基本的软件使用手册与帮助文档
 /usr/share/man |一些man page文件
 
@@ -774,7 +773,7 @@ free 输出存储器的使用情况
   - 如 /dev/sda 为第一个通道上的主设备，/dev/sdb/ 为第一个通道上的从设备
   - 如 /dev/sda1 假设/dev/sda为整个硬盘，则此为第一个分区
 
-## 
+## 硬盘软盘
 - fdisk 硬盘分区命令;
   - 进入fdisk程序菜单，提示已经很全
   - 常用 m 显示帮助信息，m for help，p 显示设备分区表
@@ -837,7 +836,18 @@ IP Internet protocol, host and domain name 主机名和域名, URI Uniform resou
 - netstat
   - 显示各种网络设置和相关统计数据，网络连接、路由表、网络接口数据、伪连接、多点传送成员等信息
   - netstat -nape|grep 端口号
-  - -a 显示所有(否则不显示LISTEN状态) - -l 仅显示LISTEN状态 - -n 显示数字(否则显示别名) - -t 仅显示TCP套接字 - -u 仅显示UDP套接字 - -x 仅显示UNIX套接字 - -p 显示进程信息 - -e 显示扩展信息 - -r 显示路由信息 - -i 显示接口信息 - -s 按协议统计 - -c 持续显示
+  - -n 显示数字(否则显示别名) 
+  - -a 显示所有(否则不显示LISTEN状态) 
+  - -p 显示进程信息
+  - -e 显示扩展信息
+  - -l 仅显示LISTEN状态 
+  - -t 仅显示TCP套接字 
+  - -u 仅显示UDP套接字 
+  - -x 仅显示UNIX套接字 
+  - -r 显示路由信息
+  - -i 显示接口信息
+  - -s 按协议统计
+  - -c 持续显示
   - 如：
   - tcp  0  0  192.168.100.61:11003  10.10.10.1:32849  ESTABLISHED 1000  3760904  25506/linker 
 
@@ -975,12 +985,12 @@ rsync 远程文件和目录的同步
 --------|-------------|----
 /       |根目录       |/etc /bin /dev /lib /sbin应和根目录放在一个分区
 /boot   |启动装载核心 |系统内核文件&引导装载程序文件 建议单独分区100M左右
-        |./vmlinuz Linux内核文件；./grub/ 启动配置文件们
+        |.vmlinuz Linux内核文件；/grub 启动配置文件们
 /bin    |可执行程序   |系统启动&运行必须的二进制文件 Linux基本操作命令
 /sbin   |可执行命令   |系统管理相关 管理员有权 同理/usr/sbin usr/local/sbin
 /etc    |系统配置文件 |主机、系统、网络等等的系统层面配置文件
-/lib    |系统重要库   |类似Windows的dll 同理/usr/lib，/usr/local/lib
-/dev    |设备目录     |虚拟文件系统 存放所有能识别的设备对应的信息文件
+/lib /lib64|系统重要库   |类似Windows的dll 同理/usr/lib，/usr/local/lib
+/dev    |设备目录     |挂载无关 虚拟文件系统 存放所有能识别的设备对应的信息文件
 /media  |媒体挂载点   |可移除媒体设备 自动挂载 如USB CD-ROM等
 /mnt    |临时挂载点   |文件系统/可移除设备挂载 可手动挂载 
 /opt    |主机额外软件 |在主机安装其他可选的软件
@@ -988,12 +998,13 @@ rsync 远程文件和目录的同步
 /srv    |数据目录     |若Linux作为服务器 在服务启动后访问的数据目录
 /tmp    |临时文件     |重启清空
 /proc   |虚拟文件系统 |内存中建立的虚拟目录 提供系统实时信息
-/home   |用户主目录   |非root用户的宿主目录
-        |./用户名/    |默认宿主用户有创建文件权限 目录下含用户独有配置 
-/root   |root主目录   |
+/home   |非root用户宿主目录
+        |用户名/      |默认宿主用户有创建文件权限 目录下含用户独有配置 
+/root   |root用户主目录
 /usr    |应用程序     |普通用户使用的所有程序和相关文件
         |./share/doc 程序说明文件 ./local 系统本地使用的程序的安装目录
-/lost+found |系统恢复分区 |系统崩溃后自动修复救回的文件存放地
+/lost+found|系统恢复分区 |系统崩溃后自动修复救回的文件存放地
+/run    |系统运行时所需文件,以前在/var/run中,后来拆成独立的/run目录,重启后重新生成对应的目录数据
 ...     |...
 
 具体配置等见linuxConfig.md

@@ -1,3 +1,4 @@
+## URL
 URL 统一资源定位符 Uniform Resource Locator
 
 URL是全球资源定位符的英文所写，您平时上网时在IE浏览器中输入的那个地址就是URL。比如：网易 http://www.163.com就是一个URL。
@@ -14,3 +15,9 @@ URI一般由三部分组成:
 
 URI 是从虚拟根路径开始的
 URL是整个链接
+
+# TCP
+三次握手，四次
+
+# UDP
+
