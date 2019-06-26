@@ -57,8 +57,16 @@ sqlpuls 退格、方向键问题
 
 [Oracle用户创建及权限设置](https://www.cnblogs.com/buxingzhelyd/p/7865194.html)
 
+create user 用户名 identified by 库名 default tablespace 库名 temporary tablespace 库名_TEMP;
+grant all privileges to 库名;
+
 [Oracle创建用户、角色、授权、建表](https://www.cnblogs.com/roger112/p/7685307.html)
 [如何查询oracle用户、权限、及角色](https://blog.csdn.net/lx870576109/article/details/79081621)
+
+create tablespace 库名 logging datafile '路径如/opt/oracle/app/oradata/库名.dbf' size 1024M;
+create temporary tablespace 库名_TEMP tempfile '路径如/opt/oracle/app/oradata/库名_TEMP.dbf' size 128M;
+
+大小看情况定
 
 [SQL*Plus用法指南](https://www.cnblogs.com/itcui/p/5626565.html)
 
@@ -107,4 +115,4 @@ PS：scott用户，密码默认tiger，初始状态为锁定的；scott为Oracle
 
 oracle 自增序列号id 用法
 [create sequence 用法](https://www.cnblogs.com/jhtchina/articles/1334955.html)
-
+如create sequence sqnJournal;

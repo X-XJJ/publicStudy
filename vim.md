@@ -1,4 +1,5 @@
-﻿
+﻿- 说明：Ctrl+某键 写为 C-某键
+
 # shell内启动vim
 vim 直接启动
 vim filename 打开vim并创建文件(可选择带后缀格式名)
@@ -129,8 +130,26 @@ C-x 当前数字-1
 - Cv(u)nnn  以(Unicode)编码号写入字符
 - C-k(harchar) 以二合字母插入字符 
 - C-r[register] 粘贴寄存器内容到光标后, eg: C-r" 粘无名寄存器的; C-r0 粘复制寄存器的
-- C-x 进入？？模式
-- C-w 删除一个单词
+- C-w    删除一个单词
+- C-u    撤销本次插入的输入
+- C-y/e  参照上行/下行逐字复制
+- C-j/xj 回车
+- C-n/p  关键字补全，n下一个匹配，p上一个匹配
+- C-x    进入各种补全模式的前缀+提示，j d e f i k l n o ps u v y
+  - e/y 向下/上按行滚动屏幕
+  - d 定义补全，define
+  - f 文件名补全，file
+  - i 头文件模式补全，include
+  - l 整行补全，line
+  - v 命令行补全，command line
+  - s 拼写建议即拼写补全，需要开启拼写检查才可用，spell
+  - n/p 局部关键字补全
+    - 与其他补全模式配合：n 跳到下一个匹配；p 回到上一个匹配
+  - k 选项dictionary，字典？？数据字典？？
+  - o 全能补全，还不知道咋用？？
+  - ps 不知道是啥，咋用？？
+  - u 选项completefunc，按函数补？？
+
 
 
 # Visual 可视模式  
@@ -419,6 +438,7 @@ zm 关闭所有折叠
 - 详见_vimrc
 - MarkdownPreview的显示问题：这个显示，第一层和第二层之间，空一格就能显示，但markdown规则并非这样，正常来说`-`层级之间区别是空2格
 
+``` 
 "中文字符乱码问题 编辑
 set encoding=utf-8
 set termencoding=utf-8
@@ -495,7 +515,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 ""***************vundle end***************
-
+```
 
 ## 插件管理
 [如何在 Linux 上使用 Vundle 管理 Vim 插件](https://linux.cn/article-9416-1.html)
