@@ -90,4 +90,6 @@ $$\begin{align}
 [Markdown数学公式语法](https://www.jianshu.com/p/e74eb43960a1)
 [markdown最全数学公式速查](https://blog.csdn.net/jyfu2_12/article/details/79207643)
 
-
+- 使用HTML语法？markdown兼容HTML语法
+-
+- 如上标sup，下标sub，H<sup>2</sup>等等
