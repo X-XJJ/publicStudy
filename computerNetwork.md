@@ -1,3 +1,16 @@
+
+## Servlet原理
+- C/B 请求 → server服务端（含tomcat → servlet） → 结果返回C/B
+- servlet 线程池
+  - 对于tomcat每次的请求都给他分配一个线程，用完将线程返回servlet
+  -
+  -
+## tomcat
+### 安装
+- /bin：startup.bat/sh开启 shutdown.sh/bat关闭
+- webapp/
+- config/：service.xml全局配置文件，一般不在这里进行详细配置 各种配置文件.xml catalina/目录配置文件.xml
+
 ## URL
 URL 统一资源定位符 Uniform Resource Locator
 

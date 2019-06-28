@@ -25,9 +25,10 @@
   - async
   - *func
 - pormise 解决回调的多层嵌套问题，可控制和判断上一阶（高阶）函数的返回结果
+- generator生成器 对promise产生作用
+  - 一种数据类型
 
 - 单线程，消息队列，任务队列，时间循环，调用栈
-
 
 # CSS
 层叠样式表(英文全称：Cascading Style Sheets)
@@ -46,7 +47,6 @@ npm install -g cleate-react-app 安装react
 - 组件
   - 属性props 由外部jsx传入
   - 状态state 如动画变化等，控制界面状态，更新不用刷新整个界面，为局部即时
-
 -
 - JSX语法
   - 即js+xml
@@ -56,5 +56,3 @@ npm install -g cleate-react-app 安装react
 -
 - 单向数据传递
 -
-
-
