@@ -189,7 +189,7 @@ range: 单个;  _,_ 范围(eg: 3,5);
     %  整个文件; >
     eg:.+3,$-5 当前往下第三行, 到倒数5行
 :noh = :nohlsearch 暂时关闭高亮直到下次查找 no highlight(另: insearch功能在查找时预览第一处匹配)
-:set hls 打开高亮；:set nohls 关闭高亮
+:set hls 打开查找高亮；:set nohls 关闭查找高亮
 :行号 跳到n行 = nG
 <Tab> 自动补全顺序滚动;  C-d 显示可用的补全列表
 
