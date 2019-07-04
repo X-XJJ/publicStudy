@@ -15,10 +15,6 @@
 ~/.bashrc:该文件包含专用于某个用户的bash shell的bash信息,当该用户登录时以及每次打开新的shell时,该文件被读取.
 另外,/etc/profile中设定的变量(全局)的可以作用于任何用户,而~/.bashrc等中设定的变量(局部)只能继承/etc/profile中的变量,他们是"父子"关系.
 
-set -o vi
-设置终端命令可以使用vi的方式编辑
-
-
 /etc/profile，/etc/bashrc 系统全局环境变量设定
 ~/.profile，~/.bashrc用户家目录下的私有环境变量设定
 当登入系统时候获得一个shell进程时，其读取环境设定档有三步
@@ -32,6 +28,12 @@ set -o vi
 
 [理解 bashrc 和 profile](https://wido.me/sunteya/understand-bashrc-and-profile/)
 
+- set -o vi
+  - 设置终端命令可以使用vi/vim的方式编辑，具体可用命令范围尚不清楚
+  - 正常输入≈插入模式编辑，C-w，C-u可用，再ESC后进入≈普通模式编辑
+  - ESC+j/k = 正常输入下↑↓，翻历史命令
+  - ESC+/搜索模式，范围为历史命令，搜索出的内容≈普通模式编辑
+  - ≈普通模式编辑的，常用的移动、插入都可用（注：cw可以，caw不可以，诸如此类）
 
 # shell脚本
 ## 运行
@@ -166,7 +168,7 @@ Minimalist GUN on Windows，将gcc移植到Windows平台
 - 直接编辑配置文件
   - 位置：/etc/sysconfig/network-scripts/ifcfg-网卡名
   -
-
+```
 TYPE=Ethernet    #以太网
 BOOTPROTO=dhcp    #地址获取方式 dhcp static none 
 DEFROUTE=yes
@@ -186,7 +188,7 @@ GATEWAY=192.168.8.2    #网关
 DNS1=192.168.8.2    #还可以有DNS2 DNS3 ...
 IPV6_PEERDNS=yes
 IPV6_PEERROUTES=yes
-
+```
 
 
 ## 无ifconfig netstat等一系列命令

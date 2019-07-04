@@ -285,7 +285,7 @@ range: 单个;  _,_ 范围(eg: 3,5);
 - :bn 在当前窗口切到下一个缓冲区/文件; :bp 上一个;
  
 ### 改变分屏面板大小
-- 水平C-w [尺寸n] +/- 增加/减少n格窗口尺寸，默认1格，则<C-W>3+或<C-W>3-
+- 水平C-w [尺寸n] +/- 增加/减少n格窗口尺寸，默认1格，则<C-w>3+或<C-w>3-
 - C-w < 左
 - C-w > 右
 - C-w + 上
@@ -298,7 +298,6 @@ range: 单个;  _,_ 范围(eg: 3,5);
   nmap w- :resize -3<CR>
   nmap w, :vertical resize -3<CR>
   nmap w. :vertical resize +3<CR>
-
 
 ## 标签页-多窗口
 :tabe = :tabedit 新标签页中打开file, 若无参数则打开一个空标签空缓冲区

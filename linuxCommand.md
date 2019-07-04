@@ -9,8 +9,16 @@ $ 一般用户的shell提示符 # 超级用户的shell提示符
 
 <Esc> 进入vi模式，可直接运行vi命令 如/word 查找缓冲区命令中出现的含word命令
 
+- 查看各种计算校验命令 ls -al /usr/bin/*sum
 - md5sum 计算MD5校验码
 [https://blog.csdn.net/kenkao/article/details/46875571l[linux shell 命令获取字符串/文件的MD5值](https://blog.csdn.net/ydyang1126/article/details/71171541)
+echo -n 'string'|md5sum|cut -d ' ' -f1
+
+- sha1sum sha256sum 还有224 384 512
+-
+- cksum
+- innochecksum
+
 expr 一般用于整数值计算，但也可用于字符串操作
 
 xargs 从标准输入中建立、执行命令行
@@ -106,7 +114,6 @@ whereis $commmand 查找程序信息，打印可执行程序位置、man文档�
   - ESC进入vi方式，可用 前后w b x s A 0 ...？
   - v 进入vim编辑该命令，退出即执行
 -
--
 - 库Readline：实现编辑命令行，供不同的应用程序共享使用的线程集合
 - Tab 自动补齐
   - 双击Tab = Alt-$ 在结果不唯一时显示所有可能的自动补齐列表
@@ -173,8 +180,7 @@ g = 1G 跳开头;  G 跳结尾;  /abc 查找字符串abc;  n 查找下一个abc;
 
 ## ls 查看目录内容
 - 显示文件&文件夹的各种不同字段信息;
-- --help 帮助文档
- - /folderPath 如/usr/a列出usr下a文件夹的内容;
+- --help 帮助文档 /folderPath 如/usr/a列出usr下a文件夹的内容;
 - -a = -all 列出包括隐藏文件的所有文件; &本级上级目录
 - -A ？ 显示所有文件包括隐藏文件~本级上级目录
 - -d = --directory 列出目录条目而不是内容信息，并且不取消对符号链接的引用;
@@ -199,7 +205,6 @@ g = 1G 跳开头;  G 跳结尾;  /abc 查找字符串abc;  n 查找下一个abc;
 常用 ls -lrt
 ls -alF|grep / 列出目录
 ls -alF|grep -v 列出文件
-
 
 长列表格式-在后权限部分
 
@@ -229,7 +234,6 @@ ls -alF|grep -v 列出文件
 
 ## cp mv rm ln
 - 这堆-i 可加入配置文件 每次变动前询问
-
 - cp 复制
  - cp item1 item2 将单个文件or目录item1复制到文件or目录item2中
  - cp item1 item2 item3 item... directory 将多个项目复制进一个目录中
@@ -334,11 +338,9 @@ dev/null 空设备文件
 # 文本处理--切割
 cat 连接文件并打印到标准输出
 
-
 cut 从每一行中移除文本区域
 -d 指定分隔符
 -f 显示某列
-
 
 mkdir 目录1 [目录2 ...] 创建目录
 - -p 创建多层级目录
@@ -373,8 +375,8 @@ groff 文档格式化系统
 如 直接计算并打印出字符串md5
 echo -n 'string'|md5sum|cut -d ' ' -f1
 
-
 SHELL 八大扩展 https://www.cnblogs.com/root-wang/p/3884448.html
+
 ## shell扩展
 - 扩展：按Enter后，bash执行命令前，对命令字符序列进行多重处理，如识别通配符
 - 路径名扩展：通配符实现
@@ -961,7 +963,7 @@ rsync 远程文件和目录的同步
 
 # 编译程序-详见linuxConfig.md
 
-# shell脚本
+# shell脚本-详见linuxConfig.md
 编写--脚本文件权限为允许执行--脚本放置位置最好在没指定路径时shell能自动发现的地方(如PATH环境变量中包含的目录)
 
 "#!" 字符序列为特殊结构，名shebang，告知操作系统应使用哪个解释器执行该脚本;应该放在每个shell脚本的第一行;
@@ -975,8 +977,6 @@ rsync 远程文件和目录的同步
  - 常用于重新执行刚修改的初始化文件，立即生效，如source /etc/profile
 
 其他的估计暂时用不到，再看再看
-
-
 
 -------------------------------
 
