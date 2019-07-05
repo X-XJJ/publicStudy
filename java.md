@@ -20,11 +20,6 @@
 -
 - 堆中开辟空间后一直存在，不使用，生命周期长，但占用着空间，无法回收，内存泄露
 -
--
-- 
-
-
-
 # 程序过程
 .java
 ↓
@@ -57,16 +52,20 @@ str.equals; 相同返回ture，否则false
 string c = "aa".concat("bb"); //字符串连接 "aabb"
 
 str.indexof() 查找字符串
-str.indexof("字符or字符串") 返回int为该字符or字符串起始位置 在原字符串中的下标
+str.indexof("字符or字符串") 返回int为该字符or字符串起始位置 在原字符串中下标
 str.indexof("字符",n) ？？
 
 str.toLoverCase() 字符串转小写
 str.toUpperCase() 字符串转大写
-
 str.trim() 去除字符串两端的空格
-
 str.contains("字符串") 返回bool为该字符串参数？是否存在
 
+- string stringBuff stringBuilder
+  - 运行效率string最小，stringBuilder最大
+  - string 定义长度不可变
+  - stringBuff 定义可变对象 改变字符串时自动在原来的空间上扩展长度，单线程
+  - stringBuild为stringBuff升级版，多线程
+  -
 
 # Flie类
 - 文件、文件夹操作
@@ -307,4 +306,11 @@ AOP:一些功能需要散布在程序中的各个位置,但又不想主动的去
 - 前端、后端互相访问时，经过过滤器
 - 常用验证各种状态，数据加密等等中间的事情，满足条件则放行通过，或者拦截
 - 创建filter即 实现filter接口，重写dofilter()方法
+
+# 其他 
+- λ表达式 Lambda
+  - 匿名函数，闭包，Java 8 新特性
+  - 允许把函数作为一个方法的参数，传递进方法中
+  -
+
 

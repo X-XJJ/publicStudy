@@ -9,15 +9,43 @@ $ 一般用户的shell提示符 # 超级用户的shell提示符
 
 <Esc> 进入vi模式，可直接运行vi命令 如/word 查找缓冲区命令中出现的含word命令
 
-- 查看各种计算校验命令 ls -al /usr/bin/*sum
-- md5sum 计算MD5校验码
+### 各种计算校验命令 
+- ls -al /usr/bin/*sum
+- md5sum <fileName(s)>
+  - 计算文件内容的MD5消息摘要，与文件名无关 算一个or多个都可
+  - MD算法家族均为128位二进制 即16字节 可换算为32位十六进制
+  - -b = --binary 以二进制模式读入 读入模式不同 求md5时逐位校验 结果相同
+  - -t = --text   以文本模式读入，默认项
+  - -c = --check  根据已生成的md5值(如存在文件中的)对现存文件进行校验
+    - --status 校验check完成后，不生成提示信息，通过命令的返回值判断正确或错误，一致返回0，不一致返回1
+  - -w = --warn   在check的时候，检查输入的md5信息又没有非法的行，如果有则输出相应信息
+  - eg：
+    - md5sum data > a.md5 将计算得到data的md5值重定向到文件a.md5，若为多个文件，则每个文件的md5生成为一行
+    - md5sum -c a.md5 根据a.md5中已经生成的值对目录下对应文件进行校验，正确的返回OK，错误返回错误信息
+    - 利用管道直接计算显示字符串md5，如
+      - echo -n '123'|md5sum (echo输出的字符串默认添加换行符'\n'，-n)
+      - printf 123|md5sum
+      - ...
+  -
 [https://blog.csdn.net/kenkao/article/details/46875571l[linux shell 命令获取字符串/文件的MD5值](https://blog.csdn.net/ydyang1126/article/details/71171541)
 echo -n 'string'|md5sum|cut -d ' ' -f1
 
-- sha1sum sha256sum 还有224 384 512
--
-- cksum
+- 安全散列 sha系列 用法类似md5sum 
+  -b -c -t -w
+- sha1sum   长度160位二进制
+- sha224sum 长度256
+- sha256sum 长度224
+- sha384sum 长度384
+- sha512sum 长度512
+ 
+- cksum fileName
+  - 进行32位CRC循环冗余校验，基于以太网标准帧检查的CRC算法
+  - 输出校验码、文件字节数
+  - 除了--help和--version这俩通常参数外，无其他参数
+  - 算字符串和md5sum类似
+
 - innochecksum
+- 消息认证码 mac
 
 expr 一般用于整数值计算，但也可用于字符串操作
 
@@ -282,7 +310,7 @@ rm item ...
 - `>` 标准输出重定向到文件中，不显示于屏幕
   - 如 ls -a /usr/app/ > ls-test.txt 将命令执行结果输出到文件ls-test.txt中
   - 如 > test.txt 删除test.txt的内容，或创建一个空文件test.txt
-- `>>` 标准输出重定向**追加**到文件尾部，若无文件则创建
+- `>>` 标准输出重定向**追加**到文件尾部，若无文件则创建，eg md5sum data >> a.md5 将data的md5值追加到a.md5文件末尾
 - `2>` 标准错误重定向，使用描述符编号
 - `&>` = `命令 > 文件1 2>&1` 标准输出、错误重定向到同一个文件
   - 注：>和2>&1 顺序不可变，错误必在输出后，先把输出定到文件1，再把错误定到文件1
@@ -306,7 +334,7 @@ dev/null 空设备文件
 
 ## 管道重定向相关
 - shell的管道特性：命令从标准输入到读取数据，并将数据发送到标准输出
-- 管道操作符 `|`可以将多条命令合到一起形成一个管道
+- 管道操作符`|`可以将多条命令合到一起形成一个管道
   - 一般形式`命令1 | 命令2` 将命令1的标准输出传到命令2的标准输入
     - 如 ls -a usr/ | less 在屏幕上分页查看ls命令的运行结果
     - 如 ls usr/ | grep zip 从ls列出的程序中找出所有含zip的结果
@@ -371,6 +399,7 @@ groff 文档格式化系统
 
 # 扩展和引用
 - echo 将文本参数内容打印到标准输出
+  - -n 去掉换行符
 
 如 直接计算并打印出字符串md5
 echo -n 'string'|md5sum|cut -d ' ' -f1

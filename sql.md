@@ -1,5 +1,4 @@
 sql相关
-
 （基于笔记，慢慢补充）
 
 # 其他
@@ -41,23 +40,23 @@ socket set: 有序的
 /**/ 多行注释
 
 # 关系数据库标准语言SQL
-- 数据定义DDL
+- 数据定义DDL define
   操作      CREATE--创建  DROP--删除    ALTER--修改
   操作对象  database--数据库  table--表  view--视图  index--索引
-- 数据操纵DML（数据）
+- 数据操纵DML（数据） manipulate
   操作      INSERT--插入  UPDATE--更新  DELETE--删除（行）
   操作对象  表中的若干行数据
-- 数据查询DQL      
+- 数据查询DQL query
   操作      SELECT
   操作对象  表and数据们？
-- 数据控制DCL（安全）
+- 数据控制DCL（安全） control
   操作      GRANT--授权   REVOKE--收回授权
   操作对象  数据对象（表、列、视图...），数据库系统
 
 - 备注：表操作中，均为**()**，无{}a
   - 格式错误，如 ORA-00922 missing or invalid option，segmentation fault(core dumped) 段错误（核心转储）
 
-# 数据查询
+# 数据查询 DQL
 ## 一般格式
 select [all|distinct] 目标列表达式1 as 别名 ,表达式2 ...
 from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
@@ -66,9 +65,7 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
 [order by 列名 [ASC | DESC]]
 - ？limit a,b  从select结果的第a+1行开始，返回b条记录，显示id从a+1开始——居然没写么……翻笔记去
 - 返回指定的记录数（行数）,前一个参数表示偏移，后一个表示最多查出的数据条数
-- SELECT * FROM table
-- 使用LIMIT约束后，变成：
-- SELECT * FROM table LIMIT 0，-1
+- select * from 表名 limit 0,-1
 - LIMIT后的第一个参数0限定偏移量，后面的-1表示数据库表中最后一条数据，因为SQL中id是从1开始，所以返回了全部数据行
 - 
 - "distinct" 消除列中重复行;  all 不取消重复，all为默认值;
@@ -80,8 +77,8 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
   [表名.]属性列名表达式1 ,表达式2...
   - 属性列、作用于列的聚集函数、常量，及他们的任意运算表达式
   - "聚集函数" 
-    使用：select 函数关键字([all|distinct]列名) 或者 having 函数关键字([all|distinct]列名)，除了select count(*) 是直接使用;
-    函数名：
+    - 使用：select 函数关键字([all|distinct]列名) 或者 having 函数关键字([all|distinct]列名)，除了select count(*) 是直接使用;
+    - 函数名：
       - count() 统计列中非NULL值的个数;  count(*) 统计含NULL元组个数;
       - sum() 计算一列值总和;  avg() 计算一列平均值;  此二列需为数值型;
  - max() min() 求一列值中的最大、最小值;
@@ -95,7 +92,7 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
 - "group by ... [having ...]"
   将查询结果按某列or多列的值分组统计，值相等的为一组，一组只能有一个结果;
   having后加条件，过滤组
-  条件中where与group by不共存；连接查询中，where后可以有group by;
+  单条件中where与group by不共存；连接查询中，where后可以有group by;
 - "order by"
   ASC 升序，默认的; DESC 降序;
   order by只可对最终结果排序，嵌套查询的子查询中order by必与top n连用;
@@ -156,30 +153,31 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
 - 操作对象：多个select语句的查询结果，列数必相同，对应项数据类型必相同;
 - 形式：select语句1 集合操作 select语句2
 - 集合操作：
-  union     并，自动默认去重，union all则保留重复;
-  intersect 交;
-  except    差;
+  - union     并，自动默认去重，union all则保留重复;
+  - intersect 交;
+  - except    差;
 
 
-# 数据操纵
+# 数据操纵 DML
 ## 修改数据 
-update 表名 set 列名=表达式 [,列名=表达式...] [where 条件]
+- update 表名 set 列名=表达式 [,列名=表达式...] [where 条件]
 ## 插入数据 
 - 插入行数据（原组）
-insert into 表名 [(属性列1 [,属性列2...])] values (常量1 [,常量2 ...]) [,(常量1 [常量2 ...]) ...]
+  - insert into 表名 [(属性列1 [,属性列2...])] values (常量1 [,常量2 ...]) [,(常量1 [常量2 ...]) ...]
 - 插入子查询结果
 insert into 表名 [(属性列们)] 子查询
   - 复制表数据  select * into 新表名 from 原表名
   - 复制表结构  select * into 新表名 from 原表名 where 一个不存在的条件
 ## 删除数据 
-delete from 表名 [where 条件] 
+- delete [from] 表名 [where 条件] 
 
 
-# 数据定义
+# 数据定义 DDL
 - 关系的模式结构
-  外模式--视图  模式--基本表  内模式--索引、数字字典
+  - 外模式--视图  模式--基本表  内模式--索引、数字字典
+
 ## 数据库 database
-create database 数据库名 
+- create database 数据库名 
   [ON 数据库信息如name,size...]
   [LOG ON 日志信息同上]
 ## 表 table
@@ -221,9 +219,9 @@ drop index 表名 索引名
 create view 视图名 [(列名1 [,列名2 ...])] 
   AS 子查询 [with check option]
 - 删除视图
-drop view 视图名 [cascade]
+  - drop view 视图名 [cascade]
 
-# 数据控制DCL（安全）
+# 数据控制 DCL（安全）
 ## 用户
 - 创建用户
   create user 用户名 identified by 密码
@@ -238,12 +236,12 @@ drop view 视图名 [cascade]
 ## 权限
 不同数据库的角色、权限、有所不同？？
 grant
---GRANT 对象权限 on 对象 TO 用户    
+--GRANT 对象权限 on 对象 TO 用户
 grant select, insert, update, delete on JSQUSER to STUDENT;
  
 --GRANT 系统权限 to 用户
  grant select any table to STUDENT;
-  
+
 --GRANT 角色 TO 用户
  grant connect to STUDENT;--授权connect角色
  grant resource to STUDENT;--授予resource角色
