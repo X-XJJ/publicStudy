@@ -1,4 +1,11 @@
-# C语言编程 相关链接
+# C语言
+## 指针、数组
+- 数组：
+- 指针：
+- 二重指针：
+- 指针函数：
+
+# 相关链接
 [ORACLE的ProC用法讲解](http://blog.sina.com.cn/s/blog_9b0604b40101kueq.html)
 [C语言采用嵌入式方式操作数据库exec_sql](https://wenku.baidu.com/view/ba16df3210a6f524cdbf8522.html)
 

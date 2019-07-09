@@ -24,11 +24,10 @@ yum的不是最新版，有些新特性、功能无法使用，如layout中的�
 - [tmux常用命令](https://www.cnblogs.com/lizhang4/p/7325086.html)
 - [Tmux 速成教程：技巧和调整](https://www.cnblogs.com/maoxiaolv/p/5526602.html)
 
-
 # 命令
 ## shell下or命令模式
 加**前缀**后：
-tmux 命令前缀，如tmux ls，缺省为创建并打开新会话
+tmux为命令前缀，如tmux ls，缺省为创建并打开新会话
   - 底部从左到右为 `[会话名] 窗口序号0:窗口名* 序号1:窗口名 ... 创建时间`
   - * 表当前操作的窗口，会话名默认是自动递增的序号
 
@@ -39,7 +38,6 @@ tmux 命令前缀，如tmux ls，缺省为创建并打开新会话
 - tmux a -t [会话序号？会话名？] = attach-session -t $session-name
   从终端返回已存在的会话
 - tmux a 进入会话列表第一个session
-
 
 - tmux kill-session -t $session-name 关闭会话
 - tmux kill-session -a -t $session-name 关闭除了指定会话之外的所有session
@@ -111,7 +109,7 @@ alias takeover="tmux detach -a"
 Workflow：你可以正常连接到会话中，并且如果你被另一个强制缩小tmux窗口大小的会话干扰的话，可以通过使用takeover来解决这个问题。
 
 
-## 修改默认配置
+# 修改默认配置
 默认配置文件.tmux.conf
 ```
 set -g prefix C-a
