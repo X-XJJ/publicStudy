@@ -275,6 +275,13 @@ end 触发器名;
 [Oracle触发器及使用举例（几种触发器类型）](https://blog.csdn.net/u013882957/article/details/71305347)
 [Oracle-trigger触发器解读](https://blog.csdn.net/yangshangwei/article/details/51586852)
 
+create sequence sqn$table;
+create trigger tgr$table before insert on $table for each row
+begin
+select nvl(:new.id,sqn$table.nextval) into :new.id from dual;
+end;
+select * from 
+drop sequence 序列名;
 
 # 事务和事务级别
 

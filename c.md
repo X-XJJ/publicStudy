@@ -53,11 +53,10 @@ int pclose(FILE *stream);
 ------|------|--------|--------|----
 fgets |读一行 到n-1个字符or换行符|相同的str参数|空指针，str不变|常用语
 
-FILE *filePoint 创建文件句柄
+- FILE *filePoint 创建文件句柄
 
 - 函数声明
 char *fgets(char *str, int n, FILE *stream)
-
 
 # 字符串相关
 ## 高低位存储
@@ -193,6 +192,7 @@ getenv() 获取参数环境变量的内容
 目的：destination → dest
 把src所指向的字符串复制到dest
 
+## 字符串相关
 函数名    |作用               |\0 |函数返回
 ----------|-------------------|---|--------
 strlen()  |取字符串长度       |有取字符串二进制or二进制长度的否？

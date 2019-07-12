@@ -47,7 +47,6 @@ sqlpuls 退格、方向键问题
 - 创建角色，删除角色
 - 角色赋予权限
 
-
 - 查看所有？用户 select * from dba_users/all_users/user_users;
 -
 - select distinct table_name from user_tab_columns; （查看当前user模式下所有表名）
@@ -55,18 +54,21 @@ sqlpuls 退格、方向键问题
 - select name from v$tempfile;查询临时表空间文件的绝对路径
 - select name from v$datafile;查询用户表空间文件的绝对路径
 
+create tablespace 库名 logging datafile '路径如/opt/oracle/app/oradata/库名.dbf' size 1024M;
+create temporary tablespace 库名_TEMP tempfile '路径如/opt/oracle/app/oradata/库名_TEMP.dbf' size 128M;
+
+大小看情况定
+
 [Oracle用户创建及权限设置](https://www.cnblogs.com/buxingzhelyd/p/7865194.html)
 
-create user 用户名 identified by 库名 default tablespace 库名 temporary tablespace 库名_TEMP;
+create user 用户名 identified by 密码 default tablespace 用户默认表空间/库表名 temporary tablespace 库名_TEMP;
 grant all privileges to 库名;
 
 [Oracle创建用户、角色、授权、建表](https://www.cnblogs.com/roger112/p/7685307.html)
 [如何查询oracle用户、权限、及角色](https://blog.csdn.net/lx870576109/article/details/79081621)
 
-create tablespace 库名 logging datafile '路径如/opt/oracle/app/oradata/库名.dbf' size 1024M;
-create temporary tablespace 库名_TEMP tempfile '路径如/opt/oracle/app/oradata/库名_TEMP.dbf' size 128M;
-
-大小看情况定
+- 修改用户密码（是否需要sys权限？）
+- password 用户名 ——修改该用户密码
 
 [SQL*Plus用法指南](https://www.cnblogs.com/itcui/p/5626565.html)
 
