@@ -17,16 +17,16 @@ win7 IIS中 FTP防火墙支持，主机主页里的“支持”可配置，网�
 
 
 # 工具类
-- FileZilla  
+- FileZilla
  - 安装软件，FileZillaServer和FileZillaClient
  - 开源免费，方便高效。Windows自带的用起来真滴麻烦…防火墙配置，主动模式，被动模式……
 
-- FtpUtil  
+- FtpUtil
  - java编程
 ...
 
 - 8ftp
-
+- LeadFTP
 
 # Windows server 2008自带
 虚拟机环境，版本cn_windows_server_2008_datacenter_enterprise_standard_x64_dvd_x14-26746.iso
@@ -92,6 +92,7 @@ win7 IIS中 FTP防火墙支持，主机主页里的“支持”可配置，网�
   - !   从远程ftp服务器暂时进入本地shell
   - exit 从本地shell返回远程ftp
   - 其他远程服务器操作和Linux操作差不多 如dir cd pwd mkdir ls cp等
+  - passive 打开/关闭客户端的pasv模式即被动模式
   - ...
   -
 - cmd中切换用户 `runas /user:username cmd`
@@ -99,7 +100,10 @@ win7 IIS中 FTP防火墙支持，主机主页里的“支持”可配置，网�
 - Linux下命令一致？
 
 ## 主动模式/被动模式
-PASV
+主动-PORT
+被动-PASV
+
+[FTP的主动模式(PORT Mode)及被动模式(Passive Mode)](https://www.cnblogs.com/bkywanly/p/9767246.html)
 
 ## 参考
 - [windows server2008 R2搭建ftp服务器](https://blog.csdn.net/qq_28189423/article/details/82221018)

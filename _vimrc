@@ -59,7 +59,11 @@ language messages zh_CN.utf-8
 "**************************************
 winpos 500 200           "设置初始界面位置
 set lines=31 columns=120 "设置初始界面大小
+<<<<<<< HEAD
 colorscheme desert       "设置配色方案
+=======
+colorscheme desert       "设置默认配色方案
+>>>>>>> temp
 
 set guifont=Consolas:h11:cANSI:qDRAFT "设置字体字号
 
