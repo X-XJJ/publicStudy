@@ -166,6 +166,7 @@ struct typedef{
 - 改进 KMP
 
 # 排序
+
 ## 插入
 - 直接
 - 折半
