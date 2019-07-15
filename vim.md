@@ -201,6 +201,7 @@ range: 单个;  _,_ 范围(eg: 3,5);
 
 :set guifont 查看/设置字体和字号 font字体 gui图形用户界面Graphical User Interface
 :set gfw = :set guifontwide 字体大小
+:colo [方案] = colorscheme 配色方案
 
 ## 文件命令:  
 :f 显示当前文件名
