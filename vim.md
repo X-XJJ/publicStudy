@@ -176,7 +176,7 @@ C-x 当前数字-1
 C-r= 查表达式寄存器
 
 d 删除
-
+C-w 删除
 C-W ??好像无功能
 
 :yank [motion] = :y 复制 eg: :yand 112 复制第112行到复制寄存器0
@@ -203,20 +203,27 @@ range: 单个;  _,_ 范围(eg: 3,5);
 :set gfw = :set guifontwide 字体大小
 :colo [方案] = colorscheme 配色方案
 
-## 文件命令:  
-:f 显示当前文件名
-:open 在缓冲区中打开文件
-:edit = :e 按文件路径读入缓冲区  只有:e则为reload重载当前缓冲区，即刷新当前文件
-    % 活动缓冲区的完整文件路径; :h 修饰符, 保留去除文件名的部分;
-    (eg: :edit %:h<Tab> 将展开为当前文件所在目录路径)
-:find 在path含的所有路径中通过文件名打开文件;  :set path+=目录名/** 匹配该目录下所有子目录, 并添加进path;
-:write = :w 保存文件写入磁盘;  :wall = :wa 保存全部缓冲区并;
-:w filename 另存为 
-:q 离开vim (:wq = ZZ = :x 保存并离开 zz 当前行挪到屏幕中间);  :qall = :qa 关闭全部并离开;
-:h help
-:pwd 打印当前工作目录print working directory
+## 文件命令
+- :f 显示当前文件名
+- :open 在缓冲区中打开文件
+- :edit = :e 按文件路径读入缓冲区  只有:e则为reload重载当前缓冲区，即刷新当前文件
+-     % 活动缓冲区的完整文件路径; :h 修饰符, 保留去除文件名的部分;
+-     (eg: :edit %:h<Tab> 将展开为当前文件所在目录路径)
+- :find 在path含的所有路径中通过文件名打开文件;  :set path+=目录名/** 匹配该目录下所有子目录, 并添加进path;
+- :write = :w 保存文件写入磁盘;  :wall = :wa 保存全部缓冲区并;
+- :w filename 另存为 
+- :q 离开vim (:wq = ZZ = :x 保存并离开 zz 当前行挪到屏幕中间);  :qall = :qa 关闭全部并离开;
+- :h help
+- :pwd 打印当前工作目录print working directory
 
-:set fileencoding [= 编码名] 查看、转换、设置当前文件的编码格式
+- 编码相关
+- :set encoding 缓冲区编码，vim内部运行机制的设定，默认与系统当前locale(现场)相同
+- :set fileencoding 写入文件即保存时的编码，默认vim自动辨别or用encoding值
+- :set termencoding 输出到客户终端(Term)用的编码，默认空，即不转换，远程ssh时多用
+- :edit ++enc=cp936 fileName <==> :e ++enc=cp936 fileName 以gbk方式加载文件
+
+[linux下 vim 打开中文乱码latin1](http://blog.sina.com.cn/s/blog_40e1ba640102wm26.html)
+[让VIM彻底告别乱码](https://blog.csdn.net/smstong/article/details/51279810)
 
 
 ## 缓冲区 buffer

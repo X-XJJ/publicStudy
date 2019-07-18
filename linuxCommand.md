@@ -355,9 +355,10 @@ dev/null 空设备文件
   - 形式`grep pattern [file...]` 打印匹配到的模式的行，文本，正则表达式
   - 如 grep zip 找到输入中所有含zip的行
   - -i 忽略大小写; -v仅输出不匹配的行; 
-- head和tail
-  - 输出文件的前/最后10行
-  - -n 数字 输出文件的前/最后n行; -f 文件名 实时查看监视文件的进展动态，C-c结束监控
+- head、tail
+  - 输出文件的前/最后10行，C-c结束监控
+  - -n 数字 输出文件的前/最后n行
+  - -f 文件名 实时查看监视文件的进展动态
 - tee
   - 从stdin读取数据，同时输出到stdout和文件
   - 文本流形似“T”，读取标准输入，送到标准输出和文件中
@@ -366,9 +367,9 @@ dev/null 空设备文件
 # 文本处理--切割
 cat 连接文件并打印到标准输出
 
-cut 从每一行中移除文本区域
--d 指定分隔符
--f 显示某列
+- cut 从每一行中移除文本区域
+ - -d 指定分隔符
+ - -f 显示某列
 
 mkdir 目录1 [目录2 ...] 创建目录
 - -p 创建多层级目录
@@ -539,16 +540,12 @@ x    |允许文件被执行，脚本文件必同时有r r-x   |允许进入目�
   - 能执行的命令有范围
   - 只验证当前用户自己的密码
 
-- chmod 更改文件模式（权限）
+- chmod 更改文件模式（权限）给当前用户
   - 能使用者：文件所有者&超级用户
-  - -R 权限 文件名
+  - -R 权限 文件名 eg：`chmod 777 *.sh`，`chmod +x *.sh`
   - +权限内容 文件名
 
-linux 下执行.sh文件总是提示permission denied
-如果你是root登陆的话（不是的话，切换到root用户，对*.sh赋可执行的权限） 
-`chmod 777 *.sh`   or   `chmod +x  *.sh`，然后运行就OK了
-
-- chown 更改文件所有者或所属群组
+- chown 更改文件的所有者或所属群组
   - `chown [ower][:[group]] file ...` 把file所有者改为ower，file所属群组改为group组
   - 如 chown bob file 把文件所有者改成bob
   - 如 bob:user 把文件所有者改bob，文件所属群组改user
@@ -641,7 +638,7 @@ jobs 列出所有活动作业的状态信息
 信号名|HUP
 含义|挂起
 
-编号|信号名|含义   
+编号|信号名|含义
 1   |HUP   |挂起，后台进程重启并初始化||
 |2| INT 中断，即C-c
 |9 KILL 杀死，内核直接终止进程，不能忽略，最后的选择
@@ -668,19 +665,28 @@ jobs 列出所有活动作业的状态信息
   -r HH:MM 指定时分重启
   -c 取消计划
 
+- crond 周期服务
+  - 周期执行某种任务or等待处理某些事件的一个守护进程，类似windows计划任务
+  - linux系统默认安装且自启动
+  - service crond restart
+  - chkcofig crond on 设置crond服务为开机自启动
+
 - crontab 定时任务操作
-  - crontab fileName 可将设定存于文件中，使用之设定时程表
+  - 需要crond服务开启，可配置白or黑名单，白/etc/cron.allow，黑/etc/cron.deny，优先级 allow > deny，系统默认只有/etc/cron.deny文件
+  - crontab fileName 读取fileName文件将内容设为时程表中
   - -u user 指定用户user的时程表(需有该用户权限)，缺省默认设定当前用户的
   - -l 列出目前的时程表
-  - -e 编辑目前的时程表，编辑的才生效
+  - -e 编辑目前的时程表，编辑的才生效，保存后任务写入/var/spool/cron/下，用户名区分
   - -r 删除目前的时程表
+  - -i 删除时确认提示
+  - 系统crontab任务配置 /etc/crontab文件，再看再看
   - 时程表格式：`f1 f2 f3 f4 f5 program`
     - f1 分钟，f2 小时，f3 天-一个月中的第几日，f4 月份，f5 一周中的第几天，program 要执行的程序
   - f们的取值：
-    - * 每分钟/小时/... 都要执行
-    - a-b 从第a分钟/小时/...到第b分钟/小时/...都要执行
-    - `*/n` 每n分钟/小时/...个时间间隔执行一次
-    - a,b,c... 第a、b、c...分钟/小时要执行
+    - * 任何时间，每分钟/小时/... 都要执行
+    - - 连续的时间，a-b 从第a分钟/小时/...到第b分钟/小时/...都要执行
+    - , 不连续的时间，a,b,c... 第a、b、c...分钟/小时要执行
+    - / 时间间隔，*/n 每n分钟/小时/...个时间间隔执行一次
   - eg：
     - 0 * * * * /bin/ls 每月每天每小时的第0分钟执行一次/bin/ls
     - 0 6-12/3 * 12 * /usr/bin/backup 在12个月内，每天早6到12点，每隔3小时0分执行一次/usr/bin/backup
@@ -987,8 +993,8 @@ bzip2 块排序文件压缩工具
 ## tar 磁带归档工具
 - tar [-cxtzjvfpPN] 文件与目录 ...
 - tar zcvf 打包后生成的文件名全路径.tar 要打包的目录
-    `tar zcvf Z07-develop.tgz Z07/*`
-- tar zxvf $压缩文件名  解压文件到当前
+  - tar zcvf Z07-develop.tgz Z07/*
+- tar zxvf $压缩文件名 [解压到的目录]
  -c   打包create
  -x   解包
  -t   查看包里的文件 ≈ 使用vim打开压缩文件 可层层查看
@@ -1025,9 +1031,8 @@ rsync 远程文件和目录的同步
 
 其他的估计暂时用不到，再看再看
 
--------------------------------
 
-# 文件系统？
+# linux文件系统
 常用目录|内容         |备注
 --------|-------------|----
 /       |根目录       |/etc /bin /dev /lib /sbin应和根目录放在一个分区
@@ -1079,10 +1084,43 @@ runlevel 查看系统当前运行级别
 # 拓展
 [各种缩写的含义们](https://blog.csdn.net/u013258415/article/details/78852770)
 
-# [用户和用户组](https://www.cnblogs.com/xd502djj/archive/2011/11/23/2260094.html)
+# 用户和用户组
+- useradd 添加用户
+  - -c comment 指定注释描述
+  - -d 指定用户主目录，需提前创建or使用-m同时创建
+    - eg：useradd -d /usr/aaa -m test 创建test用户，同时创建主目录，主目录为/usr/aaa
+  - -g 指定用户所属用户组
+  - -G 指定用户所属的附加组
+    - eg：useradd -s /bin/sh -g user -G adm,root test 创建test用户，其登录shell为/bin/sh，属于user组，同时附加组为adm和root，user是主组
+  - -s 指定用户的登录shell
+  - -u 指定用户的用户号，-o可重复使用其他用户标识号
+-
+- whoami 查看当前登录用户名
+-
+- groupadd 添加组
+-
+- groups userName 查看用户userName所在的组和组内成员，缺省则看当前登录用户的组内成员
+-
+-
+- /etc/passwd 用户账户配置文件
+- /etc/shadow 用户影子口令文件
+- /etc/group 用户组配置文件 /etc/gshadow 用户组影子文件
+- - 格式 用户组名称:用户组密码:GID:用户1,用户2...
+-
+-
+- userdel 删除用户
+- usermod 修改用户账号
+-
+- passwd 指定和修改用户口令
+-
+- linux系统管理工具userconf
+-
+
+
+[用户和用户组](https://www.cnblogs.com/xd502djj/archive/2011/11/23/2260094.html)
 Linux添加/删除用户和用户组
-adduser phpq                             //新建phpq用户
-passwd phpq                               //给phpq用户设置密码
-groupadd test                          //新建test工作组
+adduser phpq  //新建phpq用户
+passwd phpq   //给phpq用户设置密码
+groupadd test //新建test工作组
 
 查看组 group
