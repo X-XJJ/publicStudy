@@ -1,4 +1,3 @@
-
 # sqlplus
 - 登陆sqlplus
   - sqlplus / as sysdba

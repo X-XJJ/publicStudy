@@ -76,102 +76,15 @@
 #!/bin/bash
 arry=(...)
 arry[index]
-
 echo ""
 echo ${#arry[*]}
 ```
+
 - for循环遍历
   - for 和 for in
 - while循环遍历
 - let
 - eg from song
-```
-#!/bin/bash
-#九九乘法表
-#for i in {1..9}
-#do
-#	for ((j=1;j<=i;j++))
-#	do
-#		printf "%-8s" $j*$i=$((j*i))
-#	done
-#	echo
-#done
-
-#for语句示例
-#示例1
-for NUM in {1..20}
-do
-	echo $NUM
-done
-
-#示例2
-for ((i=0;i<=20;i++))
-do
-	#echo $i
-	printf "%d\n" $i
-done
-
-arr1=(1 2 3 4 5)
-arr2=([2]="a b" [5]="c" [8]=4 [10]="soft")
-echo "arr1=${arr1[*]}"
-echo "arr2=${arr2[*]}"
-
-echo "for---------------arr1"
-for ((i=0;i<${#arr1[@]};i++))
-do
-    echo ${arr1[$i]}
-done
-
-echo "for---------------arr2"
-for ((i=0;i<${#arr2[@]};i++))
-do
-    echo ${arr2[$i]}
-done
-
-echo "for-----in--------arr1"
-#通过遍历下标获取数组元素
-for i in ${!arr1[@]}
-do
-	echo ${arr1[$i]}
-done
-
-echo "for-----in--------arr2"
-#通过遍历下标获取数组元素
-for i in ${!arr2[@]}
-do
-	echo ${arr2[$i]}
-done
-
-echo "for-----in--------arr1"
-#直接遍历数组
-for value in "${arr1[@]}"
-do
-	echo $value
-done
-
-echo "for-----in--------arr2"
-#直接遍历数组
-for value in "${arr2[@]}"
-do
-	echo $value
-done
-
-echo "while-------------arr1"
-i=0
-while [ $i -lt ${#arr1[@]} ]
-do
-    echo ${arr1[$i]}
-	let i++   #let用于计算的工具,可以执行一个或多个表达式 let a=1+2
-done
-
-echo "while-------------arr2"
-j=0
-while [ $j -lt ${#arr2[@]} ]
-do
-    echo ${arr1[$j]}
-	let j++   #let用于计算的工具,可以执行一个或多个表达式 let a=1+2
-done
-```
 
 # 编译调试
 gcc.exe 编译C
@@ -187,20 +100,31 @@ gdb.exe 调试程序的debug工具
 gcc 源码文件名 ——默认编译为a.exe
 gcc 源代码文件的名字 -o 编译后程序的名字
 
+## make
 make 维护程序工具，简化gcc -o
+make all
 - make 源码文件名，不用带后缀
-- make 单用，配合makefile文件
+- make 单用，配合makefile文件编译源码，链接，生成目标可执行文件
+- make clean 清除上次make产生的object文件.o，和可执行文件
+- make install 将编译成功的可执行文件安装到系统目录中，如/usr/local/bin/
+- make dist 产生发布软件包文件，distribution package，将可执行文件+相关文件打包为.tar.gz，默认名可在configure.in中的AM_INIT_AUTOMAKE下配置
+- make distcheck 生成发布软件包并对其测试检查，自动解开压缩包后执行configure+make
+- make distclean 删.o和可执行的同时，也删configure的全部文件，包括makefile
+-
+
+## makefile文件
+- 包含一些基本的预定义操作
 
 编译参数 gcc -g  ——与makefile文件内配置
 
-ulimit [-c] 查看段错误文件大小 0即没有
-ulimit -c unlimited 
-
+## gdb工具
 gdb工具需安装yum install -y gdb
 程序运行后，生成core.XXX文件
 gdb zoe core文件名  段错误查看，zoe为程序名
 进入后输入where，显示段错误出现的层次路径位置
 
+ulimit [-c] 查看段错误文件大小 0即没有
+ulimit -c unlimited 
 
 - 2、检查段错误 
 - ulimit -c unlimited
@@ -209,12 +133,10 @@ gdb zoe core文件名  段错误查看，zoe为程序名
 - 进入后where
 关闭ulimit -c 0
 
-
 linker 链接器
 
 ## MinGW-w64
-Minimalist GUN on Windows，将gcc移植到Windows平台
-
+- Minimalist GUN on Windows，将gcc移植到Windows平台
 - 使用make命令，win下修改：
   - 创建gcc.exe的副本cc.exe
   - 创建mingw32-make.exe的副本make.exe
@@ -230,10 +152,8 @@ Minimalist GUN on Windows，将gcc移植到Windows平台
 
 
 # 一些通用的
-
-单行注释 #
-
-复合命令 IF then
+- 单行注释 #
+- 复合命令 IF then
 
 /etc/profile
 /etc/bashrc

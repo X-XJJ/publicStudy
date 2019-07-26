@@ -995,18 +995,18 @@ bzip2 块排序文件压缩工具
 - tar zcvf 打包后生成的文件名全路径.tar 要打包的目录
   - tar zcvf Z07-develop.tgz Z07/*
 - tar zxvf $压缩文件名 [解压到的目录]
- -c   打包create
- -x   解包
- -t   查看包里的文件 ≈ 使用vim打开压缩文件 可层层查看
- -u   更新包
- -v   过程中显示进度过程
- -f   制定文件？使用文档名的时候，f必须在参数末尾
- -z   调用gzip，即同时具有gzip的压缩属性
- -j   调用bzip2
- -r   增加文件
- -tvf 查看压缩包内文件列表
- 错误：unexpected end of file，归档文件中异常的EOF
- 原因：源码包损坏
+  - -c   打包create
+  - -x   解包
+  - -t   查看包里的文件 ≈ 使用vim打开压缩文件 可层层查看
+  - -u   更新包
+  - -v   过程中显示进度过程
+  - -f   制定文件？使用文档名的时候，f必须在参数末尾
+  - -z   调用gzip，即同时具有gzip的压缩属性
+  - -j   调用bzip2
+  - -r   增加文件
+  - -tvf 查看压缩包内文件列表
+- 错误：unexpected end of file，归档文件中异常的EOF
+- 原因：源码包损坏
 
 zip 打包和压缩文件
 unzip

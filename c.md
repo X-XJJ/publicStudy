@@ -208,17 +208,23 @@ strcasecmp()|忽略大小写比较字符串
 strchr()  |查找单字符 strrchr() |反向查找单字符
 strstr()  |查找子串    |？|返回str2在str1中首次出现的地址 否则NULL
 strpbrk() |查找集合内任意字符 其他不常用 strspn strcspn
+strsep()  |分割字符串|改变源字符串
+strtok()  |分割字符串|改变源字符串
+strdupa() |
+strdup()  |
 memcpy()  |按长度复制 不理结束符 基于内存 从存储区str2复制n个字符到存储区str1
 memmove() |
+memcmp()  |
+memncmp？ |
 sprintf() |赋值 格式化输出到str所指向的字符串 会覆盖 即从str数组的第一个元素开始写入新的内容|√|
 sscanf()  |从一个字符串中读进与指定格式相符合的数据，会加\0
----|
+----------|------
 strtod()  |从字符串中转换double类型？
 strtol()  |字符串中传唤long类型？
 atoi()    |字符串→int
 atof()    |字符串→double
 atol()    |字符串→long
----|字符检查
+-字符检查-|-
 isalpha() |是否字母 isupper大写字母 islower小写字母
 isdigit() |是否数字 isxdigit十六进制数字表示的有效字符
 isalnum() |是否字母和数字
@@ -238,6 +244,11 @@ void *memcpy(void *str1, const void *str2, size_t n)
 切割
 比较
 
+### printf()、sprintf()
+- format：%[flags][width][.precision][length]specifier
+- 对于%s，优先级 精度＞宽度
+- 对于%s，精度.precision = 输出字符的最小数目，宽度width = 要输出的最大字符数
+- 文档参考：菜鸟教程
 
 malloc 分配空间，不初始化，分配后内容随机
 [C语言中手把手教你动态内存分配](https://blog.csdn.net/qq_29924041/article/details/54897204)

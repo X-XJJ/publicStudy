@@ -7,7 +7,6 @@ grant dba to testbak;
 
 select * from user_role_privs; 查看当前用户or角色所拥有的角色
 
-
 - 创建测试表test，并插入测试数据
 create table test(name char(4), age number(2));
 ```
@@ -29,7 +28,6 @@ select * from test;
 spool off
 ```
 - 若文件重名，会完全覆盖原内容
-
 - 导出前参数or格式设置
 
 ## 脚本

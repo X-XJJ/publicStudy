@@ -224,6 +224,10 @@ C-W ??好像无功能
 [linux下 vim 打开中文乱码latin1](http://blog.sina.com.cn/s/blog_40e1ba640102wm26.html)
 [让VIM彻底告别乱码](https://blog.csdn.net/smstong/article/details/51279810)
 
+- :xxd 模式 = 十六进制编辑器，以十六进制显示一个文件
+- :%!xxd %表示当前编辑的文件
+- :xxd -r> 将十六进制还原为二进制
+
 
 ## 缓冲区 buffer
 - 显示内容：文件状态 文件名称 光标所在行
