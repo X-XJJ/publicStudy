@@ -85,7 +85,7 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
 - "where 条件表达式" 条件表达式可选格式："having"和where作用相同;
   列名 比较运算符 常量|列名| [any | all](select语句)  --比较;
      [NOT] between 常量|列名| [any|all](select语句) AND 常量|列名| [any|all](select语句)                            --确定范围，between上限and下限;
-     [NOT] IN (值1 ,值2...) | (select语句)          --确定集合;
+     [NOT] IN (值1 ,值2...) | 已在vi方式下，(select语句)          --确定集合;
      IS [NOT] NULL                                  --判断空值;
     [NOT] exists (select语句)                           --是否存在;
     条件表达式1 [AND | OR 条件表达式2 AND|OR ...]       --优先级AND > OR;
