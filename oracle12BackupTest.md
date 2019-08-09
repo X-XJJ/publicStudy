@@ -1,6 +1,5 @@
 # 创建测试用户、表、数据
 使用数据库实例test
-
 - 创建测试用户testbak，口令testbak，并授权
 create user testbak identified by testbak;
 grant dba to testbak;
@@ -31,4 +30,3 @@ spool off
 - 导出前参数or格式设置
 
 ## 脚本
-
