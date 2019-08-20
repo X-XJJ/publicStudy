@@ -219,6 +219,7 @@ g = 1G 跳开头;  G 跳结尾;  /abc 查找字符串abc;  n 查找下一个abc;
  - / 目录名;   @ 链接;  * 程序;  = 套接;  | 管道
 - -h = --human-readable 显示文件大小时，以KMGTPEZY为单位，人可读的方式显示而非字节数，如43M;
   -hl 长格式显示可读结果;
+- -k 以kb显示文件大小
 - -s 显示文件大小，以块为单位
 - -S 按文件大小排序;
   -hlS 长格式大小排序且可读结果;
@@ -229,8 +230,9 @@ g = 1G 跳开头;  G 跳结尾;  /abc 查找字符串abc;  n 查找下一个abc;
 - -c 显示change time
 - -u 显示access time
 - -i 显示文件系统节点号
+- ...
  
-常用 ls -lrt
+常用 ls -lrth
 ls -alF|grep / 列出目录
 ls -alF|grep -v 列出文件
 
@@ -560,6 +562,18 @@ x    |允许文件被执行，脚本文件必同时有r r-x   |允许进入目�
 
 # 进程
 ## ps 列出当前进程运行情况的快照
+- 缺省参数，只显示和当前终端会话相关的进程信息
+- 不加前置连字符“-”的，BSD模式运行ps命令
+  - ps x 显示所有进程信息
+  - ps aux 显示属于每个用户的进程信息
+- -f
+- -L
+- -e 显示全部进程
+- -t 终端
+- -o 项目
+- 常用 ps -ef|grep 进程名，查找进程
+
+
 内容    |不分先后
 --------|--------
 缩写    |PID   |TTY     |TIME         |COMMEND |STAT     |USER  |START
@@ -571,25 +585,7 @@ top其他 |PR |NI |VIRT |RES |SHR |S
 STAT内容|R   |S         |D           |T   |Z   |<       |N
         |运行|可中断睡眠|不可中断睡眠|暂停|僵死|高优先级|低优先级
 + 前台 | 线程 s 领导        >
-
-缩写   |字段含义
--------|--------
-PID    |进程ID       ||%CPU
-TTY    |控制终端     ||
-TIME   |消耗CPU时间和||
-COMMEND|完整命令     ||
-STAT   |state状态    ||
  
-- 缺省参数，只显示和当前终端会话相关的进程信息
-- 不加前置连字符“-”的，BSD模式运行ps命令
-  - ps x 显示所有进程信息
-  - ps aux 显示属于每个用户的进程信息
--f
--L
--e 显示全部进程
--t 终端
--o 项目
-
 
 ## top 实时显示当前所有任务的资源占用情况
 顶部信息|字段示例
@@ -939,12 +935,14 @@ IP Internet protocol, host and domain name 主机名和域名, URI Uniform resou
 telnet 域名:端口号
 如telnet www.baidu.com 1999
 
-使用脚本+telnet
-如
+使用脚本+telnet，如
 (echo "00BCD400{\"checkDate\":\"20190501\"}";sleep 1)|telnet 127.0.0.1 60120
 sleep 60
 发送socket到地址端口
 
+- sleep 将目前动作延迟一段时间
+  - slee number[smhd]
+  - number = 时间长度，后接smhd，s秒，m分钟，h小时，d日数，缺省为秒
 
 ## curl 
 命令行综合传输工具工具，基于URL规则进行数据or文件的传输

@@ -230,7 +230,7 @@ C-W ??好像无功能
 - :pwd 打印当前工作目录print working directory
 
 - 编码相关
-- :set encoding 缓冲区编码，vim内部运行机制的设定，默认与系统当前locale(现场)相同
+ Round-Trip Time，RTT  :set encoding 缓冲区编码，vim内部运行机制的设定，默认与系统当前locale(现场)相同
 - :set fileencoding 写入文件即保存时的编码，默认vim自动辨别or用encoding值
 - :set termencoding 输出到客户终端(Term)用的编码，默认空，即不转换，远程ssh时多用
 - :edit ++enc=cp936 fileName <==> :e ++enc=cp936 fileName 以gbk方式加载文件

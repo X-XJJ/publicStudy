@@ -36,6 +36,11 @@
   - ≈普通模式编辑的，常用的移动、插入都可用（注：cw可以，caw不可以，诸如此类）
 
 # shell脚本
+使用脚本+telnet，如
+(echo "00BCD400{\"checkDate\":\"20190501\"}";sleep 1)|telnet 127.0.0.1 60120
+sleep 60
+发送socket到地址端口
+
 ## 运行
 - 脚本文件 命名无规定规则，带不带后缀都可以，一般为.sh
 - 需要可操作权限 chmod
@@ -172,11 +177,6 @@ linker 链接器
 （找个实例）
 
 
-
-
-
-
-
 # centos7 minimal最小安装
 
 ## 网卡默认禁用
@@ -299,9 +299,4 @@ nameserver=8.8.4.4
 rcnetwork restart   #重启网络
 service network restart #重启网络
 /etc/init.d/network restart #重启网络
-
-
-
-
-
 
