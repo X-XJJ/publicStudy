@@ -100,10 +100,25 @@ win7 IIS中 FTP防火墙支持，主机主页里的“支持”可配置，网�
 - Linux下命令一致？
 
 ## 主动模式/被动模式
-主动-PORT
-被动-PASV
+- ftp服务的两种工作模式，都是基于客户端来说的
+- 主动-PORT
+  - 客户端发请求 →服务端21，建立命令链路
+  - 客户端主动打开xx端口，用port命令告知服务器 →服务器从20请求连接xx，建立数据链路
+- 被动-PASV：
+  - 客户端发请求 →服务端21，建立命令链路
+  - 服务器打开yy端口，用pasv命令告知客户端 →客户端请求连接yy，建立数据链路
+- passive 关闭/开启客户端的PASV方式
+- 可能问题
+  - 227 Entering Passive Mode
+    - 由于服务器上的FTP进行TCP/IP筛选，仅允许特定的端口可以被客户端连接，所以无法使用PASV方式
+    - 解决：客户端登录ftp服务器后，用passive关闭客户端的PASV方式，强制用PORT访问
+  - 229 Entering Extended Passive Mode (|||40862|)
+    - 这里用passive会变成：200 EPRT command successful
+    - 据说原因：目前在suse linux上缺省的ftp client基本上都是lukemftp，连接后出现不能列目录，表现为PASV/PORT模式都无法连接，EPSV4 命令的兼容性问题，有些老的ftp server对EPSV / EPRT 支持存在问题，因此需要执行epsv4关闭这两个命令
+解决：epsv4 off
 
 [FTP的主动模式(PORT Mode)及被动模式(Passive Mode)](https://www.cnblogs.com/bkywanly/p/9767246.html)
+[ftp中遇到的Entering Extended Passive Mode问题(转)](https://my.oschina.net/bigdataer/blog/491104)
 
 ## 参考
 - [windows server2008 R2搭建ftp服务器](https://blog.csdn.net/qq_28189423/article/details/82221018)
