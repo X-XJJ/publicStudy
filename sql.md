@@ -104,7 +104,7 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
   - rownum>=2？order by b
   - ROWNUM是一个序列，是oracle数据库从数据文件或缓冲区中读取数据的顺序
   - 它取得第一条记录则rownum值为1，第二条为2，依次类推。
--
+[Oracle中rownum和row_number()实例介绍](https://www.2cto.com/database/201804/738625.html)
 
 ## 单表查询
 - from子句中只涉及一个表;
@@ -193,10 +193,9 @@ insert into 表名 [(属性列们)] 子查询
 create table 表名(
   列名1 数据类型 [列级完整性约束条件], 列名2 数据类型 [列完整性约束], 
   ...,
-  [表级完整性约束条件]
+  [表级完整性约束]
 )
-  - 数据类型
-    字符类型--如char(n)，数值类型--如int，日期时间型--如date time datetime
+  - 数据类型 字符--如char(n)，数值--如int，日期时间--如date time datetime
   - 表级完整性约束 
     - primary key(主键列名) 只有一个，标识数据库记录唯一性，该列不允许重复且不为空
     - unique (列名) 可有多个，非主键列，不允许重复，允许空，
@@ -204,6 +203,22 @@ create table 表名(
 - 修改基本表
 alter table 表名
   [add 新列名 数据类型 [完整性约束名]]
+  - 只能按顺序排列在后排？调整列顺序呢？
+添加字段：alter table tablename add (column datatype [default value][null/not null],….);
+修改字段：alter table tablename modify (column datatype [default value][null/not null],….);
+删除字段：alter table tablename drop (column);
+添加、修改、删除多列的话，用逗号隔开。
+
+create table test1 (id varchar2(20) not null);
+
+alter table test1 add (name varchar2(30) default ‘无名氏' not null);
+
+alter table test1
+add (name varchar2(30) default ‘无名氏' not null,
+age integer default 22 not null,
+has_money number(9,2)
+);
+
 等等
 
 联合约束
