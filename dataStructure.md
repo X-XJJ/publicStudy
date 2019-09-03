@@ -236,7 +236,7 @@
 ## 插入
 - 直接：顺序比较，插入调序，表L：有序L[l-(i-1)] ~ Li ~ 无序剩余L
 - 折半：折半查找，其余同上
-- 希尔：分割若干子表L[i,i+d,i+2d,...]，子表内使用直接排序
+- 希尔：分割若干子表L[i, i+d, i+2d, ...]，子表内使用直接排序
 ## 交换
 - 冒泡：一趟内两两比较相邻元素，最多n-1趟
 - 快排：平均性能最优
@@ -285,3 +285,29 @@
 # 其他
 ## 筛子算法 Erat osthenes
 最早计算素数个数的算法
+
+# Code
+- 二分查找
+~~~
+int binarySearch(int key, int list[], int n)
+{//key-查找项 n-表长
+    int low, high, mid;
+    low = 0;
+    high = n - 1;
+    while(low <= high)
+    {
+        mid = (low + high)/2;
+        if(x < list[mid])
+            high = mid - 1;
+        else if(x > list[mid])
+            low = mid + 1;
+        else //找到查找项
+            return mid;
+    }
+    return -1;
+}
+~~~
+
+- 希尔排序
+~~~
+~~~
