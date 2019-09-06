@@ -14,6 +14,8 @@
   - 排序算法稳定性
 
 # 线性表
+- 数据表由数据元素组成，数据元素由一个整数or一个实数or一个字符or一个字符串or若干个数据项组成
+	- 数据元素 = 结点 = 记录，数据项 = 字段 = 域，键 = 关键字 = 能唯一标识结点的字段
 - 存储结构：顺序、链式
 - 顺序存储 顺序表
   - 无序O(n)，有序折半O(log(2)(n))，序号O(1)——数组
@@ -29,7 +31,7 @@
 
 # 队列 栈
 - 存储结构：顺序、链式
-- 本质是限定了一定操作的线性表
+- 本质：限定了一定操作的线性表
 - 栈
   - 顺序栈：int top，顺序存储——括号匹配
   - 链栈：head→，链式存储——表达式求值，前中后缀表达式
@@ -282,11 +284,28 @@
   - 睡眠和它的数值不一样大的原因：当数值太小时，误差太大，睡眠的时间不比输出的时间少，那么就会存在不正确的输出结果
   - 利用栈，醒一个入栈一个，出栈可得倒序结果
 
+# 串
+
+
 # 其他
 ## 筛子算法 Erat osthenes
 最早计算素数个数的算法
 
 # Code
+## 线性表
+- 插入x到表长pn的线性表的i位置
+int sq_insert(int list[], int *pn, int i, int x)
+{
+		if(i < 0 || i > *pn) return 1;	//i不在可插范围
+		if(*pn == MAXSIZE) return 2;		//表满
+		for(int j = *pn; j > i; j--)	//倒着挪
+				list[j] = list[j-1];
+		list[j] = x;
+		++(*pn);
+		return 0;
+}
+
+## 查找
 - 二分查找
 ~~~
 int binarySearch(int key, int list[], int n)
@@ -308,6 +327,66 @@ int binarySearch(int key, int list[], int n)
 }
 ~~~
 
+## 排序
+- 直接插入排序
+~~~
+int insertSort(int v[], int n)
+{//n-表长
+		int temp;
+		int i;
+		for(i = 1; i < n; i++)		//i=1 第一个元素已是一个有序子表
+		{
+				if(v[i] < v[i - 1])		//若v[i]<有序子表的末尾最大值 则需要找位置 v[i] 直接插入有序子表
+				{
+						temp = v[i];
+						for(int j = i-1; temp < v[j]; j--)
+						{
+								v[j+1] = v[j];		//有序子表向后挪位
+						}
+						v[j+1] = temp;		//找到 temp > v[j] 的位置 插入 temp 到 v[j] 后 
+				}
+		}
+}
+
+~~~
+
+- 交换排序
+~~~
+~~~
+
 - 希尔排序
 ~~~
+int shellSort(int v[], int n)
+{
+		int i,temp;
+		int dk;  //dk-元素间隔
+		
+		//控制步长间隔递减
+		for(dk = n/2; dk > 0 ;dk /= 2）
+		{
+				//划分希尔子表 [i-dk,i,i+dk,i+2dk,...] 即[j,j+dk,j+2dk,...]
+				for(i = dk; i < n; i++)
+				{
+						//1 子表排序使用 直接插入排序
+						if(v[i] < v[i - dk]
+						{
+								temp = v[i];
+								for(int j = i - dk; temp < v[j]; j -= dk)
+								{
+										v[j+dk] = v[j];
+								}
+								v[j+dk] = temp;
+						}
+						
+						//2 子表排序使用 有序子表的交换排序???
+						for(int j = i-dk; (j >= 0) && (v[j] > v[j+dk]); j -= dk)
+						{
+								temp = v[j];
+								v[j] = v[j+dk];
+								v[j+dk] = temp;
+						}
+				}
+		}
+}
 ~~~
+
