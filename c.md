@@ -40,13 +40,12 @@
 ## 数据类型、大小
 - 基本数据类型
   - int：带符号整数
-    - 通常16位or32位（具体看机器字长），取值 (-2^15) ~ (2^15 - 1)，即 -32768 ~ 32767
-    - 至少16位
+    - 通常16位or32位（具体看机器字长），至少16位，取值 (-2^15) ~ (2^15 - 1)，即 -32768 ~ 32767
   - float：带符号浮点型
     - 通常32位，至少6位有效数字，取值 10^(-38) ~ 10^38
   - char：字符型
-    - 一个字节=8位
-  - double：双精度浮点型
+    - 通常8位 = 一个字节
+  - double：双精度浮点型，位数？
 - 用于整型int的限定词，声明中int可省略
   - short：短整型 = short int，至少16位，小于具体int
   - long：长整型 = long int，至少32位，大于具体int
@@ -59,6 +58,7 @@
     - 如 若char为8bit，unsigned char值域0~255，signed char值域-128~127（机器采用二进制补码）
   - 没限定的char是否有符号取决于具体机器
   - 可打印字符必为正值
+- 综上一般，单个字节为char，双字节单元可当做一个short型整数，连续4字节可构成一个long型整数
 - 标准头文件 <limits.h> <float.h>，包含具体及其和编译器相关的所有大小特性的符号常量
 ## 常量、变量
 - 程序处理的基本数据对象：变量，常量
@@ -154,13 +154,13 @@
     ~~~
     #include<iostream>
     using namespace std;
-    int main(){
-        int a = 10; int b = 0;
-        cout << "a:" << a << "，a的逻辑反是：" << !a << endl;
-        cout << "b:" << b << "，b的逻辑反是：" << !b << endl;
-        cout << "a:" << a << "，a的位反是：" << ~a << endl;
-        cout << "b:" << b << "，b的位反是：" << ~b << endl;
-        return 0;
+    int main() {
+      int a = 10; int b = 0;
+      cout << "a:" << a << "，a的逻辑反是：" << !a << endl;
+      cout << "b:" << b << "，b的逻辑反是：" << !b << endl;
+      cout << "a:" << a << "，a的位反是：" << ~a << endl;
+      cout << "b:" << b << "，b的位反是：" << ~b << endl;
+      return 0;
     }//from https://blog.csdn.net/liuweiyuxiang/article/details/85853958
     ~~~
 - 按位运算符：& | ^ << >> ~
@@ -178,20 +178,20 @@
   - 取反 ~ 1变0，0变1，每个比特位依次变换
     - 如 x = x & ~077，将x的最后6位设为0，先将077取反得111 000 000，x与 ~077的字长无关，比直接 x & 0177700等形式可移植性更好，后者假定x为16bit
   - 例 getbits(x,p,n)，返回x中从位置p起往小数n个比特位（已右对齐），假定位置0为右端的比特位，np合理正值，getbit(x,4,3)返回位置为4、3、2的（并经过了右对齐的）比特位
-     ~~~
-     /* getbits：获取从位置p起始的n个比特位 */
-     unsigned getbits(unsigned x, int p, int n)
-     { return (x >> (p+1-n)) & ~(~0 << n); }
-     ~~~
+    ~~~
+    /* getbits：获取从位置p起始的n个比特位 */
+    unsigned getbits(unsigned x, int p, int n)
+    { return (x >> (p+1-n)) & ~(~0 << n); }
+    ~~~
   - 表达式 x >> (p+1-n) 将所需位段移动到字的右端；~0是比特值全为1的数，然后左移n位，将右边的n个比特位设置为0，后用~取反得到右n个比特位为1的掩码 
 - 三元运算符：expr1 ? expr2 : expr3
   - 用于写条件表达式，若expr1和expr2不同类型，则都按宽的转换
   - 若表达式expr1求值为真（非0值），则求expr2的值并作为整个条件表达式的值；若expr1为假，则求expr3并作为最终结果
   - 如 求a与b的最大值 z = (a > b) ? a : b;
   - 打印数组中的 n 个元素， 每10个元素一行，各列用一个空格分开，并且每行（包括后一行）以换行符结束
-     ~~~
-     for (i = 0; i < n; i++)
-     printf(“%6d%c”, a[i], (i%10==9 || i==n-1) ? ‘\n’ : ‘ ’);
+    ~~~
+    for (i = 0; i < n; i++)
+    printf(“%6d%c”, a[i], (i%10==9 || i==n-1) ? ‘\n’ : ‘ ’);
 - 逗号运算符：,
 	- 逗号分开的一对表达式，从左到右求职，结果的类型和值和右操作数相同
 	- 常用在for()中设置多个表达式 ≠ 函数参数、声明中的逗号分隔符
@@ -199,16 +199,18 @@
     #include <string.h>
     int reverse(char s[])
     {// 颠倒字符串
-    		char temp;
-    		int i,j;
-    		for(i = 0, j = strlen(s) - 1; i < j; i++, j--)
-    		{
-    				temp = s[i];
-    				s[i] = s[j];
-    				s[j] = temp;
-    		}
+    	char temp;
+    	int i,j;
+    	for(i = 0, j = strlen(s) - 1; i < j; i++, j--)
+    	{
+    		temp = s[i];
+    		s[i] = s[j];
+    		s[j] = temp;
+    	}
     }
     ~~~
+- 取地址运算符：& 一元，只能用于内存中的对象（变量、数组元素），不能用于表达式、常量
+- 间接indirection/解引用dereferencing运算符：* 一元，当用于指针时，为访问此指针所指向的对象
 - 优先级
   - 从上到下优先级依次降低↓，不标大于默认同级，不标结合律默认从左到右，左→右
     - `() [] -> .`
@@ -252,23 +254,23 @@
     case '0':
     case '1':
     case '2':
-        i++;
-        break;
+       i++;
+       break;
     ~~~
 - for(expr1; expr2; expr3) 顶部测试循环，若无表达式，则穿越；expr2若空，则视为永真
 	~~~
 	include <ctype.h>
 	int atoi(char s[])
 	{//将字符串s转换为整数 ??? 字符串s可能=空白符+正负符号+数字字符+其他字符
-			int i,n,sign;
-			for(i = 0; isspace(s[i]); i++)	//空白符跳过
-					;
-			sign = (s[i] == '-') ? -1 : 1;	//判断符号正负 正的正号可能有可能没有 负数则s[i]会为负号
-			if(s[i] == '+' || s[i] == '-')	//如果有符号则跳过
-					i++;
-			for(n = 0; isdigit(s[i]); i++)	//处理符号后的字符 数字转换 遇到第一个非数字结束
-					n = n * 10 + (s[i] - '0');	//顺序求每一位的个位值 在求到下一个数时 前面的数乘10进位
-			return sign * n;
+		int i,n,sign;
+		for(i = 0; isspace(s[i]); i++)	//空白符跳过
+				;
+		sign = (s[i] == '-') ? -1 : 1;	//判断符号正负 正的正号可能有可能没有 负数则s[i]会为负号
+		if(s[i] == '+' || s[i] == '-')	//如果有符号则跳过
+				i++;
+		for(n = 0; isdigit(s[i]); i++)	//处理符号后的字符 数字转换 遇到第一个非数字结束
+				n = n * 10 + (s[i] - '0');	//顺序求每一位的个位值 在求到下一个数时 前面的数乘10进位
+		return sign * n;
 	}
 	~~~
 - while() 顶部测试循环，先判断再运行
@@ -276,19 +278,19 @@
 	~~~
 	void itoa(int n, char s[])
 	{//将整数a转换为字符串放入s
-			int i,sign;
-			if((sign = n) < 0)	//sign记录符号正负
-					n = -n;		//处理负号 用正数进行转换
-			i = 0;
-			do {
-					s[i] = n % 10 + '0';	//反向次序生成数字 得到个位-十位...
-					++i;
-			}while((n /= 10) > 0);		//进入下一个进位求数字
-			if(sign < 0)
-					s[i] = '-';
-			s[i+1] = '\0';
-			reserve(s);		//反转字符串
-			
+		int i,sign;
+		if((sign = n) < 0)	//sign记录符号正负
+				n = -n;		//处理负号 用正数进行转换
+		i = 0;
+		do {
+				s[i] = n % 10 + '0';	//反向次序生成数字 得到个位-十位...
+				++i;
+		}while((n /= 10) > 0);		//进入下一个进位求数字
+		if(sign < 0)
+				s[i] = '-';
+		s[i+1] = '\0';
+		reserve(s);		//反转字符串
+		return;
 	}
 	~~~
 - break和continue
@@ -296,14 +298,14 @@
 	~~~
 	int trim(char s[])
 	{//删除字符串末尾的空格 制表符 换行符
-			int n;
-			for(n = strlen(s) -1; n >= 0; n--)
-			{
-					if(; s[n] != ' ' && s[n] != '\t' && s[n] != '\n'; )
-							break;
-			}
-			s[n+1] = '\0';
-			return n;
+		int n;
+		for(n = strlen(s) -1; n >= 0; n--)
+		{
+				if(; s[n] != ' ' && s[n] != '\t' && s[n] != '\n'; )
+						break;
+		}
+		s[n+1] = '\0';
+		return n;
 	}
 	~~~
 	- continue，停止本轮for、while、do，开始下一轮，for注意会正常递增
@@ -332,6 +334,7 @@
 		声明和语句
 }
 ~~~
+- C语言函数，按值传参，没有直接途径可以让被调函数改变调用者函数的变量，可通过指针修改
 - 返回类型若省略，默认为int；函数名、()、{}不可省略
 - 设计程序：将输入中包含特定“模式”or字符串的各行打印出来（具体P58，容后再敲）
 	~~~
@@ -340,16 +343,16 @@
 			打印该行							——printf()
 	int strindex(char s[],char t[])
 	{
-			int i,j;
-			for(i = 0; s[i] != '\0'; i++)
-			{
-					int k;
-					for(j = i,k = 0; t[k] == s[j] %% t[k] != '\0'; j++, k++)
-							;
-					if(k > 0 && t[k] == '\0')	//想想一半相同的情况 当配对成功 k是从0自增 当然应该满足t[k]=='\0' 且k=strlen(t)
-							return i;
-			}
-			return -1;
+		int i,j;
+		for(i = 0; s[i] != '\0'; i++)
+		{
+				int k;
+				for(j = i,k = 0; t[k] == s[j] %% t[k] != '\0'; j++, k++)
+						;
+				if(k > 0 && t[k] == '\0')	//想想一半相同的情况 当配对成功 k是从0自增 当然应该满足t[k]=='\0' 且k=strlen(t)
+						return i;
+		}
+		return -1;
 	}
 	~~~
 - 不同系统对存在多个源文件里的C程序，编译、加载机制互有差别
@@ -361,24 +364,24 @@
 	~~~
 	double atof(char s[])
 	{	//val记录去掉小数点的数 power记录小数点位数 最后相除恢复小数位
-			double val,power;	
-			int i,sign;
-			for(i = 0; isspace(s[i]); i++)
-					;	//略过空白符
-			sign = （s[i] == '-') ? -1 : 1;	//判断并记录符号正负
-			if(s[i] == '+' || s[i] == '-')	//跳过可能存在的+-号
-					i++;
-			for(val = 0.0; isdigit(s[i]); i++)	//遇到第一个非数字即退出 正常即遇到小数点则退出
-					val = 10.0 * val + （s[i] - '0');
-			if(s[i] == '.')	//找到小数点
-					i++;
-			for(power = 1.0; isdigit(s[i]); i++)
-			{
-					val = 10.0 * val + (s[i] - '0');
-					power *= 10.0;
-			}
-			val = val / power;
-			return sign * val;
+		double val,power;	
+		int i,sign;
+		for(i = 0; isspace(s[i]); i++)
+				;	//略过空白符
+		sign = （s[i] == '-') ? -1 : 1;	//判断并记录符号正负
+		if(s[i] == '+' || s[i] == '-')	//跳过可能存在的+-号
+				i++;
+		for(val = 0.0; isdigit(s[i]); i++)	//遇到第一个非数字即退出 正常即遇到小数点则退出
+				val = 10.0 * val + （s[i] - '0');
+		if(s[i] == '.')	//找到小数点
+				i++;
+		for(power = 1.0; isdigit(s[i]); i++)
+		{
+				val = 10.0 * val + (s[i] - '0');
+				power *= 10.0;
+		}
+		val = val / power;
+		return sign * val;
 	}
 	~~~
 - 外部变量
@@ -413,8 +416,8 @@ double val[MAXVAL];	//存放值的栈
 
 int main()
 {
-		char s[MAXOP];
-		double op2;	//数值操作数
+	char s[MAXOP];
+	double op2;	//数值操作数
 }
 
 int getop(char s[])
@@ -423,7 +426,7 @@ int getop(char s[])
 
 double pop(void)
 {
-		if
+	if
 }
 ~~~
 - 作用域规则
@@ -460,12 +463,426 @@ double pop(void)
 	- 没有显式初始化时，外部变量、静态变量默认被初始化为0，自动变量、寄存器变量是未定义的无用数据初值
 	- 显式初始化
 		- `类型 变量名 = 表达式;`，如 int x = 1; char = '\0'; long msday = 1000L * 60L * 24L;
-		- extern型、static型：初始化值必为常亮表达式，只进行一次，在程序开始执行前完成
-		- 内部变量、register型：每次进入其所在函数or程序块时都会初始化
-
-
+		- extern型、static型：初始化值必为常量表达式，只进行一次，在程序开始执行前完成
+		- 内部变量、register型：初始化可为包含任意已定义值、包括函数调用的表达式，每次进入其所在函数or程序块时都会初始化
+		- 数组：{}内一系列逗号分隔的初始值，包含n个连续对象的“整块”
+			- int days[] = {31,28,31,30,31}; int days[5]; int days[5] = {1,1,2,3,4};
+			- char pattern[] = {'o','u','l','d','\0'}; <=> char pattern[] = "ould";（字符数组能""是特例）,数组大小为5
+			- 数组大小缺省，则自动统计{}内的个数为数组长度
+			- 不能指定单个初始化值对多个数组元素的初始化，也不能跳过前面的对数组中间元素初始化
+- 递归：直接or间接地调用它自己
+	- 每次调用将得到一个新的全部内部变量的集合，与之前调用获得的变量集合彼此独立
+	~~~
+	void printd(int n)
+	{	//递归将n按十进制数 以字符格式进行打印 处理最大负数时会有错
+		if(n < 0) {
+			putchar('-');
+			n = -n;
+		}
+		int a = n / 10;	//n 去掉最低位 往前退一位 234退为23.4 得到23
+		if(a != 0)
+			printd(a);	//打印 n 去掉最低位后的数 23
+		int b = n % 10;	//n 最低位前的数都打印完 获得 n 的最低位 4
+		putchar(b + '0');
+		return;
+	}
+	~~~
+- C 预处理器
+	- 预处理：编译过程中单独执行的第一个步骤
+	- 最常用特性：#include #define
+	- 文件包含 #include：在编译过程中包含某个文件的内容
+		- 形式：`#include<文件名>` 或 `#include "文件名"`，该行将被替换为由文件名指定的文件内容
+		- <> 通常按C语言的具体实现所定义的规则查找文件
+		- "" 通常从包含该文件的源程序所存放的位置查找，若没找到，范围扩大到<>
+		- 被包含的内容不一定全都以文件的形式存在，头文件的访问方式依赖于具体实现
+		- 当某个包含文件发生变化，所有依赖于它的文件都必须重新编译
+	- 宏替换 #define：以任意设定的字符序列替代一个标记
+		- 形式：`#define 名字 替换文本`，`#undef 名字` 取消名字的宏定义
+		- 名字形式和变量名相同，替换文本任意、可带参数、用括号确保求值的既定顺序
+			- 如 #define max(A,B) ((A) > (B) ? A : B)，使用时 x=max(p+q.r+s); 将扩为 x = ((p+q) > (r+s) ? (p+q) : (r+s));
+		- 替换文本中，带 # 的形参将被扩展为带""的字符串，""中的内容不变
+			- 如 #define dprint(expr) printf(#expr "=%g\n",expr)，使用时 dprit(x/y); 将扩为 printf("x/y" "=%g\n",x/y);
+			- 且两个字符串是相连的，效果 <=> printf("x/y =%g\n",x/y);
+	- 预处理器操作符`##`：拼接实参
+		- 与 ## 相邻的形参会被换为对应不变的实参，且##和周边的空白符都会移除
+			- 如 #define paste(front,back) front ## back，使用时 paste(name1,2); 将创建出标记 name12
+		- 嵌套使用##
+	- 条件包含
+		- 预处理可通过在预处理过程中求值的条件语句来进行控制，根据编译过程中的条件取值，来选择性地包含代码
+		- 整形常量表达式求值：#if ... #else、#elif、#endif，按条件执行包含其中的代码，类似if-else
+			- 表达式中不能有sizeof、强制类型转换、枚举常量，如果表达式≠0
+			- 常用表达式 defined(名字)，如果名字已经被定义，则表达式 = 1，未定义则表达式 = 0
+			- 专用测试名字是否被定义的语句：#ifdef-已定义则， #ifndef-未定义则
+			~~~
+			#if SYSTEM == SYSV	//通过检测名字SYSTEM来决定包含的头文件版本
+				#define HDR "sysv.h"
+			#elif SYSTEM == BSD
+				#define HDR "bsd.h"
+			#elif SYSTEM == MSDOS
+				#define HDR "msdos.h"
+			#else
+				#define HDR "default.h"
+			#endif
+			#include HDR
+			~~~
+			~~~
+			#if !defined(HDR)	//确保文件hdr.h只会被包含一次 #if !defined(HDR) <=> #ifndef HDR
+			#define HDR
+			/*这里放hdr.h的内容*/
+			#endif
+			~~~
 
 # 指针与数组
+- 指针
+	- 指针是存放某个变量的地址的变量，通用指针类型 void * 为空指针，可用于保存任意类型指针，但无法解引用自身
+	- 声明指针：`类型关键字 *指针变量名` 指针大小为能够存放一个地址的存储单元组（一般2字节或4字节）
+	- 取地址运算符 &，如 p = &c; 将c的地址赋给p，即 p指向c，用于内存中变量、数组元素，而如数组名、函数名已表地址，则不需用&符
+	- 访问指针所指向的变量：*，如 int d = *p，间接/解引用运算
+	- 直接使用指针变量：如 q = p; 将p内容赋给q，即q也指向了p所指向的对象
+	~~~
+	int x = 1, y = 2, z[10];
+	int *ip;	//ip是指向int型的指针 表达式*ip是一个int型数
+	ip = &x;	//ip指向x x的地址赋给ip 变ip之前任何出现x的地方都能用*ip替换
+	y = *ip;	//y变1 取ip指向的变量 赋给y
+	*ip = 0;	//x变0 将0赋给ip指向的变量
+	ip = &z[0];	//ip指向z[0] ip存z[0]的地址值 <=> ip = z;
+	~~~
+- 指针与函数参数
+	- 调用者传递需要修改的变量的指针
+	~~~
+	使用时：swap(&a, &b);	//实参是变量的地址 即指向变量的指针的值
+	void swap(int *px, int *py)	//互换*px与*py 形参声明为指针类型
+	{
+		int temp;
+		temp = *px; *px = *py; *py = temp; return;
+	}
+	//转换输入的任意格式字符流 分解为整数 一次调用得到一个整数
+	#include<ctype.h>
+	int getch(void); void ungetch(int);
+	int getint(int *pn)	//getint()获得输入中的整数并放入 *pn 中
+	{
+		int c, sign;
+		while(isspace(c = getch()))	//检查空白符并略过
+			;
+		if(isdigit(c) && c != EOF && c!='*' && c!='-')	//检查是否其他非数字字符
+		{
+			ungetch(c);
+			return 0;
+		}
+		sign = (c == '-') ? -1 : 1;	//记录正负
+		if(c == '-' || c == '+')	//去掉可能有的正负号
+			c = getch(c);
+		for(*pn = 0; isdigit(c); c = getch())
+			*pn = (*pn) * 10 + (c - '0');	//从高位到低位 累加到*pn
+		*pn *= sign;
+		if(c != EOF)
+			ungetch(c);
+		return c;
+	}
+	~~~
+- 指针和数组
+	- 数组：一组包含了n个连续对象的“整块”，对象们的地址是连续递增的，下标找具体元素
+		- 例 int a[10]; int *pa;
+		- 数组变量or表达式的值是数组下标为0的元素地址
+			- pa = &a[0]; <=> pa = a; int x = *pa; 将a[0]值赋给x
+		- 指针的算术运算均表示将指针指向指针的上/下的第i个对象
+			- 若 pa 指向数组中某具体元素，则 pa+i 指向其后的第i个元素，pa-i 指向其之前的第i个元素，*(pa±i)为对应元素的值
+			- 如 pa = &a[1]; pa+1即为a[2]的地址，*(pa+1)为a[2]的值，而具体地址值增加多少，取决于a[]类型，如int型一次加4字节
+		- “数组 + 下标”表达式 <=> “指针 + 偏移”表达式
+			- 取值 a[i] <=> *(a+i)
+			- 取地址 &a[i] <=> a+i <=> &(*(a+i))
+			- 指针+下标 pa[i] <=> *(pa+i) 即将指针当做某个数组的首地址
+	- 区别：指针为变量，可以做运算、赋值等，如pa = a; pa++;等，数组名不是变量，不可这样哦
+	- 函数参数中，数组名参数 = 一个指针，即一个存放地址的变量，∵将数组名传给函数时，传的也是起始元素的地址
+		- 作为函数定义的形参，int f(char s[]){...} <=> int f(char *s){...}
+		- 如a[10]，有 f(a[2]) <=> f(a+2) 均为向函数f传递以a[2]作为起始地址的部分数组
+		~~~
+		int strlen(char *s)	//返回字符串s的长度
+		{
+			int n;
+			for(n = 0; *s != '\0'; s++)	n++;	//递增指针s 即指针指向下一个元素 对调用者的字符串s无影响
+			return n;
+		}	//可使用：strlen("dd s!"); strlen(array); strlen(ptr); 其中 char array[100]; char *ptr;
+		~~~
+- 地址运算
+	- 指针和整数不能互换（即互相赋值），0值除外，零值常用符号常量NULL表示，指针可以和NULL进行赋值和比较
+	- 指针和整数可以加减，如 p+1
+	- 指向属于同一数组的元素的指针之间可加减比较，如p<q，则 q - p + 1 = 从p到q的元素数量
+	~~~
+	size_t strlen(char *s)	//返回字符串s的长度 size_t是由sizeof运算符返回的无符号整数类型 与标准库strlen一致
+	{
+		char *p = s;
+		while(*p != '\0') p++;	//统计p前进步数 与使用int n比较 字符串中数字太大可能n容不下
+		return p - s;
+	}
+	~~~
+	- 没有指向同一个数组的指针之间，比较or运算的行为是未定义的，除了超过数组末尾的第一个元素？？
+	- 指针、数组、地址运算整合在一起，如下 初级存储分配器
+		- alloc(n) 返回指针p，p指向连续的n个字符空间，该空间可被alloc的调用者用于存放字符
+		- afree(p) 释放用alloc申请的存储，使之能被重新申请使用，他们管理的存储为栈，afree必须在和alloc调用顺序相反
+		- 标准库提供 malloc 和 free 无限制，在后
+		- alloc管理一个较大的字符数组allocbuf[]，指针allocp指向第一个空闲元素，allocbuf可对外隐藏
+	~~~
+	#define ALLOCSIZE 10000	//可用空间大小
+	static char allocbuf[ALLOCSIZE];	//用于分配的存储
+	static char *allocp = allocbuf;	//管理游标初始指向第一个空闲位
+	char *alloc(int n)
+	{
+		int i = allocbuf + ALLOCSIZE - allocp;	//计算当前空闲空间大小
+		if(i >= n)
+		{
+			allocp += n;
+			return allocp - n;	//返回指向分配好的整段字符起始位置的指针
+		}
+		else return 0;	//C语言中 0值绝对不是有效的数据地址 可用于表异常
+	}
+	void afree(char *p)
+	{	//判断是否是已分配过的空间 p是要释放的起始地址
+		if(p > allocbuf && p < allocbuf + ALLOCSIZE)
+			allocp = p;
+		return;
+	}
+	~~~
+	- 综上，有效的指针运算包括：
+		- *同类型的*指针，相互赋值
+		- *指针和整数之间*加减（不是指针和指针）
+		- *指向同一数组元素的*指针相比较、加减
+		- 指针赋零、与零值比较
+- 字符指针与函数
+	- 字符串常量 = 一个字符数组，如`"hello world!"`，C语言没有将字符串作为一个单元处理的操作
+	- 以'\0'结尾，存储长度 = 字符串长度 + 1，strlen()返回存储长度，下标范围 0~字符串长度
+	- 一般来说，字符串常量通过其第一个元素的指针访问，如 传入函数时，其实传入了字符串的起始地址
+		- 如 char *pmassage; pmessage = "now is"; 将字符串数组的指针赋值给pmessage≠拷贝字符串
+		- char message[] = "now is"; 是初始化数组，数组存字符串 char *pmessage = "now is"; 是初始化指针指向字符串
+		~~~
+		//简单版复制字符串t到s中
+		void strcpy(char *s, char *t)
+		{
+			//数组下标版
+			int i = 0;
+			while((s[i] = t[i]) != '\0')	i++;
+			
+			//指针版
+			while((*s = *t) != '\0')	//while()中只判断了表达式是否为零 != 可省略 
+			{ s++; t++;}
+			
+			//更简化版
+			while(*s++ = *t++)	;	//在*t对*s先赋值后 他俩才进行自增 一元*和++同优先级 且从右到左 但++在后缀位 ∴先计算再自增
+			
+			return;
+		}
+		//简单版比较字符串s和t s<t返回负 s=t返回零 s>t返回正 返回值=s和t第一个不同字符的差值
+		int strcmp(char *s, char *t)
+		{
+			int i;
+			for(i = 0; s[i] == t[i]; i++)
+				if(s[i] == '\0') return 0;
+			return s[i] - t[i];
+		}
+		~~~
+- 指针数组、指向指针的指针
+	- 数组里存放的是一堆指针变量，如 int *parray[10]; 其中parray[i]是一个整型指针，*parray[i]是其指向的整数
+	- 如 将文本行按字母排序（UNIX程序中sort去掉其他功能的版本）
+	- 处理变长文本行，指针数组内，存放每一行的首字符指针（即传入首字符），乱序的行交换时不换文本行，只换数组中的指针顺序
+	~~~
+	p86
+	#include<stdio.h>
+	#include<string.h>
+	#define MAXLINES 5000	//能被排序的最大行数
+	char *lineptr[MAXLINES];	//声明指向文本行的指针数组 数组名是lineptr char*表示类型是字符型指针 
+	int readlines(char *lineptr[], int nlines);	//读入输入的所有文本行：收集和保存每一行字符，并建立指向这些行的指针数组，累计输入行数
+	void writelines(char *lineptr[], int nlines);	//按序输出行
+	void qsort(char *lineptr[], int low, int high);	//排序 算法选择快排
+	void swap(char *v[], int i, int j);
+	...容后补
+	输出时 while + printf("%s\n",lineptr[i]); <=> printf("%s\n",*lineptr++);
+	~~~
+- 多维数组
+	- 矩形多维数组（二维数组），如 char daytab[2][13] = {{0,31,28,31}, {0,31,29,31}}; 表示闰年和平年的月份天数 首位为0天
+	- C中二维数组存储的本质其实是一维数组，其每个元素都是一个数组，下标表示为 daytab[i][j]，即[行][列]
+		- [行]即传递数组行的指针，[列]指向具体对象
+	- 元素按行存放，数组以一列{}的初始值进行初始化，二维数组的各行用对应的子列初始化
+	- 二位数组做函数的形参，必须传递列数，行数无所谓
+		- 如 f(int daytab[2][13){} <=> f(int daytab[][13]){} <=> f(int (*daytab)[13]){}
+		- 参数是指向包含13个int的数组对象的指针，第三个表示参数是指针，该指针指向包含13个整数的数组
+		- 而 int *daytab[13] 则为 包含13个整数指针的数组
+	- 一般地，只有数组的第一维（下标）可以不指定，其他维度都必须指定大小
+	~~~
+	//将月/日month day转换为一年的第几天
+	static char daytab[2][13] = {{0, 31, 28, 31},{0, 31, 28, 31}};	//这里略了没写全 就是天数全部显示初始化 外部变量
+	int day_of_year(int year, int month, int day)
+	{
+		int i, leap;	//leap判断闰年 逻辑表达式真-即1闰年 假即0平年
+		leap = year%4 == 0 && year%100 != 0 || year%400 == 0;
+		for(i = 0; i < month; i++)
+			day += daytab[leap][i];
+		return day;
+	}
+	//将一年的第几天yearday转换为月/日
+	void month_day(int year, int yearday, int *pmonth, int *pday)
+	{
+		int i, leap;
+		leap = year%4 == 0 && year%100 != 0 || year%400 == 0;
+		for(i = 1; yearday > daytab[leap][i]; i++)
+			yearday -= daytab[leap][i];
+		*pmonth = i;
+		*pday = yearday;
+		return;
+	}
+	~~~
+- 指针数组的初始化
+	- 如使用字符串初始化字符指针数组，多个字符串，每个字符串被分配到数组中的相应位置
+	- 第i个字符串被放在某处，name[i]中存放指向第i个字符串的指针
+	~~~
+	char *month_name(int n)	//返回包含第n月的月份名的字符串
+	{
+		static char *name[] = {"Illegal month", "January", "February", "March"};
+		return (n > 1|| n <12) ? name[0] : name[n];
+	}
+	~~~
+- 指针和多维数组的比较
+	- 二维数组≠指针数组
+		- 如 int a[10][20]; 和 int *b[10];
+		- a 是二位数组，已经分配预留出200个int的空间，使用 20x行+列 得到元素 a[行][列]
+		- b 是指针数组，只分配了10个指针的空间大小，且未初始化，每个指针指向的行可以不定长甚至无元素，初始化时分配空间
+		- （初始化必须显示完成，通过静态分配or代码进行）
+	- 指针数组常用于存放长度各异的字符串
+		- 如 static char *name[] = {"Illegal month", "Jan", "Feb", "Mar"}; 只有指针连续存储 具体元素存储地址不一定连续
+		- 和 static char *name[][15] = {"Illegal month", "Jan", "Feb", "Mar"}; 整体连续存储 每行空间定长
+- 命令行参数
+	- 在程序开始执行时，传递命令行参数，由main()传递，main(int argc,char *argv[])
+	- 按常规，argv[0] = 被调用程序的名字/命令行参数，后面是可选参数argv[1]~argv[argc-1]，要求argv[argc]=NULL，参数个数 argc≥1
+		- 如 echo hello,world 将命令行参数用空格分隔，可选参数回显在一行上（空格分隔echo和后面的）
+		- 此时，argc为3，a[0]为`echo\0`，可选参数a[1]为`hello,\0`，a[2]为`world\0`
+	- main 相关
+	  - `int main(int argc,char *argv[])`
+	 	 - argc-参数计数/命令行参数的个数，英文？？
+	 	 - argv-参数向量/是一个指针，指向包含参数字符串的数组，每个参数对应一个字符串，即参数们的指针数组，末尾指针为NULL
+	  - int main()     任意多个参数 不处理
+	  - int main(void) 不接受参数
+		- void main()    无返回值 不利于操作系统判断状态
+		- main()系统默认为int main()
+	~~~
+	//回显命令行参数 空格分隔每个参数 类似echo程序
+	main(int argc, char *argv[])
+	{
+		//argv看成字符指针数组版
+		for(int i = 1; i < argc; i++)
+			printf("%s%s", argv[i], (i < argc-1) ? " " : "");
+
+		//argv直接操作指针版
+		while(--argc > 0)
+			printf("%s%s", *++argv, (argv > 1) ? " " : "");	//argv初始指向argv[0] 先++再用 后取* 而*argv为指向对应参数的指针
+			//或 printf((argc > 1) ? "%s" : "%s", *++argv); //printf的格式化参数可以是表达式
+
+		printf("\n");
+		return 0;
+	}
+	~~~
+	- *++argv 是一个指向某个参数串的指针
+		- argv是指针数组名，也是指针数组首元素地址，++argv指向下一个数组元素，*++argv则取到数组元素值，即指向参数串的指针
+	- (*++argv)[0] <=> **++argv 是该参数串的第一个字符，优先级[]大于*
+	- *++argv[0] <=> *++(argv[0]) 增加的是指针数组中首元素的值，即 argv[0] 的值，即 第一个参数串的地址自增了1，再取这个值
+		~~~
+		//p92 4.1的模式查找的加强 以grep为范本 通过命令行的第一个参数来指定待匹配的模式
+		太长了容后
+		~~~
+- 函数指针
+	- 函数本身不是变量，但可以有定义函数的指针，函数名类似数组名，表示函数的地址
+	- 如 void qsort(void *lineptr[], int left, int right, int (*comp)(void *, void *));
+		- qsort的参数包括：一个指针数组，两个整数，一个有2个指针参数的函数
+			- void* 用于这堆指针型参数，∵任何指针可被强制转换void、也可以再转回去，且不丢失信息
+		- 函数指针 int (*comp)(void *, void *) 可作为qsort的形参
+			- 表示：comp是一个函数，返回一个int值，含两个void*参数，comp也是函数名，也是指向函数的指针，即函数所在的地址
+			- 使用：*comp 是该函数，即取comp指向的内容，可调用该函数
+				- 在qsort中：if((*comp)(v[i], v[left]) < 0)
+			- 比较：int *comp(void *, void *) 表示comp是一个函数，返回一个int型指针，含两个void*参数
+		- 调用 qsort((void **)lineptr, 0, nlines -1, (int (*)(void*, void*))(numeric ? numcmp : strcmp));
+			- (void **)lineptr，？？？
+			- (int (*)(void*, void*))(numeric ? numcmp : strcmp)，？？？
+	~~~
+	//修改排序程序，传递不同的比较和交换程序给排序算法程序，以便安排不同的准则进行排序，可处理任意数据类型
+	//比较部分 确定任意两个对象次序
+	//交换部分 倒转任意两个对象次序
+	//排序算法部分 进行比较和交换直到所有对象已经有序，独立于比较和交换操作
+	#include<stdio.h>
+	#include<string.h>
+	#define MAXLINES 5000	//可被排序的最大行数
+	char *lineptr[MAXLINES];	//指向文本行的指针
+	int readlines(char *lineptr[], int *nlines);
+	void writelines(char *lineptr[], int *nlines);
+	void qsort(void *lineptr[], int left, int right, int (*comp)(void *, void *));
+	int numcmp(char *, char *);	//基于数值比较两行 并返回与strcmp相同类别的比较结果标志
+	
+	main(int argc, int *argv[])
+	{
+		int nlines;	//记录输入的行数
+		int numeric = 0;	//排序准则标志 按字母排序-0 按数值排序-1
+		if(argc > 1 && strcmp(argv[1], "-n") == 0)	//用户输入 -n 选择数值排序
+			numeric = 1;
+		if((nlines = readlines(lineprt, MAXLINES)) >= 0)
+		{
+			qsort((void **) lineptr, 0, nlines - 1, (int (*)(void*, void*))(numeric ? numcmp : strcmp));
+			writelines(lineptr, nlines);
+			return 0;
+		}
+		else
+		{
+			printf("input too big to sort\n");
+			reutrn 1;
+		}
+	}
+	// qsort 将v[left]~v[right]按递增次序排列
+	void qsort(void *v[], int left, int right, int (*comp)(void *, void *))
+	{
+		int i, last;
+		void swap(void *v[], int, int);
+		if(left > right)	return;
+		swap(v, left, (left + right)/2);
+		last = left;
+		for(i = left + 1; i <= right; i++)
+			if((*comp)(v[i], v[left]) < 0)	swap(v, ++last, i);
+		swap(v, left, last);
+		qsort(v, left, last - 1, comp);
+		qsort(v, left, last - 1, comp);
+	}
+	// 按数值比较s1和s2
+	{
+		double v1, v2;
+		v1 = atof(s1); v2 = atof(s2);
+		if(v1 < v2)	return -1;
+		else if(v1 > v2) return 1;
+		else return 0;
+	}
+	~~~
+- 复杂声明
+	- 声明不能按从左到右的顺序理解，前缀运算符 * 的优先级＜括号们，且同级也是 从右到左 结合
+		- char **argv
+			- 表示 argv 是一个指针（*从右到左结合argv，声明了argv为指针名），它指向一个字符指针（char*），即argv存了字符指针的地址
+		- int (*daytab)[13]
+			- 表示 daytab 是一个指针（*daytab声明了daytab为指针名），它指向一个包含13个元素的int型数组（int ...[13]）
+		- int *daytab[13]
+			- 表示 daytab 是一个数组（daytab与[13]先结合），它包含13个元素，元素类型为 int型指针
+		- void *comp()
+			- 表示 comp 是一个函数（comp与()先结合），它的返回值为 void型指针
+		- void (*comp)()
+			- 表示 comp 是一个指针（*comp），一个函数指针，它指向一个函数（这个函数理解为 void ()），该函数的返回值为 void型
+		- int (*pf)();
+			- 表示 pf 是一个指针，一个函数指针，它指向一个函数（这个函数理解为 int ()），该函数的返回值为 int型
+		- char (*(*x())[])()
+			- x 是一个函数，它的返回值为 指向数组的指针，该数组的元素是 指向返回char的函数 的指针
+			- 拆为两部分，char ...() 和 (*(*x())[])，
+			- (*(*x())[]) 即 强制结合的 *(*x())[]，令其 = A
+				- *()[] 和 *x()，
+		- char (*(*x[3])())[5]
+			- x 是包含3个元素的数组，该数组元素是 指向一个函数的指针，该函数返回值为 指向包含5个char元素的数组的指针
+			- 拆为两部分，char ...[5] 和 (*(*x[3])())
+			- (*(*x[3])()) 即 强制结合的 *(*x[3])()
+	- 总结？复杂函数声明
+		- 指针是啥，就是存着别人地址的变量，而指针自己的地址又是另一个故事了
+		- 若没有强制类型结合，先看开头的类型和最后的括号，判断是个啥函数
+			- 如 char ...(参数们) 这个是最终要调到的函数（看起来括号+参数才是本体啊orz）
+
 
 # 结构
 
@@ -489,13 +906,7 @@ double pop(void)
 # UNIX系统接口
 
 
-- main 相关
-  - `int main(int argc,char *argv[])`
-  - argc-命令行参数的个数 argv-指向参数们的指针数组 末尾指针为NULL
-  - int main()     任意多个参数 不处理
-  - int main(void) 不接受参数
-  - void main()    无返回值 不利于操作系统判断状态
-  - main()系统默认为int main()
+
 
 # test
 - 1.20 函数detab，将输入中的制表符换为恰当数目的空格，使间隔达到下个制表符停止位
@@ -505,7 +916,6 @@ double pop(void)
 - 1.16 打印一组文本行中最长的一行，允许任意长度的输入行，可尽可能多的输入文本
 - 1.14 打印输入中不同字符出现频度的直方图
 - 1.13 打印输入中单词长度的直方图，分水平方向和垂直方向
-
 1-21. 编写一个程序 entab，它将一连串空格替换为相同间隔的小数目的制表符和空 格。使用与detab相同的制表符停止位。当单个制表符或者单个空格都能达到制表符停止位时， 选用哪一种更好？ 练习 1-22. 编写一个程序，其将一个长输入行“折”为较短的几行，折行的位置为输入的第n 列之前的后一个非空白符之后。确保你的程序能够智能地处理很长的输入行，以及在指定列 之前没有空格或制表符的情况。 练习 1-23. 编写一个程序，用于去掉 C 程序的所有注释。注意正确地处理带引号的字符串和 字符常量。C语言的注释不允许嵌套。 练习 1-24. 编写一个程序，其用于检查 C 程序的基本语法错误，例如不配对的圆括号、方括 号和花括号。别忘了对单引号、双引号、转义序列以及注释的处理。（如果读者想把它写成完全 通用的程序，难度会比较大。
 2-1. 编写一个程序来确定char、short、int和long 型变量的取值范围，包括signed 及unsigned类型。通过打印标准头文件中的相应值以及直接计算两种方法来完成。如果通过 计算方式，确定各种浮点类型的取值范围会更困难
 2-3. 编写函数htoi(s)，其将一个表示16进制数的字符串（包括可选的0x或0X）转 换为对应的整数值。允许出现的数字包括0~9、a~f以及A~F。
@@ -516,14 +926,22 @@ double pop(void)
 3-1. 我们的二分查找程序在循环内部进行了两次测试，其实一次测试就足够了（代价是 在循环之外要有更多的测试）。编写在循环内只有一次测试的版本，并比较两者运行时间的差别。
 3-2. 编写一个函数escape(s,t)，其将字符串t复制到字符串s中，并在复制过程中 将换行符和制表符之类的字符转换为可见的转义字符序列，如 \n 与 \t。请使用一个switch 语句。再编写一个反向转换函数，其将转义字符序列转换为实际的字符。
 3-3. 编写一个expand(s1,s2)，它将字符串s1中类似a-z的速记符在s2中扩展为等价的完全列表abc...xyz，函数支持大小写字符和数字，并可处理a-b-c、a-z0-9、-a-z之类的用例，开头结尾的-字符按普通字符处理。
-
 3-4,3-5,3-6
 4-1 函数strrindex(s,t)，返回字符串t在s中最右边出现的位置，如果s不含t，返回-1。
 4-2 扩充atof，处理科学计数法，如 123.45e-6，即一个浮点数，后面可能紧跟e或E以及一个（可能带正负号的）整数
-
 4-3 ... 4-10
-
 4-11 修改getop()，使他不用ungetch()函数，使用一个内部静态变量
+4-12 用printd的思想编写一个递归版itoa函数，将一个整数转换为字符串形式
+4-13 递归版本reverse()，将字符串s颠倒
+4-14 定义一个宏 swap(t,x,y)，将类型为t的两个参数x，y彼此互换（建议：使用程序块结构）
+5-1 改进getint()，将气候未带数字的+或-按非有效表达式0处理，一并压回输入中
+5-2 编写getint的浮点数辩题 getfloat
+5-3~5-6
+5-7 重写readline，将文本行放在由main提供的数组中，而不是调用alloc，以及这样会比原来快多少？
+5-8 在day_of_year和month_day中添加错误检测
+5-9 重写day_of_year，用指针代替下标
+5-4~5-13
+5-14~5-17
 
 - 1.12 打印输入的单词，每行一个
 ~~~
@@ -705,17 +1123,12 @@ utf-8 一个中文字符存3位？
 ---
 
 字符编码:ASCII UNICODE GBK ANSI
-
 ASCII:美国的编码标准
-
 UNICODE:万国码，能涵盖所有国家的编码语言
-
 GBK:中文字符编码
-
 ANSI:扩展的ASCII->前8位用来表示ascii的编码,后面的是根据不同地区的ANSI语言进行扩展的
     比如后续的编码值就是GBK一一映射上去的。
     所以中文系统的ANSI后续的扩展就是GBK编码
-
 unicode:
     目前unidode分为17组编排,0x0000-0x10FFFF,其中的话,0x0000-0xffff就属于第一组
     每平面拥有65536个码位置,一共1114112个。
@@ -737,16 +1150,12 @@ unicode:
     000800-00FFFF           1110xxxx 10xxxxxx 10xxxxxx
     010000-10FFFF           11110xxx10xxxxxx10xxxxxx10xxxxxx
 
-    UTF-16:
-
     UTF-16的编码存储方式
     对于UTF-16 每个字符被编成一至两个码元,每个码元16位,但其实实际占用的为10bit,前6位用于标识使用
-
     如果字符的编码大于0x10000,那就会使用U'=U-0x10000,由于unicode的最大值为0x10FFFF
 
     那么使用最大的unicode值来做存储的方式0x10FFFF,将0X10FFFF-0x10000=0xFFFFF(20bit)
     存储的方式为:110110yyyyyyyyyy 110111xxxxxxxxxx
-
     其中,y为高10位，x为低10位
     
     0x10FFFF的二进制存储为:1101101111111111 1101111111111111
@@ -754,7 +1163,6 @@ unicode:
 
     UTF-32:
     其4字节的值就代表了它的unicode值，每个字符都要4字节，基本用不到
-
 
 ---
 
@@ -766,8 +1174,6 @@ unicode:
 - 回调函数就是一个通过函数指针调用的函数。如果你把函数的指针（地址）作为参数传递给另一个函数，当这个指针被用来调用其所指向的函数时，我们就说这是回调函数
 - 使用者自己定义一个函数，实现这个函数的程序内容，然后把这个函数（入口地址）作为参数传入别人（或系统）的函数中，由别人（或系统）的函数在运行时来调用的函数
 - 简单来说，就是由别人的函数运行期间来回调你实现的函数
-
-
 
 ---
 [[参考]ASCII对照表 及 字符与二进制、十进制、16进制之间的转化（C/C++）](https://www.cnblogs.com/stxs/p/8846545.html)
@@ -791,9 +1197,6 @@ unicode:
 [各种编码UNICODE、UTF-8、ANSI、ASCII、GB2312、GBK详解](https://blog.csdn.net/lvxiangan/article/details/8151670) 含URL和各种前端错误情况示例
 
 ---
-
-
-
 
 # 库函数
 

@@ -9,7 +9,7 @@
 - 算法：指令的有穷序列，有穷、确定、可行、输入、输出
 - 算法评价 = 不同运行时间 & 存储空间效率 = 不同逻辑结构 + 不同存储结构 + 不同运算方法
   - 时间复杂度O(n)
-  > O(1) < O(log(2)(n)) < O(n) < O(nlog(2)(n)) < O(n^2) < O(n^3) < O(2^n) < O(n!) < O(n^n)
+  	-  O(1) ＜ O(log(2)(n)) ＜ O(n) ＜ O(nlog(2)(n)) ＜ O(n^2) ＜ O(n^3) ＜ O(2^n) ＜ O(n!) ＜ O(n^n)
   - 空间复杂度O(n)，原地工作即O(1)
   - 排序算法稳定性
 
@@ -241,8 +241,8 @@
 - 希尔：分割若干子表L[i, i+d, i+2d, ...]，子表内使用直接排序
 ## 交换
 - 冒泡：一趟内两两比较相邻元素，最多n-1趟
-- 快排：平均性能最优
-  - 来回扫，动一个数换一次扫的方向
+- 快排：平均性能最优，递归
+  - 来回扫数，找到一个要换的数，换后改变扫的方向
   - 小于枢值放左边，大于的从右开始放（即交换元素）
 ## 选择（不稳）
 - 简单选择：表L：有序L[] ~ Li ~ 无序剩余L，在无序中找min的与该位置Li交换
@@ -332,20 +332,20 @@ int binarySearch(int key, int list[], int n)
 ~~~
 int insertSort(int v[], int n)
 {//n-表长
-		int temp;
-		int i;
-		for(i = 1; i < n; i++)		//i=1 第一个元素已是一个有序子表
-		{
-				if(v[i] < v[i - 1])		//若v[i]<有序子表的末尾最大值 则需要找位置 v[i] 直接插入有序子表
-				{
-						temp = v[i];
-						for(int j = i-1; temp < v[j]; j--)
-						{
-								v[j+1] = v[j];		//有序子表向后挪位
-						}
-						v[j+1] = temp;		//找到 temp > v[j] 的位置 插入 temp 到 v[j] 后 
-				}
-		}
+	int temp;
+	int i;
+	for(i = 1; i < n; i++)		//i=1 第一个元素已是一个有序子表
+	{
+			if(v[i] < v[i - 1])		//若v[i]<有序子表的末尾最大值 则需要找位置 v[i] 直接插入有序子表
+			{
+					temp = v[i];
+					for(int j = i-1; temp < v[j]; j--)
+					{
+							v[j+1] = v[j];		//有序子表向后挪位
+					}
+					v[j+1] = temp;		//找到 temp > v[j] 的位置 插入 temp 到 v[j] 后 
+			}
+	}
 }
 
 ~~~
@@ -358,35 +358,72 @@ int insertSort(int v[], int n)
 ~~~
 int shellSort(int v[], int n)
 {
-		int i,temp;
-		int dk;  //dk-元素间隔
-		
-		//控制步长间隔递减
-		for(dk = n/2; dk > 0 ;dk /= 2）
+	int i,temp;
+	int dk;  //dk-元素间隔
+
+	//控制步长间隔递减
+	for(dk = n/2; dk > 0 ;dk /= 2）
+	{
+		//划分希尔子表 [i-dk,i,i+dk,i+2dk,...] 即[j,j+dk,j+2dk,...]
+		for(i = dk; i < n; i++)
 		{
-				//划分希尔子表 [i-dk,i,i+dk,i+2dk,...] 即[j,j+dk,j+2dk,...]
-				for(i = dk; i < n; i++)
+			//1 子表排序使用 直接插入排序
+			if(v[i] < v[i - dk]
+			{
+				temp = v[i];
+				for(int j = i - dk; temp < v[j]; j -= dk)
 				{
-						//1 子表排序使用 直接插入排序
-						if(v[i] < v[i - dk]
-						{
-								temp = v[i];
-								for(int j = i - dk; temp < v[j]; j -= dk)
-								{
-										v[j+dk] = v[j];
-								}
-								v[j+dk] = temp;
-						}
-						
-						//2 子表排序使用 有序子表的交换排序???
-						for(int j = i-dk; (j >= 0) && (v[j] > v[j+dk]); j -= dk)
-						{
-								temp = v[j];
-								v[j] = v[j+dk];
-								v[j+dk] = temp;
-						}
+					v[j+dk] = v[j];
 				}
+				v[j+dk] = temp;
+			}
+
+			//2 子表排序使用 有序子表的交换排序???
+			for(int j = i-dk; (j >= 0) && (v[j] > v[j+dk]); j -= dk)
+			{
+				temp = v[j];
+				v[j] = v[j+dk];
+				v[j+dk] = temp;
+			}
 		}
+	}
 }
 ~~~
 
+- 冒泡排序
+~~~
+~~~
+
+- 快速排序
+~~~
+void quickSort(int A[], int low, int high)
+{
+	//数组 A 中 low~high 之间的数是尚未排序的
+	if(low >= high)
+		return;	//low~high之间已经没有没排序的了 跳出递归
+	
+	int mid;	//划分的中心分界位置 下标 枢纽
+	mid = partition(A, low, high);
+	quickSort(A, low, mid-1);
+	quickSort(A, mid+1, high);
+}
+
+int partition(int A[], int low, int high)
+{	//将数组 A 中 low~high 之间的数 即尚未分组的数 进行划分 返回分界位置下标
+	//即 一趟排序
+	int midVal = A[low];	//均取未排序的第一个值midVal为分界 A[low]的位置用作容器 放找到的数 最后才能确认midVal的位置
+	
+	while(low < high)	//遍历完 low~high 之间的数
+	{
+		while(low < high && A[high] > midVal)	//先从 high 端找小的 因为开始是 A[low] 空出来？？？
+			high--;	//找到当前 low high 间第一个比 A[mid] 小的 挪到左边
+		A[low] = A[high];
+		
+		while(low < high && A[low] < midVal)
+			low++;	//找到当前 log high 间第一个比 midVal 大的 此时 A[high]原值 已挪到右边 high位空做容器
+		A[high] = A[low];
+	}
+	A[low] = midVal;	//已跳出 low = high A[low]为最终位置 放分界
+	return low;
+}
+~~~
