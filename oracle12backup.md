@@ -101,8 +101,6 @@ create pfile = '<dir>' from spfile;
 保留周期默认为一天，以min为单位
 
 
-
-
 ## 逻辑备份-更适用于数据迁移
 # 导出Export
 exp 

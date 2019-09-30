@@ -213,6 +213,7 @@ C-W ??好像无功能
 :set nonu = :set nonumber 关闭行号
 
 :set guifont 查看/设置字体和字号 font字体 gui图形用户界面Graphical User Interface
+- :set guifont=* 弹出窗口，显示可选的字体和大小
 :set gfw = :set guifontwide 字体大小
 :colo [方案] = colorscheme 配色方案
 

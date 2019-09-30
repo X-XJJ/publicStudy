@@ -10,7 +10,7 @@ slmgr /ipk $license
 slmgr /skms zh.us.to
 slmgr /ato
 
-slmgr.vbs -xpr
+slmgr.vbs -xpr 查询激活期限，在win-r下可运行
 
 如
 [使用kms激活win10企业版400年教程](http://www.xitongzu.com/jc/19471.html)

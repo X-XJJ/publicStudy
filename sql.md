@@ -94,7 +94,10 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
   eg：... IN (select top 3 name from A order by age)
 
 ### 其他
-- 限定显示行数
+- select 1 from A 和 select count(1) from 和 select sum(1) from
+  - select 1 得出一个条数和A表数据条数（行数）一样的临时列，每行的列值为1
+-
+#### 限定显示行数
 - mysql下
   - limit a,b  从select结果的第a+1行开始，返回b条记录，显示id从a+1开始
   - 返回指定的记录数（行数）,前一个参数表示偏移，后一个表示最多查出的数据条数
