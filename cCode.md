@@ -78,7 +78,7 @@ int shellSort(int v[], int n)
 		for(i = dk; i < n; i++)
 		{
 			//1 子表排序使用 直接插入排序
-			if(v[i] < v[i - dk]
+			if(v[i] < v[i - dk])
 			{
 				temp = v[i];
 				for(int j = i - dk; temp < v[j]; j -= dk)
@@ -139,3 +139,4 @@ int partition(int A[], int low, int high)
 ~~~
 
 # 外部排序
+

@@ -1,6 +1,6 @@
 # sqlplus
 - 登陆sqlplus
-  - sqlplus / as sysdba
+  - sqlplus / as sysdba（远程登录则需用户名密码）
   - sqlplus 用户名/密码
   - ...
 

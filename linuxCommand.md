@@ -69,7 +69,10 @@ sh csh bash ksh等shell的区别与联系
 ## 时间日期
 - 在Linux运行过程中，系统时间和硬件时间以异步的方式运行，互不干扰
 - 硬件时间运行靠BIOS电池，系统时间用CPU Tick维持。开机时系统自动从BIOS中取得硬件时间，设置为系统时间
-- date 系统时间日期 -s 修改 有多种格式修改，可同时改年月日时分秒，也可分开
+- date 系统时间日期
+  - -s 修改 有多种格式修改，可同时改年月日时分秒，也可分开
+  - date -s "2018-05-17 09:51:50"
+  - date -s "09:51:50"
 cal 当月日历
 - ntp服务器
   - ntpdate 系统时间设为mtp服务器时间，生产慎用
@@ -357,7 +360,15 @@ dev/null 空设备文件
 - grep
   - 形式`grep pattern [file...]` 打印匹配到的模式的行，文本，正则表达式
   - 如 grep zip 找到输入中所有含zip的行
+  - grep -r "aaa" /home/test 在/home/test目录下查找包含关键字的文件
   - -i 忽略大小写; -v仅输出不匹配的行; 
+  - grep -i pattern files ：不区分大小写地搜索。默认情况区分大小写， 
+  - grep -l pattern files ：只列出匹配的文件名， 
+  - grep -L pattern files ：列出不匹配的文件名， 
+  - grep -w pattern files ：只匹配整个单词，而不是字符串的一部分（如匹配‘magic’，而不是‘magical’）， 
+  - grep -C number pattern files ：匹配的上下文分别显示[number]行， 
+  - grep pattern1 | pattern2 files ：显示匹配 pattern1 或 pattern2 的行， 
+  - grep pattern1 files | grep pattern2 ：显示既匹配 pattern1 又匹配 pattern2 的行。 
 - head、tail
   - 输出文件的前/最后10行，C-c结束监控
   - -n 数字 输出文件的前/最后n行
@@ -928,7 +939,8 @@ IP Internet protocol, host and domain name 主机名和域名, URI Uniform resou
   - authorized_keys里存放所有服务器公钥
   -
 - OpenSSH内含网络间文件复制程序
-- scp 源路径 目的路径：远程复制文件，secure copy，路径为远程时，需要加“主机名:”，即“10.12.1.1:~/test.txt”
+- scp 源路径 目的路径
+  - 远程复制文件，secure copy，路径为远程时，需要加“主机名:”，即“10.12.1.1:~/test.txt”
 - sftp 安全的文件传输，ftp的安全版本，只需要ssh服务器即可，无需ftp服务器
 - Windows的ssh客户端：PuTTY，Xshell等
 
@@ -936,10 +948,13 @@ IP Internet protocol, host and domain name 主机名和域名, URI Uniform resou
 telnet 域名:端口号
 如telnet www.baidu.com 1999
 
-使用脚本+telnet，如
-(echo "00BCD400{\"checkDate\":\"20190501\"}";sleep 1)|telnet 127.0.0.1 60120
-sleep 60
-发送socket到地址端口
+- 发送socket到地址端口
+  - 使用脚本+telnet，命令`source 文件名`发送
+  - eg：发送报文00BCD400{"checkDate":"20190501"}到本地60120端口，文件内容如下
+  ```
+  (echo "00BCD400{\"checkDate\":\"20190501\"}";sleep 1)|telnet 127.0.0.1 60120
+  sleep 60
+  ```
 
 - sleep 将目前动作延迟一段时间
   - slee number[smhd]
@@ -982,6 +997,14 @@ curl http://10.129.22.230:8096/sp1/bms -X POST -d "`cat body`"\
 常用：
 - test类
   - -type
+find path option file
+
+path：查找的目录路径
+option：按什么进行查找
+file： 查找的文件特征
+
+find /tmp -name wa* -type l      在/tmp下查找名为wa开头且类型为符号链接的文件
+
 
 
 

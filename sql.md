@@ -10,7 +10,10 @@ sp_help
 [Select count(*)、Count(1)、Count(0)的区别和执行效率比较](https://www.cnblogs.com/sueri/p/6650301.html)
 [Select count(*)和Count（1）的区别和执行方式](https://www.cnblogs.com/CareySon/p/DifferenceBetweenCountStarAndCount1.html)
 
-## 数据类型
+## 数据类型、函数等
+
+
+
 - mysql
 
 - Oracle
@@ -18,6 +21,33 @@ int    整数
 varchar
 decimal 小数
 number 等价于c语言double？
+
+ISNULL（）函数
+ISNULL ( check_expression , replacement_value) 
+   check_expression 将被检查是否为    NULL的表达式。check_expression    可以是任何类型的。
+   replacement_value 在check_expression    为    NULL时将返回的表达式。replacement_value    必须与    check_expresssion    具有相同的类型。      
+返回类型 返回与    check_expression    相同的类型。    
+注释 如果    check_expression    不为    NULL，那么返回该表达式的值；否则返回    replacement_value。
+
+nvl( ) 函数 从两个表达式返回一个非 null 值。 
+NVL(eExpression1, eExpression2) 
+如果 eExpression1 的计算结果为 null 值，则 NVL( ) 返回 eExpression2。如果 eExpression1 的计算结果不是 null 值，则返回 eExpression1。eExpression1 和 eExpression2 可以是任意一种数据类型。如果 eExpression1 与 eExpression2 的结果皆为 null 值，则 NVL( ) 返回 .NULL.。 
+返回值类型 
+字符型、日期型、日期时间型、数值型、货币型、逻辑型或 null 值 
+说明 在不支持 null 值或 null 值无关紧要的情况下，可以使用 NVL( ) 来移去计算或操作中的 null 值。
+select nvl(a.name,'空得') as name from student a join school b on a.ID=b.ID
+注意：两个参数得类型要匹配
+
+convert() 在oracle中是转字符集，在sybase中转数据类型
+
+oracle中 to_number()，to_char()
+
+
+用取整函数trunc(),直接取整就接数值，保留几位第二个参数就为几，负数则小数点左移
+如：trunc(12.354)，返回值12
+trunc（12.354，1），返回值12.3
+trunc（12.354，-1），返回值10
+
 
 - redis 非关系型数据库 存内存 持久化 key→value
 string: set get del
