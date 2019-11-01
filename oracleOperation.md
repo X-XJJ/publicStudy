@@ -1,3 +1,6 @@
+# 其他
+[oracle insert 将一张表数据插入另外表中](https://blog.csdn.net/momoko0314/article/details/78144175)
+
 # sqlplus
 - 登陆sqlplus
   - sqlplus / as sysdba（远程登录则需用户名密码）
@@ -91,16 +94,14 @@ grant all privileges to 库名;
 ## 系统用户
 - sys：超级账户，权限最大，可以完成数据库的所有管理任务
 - system：创建一些用于产看管理信息的表&视图
-   登陆Oracle工具（如sql*plus）时，sys只能以sysdba（系统管理员）或者sysoper（系统操作员）权限登陆，system可以直接登陆（normal）
+登陆Oracle工具（如sql*plus）时，sys只能以sysdba（系统管理员）或者sysoper（系统操作员）权限登陆，system可以直接登陆（normal）
 
-[用系统用户登录Oracle](https://blog.csdn.net/s___lei/article/details/78474837)
+- [用系统用户登录Oracle](https://blog.csdn.net/s___lei/article/details/78474837)
 PS：scott用户，密码默认tiger，初始状态为锁定的；scott为Oracle创始人之一；
 
-- sysdba:数据库管理员身份。权限：打开（关闭）数据库服务器、备份（恢复）数据库、日志功能、会话限制、数据库管理功能等。
-    例如：sys用户必须用sysdba才能登陆，system用户用普通用户就可以登陆。
+- sysdba:数据库管理员身份。权限：打开（关闭）数据库服务器、备份（恢复）数据库、日志功能、会话限制、数据库管理功能等。 例如：sys用户必须用sysdba才能登陆，system用户用普通用户就可以登陆。
 - sysoper:数据库操作员身份 。权限：打开（关闭）数据库服务器、备份（恢复）数据库、日志功能、会话限制。
 - normal:普通用户。权限：操作该用户下的数据对象和数据查询，默认的身份是normal用户。
-
 
 一个Oracle数据库系统中可以同时创建n个数据库，每个数据库对应一个唯一的实例，OPS系统除外；
 一个操作系统上可以装多个版本的Oracle数据库系统；
@@ -113,13 +114,13 @@ PS：scott用户，密码默认tiger，初始状态为锁定的；scott为Oracle
 
 [oracle 数据库、实例、服务名、SID](https://www.cnblogs.com/ahudyan-forever/p/6016784.html)
 
-- 
 （2）登陆数据库，通过SQL语句查看（查看当前使用的数据库所对应的实例名称）：
-     SQL>show parameter instance;
-	 SQL>show parameter instance_name;
-     SQL>select * from v$instance;
+SQL>show parameter instance;
+SQL>show parameter instance_name;
+SQL>select * from v$instance;
 - sqlplus中，命令加不加分号";"都可以，SQL语句必须加;
 
 oracle 自增序列号id 用法
 [create sequence 用法](https://www.cnblogs.com/jhtchina/articles/1334955.html)
 如create sequence sqnJournal;
+
