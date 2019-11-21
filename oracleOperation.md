@@ -71,7 +71,31 @@ grant all privileges to 库名;
 
 - 修改用户密码（是否需要sys权限？）
   - password 用户名 ——修改该用户密码
-  -
+
+- 查看表所在表空间 InsuredLevyDetail
+- select * from user_tables where table_name='INSUREDLEVYDETAIL';
+
+- 查看表空间剩余 R07
+- select * from user_free_space where tablespace_name='R07';
+
+- 查看表的索引
+- select * from user_indexes where table_name='INSUREDLEVYDETAIL' order by index_name;
+
+- 查看索引名和列名对照
+- select * from user_ind_colunms where table_name='INSUREDLEVYDETAIL';
+
+- 查看全库索引 all_indexes表
+
+- 创建索引
+- create index idx_verifyDate on InsuredLevyDetail(verifyDate) [online];
+
+- 注：表名table_name字段在这几个表里都是大写存储，查的时候要where table_name='INSUREDLEVYDETAIL'
+- 索引创建时，索引名、表名小写大写都可，但存进去存的都是大写
+
+[使用索引的注意事项及常见场景、案例](https://www.cnblogs.com/zhaoguan_wang/p/4604025)
+
+
+
 ## 口令失效问题 ORA-28001
 - 创建用户时缺省密码过期限制为180天
 - SELECT * FROM dba_profiles WHERE profile='DEFAULT' AND resource_name='PASSWORD_LIFE_TIME'，查询密码的有效期设置，结果中limit字段为有效天数

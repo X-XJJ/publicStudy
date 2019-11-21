@@ -134,7 +134,7 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
   - select * from 表名 limit 0,-1
   - LIMIT后的第一个参数0限定偏移量，后面的-1表示数据库表中最后一条数据，因为SQL中id是从1开始，所以返回了全部数据行
 - oracle下
-  - rownum>=2？order by b
+  - `rownum<=2`？order by b
   - ROWNUM是一个序列，是oracle数据库从数据文件或缓冲区中读取数据的顺序
   - 它取得第一条记录则rownum值为1，第二条为2，依次类推。
 [Oracle中rownum和row_number()实例介绍](https://www.2cto.com/database/201804/738625.html)
