@@ -80,6 +80,7 @@ grant all privileges to 库名;
 
 - 查看表的索引
 - select * from user_indexes where table_name='INSUREDLEVYDETAIL' order by index_name;
+- 字段 LAST_ANALYZED 为索引的最近统计时间
 
 - 查看索引名和列名对照
 - select * from user_ind_colunms where table_name='INSUREDLEVYDETAIL';
@@ -88,11 +89,21 @@ grant all privileges to 库名;
 
 - 创建索引
 - create index idx_verifyDate on InsuredLevyDetail(verifyDate) [online];
+- 加 online参数可以做在线索引，不锁表，不需要阻塞所有的DML语句，建完索引后关闭并发，否则影响性能？
+  - create过程中index 保持online状态，Oracle还会在create index之前等待所有DML操作结束，然后得到DDL锁，开始create
+- 在Oracle 10g后有个隐含参数“_OPTIMIZER_COMPUTE_INDEX_STATS”，意思是是否对新建索引收集统计信息，该参数默认是TRUE，表示默认收集新建索引的统计信息
+[【DB笔试面试641】在Oracle中，新建索引后统计信息是否自动收集？](https://cloud.tencent.com/developer/article/1516035)
+
+- 手动对索引分析信息
+- analyze table
+[对于Oracle analyze table的使用总结](https://blog.csdn.net/victory_xing126/article/details/44948521)
 
 - 注：表名table_name字段在这几个表里都是大写存储，查的时候要where table_name='INSUREDLEVYDETAIL'
 - 索引创建时，索引名、表名小写大写都可，但存进去存的都是大写
 
 [使用索引的注意事项及常见场景、案例](https://www.cnblogs.com/zhaoguan_wang/p/4604025)
+
+[Oracle收集统计信息和重建索引](http://www.360doc.com/content/17/0415/13/7662927_645792043.shtml)
 
 
 
