@@ -12,8 +12,6 @@ sp_help
 
 ## 数据类型、函数等
 
-
-
 - mysql
 
 - Oracle
@@ -244,6 +242,9 @@ alter table 表名
 添加、修改、删除多列的话，用逗号隔开。
 
 create table test1 (id varchar2(20) not null);
+
+- oracle
+create table table_name as select * from other_table_name;
 
 alter table test1 add (name varchar2(30) default ‘无名氏' not null);
 
