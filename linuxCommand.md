@@ -409,8 +409,8 @@ tr 转换or删除字符
 - sed 用于过滤&转换文本的流编辑器
   - sed [选项] [脚本命令] 文件名
   - 替换全文本内匹配内容 sed 's/test/trial/g' data4.txt 输出替换后的内容
-  - sed 's/[[:space:]]//g'  tmp.txt >aa.txt
-  - -i 直接修改源文件
+  - sed 's/[[:space:]]//g' tmp.txt >aa.txt
+    - -i 直接修改源文件
 
 
 aspell 交互式拼写检查器
@@ -1026,9 +1026,10 @@ bzip2 块排序文件压缩工具
 
 ## tar 磁带归档工具
 - tar [-cxtzjvfpPN] 文件与目录 ...
-- tar zcvf 打包后生成的文件名全路径.tar 要打包的目录
+- tar zcvf 打包后生成的文件名全路径名 要打包的目录们
   - tar zcvf Z07-develop.tgz Z07/*
-- tar zxvf $压缩文件名 [解压到的目录]
+  - tar zcvf test.tar Z07/* aa.txt bb.txt
+- tar zxvf 压缩文件名 [解压到的目录]
   - -c   打包create
   - -x   解包
   - -t   查看包里的文件 ≈ 使用vim打开压缩文件 可层层查看
