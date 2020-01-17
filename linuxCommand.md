@@ -406,11 +406,38 @@ diff 逐行比较文件
 patch 对原文件打补丁
 tr 转换or删除字符
 
-- sed 用于过滤&转换文本的流编辑器
-  - sed [选项] [脚本命令] 文件名
-  - 替换全文本内匹配内容 sed 's/test/trial/g' data4.txt 输出替换后的内容
-  - sed 's/[[:space:]]//g' tmp.txt >aa.txt
+- sed 过滤&转换文本の流编辑器 stream editor
+  - `sed [选项] [脚本命令] 文件名` 
+  - 给定sed简单的编辑命令，or包含多个命令的脚本文件名，sed对文本流内容执行编辑命令
+  - 按行读取，默认只修改从源文件复制到缓冲区的数据并输出
+  - 选项
     - -i 直接修改源文件
+    - -e
+    - -f
+    - -n 屏蔽输出
+  - 脚本命令
+    - s 替换匹配内容
+      - [address]s/pattern/replacement/flags
+      - flags：
+        - n
+        - g
+        - p
+        - w 文件名
+        - &
+        - \n
+        - \
+    - c 替换一行
+      - [address]c\用于替换的新文本
+    - d 删除
+      - [address]d
+    - a 行后附加一行，i 行前插入一行
+      - [address]a（或 i）\新文本内容
+    - y 转换，处理单个字符
+      - [address]y/inchars/outchars/
+    - p 打印符合条件的行
+      - [address]p
+  - eg：替换全文本内匹配内容 sed 's/test/trial/g' data4.txt 输出替换后的内容
+    - 全文去空格 sed 's/[[:space:]]//g' tmp.txt >aa.txt
 
 
 aspell 交互式拼写检查器

@@ -205,15 +205,18 @@ char *time;
 ？？需要看一下这俩的函数声明，啥格式
 
 ## 字符串相关
-函数名    |作用               |\0 |函数返回
-----------|-------------------|---|--------
-strlen()  |取不含\0的字符串长度|有取字符串二进制or二进制长度的否？
-strcpy()  |复制字符串         |√ |
-srtncpy() |复制指定长度字符串 |？ |
+### stdio.h
+
+
+### string.h
+- srtncpy() 复制指定长度字符串 是否默认添加\0？ char *strncpy(char *dest, const char *src, int n)
+
+strcpy()  |复制字符串strcpy(s,t) 复制t到s里 以t中\0为止 注意溢出问题 默认添加\0
+strlen()  |取到\0为止的字符串长度 不含\0|有取字符串二进制or二进制长度的否？
 strcat()  |追加字符串 strcat(s,t) t拼接到s的末尾，若超s长会怎样？
 strncat() |追加指定长度字符串？
-strcmp()  |比较字符串
-strncmp() |比较指定长度字符串
+strcmp()  |比较字符串|返回=0-str1=str2 返回＜0-str1＜str2 返回＞0-str1＞str2
+strncmp() |比较字符串前n个字符|int strncmp(const char *str1, const char *str2, size_t n)
 strcasecmp()|忽略大小写比较字符串
 strchr()  |查找单字符 strrchr() |反向查找单字符
 strstr()  |查找子串    |？|返回str2在str1中首次出现的地址 否则NULL
@@ -222,10 +225,10 @@ strsep()  |分割字符串|改变源字符串
 strtok()  |分割字符串|改变源字符串
 strdupa() |
 strdup()  |
-memcpy()  |按长度复制 不理结束符 基于内存 从存储区str2复制n个字符到存储区str1
+memcpy()  |按长度复制 不\0 基于内存 从存储区str2复制n个字符到存储区str1
 memmove() |
 memcmp()  |
-memncmp？ |
+memncmp() |比较两个存储区的前n个字节
 sprintf() |赋值 格式化输出到str所指向的字符串 会覆盖 即从str数组的第一个元素开始写入新的内容|√|
 sscanf()  |从一个字符串中读进与指定格式相符合的数据，会加\0
 ----------|------
@@ -254,10 +257,14 @@ void *memcpy(void *str1, const void *str2, size_t n)
 切割
 比较
 
-- strtok()
-第一次调用分割函数strtok(字符串,分隔符)时，入口为待分割字符串源
+- 分割字符串 s-待分解 delim-指定分隔符
+- char *strtok(char *s, const char *delim);
+  - 第一次调用分割函数strtok(字符串,分隔符)时，入口为待分割字符串源
 保留上次分割的地址 返回被切下字符串的首地址 后续调用入口即为NULL
-strtok会改变源字符串，将包含在分隔符内的字符修改为'\0'或其他
+  - strtok会改变源字符串，将包含在分隔符内的字符修改为'\0'或其他
+
+- char *strsep(char **s, const char *delim);
+  - 分割字符串 改变源字符串
 
 - strcat()
 char *strcat(char *dest, const char *src)
@@ -269,10 +276,19 @@ char *strstr(字符串a,字符串b) 返回a中第一次找到b的位置，不包
 
 
 ### printf()、sprintf()
+- int sprintf(char *str, const char *format, 附加参数们...)
 - format：%[flags][width][.precision][length]specifier
-- 对于%s，优先级 精度＞宽度
-- 对于%s，精度.precision = 输出字符的最小数目，宽度width = 要输出的最大字符数
+  - 字符串，包含了要被写入到字符串 str 的文本。它可以包含嵌入的 format 标签，format 标签可被随后的附加参数中指定的值替换，并按需求进行格式化
+  - flags 标识
+  - width 宽度
+  - .precision 精度
+    - 对于%s，优先级 精度＞宽度
+    - 对于%s，精度.precision = 输出字符的最小数目，宽度width = 要输出的最大字符数
+  - length 长度
+  - specifier 说明符
+  - 附加参数：附参个数 = %个数，每个参数包含一个被插入的值，按序替换format中的各个%标签
 - 文档参考：菜鸟教程
+[C 库函数 - sprintf()](https://www.runoob.com/cprogramming/c-function-sprintf.html)
 
 malloc 分配空间，不初始化，分配后内容随机
 [C语言中手把手教你动态内存分配](https://blog.csdn.net/qq_29924041/article/details/54897204)
