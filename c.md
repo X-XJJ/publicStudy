@@ -257,14 +257,27 @@ void *memcpy(void *str1, const void *str2, size_t n)
 切割
 比较
 
-- 分割字符串 s-待分解 delim-指定分隔符
-- char *strtok(char *s, const char *delim);
+- 分割字符串 s-待分解字符串 delim-指定分隔字符串
+- char *strtok(char **s, const char *delim); ***
+  - 返回值：一次分割后的子串？若不能再分割则返回NULL
+  - strtok将找到的首次出现的、且属于delim中的字符替换为NULL，随后再分割则需调用NULL开头的的剩余字符串
   - 第一次调用分割函数strtok(字符串,分隔符)时，入口为待分割字符串源
 保留上次分割的地址 返回被切下字符串的首地址 后续调用入口即为NULL
   - strtok会改变源字符串，将包含在分隔符内的字符修改为'\0'或其他
+~~~
+temp = strtok(srcline,","); 
+for(i = 1; i < field-1 && temp != NULL; i++)
+{
+  temp = strtok(NULL, ",");
+}
+strcpy(temp,strtok(NULL, ",")); 
+~~~
 
-- char *strsep(char **s, const char *delim);
-  - 分割字符串 改变源字符串
+
+- char *strsep(char **s, const char *delim); ***
+  - 分割字符串 改变源字符串，功能类似strtok
+  - 如果输入串中有连续的多个字符属于delim，strtok下一个开头为NULL，strsep返回空串""
+
 
 - strcat()
 char *strcat(char *dest, const char *src)
@@ -275,8 +288,19 @@ char *strstr(字符串a,字符串b) 返回a中第一次找到b的位置，不包
 找不到则返回NULL
 
 
+## 其他
+- 换行 `\n` n为“new line”的缩写
+
+
 ### printf()、sprintf()
-- int sprintf(char *str, const char *format, 附加参数们...)
+- int printf(const char *format, ...);
+  - printf("字符串or输出控制符们", 对应的输出参数们);
+  - 控制符
+    - %d 整型，%ld 长整型，%u 无符号整型，%f 浮点数，%c 字符，%s 字符串
+    - %x 十六进制整数，%o 八进制整数
+    - 宽度 m 如%3d.g
+
+- int sprintf(char *str, const char *format, 输出参数们...)
 - format：%[flags][width][.precision][length]specifier
   - 字符串，包含了要被写入到字符串 str 的文本。它可以包含嵌入的 format 标签，format 标签可被随后的附加参数中指定的值替换，并按需求进行格式化
   - flags 标识
@@ -287,7 +311,7 @@ char *strstr(字符串a,字符串b) 返回a中第一次找到b的位置，不包
   - length 长度
   - specifier 说明符
   - 附加参数：附参个数 = %个数，每个参数包含一个被插入的值，按序替换format中的各个%标签
-- 文档参考：菜鸟教程
+
 [C 库函数 - sprintf()](https://www.runoob.com/cprogramming/c-function-sprintf.html)
 
 malloc 分配空间，不初始化，分配后内容随机
