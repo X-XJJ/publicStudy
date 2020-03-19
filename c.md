@@ -218,8 +218,9 @@ strncat() |追加指定长度字符串？
 strcmp()  |比较字符串|返回=0-str1=str2 返回＜0-str1＜str2 返回＞0-str1＞str2
 strncmp() |比较字符串前n个字符|int strncmp(const char *str1, const char *str2, size_t n)
 strcasecmp()|忽略大小写比较字符串
-strchr()  |查找单字符 strrchr() |反向查找单字符
-strstr()  |查找子串    |？|返回str2在str1中首次出现的地址 否则NULL
+strchr()  |查找单个字符
+strrchr() |反向查找单字符
+strstr()  |查找子字符串    |？|返回str2在str1中首次出现的地址 否则NULL
 strpbrk() |查找集合内任意字符 其他不常用 strspn strcspn
 strsep()  |分割字符串|改变源字符串
 strtok()  |分割字符串|改变源字符串
@@ -295,9 +296,9 @@ char *strstr(字符串a,字符串b) 返回a中第一次找到b的位置，不包
 ### printf()、sprintf()
 - int printf(const char *format, ...);
   - printf("字符串or输出控制符们", 对应的输出参数们);
-  - 控制符
-    - %d 整型，%ld 长整型，%u 无符号整型，%f 浮点数，%c 字符，%s 字符串
-    - %x 十六进制整数，%o 八进制整数
+  - 输出控制符
+    - %d 整型，%ld 长整型，%u 无符号整型，%f 浮点数，%c 字符，%s 字符串，%o 整型按八进制输出
+    - %x 整型按十六进制输出-小写如2f，%X 大写如2F，%#x 标准形式小写如0x2f，%#X 标准形式大写如0X2F
     - 宽度 m 如%3d.g
 
 - int sprintf(char *str, const char *format, 输出参数们...)

@@ -17,6 +17,20 @@ yum的不是最新版，有些新特性、功能无法使用，如layout中的�
 [Linux终端复用神器-Tmux使用梳理](http://www.cnblogs.com/kevingrace/p/6496899.html)
 [[转载]tmux安装遭遇的问题解决](http://blog.sina.com.cn/s/blog_4cff1c6d010190fz.html)
 
+tmux依赖libevent和ncurses，可以先查看下有没有，如whereis libevent
+[非root用户安装tmux](https://blog.csdn.net/Rlin_by/article/details/101869021)
+
+- 非root用户安装
+  - 成功在用户家目录下make了tmux之后，将tmux-2.8/tmux拷贝到~/.local/bin下，PATH里加此路径
+  - 启动找不到lib，执行“LD_DEBUG=libs $HOME/.local/bin/tmux”查看缺啥（trying file）
+  - 在用户~目录下，centOS系统为例，配置文件.profile中加安装的tmux路径和libevent路径
+```
+#tmux
+export PATH=$PATH:$HOME/.local/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib
+```
+
+
 [Tmux 出現 protocol version mismatch 解法](https://blog.longwin.com.tw/2013/11/tmux-protocol-version-mismatch-fix-2013/)
 
 - 其他用到再说
@@ -49,7 +63,7 @@ tmux为命令前缀，如tmux ls，缺省为创建并打开新会话
 
 ## tmux会话环境下 可用配置文件修改命令(bind&unbind)
 以下操作均为加**前缀**后：
-默认快捷键前缀 C-b，修改为C-a
+默认快捷键前缀 C-b，修改为C-a（C-a在vim中为加1，不如设为C-q，没有快捷键冲突）
 
 ### 会话操作session
 - ? 帮助
