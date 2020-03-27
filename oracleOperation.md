@@ -21,6 +21,44 @@ sqlpuls 退格、方向键问题
 (https://www.cnblogs.com/mengfanrong/p/4680281.html)
 (https://www.cnblogs.com/jinshoucai/archive/2011/11/16/2251245.html)
 
+## 字符集
+- 查看数据库字符集
+  - select userenv('language') from dual
+  - select * from v$nls_parameters 查询nls参数+字符编码们
+- nls_characterset 数据库字符集，char varchar2 按数据库字符集存储，如ZHS16GBK AL32UTF8
+- nls_nchar_characterset 国家字符集，nchar nvarchar2 按国家字符集存储
+
+- 路径
+
+- grep -r "tnsnames.ora" 找Oracle路径，路径组成为$ORACLE_HOME/networks/admin/
+
+# ODBC 连接 oracle
+- odbcinst -j 检查安装状态
+- odbcinst -q -s 查看配置
+- isql Z0P.0 连进库
+- strace -v isql Z0P.0 strace命令跟踪进程的所有系统调用
+- isql -v Z0P.0 查看odbc报错
+-
+- make时存在leaving directory问题，属正常打印，未报错
+
+- 配置两个文件在路径 $ORACLE_HOME/network/admin/ 下
+  - listener.ora oracle监听文件
+    - SID_NAME为数据库实例名 select * from v$instance，GLOBAL_DBNAME全局数据库名
+    - 需要配置的监听 LISTENER 和 SID_LIST_LISTENER 成对出现，可有多个监听
+  - tnsnames.ora
+  -
+- ODBC 配置文件 .odbc.ini
+  - ServerName 和 tnsnames.ora 中 啥名？最开始的标识这个配置的名字？配置一致
+-
+- 文件Can't open lib 在路径下但打不开问题
+  - 思路：文件存在无法使用的可能问题
+  - 权限，路径，依赖（思路真的很重要啊！！还有网断了的思路等等）
+  - ldd libsqora.so.11.1 查看可执行程序or包的依赖关系
+    - not found 的条目为缺失，系统内寻找 find / -name "组件名"，cp入目标路径，或找到程序找依赖的环境变量路径，或系统外拷贝缺失包
+    - 注：配置时候依赖项libodbcinst.so.1缺失且环境中找不到，然而各版本的unixODBC包内，都有相应版本的各种包，软件一般向下兼容，直接cp so.2 为 so.1 可用
+    - [求libodbc.so.1和libodbcinst.so.1这两个库文件](https://zhidao.baidu.com/question/171015833.html)
+- [使用odbc连接数据库,报错Can't open lib 'libsqora.so.12.1':file not found,但是该包存在](https://www.jianshu.com/p/0460db4ea35f)
+
 
 # 其他
 ## 各种“名”

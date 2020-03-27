@@ -18,6 +18,15 @@ rpm -q binutils gcc gcc-c++ glibc glibc-devel ksh libaio libaio-devel libcap1 li
 [oracle手工建库总结](http://blog.chinaunix.net/uid-27248824-id-3298227.html)
 [Oracle11gR2手工建库(附DBCA静默建库)](https://blog.csdn.net/gumengkai/article/details/53218865)
 
+启动监听 lsnrctl start
+查看监听 lsnrctl status
+停止监听 lsnrctl stop
+
+tnslsnr 是啥……
+
+natstat -nape|grep 1521 查看1521（默认监听端口）的进程状态
+
+
 # 其他？
 sqlplus使用
 [Oracle SqlPlus 方向键的方法和解决的退格键失效](https://www.cnblogs.com/mengfanrong/p/4680281.html)

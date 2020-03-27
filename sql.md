@@ -258,9 +258,8 @@ has_money number(9,2)
 
 联合约束
 
-
 - 删除基本表
-drop table 表明 [restrict|cascade]
+drop table 表名 [restrict|cascade]
 
 ## 索引 index
 - 聚集索引，非聚集索引

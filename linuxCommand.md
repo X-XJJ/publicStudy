@@ -9,6 +9,10 @@ $ 一般用户的shell提示符 # 超级用户的shell提示符
 
 <Esc> 进入vi模式，可直接运行vi命令 如/word 查找缓冲区命令中出现的含word命令
 
+- uname -a 显示电脑和OS信息
+- lsb_release -a 显示具体操作系统信息
+- 内核版本文件 /proc/verision，发行版本文件 /etc/issue
+
 ### 各种计算校验命令 
 - ls -al /usr/bin/*sum
 - md5sum <fileName(s)>
@@ -495,7 +499,7 @@ SHELL 八大扩展 https://www.cnblogs.com/root-wang/p/3884448.html
   - 一个用户可拥有自己的文件和目录，用户拥有对自己文件目录访问权限的控制权，如授予特定用户们、群组、所有用户不同的访问权限
   - 一个用户至少归属于一个群组，一个群组至少有一个用户
   - 文件和目录的访问权限由其所有者进行授予
-  - 用户账户文件/etc/passwd，用户组文件/etc/group，用户密码信息/etc/shadow
+  - 所有用户账户文件/etc/passwd，用户组文件/etc/group，用户密码信息/etc/shadow
 
 ## 读写执行
 d       |rwx       |r-x   |r-x         |2|user|group|4.0K|Dec 16 21:49|.skel
@@ -718,34 +722,37 @@ jobs 列出所有活动作业的状态信息
   - service crond restart
   - chkcofig crond on 设置crond服务为开机自启动
 
-- crontab 定时任务操作
-  - 需要crond服务开启，可配置白or黑名单，白/etc/cron.allow，黑/etc/cron.deny，优先级 allow > deny，系统默认只有/etc/cron.deny文件
-  - crontab fileName 读取fileName文件将内容设为时程表中
+### crontab 定时任务操作
+- 需要crond服务开启
+- 权限配置文件，白名单/etc/cron.allow，黑名单/etc/cron.deny
+  - 优先级 allow > deny，系统默认只有/etc/cron.deny文件，cron.allow中默认root？
+- crontab fileName 读取fileName文件将内容设为时程表中
   - -u user 指定用户user的时程表(需有该用户权限)，缺省默认设定当前用户的
   - -l 列出目前的时程表
   - -e 编辑目前的时程表，编辑的才生效，保存后任务写入/var/spool/cron/下，用户名区分
   - -r 删除目前的时程表
   - -i 删除时确认提示
-  - 系统crontab任务配置 /etc/crontab文件，再看再看
-  - 时程表格式：`f1 f2 f3 f4 f5 program`
-    - f1 分钟，f2 小时，f3 天/一个月中的第几日，f4 月份，f5 一周中的第几天，program 要执行的程序
-  - f们的取值：
-    - * 任何时间，每分钟/小时/... 都要执行
-    - - 连续的时间，a-b 从第a分钟/小时/...到第b分钟/小时/...都要执行
-    - , 不连续的时间，a,b,c... 第a、b、c...分钟/小时要执行
-    - / 时间间隔，*/n 每n分钟/小时/...个时间间隔执行一次
-  - eg：
-    - 0 * * * * /bin/ls 每月每天每小时的第0分钟执行一次/bin/ls
-    - 0 6-12/3 * 12 * /usr/bin/backup 在12个月内，每天早6到12点，每隔3小时0分执行一次/usr/bin/backup
-    - 0 17 * * 1-5 mail -s "hi" a@xx.com 周一到周五每天下午5点0分发个邮件
-    - 50 7 * * * /sbin/service sshd start 每天7：50启动ssh服务
+- 系统crontab任务配置 /etc/crontab文件，再看再看
+- 时程表格式：`f1 f2 f3 f4 f5 program`
+  - f1 分钟，f2 小时，f3 天/一个月中的第几日，f4 月份，f5 一周中的第几天，program 要执行的程序
+- f们的取值：
+  - * 任何时间，每分钟/小时/... 都要执行
+  - - 连续的时间，a-b 从第a分钟/小时/...到第b分钟/小时/...都要执行
+  - , 不连续的时间，a,b,c... 第a、b、c...分钟/小时要执行
+  - / 时间间隔，*/n 每n分钟/小时/...个时间间隔执行一次
+- eg：
+  - 0 * * * * /bin/ls 每月每天每小时的第0分钟执行一次/bin/ls
+  - 0 6-12/3 * 12 * /usr/bin/backup 在12个月内，每天早6到12点，每隔3小时0分执行一次/usr/bin/backup
+  - 0 17 * * 1-5 mail -s "hi" a@xx.com 周一到周五每天下午5点0分发个邮件
+  - 50 7 * * * /sbin/service sshd start 每天7：50启动ssh服务
+- 
 
 # 环境
 ## 环境存储内容
 - 变量们
   - 环境变量：除shell变量外的所有其他变量
   - shell变量：bash存放的少量数据，变量、别名、shell函数
-- printenv 显示环境变量
+- env 或 printenv 显示环境变量
 - set 显示环境变量和shell变量，设置shell选项
   - 以上常用 |less 重定向
 - alias 命令别名相关，缺省为显示当前所有命令别名
@@ -1058,6 +1065,7 @@ bzip2 块排序文件压缩工具
   - tar zcvf test.tar Z07/* aa.txt bb.txt
 - tar zxvf 压缩文件名 [解压到的目录]
   - -c   打包create
+  - -C   解压到指定目录
   - -x   解包
   - -t   查看包里的文件 ≈ 使用vim打开压缩文件 可层层查看
   - -u   更新包
@@ -1156,6 +1164,7 @@ runlevel 查看系统当前运行级别
     - eg：useradd -s /bin/sh -g user -G adm,root test 创建test用户，其登录shell为/bin/sh，属于user组，同时附加组为adm和root，user是主组
   - -s 指定用户的登录shell
   - -u 指定用户的用户号，-o可重复使用其他用户标识号
+  - -m [用户名]
 -
 - whoami 查看当前登录用户名
 -
