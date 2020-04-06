@@ -338,6 +338,23 @@ sscanf(temp,"%*c%[^\"]",company);
 
 [sprintf函数详解](https://blog.csdn.net/jobsss/article/details/8131744)
 
+
+- <time.h>
+- 类型
+```
+struct tm *tm;
+struct tm tm1;
+time_t time;
+
+```
+strptime()
+srtftime()
+bzero()
+mktime()
+localtime()
+
+
+
 [C语言中时间的处理（一、字符串和时间戳的相互转换）](https://blog.csdn.net/sinat_34357675/article/details/78195615)
 
 [时间格式化函数strftime和strptime使用](https://blog.csdn.net/hittata/article/details/8090228)
