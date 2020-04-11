@@ -399,7 +399,16 @@ mkdir 目录1 [目录2 ...] 创建目录
 - -m $权限值755 设置权限
 - -v 显示信息
 
-iconv 改文件编码
+iconv 转换文件编码
+- -l 查看当前iconv支持的编码格式
+- -f 源文件编码
+- -t 输出编码
+- -c 输出中忽略无效字符
+- --verbose 打印进度信息
+- -o 输出文件路径
+- eg：从cp936转uft8：iconv -c --verbose -f cp936 -t utf-8 源文件 -o 输出文件
+
+
 
 paste 合并文件文本行
 
@@ -410,38 +419,38 @@ diff 逐行比较文件
 patch 对原文件打补丁
 tr 转换or删除字符
 
-- sed 过滤&转换文本の流编辑器 stream editor
-  - `sed [选项] [脚本命令] 文件名` 
-  - 给定sed简单的编辑命令，or包含多个命令的脚本文件名，sed对文本流内容执行编辑命令
-  - 按行读取，默认只修改从源文件复制到缓冲区的数据并输出
-  - 选项
-    - -i 直接修改源文件
-    - -e
-    - -f
-    - -n 屏蔽输出
-  - 脚本命令
-    - s 替换匹配内容
-      - [address]s/pattern/replacement/flags
-      - flags：
-        - n
-        - g
-        - p
-        - w 文件名
-        - &
-        - \n
-        - \
-    - c 替换一行
-      - [address]c\用于替换的新文本
-    - d 删除
-      - [address]d
-    - a 行后附加一行，i 行前插入一行
-      - [address]a（或 i）\新文本内容
-    - y 转换，处理单个字符
-      - [address]y/inchars/outchars/
-    - p 打印符合条件的行
-      - [address]p
-  - eg：替换全文本内匹配内容 sed 's/test/trial/g' data4.txt 输出替换后的内容
-    - 全文去空格 sed 's/[[:space:]]//g' tmp.txt >aa.txt
+## sed 过滤&转换文本の流编辑器 stream editor
+- `sed [选项] [脚本命令] 文件名` 
+- 给定sed简单的编辑命令，or包含多个命令的脚本文件名，sed对文本流内容执行编辑命令
+- 按行读取，默认只修改从源文件复制到缓冲区的数据并输出
+- 选项
+  - -i 直接修改源文件
+  - -e
+  - -f
+  - -n 屏蔽输出
+- 脚本命令
+  - s 替换匹配内容
+    - [address]s/pattern/replacement/flags
+    - flags：
+      - n
+      - g
+      - p
+      - w 文件名
+      - &
+      - \n
+      - \
+  - c 替换一行
+    - [address]c\用于替换的新文本
+  - d 删除
+    - [address]d
+  - a 行后附加一行，i 行前插入一行
+    - [address]a（或 i）\新文本内容
+  - y 转换，处理单个字符
+    - [address]y/inchars/outchars/
+  - p 打印符合条件的行
+    - [address]p
+- eg：替换全文本内匹配内容 sed 's/test/trial/g' data4.txt 输出替换后的内容
+  - 全文去空格 sed 's/[[:space:]]//g' tmp.txt >aa.txt
 
 
 aspell 交互式拼写检查器
@@ -745,6 +754,8 @@ jobs 列出所有活动作业的状态信息
   - 0 6-12/3 * 12 * /usr/bin/backup 在12个月内，每天早6到12点，每隔3小时0分执行一次/usr/bin/backup
   - 0 17 * * 1-5 mail -s "hi" a@xx.com 周一到周五每天下午5点0分发个邮件
   - 50 7 * * * /sbin/service sshd start 每天7：50启动ssh服务
+  - */20 9-18 *** 命令
+
 - 
 
 # 环境
@@ -964,6 +975,7 @@ IP Internet protocol, host and domain name 主机名和域名, URI Uniform resou
 - FTP协议
   - ftp命令，传统ftp客户端，使用FTP文件传输协议，file transfer protocol
   - lftp命令，比ftp强大，支持包括多协议、下载失败自动重新尝试、后台进程支持、tab补全等等
+  - ftp 默认端口21 sftp默认22
 
 - wget
   - 非交互式网络下载器

@@ -197,3 +197,9 @@ oracle 自增序列号id 用法
 [create sequence 用法](https://www.cnblogs.com/jhtchina/articles/1334955.html)
 如create sequence sqnJournal;
 
+
+# 各种报错
+- ORA-24550
+-
+-
+-

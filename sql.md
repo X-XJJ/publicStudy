@@ -248,6 +248,8 @@ create table table_name as select * from other_table_name;
 
 alter table test1 add (name varchar2(30) default ‘无名氏' not null);
 
+alter table test1 modify batchCode varchar(63);
+
 alter table test1
 add (name varchar2(30) default ‘无名氏' not null,
 age integer default 22 not null,
