@@ -89,7 +89,7 @@ sqlpuls 退格、方向键问题
 
 - 查看所有？用户 select * from dba_users/all_users/user_users;
 -
-- select distinct table_name from user_tab_columns; （查看当前user模式下所有表名）
+- select distinct table_name from user_tab_columns; （查看当前user下所有表名）
 -
 - select name from v$tempfile;查询临时表空间文件的绝对路径
 - select name from v$datafile;查询用户表空间文件的绝对路径

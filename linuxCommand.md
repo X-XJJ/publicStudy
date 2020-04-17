@@ -762,7 +762,7 @@ jobs 列出所有活动作业的状态信息
   - 0 6-12/3 * 12 * /usr/bin/backup 在12个月内，每天早6到12点，每隔3小时0分执行一次/usr/bin/backup
   - 0 17 * * 1-5 mail -s "hi" a@xx.com 周一到周五每天下午5点0分发个邮件
   - 50 7 * * * /sbin/service sshd start 每天7：50启动ssh服务
-  - */20 9-18 *** 命令
+  - */20 9-18 * * * source ~/.profile && source $BUSINESS/usr/release/ZOE.Z10 每天9~18点，每隔20min执行一次
 
 - 
 
