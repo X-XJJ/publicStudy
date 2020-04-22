@@ -1,9 +1,4 @@
-﻿# 双系统
-- 镜像.iso解压到非系统盘 如解压到D:\win7C\下
-- D:\win7C\boot\下,添加C:\Windows\Boot\EFI\bootmgr.efi(不隐藏受保护的操作系统文件),改名为bootx64.efi或bootx32.efi
-- 运行D:\win7C\setup.exe
-- 如果需要，最好还是单独分一个区作为系统盘，方便管理
-
+﻿
 # 激活win10
 slmgr.vbs /upk
 slmgr /ipk $license
@@ -34,8 +29,8 @@ slmg /ato
 
 # 快捷键
 - Crtl+A、Crtl+C、Crtl+V或者Ctrl+Alt+Del
-- C-c=C-Insert复制 C-v=Shift-Insert粘贴
-- C-Alt ↑↓←→改变屏幕方向，箭头所指为屏幕顶端方向
+- C+c=C+Insert复制 C+v=Shift+Insert粘贴
+- C+Alt ↑↓←→改变屏幕方向，箭头所指为屏幕顶端方向
 -
 shift切换中英文时
 设置→轻松使用→键盘：粘滞键功能，关闭则shift一次切换中英文，开启粘滞键则连按两次shift切换中英文，连按5次shift进行开启/关闭粘滞键
@@ -85,6 +80,12 @@ msconfig 系统设置（关闭开机自启动）
 # 自动更新相关部分
 - gpedit.msc 本地组策略编辑器——计算机配置→Windows组件→Windows更新→一堆，如配置自动更新
 - services.msc 服务——Windows Update→常规&恢复
+
+# 双系统
+- 镜像.iso解压到非系统盘 如解压到D:\win7C\下
+- D:\win7C\boot\下,添加C:\Windows\Boot\EFI\bootmgr.efi(不隐藏受保护的操作系统文件),改名为bootx64.efi或bootx32.efi
+- 运行D:\win7C\setup.exe
+- 如果需要，最好还是单独分一个区作为系统盘，方便管理
 
 
 # 一些概念
