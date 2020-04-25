@@ -303,7 +303,7 @@ mv item1 item2 ... directory 将多个item移动到directory目录下
 
 - ln 创建硬链接、符号链接（软连接）
  - ln file link 创建硬链接
- - ln -s item link 创建软连接，item=文件or目录
+ - ln -s item=文件or目录
  - 硬链接：直接指向自身文件系统内的引用文件，不能用于目录
  - 软连接：特殊类型的文件，该文件包含指向引用文件or目录的文本指针（≈快捷方式），显示中含有"->"
  - ln -s 目录A 目录B，在目录B下生成快捷方式A，如 ln -s /wszyapp/test /test-kuai
@@ -1057,6 +1057,7 @@ curl http://10.129.22.230:8096/sp1/bms -X POST -d "`cat body`"\
 
 ## 复杂查找 find
 - find $path -option [-print] [-exec -ok command] {} \
+  - find [路径] -操作 文件或目录特征
 - find 在文件系统目录框架中查找，依据文件的各种属性在既定目录&子目录里查找
 - find 一个or多个目录名 在此目录范围内搜索 如find ~ 列出主目录下的文件
 - 三类选项 test action options
