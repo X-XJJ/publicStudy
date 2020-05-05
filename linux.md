@@ -1,17 +1,46 @@
-﻿# Linux常用命令
+﻿
+- 命令参数和选项在标题中不单独列出位置
+- 参数仅列常用、用到的，查看完成参数内容可搜索文档or运行--help
 
-命令参数和选项在标题中不单独列出位置
-参数选项不列全
+# Linux常用命令
 
--a = --all 短选项和长选项，-为连字符
--at 多个短选项如a和t串联使用，短选项顺序无要求
-$ 一般用户的shell提示符 # 超级用户的shell提示符
+- 一般用户的shell提示符 $，超级用户的shell提示符 #
+- 配置后，<Esc> 进入vi模式，可直接运行vi命令 如/word 查找缓冲区命令中出现的含word命令
 
-<Esc> 进入vi模式，可直接运行vi命令 如/word 查找缓冲区命令中出现的含word命令
+# shell相关
+- shell是一个程序，接受键盘/输入的命令，传递给操作系统来执行
+sh csh bash ksh等shell的区别与联系
+[linux几种常见的Shell：sh、bash、csh、tcsh、ash](https://blog.csdn.net/whatday/article/details/78929247)
+
+- 短选项和长选项，如 -a = --all，-为连字符
+- 多个短选项，如-at，为a和t串联使用，短选项顺序无要求
 
 - uname -a 显示电脑和OS信息
 - lsb_release -a 显示具体操作系统信息
 - 内核版本文件 /proc/verision，发行版本文件 /etc/issue
+
+
+## 一些命令和使用？
+命令种类：可执行程序、shell内置命令、shell函数、alias命令
+
+## 时间日期
+- 在Linux运行过程中，系统时间和硬件时间以异步的方式运行，互不干扰
+- 硬件时间运行靠BIOS电池，系统时间用CPU Tick维持。开机时系统自动从BIOS中取得硬件时间，设置为系统时间
+- date 系统时间日期
+  - -s 修改 有多种格式修改，可同时改年月日时分秒，也可分开
+  - date -s "2018-05-17 09:51:50"
+  - date -s "09:51:50"
+- cal 当月日历
+- ntp服务器
+  - ntpdate 系统时间设为mtp服务器时间，生产慎用
+  - ntpd平滑同步，客户端与标准时间服务器同步 
+- tzselect 设置时区
+- hwclock 硬件时间相关
+  - -r = --show 显示当前硬件时间，缺省为此
+  - --set --date="2017-02-03 08:09:04" 修改当前硬件时间
+  - -s = --hctosys 以硬件时间为准，修改系统时间
+  - -w = --systohc <== 系统时间 to hc？ 以系统时间为准，修改硬件时间>
+
 
 ### 各种计算校验命令 
 - ls -al /usr/bin/*sum
@@ -60,32 +89,6 @@ touch 更改文件的日期时间
 
 stat 显示文件or文件系统的状态
 
-
-# shell相关
-- shell是一个程序，接受键盘/输入的命令，传递给操作系统来执行
-sh csh bash ksh等shell的区别与联系
-[linux几种常见的Shell：sh、bash、csh、tcsh、ash](https://blog.csdn.net/whatday/article/details/78929247)
-
-## 一些命令和使用？
-命令种类：可执行程序、shell内置命令、shell函数、alias命令
-
-## 时间日期
-- 在Linux运行过程中，系统时间和硬件时间以异步的方式运行，互不干扰
-- 硬件时间运行靠BIOS电池，系统时间用CPU Tick维持。开机时系统自动从BIOS中取得硬件时间，设置为系统时间
-- date 系统时间日期
-  - -s 修改 有多种格式修改，可同时改年月日时分秒，也可分开
-  - date -s "2018-05-17 09:51:50"
-  - date -s "09:51:50"
-- cal 当月日历
-- ntp服务器
-  - ntpdate 系统时间设为mtp服务器时间，生产慎用
-  - ntpd平滑同步，客户端与标准时间服务器同步 
-- tzselect 设置时区
-- hwclock 硬件时间相关
-  - -r = --show 显示当前硬件时间，缺省为此
-  - --set --date="2017-02-03 08:09:04" 修改当前硬件时间
-  - -s = --hctosys 以硬件时间为准，修改系统时间
-  - -w = --systohc <== 系统时间 to hc？ 以系统时间为准，修改硬件时间>
 
 # 查找程序
 - watch -n 2 ls
@@ -328,7 +331,7 @@ mv item1 item2 ... directory 将多个item移动到directory目录下
   - 注：>和2>&1 顺序不可变，错误必在输出后，先把输出定到文件1，再把错误定到文件1
 - `cat < 文件名` 利用cat，标准输入源头重定向为文件
 
-### cat
+## cat
 - `cat 文件名/缺省` 
 - 显示文件，即读取一个or多个文件，并复制到标准输出中
   - 利用cat进行文件拼接，如 cat a.txt.0* > a.txt ，或cat a.txt b.txt > a.txt 所有匹配的文件输出到a.txt中
@@ -456,6 +459,14 @@ tr 转换or删除字符
 
 
 aspell 交互式拼写检查器
+
+## awk 文本分析工具
+- 逐行读入文件，默认以空格为分隔符将每行切片，切开的部分再进行各种分析处理
+- awk '{pattern + action}' {filenames}
+- pattern：在数据中查找的内容，{}不一定必须，视情况使用
+- action：找到匹配内容时所执行的一系列命令
+
+
 
 # 格式化输出--文本打印到屏幕
 nl 对行进行标号
@@ -820,6 +831,8 @@ echo $SP1 输出PS1的值，PS1即提示符的环境变量
 
 
 # 软件包管理 package
+- 默认安装路径
+
 ## 软件包系统
 - 一些概念
   - 软件包文件：安装文件、元数据、安装脚本等等
@@ -965,15 +978,15 @@ IP Internet protocol, host and domain name 主机名和域名, URI Uniform resou
 
 - netstat
   - 显示各种网络设置和相关统计数据，网络连接、路由表、网络接口数据、伪连接、多点传送成员等信息
-  - netstat -nape|grep 端口号
-  - -n 显示数字(否则显示别名) 
-  - -a 显示所有(否则不显示LISTEN状态) 
+  - 如 netstat -nape|grep 端口号，在查询结果中匹配含该端口的
+  - -n 显示数字(否则显示别名)
+  - -a 显示所有(否则不显示LISTEN状态)
   - -p 显示进程信息
   - -e 显示扩展信息
-  - -l 仅显示LISTEN状态 
-  - -t 仅显示TCP套接字 
-  - -u 仅显示UDP套接字 
-  - -x 仅显示UNIX套接字 
+  - -l 仅显示LISTEN状态
+  - -t 仅显示TCP套接字
+  - -u 仅显示UDP套接字
+  - -x 仅显示UNIX套接字
   - -r 显示路由信息
   - -i 显示接口信息
   - -s 按协议统计
@@ -1057,7 +1070,8 @@ curl http://10.129.22.230:8096/sp1/bms -X POST -d "`cat body`"\
 
 ## 复杂查找 find
 - find $path -option [-print] [-exec -ok command] {} \
-  - find [路径] -操作 文件或目录特征
+  - find [路径] -操作 -输出 -命令 文件或目录特征
+
 - find 在文件系统目录框架中查找，依据文件的各种属性在既定目录&子目录里查找
 - find 一个or多个目录名 在此目录范围内搜索 如find ~ 列出主目录下的文件
 - 三类选项 test action options
@@ -1072,34 +1086,48 @@ path：查找的目录路径
 option：按什么进行查找
 file： 查找的文件特征
 
-find /tmp -name wa* -type l      在/tmp下查找名为wa开头且类型为符号链接的文件
+find ~ -name "*.txt" -print 在$HOME中，查文件名以.txt结尾的文件，并显示
+
+find /tmp -name wa* -type l 在/tmp下查找名为wa开头且类型为符号链接的文件
+
+find . -name .svn | xargs rm -rf
 
 
 
+# 归档（压缩） 备份 管理文件集合
+- 常用压缩格式 tar，tar.gz（即tgz），tar.bz2，等等
+-
 
-# 归档和备份，管理文件集合
+
 gzip 压缩解压文件工具
+
+
 bzip2 块排序文件压缩工具
 
+zip -r
+
+rar -a压缩 -x解压
+
+
 ## tar 磁带归档工具
-- tar [-cxtzjvfpPN] 文件与目录 ...
-- tar zcvf 打包后生成的文件名全路径名 要打包的目录们
-  - tar zcvf Z07-develop.tgz Z07/*
-  - tar zcvf test.tar Z07/* aa.txt bb.txt
-- tar zxvf 压缩文件名 [解压到的目录]
-  - -c   打包create
-  - -C   解压到指定目录
-  - -x   解包
-  - -t   查看包里的文件 ≈ 使用vim打开压缩文件 可层层查看
-  - -u   更新包
-  - -v   过程中显示进度过程
-  - -f   制定文件？使用文档名的时候，f必须在参数末尾
-  - -z   调用gzip，即同时具有gzip的压缩属性
-  - -j   调用bzip2
-  - -r   增加文件
+- tar [-cxtzjvfpPN] 文件、目录们
+  - -c 打包create
+  - -C 解压到指定目录
+  - -x 解包
+  - -t 查看包里的文件 ≈ 使用vim打开压缩文件 可层层查看
+  - -u 更新包
+  - -v 过程中显示进度过程
+  - -f 制定文件？使用文档名的时候，f必须在参数末尾
+  - -z 调用gzip，即同时具有gzip的压缩属性
+  - -j 调用bzip2
+  - -r 增加文件
   - -tvf 查看压缩包内文件列表
 - 错误：unexpected end of file，归档文件中异常的EOF
 - 原因：源码包损坏
+- tar zcvf 打包后生成的文件名全路径名 要打包的文件、目录们
+  - tar zcvf Z07-develop.tgz Z07/*
+  - tar zcvf test.tar Z07/* aa.txt bb.txt
+- tar zxvf 压缩文件名 [解压到的目录]
 
 zip 打包和压缩文件
 unzip
@@ -1434,7 +1462,6 @@ IPV6_PEERDNS=yes
 IPV6_PEERROUTES=yes
 ```
 
-
 ## 无ifconfig netstat等一系列命令
 最小安装下 值安装了命令为ip
 yum -y install net-tools
@@ -1529,6 +1556,7 @@ ftp
 scp
 samba
 nfs
+rz,sz
 
 ## rz,sz
 -y 覆盖

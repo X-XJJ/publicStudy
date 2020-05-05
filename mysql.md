@@ -5,6 +5,7 @@
 
 # 安装
 
+[CentOS7安装MySQL（完整版）](https://blog.csdn.net/qq_36582604/article/details/80526287)
 
 # 除sql外的操作
 - `;`分号不省略！

@@ -1,7 +1,7 @@
 sql相关
 （基于笔记，慢慢补充）
 
-# 其他
+# 不同数据库特有内容
 sql命令内：
 sp_help
 
@@ -66,6 +66,7 @@ socket set: 有序的
 []   可选语法选项
 --   单行注释
 /**/ 多行注释
+
 
 # 关系数据库标准语言SQL
 - 数据定义DDL define
@@ -201,6 +202,11 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
 # 数据操纵 DML
 ## 修改数据 
 - update 表名 set 列名=表达式 [,列名=表达式...] [where 条件]
+
+- 下链待验证
+[Oracle中 如何用一个表的数据更新另一个表中的数据](https://www.cnblogs.com/kangkaii/p/8419088.html)
+
+
 ## 插入数据 
 - 插入行数据（原组）
   - insert into 表名 [(属性列1 [,属性列2...])] values (常量1 [,常量2 ...]) [,(常量1 [常量2 ...]) ...]
@@ -208,6 +214,8 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
 insert into 表名 [(属性列们)] 子查询
   - 复制表数据  select * into 新表名 from 原表名
   - 复制表结构  select * into 新表名 from 原表名 where 一个不存在的条件
+
+
 ## 删除数据 
 - delete [from] 表名 [where 条件] 
 
@@ -241,6 +249,7 @@ and rowid not in (select min(rowid) from 表 group by Id,seq having count(*)>1)
 - create database 数据库名 
   [ON 数据库信息如name,size...]
   [LOG ON 日志信息同上]
+
 ## 表 table
 - 创建基本表
 create table 表名(
@@ -254,22 +263,26 @@ create table 表名(
     - unique (列名) 可有多个，非主键列，不允许重复，允许空，
   - 列级完整性约束
 - 修改基本表
+
 alter table 表名
   [add 新列名 数据类型 [完整性约束名]]
   - 只能按顺序排列在后排？调整列顺序呢？
 添加字段：alter table tablename add (column datatype [default value][null/not null],….);
 修改字段：alter table tablename modify (column datatype [default value][null/not null],….);
 删除字段：alter table tablename drop (column);
-添加、修改、删除多列的话，用逗号隔开。
+
+添加、修改、删除多列，则用逗号隔开
 
 create table test1 (id varchar2(20) not null);
 
 - oracle
 create table table_name as select * from other_table_name;
 
-alter table test1 add (name varchar2(30) default ‘无名氏' not null);
+添加字段：alter table test1 add (name varchar2(30) default ‘无名氏' not null);
 
-alter table test1 modify batchCode varchar(63);
+修改字段长度：alter table test1 modify batchCode varchar(63);（只可加长，不可缩短）
+
+修改字段名：alter talbe test1 rename column A to B;
 
 alter table test1
 add (name varchar2(30) default ‘无名氏' not null,
@@ -363,6 +376,48 @@ end;
 select * from 
 drop sequence 序列名;
 
+# 数据库相关概念
+- 对象 实体型 object
+  - 对象：在现实世界中具有相同性质、遵循相同规则的一类事物的抽象表示，由实体集数据化，如学生、老师、课程
+    - ？？对象：数据库中可操作的结构，如表、函数、触发器、视图等
+    - ？？实体：构建数据库模型的时候，如E-R图中对现实世界的抽象
+- 实例 instance
+  - 对象中的每一个具体的事物，例如学生总有萧铭、小凡
+- 属性 attribute
+  - 字段？对象的某一方面特征的抽象表示，例如学生的姓名、性别、班级、年龄
+- 主码 primary key
+  - 主键，唯一标识一个实体的属性
+- 次码 secondary key
+  - 不能唯一标识实体的属性
+- 域 domain
+  - 属性的取值范围，比如性别中的男、女。
+- 完整性
+  - 存储在数据库中的所有数据值均正确的状态。如果数据库中存储有不正确的数据值，则该数据库称为已丧失数据完整性
+- 约束呢？？
+
+实体？对象？约束？需翻书！！！！
+
+
+# 范式 关系型数据库
+- 范式：符合某一种级别的关系模式的集合，即关系型数据库中，构造数据库需遵循的规则
+- 种类：第一范式 1NF，第二范式 2NF，第三范式 3NF，Boyce-Codd范式 BCNF，第四范式 4NF，第五范式 5NF，常用1NF、2NF、3NF，从1NF开始，规则的要求逐级增加
+- 1NF
+  - 表中无重复、可再拆分的列（即字段），表都是二维表，字段具有原子性，每一列都是不可分割的基本数据项
+  - 关系型数据库的基本要求，凡是关系型数据库必须满足1NF
+  - 如【流水表】（订单号，交易时刻），拆为（订单号，交易日期，交易时间）
+  - 如【联系人】（姓名，电话），拆为（姓名，家庭电话，公司电话）
+- 2NF
+  - 满足1NF + 每行（即实例，一条数据）必须被唯一区分，即表有一个主键 + 所有非主属性都完全依赖于主键，不能只依赖一部分
+  - 所有单主键的表都符合2NF
+
+
+这个例子也像3NF的？？？
+  - 如【流水表】（订单号，合同号，金额，对手账号，监管编号，监管项目），主键-订单号，不符合2NF
+  - 存在依赖关系（订单号）->（合同号，金额，对手账号），（合同号）->（监管编号，监管项目），拆为两表即可
+- 3NF
+  - 满足2NF + 说
+
+
 # 事务和事务级别
 事务：数据库事务，一系列有限的数据库操作序列，是数据库管理系统执行过程中的一个逻辑单位，
 
@@ -374,15 +429,15 @@ AIDC？原子性 一致性 隔离性 啥啥性
 
 transaction isdation
 - 级别区分：关系型数据库的一堆标准 数据库选用不一，如oracle只支持2 4
-    - 1 未提交读 uncommitted read 没提交就可以读出
-    - 2 已提交读 commited read 
-    - 3 可重复读 repeatable read 
-    - 4 串行化读 serializable 
+  - 1 未提交读 uncommitted read 没提交就可以读出
+  - 2 已提交读 commited read 
+  - 3 可重复读 repeatable read 
+  - 4 串行化读 serializable 
 
 数据库中有相同事务进行多线程运作时，对数据库增删查改等的控制，
 多个线程接入同一个事务，对多方操作进行控制
 
-- #查看事务隔离级别.
+# 查看事务隔离级别.
 - mysql> select @@global.tx_isolation;
 - mysql> select @@session.tx_isolation;
 - #设置事务隔离级别.
@@ -427,4 +482,5 @@ S
 
 
 ## 死锁、活锁
+
 
