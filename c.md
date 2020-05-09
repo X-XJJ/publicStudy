@@ -200,6 +200,8 @@ char *time;
 
 ## 字符串相关
 ### stdio.h
+fprintf() |格式化输出到文本，即写入
+int fprintf(FILE *stream, const char *format, ...) 发送格式化输出到流 stream 中
 
 
 ### string.h

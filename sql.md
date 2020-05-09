@@ -118,9 +118,11 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
   having后加条件，过滤组
   单条件中where与group by不共存；连接查询中，where后可以有group by;
 - "order by"
-  ASC 升序，默认的; DESC 降序;
-  order by只可对最终结果排序，嵌套查询的子查询中order by必与top n连用;
-  eg：... IN (select top 3 name from A order by age)
+  - ASC 升序，默认值; DESC 降序;
+  - order by 只可对最终结果排序，嵌套查询的子查询中order by必与top n连用;
+    - eg：... IN (select top 3 name from A order by age)
+  - 对多个字段排序时，以逗号分隔，排序优先级按顺序来
+    - eg：... ORDER BY age desc,count asc 先按age的降序排，若有age相同的，相同部分再按count的升序排
 
 ### 其他
 - select 1 from A 和 select count(1) from 和 select sum(1) from

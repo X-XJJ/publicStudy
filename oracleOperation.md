@@ -3,7 +3,7 @@
 
 # sqlplus
 - 登陆sqlplus
-  - sqlplus / as sysdba（远程登录则需用户名密码）
+  - sqlplus / as sysdba（在oracle用户登录，远程登录则需用户名密码）
   - sqlplus 用户名/密码
   - ...
 
@@ -145,7 +145,7 @@ grant all privileges to 库名;
 
 
 
-## 口令失效问题 ORA-28001
+## 密码过期、口令失效问题 ORA-28001
 - 创建用户时缺省密码过期限制为180天
 - SELECT * FROM dba_profiles WHERE profile='DEFAULT' AND resource_name='PASSWORD_LIFE_TIME'，查询密码的有效期设置，结果中limit字段为有效天数
 - ALTER USER 用户名 IDENTIFIED BY 密码，修改用户密码，即下一个180天的密码
