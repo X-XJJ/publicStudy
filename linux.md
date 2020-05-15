@@ -863,6 +863,12 @@ echo $SP1 输出PS1的值，PS1即提示符的环境变量
 显示安装信息  |apt-cache show pkName|yum info pkName
 察看文件安装源|dpkg --search file_name|rpm -qf file_name
 
+- rpm
+  - -q 查询？判断是否安装？
+  - -a
+  - 如 rpm -qa | grep -i mysql
+
+
 - apt-get
 
 - yum

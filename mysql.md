@@ -14,4 +14,4 @@
 - show variables  like 'port';  查看数据库使用端口
 - show tables 查看当前用户所有表
 
-进入如mysql -u用户名 -p
+进入 mysql -u 用户名 -p 密码
