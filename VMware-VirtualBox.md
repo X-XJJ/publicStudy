@@ -9,6 +9,10 @@
 
 [vmware centos7 minimal 配置共享文件夹](https://www.jianshu.com/p/b7a541262ae7)
 
+
+# VM和VB共存の网络连接
+
+
 # 网络模式
 ## NAT
 
@@ -16,8 +20,8 @@
 
 ## （仅VirtualBox）
 
-## 桥接  
-root权限下，suse内配置静态ip地址 8.0.3.2（softscape内部网段）  
+## 桥接
+root权限下，suse内配置静态ip地址 8.0.3.2（softscape内部网段）
 `ifconfig eht0 8.0.3.2 netmask 255.0.0.0` 
 图形界面Network下，YaST2下配置为静态ip
 默认使用虚拟网卡VMnet0，自动获取当前主机网段ip给虚拟机？，虚拟机 = 真实主机

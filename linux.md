@@ -161,8 +161,8 @@ H 设置硬限制
     - !number 执行历史记录中第number行的命令
     - ! string 执行最近的以string开头的历史记录
     - !?string 执行最近的含有string的历史记录
-  - ↑↓ = C+p C+n：利用缓冲区选择历史命令
-  - C+r 逆向递增搜索历史记录，输入查找内容后继续C+r到查找的下一条
+  - ↑↓ = C-p C-n：利用缓冲区选择历史命令
+  - C-r 逆向递增搜索历史记录，输入查找内容后继续C-r到查找的下一条
   -
   - Esc 进入缓存区 可用vim的/寻找最近一次？历史命令——特殊的？普遍的？
 - 配置文件，在配置命令行以vi方式编辑后 
@@ -172,31 +172,31 @@ H 设置硬限制
 - shift+↑↓：滚屏
 
 ## 光标相关等快捷键
-- C+a 移动光标到行首; C+e 移到行尾
-- C+b = ← 光标左移一位; C+f = → 光标右移一位
-- C+l = clear 清屏
+- C-a 移动光标到行首; C-e 移到行尾
+- C-b = ← 光标左移一位; C-f = → 光标右移一位
+- C-l = clear 清屏
 - Alt-f 光标前移一字; Alt-b 光标后移一字
 - 
 - 编辑命令
-- C+d 删除光标处的字符
-- C+t 对调字符，光标处的和光标前的
+- C-d 删除光标处的字符
+- C-t 对调字符，光标处的和光标前的
 - Alt-t 对调字，光标处的和光标前的
 - Alt-l 变小写字母，从光标处到字尾
 - Alt-u 变大写字母，从光标处到字尾
 - 
 - 剪切killing和粘贴yanking
-- C+k 剪切，从光标到行尾
-- C+u 剪切，从光标到行首
+- C-k 剪切，从光标到行尾
+- C-u 剪切，从光标到行首
 - Alt-d 剪切，从光标到词尾
 - Alt-Backspace 剪切，从光标到词头，光标在开头则剪上一个
-- C+y 把kill-ring缓冲区中存的剪切文本粘贴到光标位置
+- C-y 把kill-ring缓冲区中存的剪切文本粘贴到光标位置
 - 
-- C+s 锁屏，光标不移动，中断控制台输出
-- C+q 解锁，在锁屏时键入的内容存在缓存，解锁时恢复控制台输出
+- C-s 锁屏，光标不移动，中断控制台输出
+- C-q 解锁，在锁屏时键入的内容存在缓存，解锁时恢复控制台输出
 - 
-- C+c 发送sigint信号给前台进程组的所有进程，强行终止
-- C+z 发送sigtstp信号，挂起进程，使用fg/bg恢复执行前台/后台被挂起的进程，如在vi时C+z挂起一下，出来执行命令，再fg返回vi
-- C+d 表示EOF = 终端输入exit回车
+- C-c 发送sigint信号给前台进程组的所有进程，强行终止
+- C-z 发送sigtstp信号，挂起进程，使用fg/bg恢复执行前台/后台被挂起的进程，如在vi时C-z挂起一下，出来执行命令，再fg返回vi
+- C-d 表示EOF = 终端输入exit回车
 - 
 - stty -a 查看终端控制字符
 -
@@ -336,7 +336,7 @@ mv item1 item2 ... directory 将多个item移动到directory目录下
 - 显示文件，即读取一个or多个文件，并复制到标准输出中
   - 利用cat进行文件拼接，如 cat a.txt.0* > a.txt ，或cat a.txt b.txt > a.txt 所有匹配的文件输出到a.txt中
   - 若a.txt已有内容，会被覆盖
-- 参数缺省，则cat从标准输入读取内容，C+d结束
+- 参数缺省，则cat从标准输入读取内容，C-d结束
   - 利用cat进行标准输入的重定向 
 - -n 打印行号
 - 清空文件内容 cat dev/null > $filepath/name
@@ -386,7 +386,7 @@ dev/null 空设备文件
   - grep pattern1 | pattern2 files ：显示匹配 pattern1 或 pattern2 的行， 
   - grep pattern1 files | grep pattern2 ：显示既匹配 pattern1 又匹配 pattern2 的行。 
 - head、tail
-  - 输出文件的前/最后10行，C+c结束监控
+  - 输出文件的前/最后10行，C-c结束监控
   - -n 数字 输出文件的前/最后n行
   - -f 文件名 实时查看监视文件的进展动态
 - tee
@@ -701,8 +701,8 @@ STAT内容|R   |S         |D           |T   |Z   |<       |N
 （类似Windows的TaskManager）
 
 # 控制进程
-C+c 中断一个程序
-C+z 暂停一个程序
+C-c 中断一个程序
+C-z 暂停一个程序
 
 bg 使作业切换到后台运行 缺省显示当前后台运行的作业列表
 fg %作业编号 使作业切换到前台运行
@@ -724,14 +724,14 @@ jobs 列出所有活动作业的状态信息
 
 编号|信号名|含义
 1   |HUP   |挂起，后台进程重启并初始化||
-|2| INT 中断，即C+c
+|2| INT 中断，即C-c
 |9 KILL 杀死，内核直接终止进程，不能忽略，最后的选择
 |15 TERM 终止，缺省默认项
 |18 CONT 继续，恢复STOP的进程
 |19 STOP 暂停，不由目标进程接受，不能忽略
 |3 QUIT 退出
 |11 SEGV 段错误时系统发送
-|20 TSTP 终端暂停，即C+z，
+|20 TSTP 终端暂停，即C-z，
 |28 WINCH 窗口改变大小时系统发送
 
 
@@ -1287,9 +1287,9 @@ groupadd test //新建test工作组
 
 - set -o vi
   - 设置终端命令可以使用vi/vim的方式编辑，具体可用命令范围尚不清楚
-  - 正常输入≈插入模式编辑，C+w，C+u可用，再ESC后进入≈普通模式编辑
-  - ESC+j/k = 正常输入下↑↓，翻历史命令
-  - ESC+/搜索模式，范围为历史命令，搜索出的内容≈普通模式编辑
+  - 正常输入≈插入模式编辑，C-w，C-u可用，再ESC后进入≈普通模式编辑
+  - ESC-j/k = 正常输入下↑↓，翻历史命令
+  - ESC-/搜索模式，范围为历史命令，搜索出的内容≈普通模式编辑
   - ≈普通模式编辑的，常用的移动、插入都可用（注：cw可以，caw不可以，诸如此类）
 
 # 工具
@@ -1353,7 +1353,7 @@ echo ${#arry[*]}
 
 # 编译调试
 gcc.exe 编译C
-g++.exe 编译C++
+g++.exe 编译C-+
 gdb.exe 调试程序的debug工具
 
 ## gcc
@@ -1406,15 +1406,17 @@ linker 链接器
   - 创建gcc.exe的副本cc.exe
   - 创建mingw32-make.exe的副本make.exe
 
-[MinGW-w64安装教程——著名C/C++编译器GCC的Windows版本](https://www.cnblogs.com/ggg-327931457/p/9694516.html0)
+[MinGW-w64安装教程——著名C/C-+编译器GCC的Windows版本](https://www.cnblogs.com/ggg-327931457/p/9694516.html0)
 
 - MinGW 和 MinGw-w64区别和联系
 [MinGW和 MinGW-W64的区别](https://www.jianshu.com/p/adcca97d1962)
 
-[windows下使用vscode编写运行以及调试C/C++](https://www.cnblogs.com/TAMING/p/8560253.html)
+[windows下使用vscode编写运行以及调试C/C-+](https://www.cnblogs.com/TAMING/p/8560253.html)
 
 [vscode写c语言（windows）](https://my.oschina.net/oisanblog/blog/2209354)
 
+
+## 抓包工具 tcpdump（windows下、可视化分析 - Wireshark）
 
 # 一些通用的
 - 单行注释 #

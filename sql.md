@@ -10,6 +10,14 @@ sp_help
 [Select count(*)、Count(1)、Count(0)的区别和执行效率比较](https://www.cnblogs.com/sueri/p/6650301.html)
 [Select count(*)和Count（1）的区别和执行方式](https://www.cnblogs.com/CareySon/p/DifferenceBetweenCountStarAndCount1.html)
 
+## 数据库连接工具
+- odbc，unixODBC
+- jdbc
+- Navicat
+- DBVisualizer
+- ……
+
+
 ## 数据类型、函数等
 
 - mysql
@@ -282,7 +290,7 @@ create table table_name as select * from other_table_name;
 
 添加字段：alter table test1 add (name varchar2(30) default ‘无名氏' not null);
 
-修改字段长度：alter table test1 modify batchCode varchar(63);（只可加长，不可缩短）
+修改字段长度：alter table test1 modify batchCode varchar(63);（加长没问题，缩短看具体情况？？）
 
 修改字段名：alter talbe test1 rename column A to B;
 
@@ -298,6 +306,7 @@ has_money number(9,2)
 
 - 删除基本表
 drop table 表名 [restrict|cascade]
+
 
 ## 索引 index
 - 聚集索引，非聚集索引

@@ -147,9 +147,12 @@ grant all privileges to 库名;
 
 ## 密码过期、口令失效问题 ORA-28001
 - 创建用户时缺省密码过期限制为180天
-- SELECT * FROM dba_profiles WHERE profile='DEFAULT' AND resource_name='PASSWORD_LIFE_TIME'，查询密码的有效期设置，结果中limit字段为有效天数
-- ALTER USER 用户名 IDENTIFIED BY 密码，修改用户密码，即下一个180天的密码
-- ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED，关闭180天限制
+- 查询密码的有效期设置，结果中limit字段为有效天数
+  - SELECT * FROM dba_profiles WHERE profile='DEFAULT' AND resource_name='PASSWORD_LIFE_TIME'
+- 修改用户密码，即下一个180天的密码
+  - ALTER USER 用户名 IDENTIFIED BY 密码
+- 关闭180天限制
+  - ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED
 
 [SQL*Plus用法指南](https://www.cnblogs.com/itcui/p/5626565.html)
 
