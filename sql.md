@@ -216,6 +216,8 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
 - 下链待验证
 [Oracle中 如何用一个表的数据更新另一个表中的数据](https://www.cnblogs.com/kangkaii/p/8419088.html)
 
+- 
+
 
 ## 插入数据 
 - 插入行数据（原组）
@@ -288,7 +290,7 @@ create table test1 (id varchar2(20) not null);
 - oracle
 create table table_name as select * from other_table_name;
 
-添加字段：alter table test1 add (name varchar2(30) default ‘无名氏' not null);
+添加字段：alter table test1 add (testname varchar2(30) default ‘无名氏' not null);
 
 修改字段长度：alter table test1 modify batchCode varchar(63);（加长没问题，缩短看具体情况？？）
 
