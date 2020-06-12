@@ -150,7 +150,7 @@ grant all privileges to 库名;
 - 查询密码的有效期设置，结果中limit字段为有效天数
   - SELECT * FROM dba_profiles WHERE profile='DEFAULT' AND resource_name='PASSWORD_LIFE_TIME'
 - 修改用户密码，即下一个180天的密码
-  - ALTER USER 用户名 IDENTIFIED BY 密码
+  - alter user 用户名 identified by 密码
 - 关闭180天限制
   - ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED
 

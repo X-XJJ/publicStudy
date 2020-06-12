@@ -208,9 +208,12 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
   - intersect 交;
   - except    差;
 
+- [SQL查询重复记录](https://blog.csdn.net/haoui123/article/details/80562835)
+  - eg：单个字段重复的记录 select * from people where peopleId in (select peopleId from people group by peopleId having count(peopleId)
+
 
 # 数据操纵 DML
-## 修改数据 
+## 修改数据
 - update 表名 set 列名=表达式 [,列名=表达式...] [where 条件]
 
 - 下链待验证

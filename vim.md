@@ -12,6 +12,8 @@ C+^ 切回上个缓冲区；
 
 n+标识符 n行/字/词 3j aw 5G ...
 
+- 默认全局（root）配置文件路径 /etc/vimrc
+- 各用户特有配置文件路径 ~/.vimrc
 
 # Nomal 普通模式 
 - vim command line quick edit

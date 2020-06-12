@@ -1015,7 +1015,7 @@ IP Internet protocol, host and domain name 主机名和域名, URI Uniform resou
   - 单个文件，多个文件，整个网站，都支持，递归下载、后台文件、继续下载等
 
 ## 远程安全通信
-- SSH
+- SSH/ssh
   - Secure Shell 安全登陆远程系统
   - 身份验证-避免中间人攻击，通信加密-安全传输
   - 多数采用OpenSSH版方法
@@ -1144,21 +1144,6 @@ unzip
 rsync 远程文件和目录的同步
 
 
-
-# shell脚本-详见linuxConfig.md
-编写--脚本文件权限为允许执行--脚本放置位置最好在没指定路径时shell能自动发现的地方(如PATH环境变量中包含的目录)
-
-"#!" 字符序列为特殊结构，名shebang，告知操作系统应使用哪个解释器执行该脚本;应该放在每个shell脚本的第一行;
-  eg: #!/bin/bash 
-
-- sh filepath 或 ./filepath
- - 建立新的子shell来执行脚本中的语句
-
-- source filepath 或 ./filepath
- - 使当前shell读入路径为filepath 的shell文件并依次执行文件中的所有语句
- - 常用于重新执行刚修改的初始化文件，立即生效，如source /etc/profile
-
-其他的估计暂时用不到，再看再看
 
 
 # linux文件系统
@@ -1297,10 +1282,26 @@ Netcat网络工具
 
 
 # shell脚本
+编写--脚本文件权限为允许执行--脚本放置位置最好在没指定路径时shell能自动发现的地方(如PATH环境变量中包含的目录)
+
+"#!" 字符序列为特殊结构，名shebang，告知操作系统应使用哪个解释器执行该脚本;应该放在每个shell脚本的第一行;
+  eg: #!/bin/bash 
+
+- sh filepath 或 ./filepath
+ - 建立新的子shell来执行脚本中的语句
+
+- source filepath 或 ./filepath
+ - 使当前shell读入路径为filepath 的shell文件并依次执行文件中的所有语句
+ - 常用于重新执行刚修改的初始化文件，立即生效，如source /etc/profile
+
+其他的估计暂时用不到，再看再看
+
 使用脚本+telnet，如
 (echo "00BCD400{\"checkDate\":\"20190501\"}";sleep 1)|telnet 127.0.0.1 60120
 sleep 60
 发送socket到地址端口
+
+
 
 ## 运行
 - 脚本文件 命名无规定规则，带不带后缀都可以，一般为.sh
