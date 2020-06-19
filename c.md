@@ -208,6 +208,7 @@ int fprintf(FILE *stream, const char *format, ...) 发送格式化输出到流 s
 - srtncpy() 复制指定长度字符串 是否默认添加\0？ char *strncpy(char *dest, const char *src, int n)
 
 strcpy()  |复制字符串strcpy(s,t) 复制t到s里 以t中\0为止 注意溢出问题 默认添加\0
+strncpy()  |复制指定长度字符串
 strlen()  |取到\0为止的字符串长度 不含\0|有取字符串二进制or二进制长度的否？
 strcat()  |追加字符串 strcat(s,t) t拼接到s的末尾，若超s长会怎样？
 strncat() |追加指定长度字符串？

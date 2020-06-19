@@ -209,6 +209,7 @@ from   表名or视图名 ,表名2... | (select语句) [as] 语句结果别名
   - except    差;
 
 - [SQL查询重复记录](https://blog.csdn.net/haoui123/article/details/80562835)
+
   - eg：单个字段重复的记录 select * from people where peopleId in (select peopleId from people group by peopleId having count(peopleId)
 
 
@@ -499,4 +500,13 @@ S
 
 ## 死锁、活锁
 
+# 其他
+[数据库表设计的几条准则](https://www.cnblogs.com/wyq178/p/8549715.html)
+[数据库设计三大范式](https://blog.csdn.net/dosthing/article/details/87954213)
+[数据库三大范式详解（通俗易懂）](https://blog.csdn.net/lz70523/article/details/80701291)
+[]()
+[]()
+[]()
+[]()
+[]()
 

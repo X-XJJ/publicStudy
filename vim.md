@@ -220,7 +220,7 @@ C+W ??好像无功能
 :colo [方案] = colorscheme 配色方案，windows下desert较顺眼，linux下peachpuff，desert，torte较顺眼
 
 ## 文件命令
-- :f 显示当前文件名
+- :f 显示当前文件名 = 普通模式 C+g
 - :open 在缓冲区中打开文件
 - :edit = :e 按文件路径读入缓冲区  只有:e则为reload重载当前缓冲区，即刷新当前文件
 -     % 活动缓冲区的完整文件路径；:h 修饰符，保留去除文件名的部分；

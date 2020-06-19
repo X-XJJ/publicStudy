@@ -1401,6 +1401,24 @@ ulimit -c unlimited
 
 linker 链接器
 
+
+[Linux生成core文件、core文件路径设置](https://blog.csdn.net/u011417820/article/details/71435031)
+[[Linux] 什么是 段错误（吐核）？](https://blog.csdn.net/qq_42351880/article/details/85332621)
+[详解coredump](https://blog.csdn.net/tenfyguo/article/details/8159176)
+
+[Linux下文件对比（diff/comm/egrep）](http://www.imooc.com/article/48499)
+[]()
+[]()
+[]()
+[]()
+[]()
+[]()
+[linux下切换用户出现This account is currently not available](https://www.cnblogs.com/gcgc/p/10297373.html)
+
+
+[linux关机过程流程](https://blog.csdn.net/wbcuc/article/details/7873873)
+
+
 ## MinGW-w64
 - Minimalist GUN on Windows，将gcc移植到Windows平台
 - 使用make命令，win下修改：
@@ -1528,6 +1546,10 @@ ssh= secure shell
 可以让远程主机通过网络访问sshd服务，开始一个安全shell,并对其进行操控
 sshd
 可以通过网络在主机中开启shell的服务
+
+
+
+网关 gateway
 
 
 ## 网络配置

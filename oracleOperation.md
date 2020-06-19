@@ -38,7 +38,13 @@ sqlpuls 退格、方向键问题
 - isql Z0P.0 连进库
 - strace -v isql Z0P.0 strace命令跟踪进程的所有系统调用
 - isql -v Z0P.0 查看odbc报错
--
+
+执行select文件 `isql Z0P.0 < select`
+
+[isql命令的参数](https://www.douban.com/group/topic/9255153/)
+
+
+
 - make时存在leaving directory问题，属正常打印，未报错
 
 - 配置两个文件在路径 $ORACLE_HOME/network/admin/ 下
@@ -153,6 +159,14 @@ grant all privileges to 库名;
   - alter user 用户名 identified by 密码
 - 关闭180天限制
   - ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED
+
+[oracle密码过期ORA-28002:口令将过期的解决方法](https://blog.csdn.net/runandrun/article/details/8289171)
+[]()
+[]()
+[]()
+[]()
+[]()
+
 
 [SQL*Plus用法指南](https://www.cnblogs.com/itcui/p/5626565.html)
 

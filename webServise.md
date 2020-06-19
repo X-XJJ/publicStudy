@@ -2,6 +2,9 @@ WebService是一种跨编程语言和跨操作系统平台的远程调用技术
 
 [Welcome to nginx!](http://nginx.org/)
 
+[Web Service描述语言 WSDL 详解](http://staff.ustc.edu.cn/~shizhu/DotNet/WSDLxj.htm)
+
+
 
 # 接口
 

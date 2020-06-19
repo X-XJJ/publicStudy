@@ -1,4 +1,21 @@
 ﻿
+- 收藏夹
+- https://tool.lu/
+- http://coolaf.com/
+- https://www.cmd5.com/hash.aspx
+- http://www.mytju.com/classcode/tools/encode_gb2312.asp
+- https://blog.csdn.net/hherima/article/details/50801360
+- http://www.tudoupe.com/
+- https://www.cnblogs.com/joshua317/p/6170839.html
+- https://www.cnblogs.com/alpf/p/11045010.html
+- https://blog.csdn.net/T146lLa128XX0x/article/details/79157906
+- https://blog.csdn.net/jia12216/article/details/55222907
+- http://www.chakahao.com/cardbin/chakahao_abc.html
+-
+- https://github.com/X-XJJ
+-
+-
+
 # 激活win10
 slmgr.vbs /upk
 slmgr /ipk $license
