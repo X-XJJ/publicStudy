@@ -28,6 +28,8 @@ set statusline=%{&ff}\|%{&fenc!=''?&fenc:&enc}\|%y\|c:%v\,r:%l\ of\ %L\|%f
 显示效果为
 unix|utf-8|PERL|c:1,r:1 of 63|256.pl
 
+↑尚未验证成功
+
 ## 实际行移动
 h 前列；j 下行；k 上行；l 后列；(J 合并两行 其他大写暂略 用再:h 查)
 w 到后一词头word；b 向前找词头back；e 向后找词尾；ge 到前一词尾；
