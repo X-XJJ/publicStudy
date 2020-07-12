@@ -11,6 +11,9 @@
 
 
 # VM和VB共存の网络连接
+[Vbox和VMware共存问题解决](https://blog.csdn.net/hhs49707555/java/article/details/78153919)
+
+[关于Vmware与VirtualBox主客机互通，且都能连网的配置](https://blog.csdn.net/zhangtaolmq/java/article/details/69240520)
 
 
 # 网络模式

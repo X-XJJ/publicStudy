@@ -1281,6 +1281,11 @@ groupadd test //新建test工作组
 Netcat网络工具
 
 
+编辑文本 vim
+
+view = vi ？？
+
+
 # shell脚本
 编写--脚本文件权限为允许执行--脚本放置位置最好在没指定路径时shell能自动发现的地方(如PATH环境变量中包含的目录)
 
