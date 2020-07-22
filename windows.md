@@ -119,3 +119,29 @@ msconfig 系统设置（关闭开机自启动）
 
 
 
+# bat 文件
+- ms dos 批处理文件
+
+- eg:
+~~~
+@echo off
+setlocal enabledelayedexpansion
+set ffmpeg="C:\Program Files (x86)\YouKu\YoukuClient\nplayer\ffmpeg.exe"
+if exist %ffmpeg% (
+	for /r . %%i in (*.kux) do (
+		%ffmpeg% -y -i "%%i" -c:a copy -c:v copy -threads 2 "%%~dpni.mp4"
+	)
+) else echo 请检查本程序优酷客户端里的ffmpeg路径！
+
+\\作者：王逸雪
+\\链接：https://www.zhihu.com/question/51792949/answer/298412575
+\\来源：知乎
+\\著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+~~~
+
+
+[windows bat脚本编写](https://www.cnblogs.com/micro-chen/p/5694423.html)
+[BAT 批处理脚本 教程](https://www.cnblogs.com/zhouhbing/p/5039885.html)
+
+
