@@ -34,6 +34,11 @@ git config --list 查看当前配置 全局配置+当前项目配置？
 --global 对git的操作git config内容保存在.gitconfig的文件下
   --local对git的操作git config内容保存在.git/config的文件下
 
+- 查看当前配置
+git config user.name
+git config user.email
+
+
 
 ## example
 [root@localhost /home/usr/hhh] # git clone http://8.8.0.0:3000/hhh/Z08.git
