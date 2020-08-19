@@ -1,7 +1,8 @@
 # 相关其他
 ## URL 统一资源定位符 Uniform Resource Locator
-- URL是全球资源定位符的英文所写，您平时上网时在IE浏览器中输入的那个地址就是URL。比如：网易 http://www.163.com就是一个URL。
-- URI是Web上可用的每种资源 - HTML文档、图像、视频片段、程序,由一个通过通用资源标志符(Universal Resource Identifier, 简称"URI")进行定位。 
+- URL：全球资源定位符的英文所写，浏览器中输入的地址
+- URI是Web上可用的每种资源
+- - HTML文档、图像、视频片段、程序,由一个通过通用资源标志符(Universal Resource Identifier, 简称"URI")进行定位。 
 - URL的格式由下列三部分组成: 
   - 第一部分：协议(或称为服务方式);
   - 第二部分：存有该资源的主机IP地址(有时也包括端口号);
