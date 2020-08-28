@@ -1,8 +1,8 @@
 # 相关其他
 ## java内存池
 - 一般的系统接口申请内存：
-- C/C++ malloc/free
-- java new/delete
+  - C/C++ malloc/free
+  - java new/delete
 - 在内存碎片中寻找最接近申请大小的内存块，返给申请者，容易造成众多小块内存碎片无法利用
 - 内存池：
   - 定长分配，每次分配固定长度
