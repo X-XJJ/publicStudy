@@ -40,73 +40,73 @@ function MyDiff()
 endfunction
 
 "**************************************
-"±à¼­ÖĞÎÄ×Ö·ûÂÒÂë
+"ç¼–è¾‘ä¸­æ–‡å­—ç¬¦ä¹±ç 
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,chinese
 set ambiwidth=double
 
-"²Ëµ¥ÓïÑÔ
+"èœå•è¯­è¨€
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
-"consleÊä³öÂÒÂë
+"consleè¾“å‡ºä¹±ç 
 language messages zh_CN.utf-8
 
 " https://www.ibm.com/developerworks/cn/linux/l-tip-vim1/index.html
 " https://blog.csdn.net/rehung/article/details/1794293
 "**************************************
-winpos 500 200           "ÉèÖÃ³õÊ¼½çÃæÎ»ÖÃ
-set lines=31 columns=120 "ÉèÖÃ³õÊ¼½çÃæ´óĞ¡
-colorscheme desert       "ÉèÖÃÅäÉ«·½°¸
+winpos 500 200           "è®¾ç½®åˆå§‹ç•Œé¢ä½ç½®
+set lines=31 columns=120 "è®¾ç½®åˆå§‹ç•Œé¢å¤§å°
+colorscheme desert       "è®¾ç½®é…è‰²æ–¹æ¡ˆ
 
-set guifont=Consolas:h11:cANSI:qDRAFT "ÉèÖÃ×ÖÌå×ÖºÅ
+set guifont=Consolas:h10:cANSI:qDRAFT "è®¾ç½®å­—ä½“å­—å·
 
-set number     "ÏÔÊ¾ĞĞºÅ
-set noundofile "¹Ø±Õ½»»»ÎÄ¼ş.swap
-set nobackup   "¹Ø±Õ×Ô¶¯±¸·İÎÄ¼ş.
+set number     "æ˜¾ç¤ºè¡Œå·
+set noundofile "å…³é—­äº¤æ¢æ–‡ä»¶.swap
+set nobackup   "å…³é—­è‡ªåŠ¨å¤‡ä»½æ–‡ä»¶.
 
 "exec 'cd' . fnameescape('C:\Users\Andra\Desktop')
-"ÉèÖÃÄ¬ÈÏÎÄ¼şÂ·¾¶ Â·¾¶ÖĞ²»Òª¿Õ¸ñ
-cd D:\
+"è®¾ç½®é»˜è®¤æ–‡ä»¶è·¯å¾„ è·¯å¾„ä¸­ä¸è¦ç©ºæ ¼
+cd E:\
 
-"×Ô¶¯ÇĞ»»Ä¿Â¼Îªµ±Ç°±à¼­ÎÄ¼şËùÔÚÄ¿Â¼ au = autocmd
+"è‡ªåŠ¨åˆ‡æ¢ç›®å½•ä¸ºå½“å‰ç¼–è¾‘æ–‡ä»¶æ‰€åœ¨ç›®å½• au = autocmd
 au BufRead,BufNewFile,BufEnter * cd %:p:h
 
-set shiftwidth=2 "ÉèÖÃ×Ô¶¯Ëõ½ø¿Õ¸ñÊı C-dÈ¡Ïû2¸ñËõ½ø
-set tabstop=4    "ÉèÖÃtab¼üÎª4¸ö¿Õ¸ñ
-set expandtab    "ÊäÈëtabºó, vimÓÃÇ¡µ±µÄ¿Õ¸ñÀ´Ìî³ä
-set autoindent   "×Ô¶¯¶ÔÆë ½«µ±Ç°ĞĞµÄËõ½ø¿½±´µ½ĞÂĞĞ 
-set cindent      "°´CÓï·¨×Ô¶¯Ëõ½ø ĞÂĞĞ¼ÓÒ»¸öTABSTOPµÄÖµ ¸ù¾İÀ¨ºÅ¼Ó¼õTAB
+set shiftwidth=2 "è®¾ç½®è‡ªåŠ¨ç¼©è¿›ç©ºæ ¼æ•° C-då–æ¶ˆ2æ ¼ç¼©è¿›
+set tabstop=4    "è®¾ç½®tabé”®ä¸º4ä¸ªç©ºæ ¼
+set expandtab    "è¾“å…¥tabå, vimç”¨æ°å½“çš„ç©ºæ ¼æ¥å¡«å……
+set autoindent   "è‡ªåŠ¨å¯¹é½ å°†å½“å‰è¡Œçš„ç¼©è¿›æ‹·è´åˆ°æ–°è¡Œ 
+set cindent      "æŒ‰Cè¯­æ³•è‡ªåŠ¨ç¼©è¿› æ–°è¡ŒåŠ ä¸€ä¸ªTABSTOPçš„å€¼ æ ¹æ®æ‹¬å·åŠ å‡TAB
 
-set foldmethod=indent "ÅäÖÃÕÛµş indent-Ëõ½ø·½Ê½£¨.mdÓÉmd²å¼ş¹ÜÀí£¬Ó¦¸ÃÓÅÏÈ¼¶¸ü¸ß£©
+set foldmethod=indent "é…ç½®æŠ˜å  indent-ç¼©è¿›æ–¹å¼ï¼ˆ.mdç”±mdæ’ä»¶ç®¡ç†ï¼Œåº”è¯¥ä¼˜å…ˆçº§æ›´é«˜ï¼‰
 
 "***************Plug***************
 "https://github.com/junegunn/vim-plug
-"$VIM¼´C:\Program Files\Vim ÏÂÓĞ_vimrc /vim81 ×Ô½¨/vimfiles /plugged(plug¹¤¾ß¹ÜÀí°²×°Ä¿Â¼)
-call plug#begin('$VIM/plugged')
-
-Plug 'scrooloose/nerdtree'              "NerdTree²å¼ş
-Plug 'godlygeek/tabular'                "¶ÔÆë²å¼ş(²»±ØĞë)
-Plug 'plasticboy/vim-markdown'          "markdownÓï·¨¸ßÁÁ²å¼ş
-Plug 'iamcco/mathjax-support-for-mkdp'  "Ô¤ÀÀÊıÑ§¹«Ê½
-Plug 'iamcco/markdown-preview.vim'      "Í¬²½Ô¤ÀÀmarkdown²å¼ş
+"$VIMå³C:\Program Files\Vim ä¸‹æœ‰_vimrc /vim81 è‡ªå»º/vimfiles /plugged(plugå·¥å…·ç®¡ç†å®‰è£…ç›®å½•)
+"call plug#begin('$VIM/plugged')
+"
+"Plug 'scrooloose/nerdtree'              "NerdTreeæ’ä»¶
+"Plug 'godlygeek/tabular'                "å¯¹é½æ’ä»¶(ä¸å¿…é¡»)
+"Plug 'plasticboy/vim-markdown'          "markdownè¯­æ³•é«˜äº®æ’ä»¶
+"Plug 'iamcco/mathjax-support-for-mkdp'  "é¢„è§ˆæ•°å­¦å…¬å¼
+"Plug 'iamcco/markdown-preview.vim'      "åŒæ­¥é¢„è§ˆmarkdownæ’ä»¶
 "https://github.com/iamcco/markdown-preview.vim/blob/master/README_cn.md
-
-call plug#end()
+"
+"call plug#end()
 ""***************Plug end***************
 
 "***************Vundle***************
 "https://github.com/VundleVim/Vundle.vim
-"Óöµ½E484: Can't open file C:\Users\<userid>\AppData\Local\Temp\... Error
+"é‡åˆ°E484: Can't open file C:\Users\<userid>\AppData\Local\Temp\... Error
 "set nocompatible              " be iMproved, required
 "filetype off                  " required
-"½«Vundle²å¼şµÄÄ¿Â¼Ìí¼Óµ½gvimµÄÔËĞĞÊ±±äÁ¿ÖĞ
+"å°†Vundleæ’ä»¶çš„ç›®å½•æ·»åŠ åˆ°gvimçš„è¿è¡Œæ—¶å˜é‡ä¸­
 "set rtp+=$VIM/bundle/Vundle.vim
 "let path='$VIM/bundle'
 "call vundle#begin(path)
-"Plugin 'VundleVim/Vundle.vim' " Vundle×ÔÉí¹ÜÀí 
+"Plugin 'VundleVim/Vundle.vim' " Vundleè‡ªèº«ç®¡ç† 
 "call vundle#end()             " required
 "filetype plugin indent on     " required
 ""***************vundle end***************
