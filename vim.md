@@ -15,6 +15,11 @@ n+标识符 n行/字/词 3j aw 5G ...
 - 默认全局（root）配置文件路径 /etc/vimrc
 - 各用户特有配置文件路径 ~/.vimrc
 
+- 运行vim产生的文件们
+  - 文件名.扩展名.swp 临时？交换？文件，编辑时产生，退出自动删除，如 file.txt.swp
+  - 文件名.扩展名~    备份文件，默认开启备份，set nobackup 则关闭
+  - 文件名.扩展名.还有个啥来着……
+
 # Nomal 普通模式 
 - vim command line quick edit
 q/ = q? 底部打开新窗口，列出查找历史记录
