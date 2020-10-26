@@ -12,8 +12,6 @@
 - https://blog.csdn.net/jia12216/article/details/55222907
 - http://www.chakahao.com/cardbin/chakahao_abc.html
 -
-- https://github.com/X-XJJ
--
 -
 
 # 激活win10
@@ -117,6 +115,7 @@ msconfig 系统设置（关闭开机自启动）
 
 - C:\Program Files\rempl 在Windows 10 14393及之前旧版本中，存放对应更新的组件及缓存的问题文件夹，更新系统所需的辅助更新组件为osrrb.exe
 
+- C:\Users\用户名\AppData\Local 用户软件的本地数据？如游戏存档，和啥？等
 
 
 # bat 文件
