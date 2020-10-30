@@ -1,29 +1,4 @@
-# 相关其他
-## URL 统一资源定位符 Uniform Resource Locator
-- URL：全球资源定位符的英文所写，浏览器中输入的地址
-- URI是Web上可用的每种资源
-- - HTML文档、图像、视频片段、程序,由一个通过通用资源标志符(Universal Resource Identifier, 简称"URI")进行定位。 
-- URL的格式由下列三部分组成: 
-  - 第一部分：协议(或称为服务方式);
-  - 第二部分：存有该资源的主机IP地址(有时也包括端口号);
-  - 第三部分：主机资源的具体地址。
-- URI一般由三部分组成: 
-  - 访问资源的命名机制。
-  - 存放资源的主机名。
-  - 资源自身的名称，由路径表示。
-- URI 是从虚拟根路径开始的，URL是整个链接
-## Servlet原理
-- C/B 请求 → server服务端（含tomcat → servlet） → 结果返回C/B
-- servlet 线程池
-  - 对于tomcat每次的请求都给他分配一个线程，用完将线程返回servlet
-## tomcat
-- 安装
-  - /bin：startup.bat/sh开启 shutdown.sh/bat关闭
-  - webapp/
-  - config/：service.xml全局配置文件，一般不在这里进行详细配置 各种配置文件.xml catalina/目录配置文件.xml
-## 金融类
-- cics
-- SOAP通信
+结合图像理解！！脑子里要有动态图、过程图！！
 
 # 体系结构
 - 协议：语意，语法，时序
@@ -497,3 +472,32 @@
     - RTT计算？？
   - HTML H啥啥
   - 本地Cookie：存储于本地，HTTP报文中有Cookie编号
+
+
+# 相关其他
+## URL 统一资源定位符 Uniform Resource Locator
+- URL：全球资源定位符的英文所写，浏览器中输入的地址
+- URI是Web上可用的每种资源
+- - HTML文档、图像、视频片段、程序,由一个通过通用资源标志符(Universal Resource Identifier, 简称"URI")进行定位。 
+- URL的格式由下列三部分组成: 
+  - 第一部分：协议(或称为服务方式);
+  - 第二部分：存有该资源的主机IP地址(有时也包括端口号);
+  - 第三部分：主机资源的具体地址。
+- URI一般由三部分组成: 
+  - 访问资源的命名机制。
+  - 存放资源的主机名。
+  - 资源自身的名称，由路径表示。
+- URI 是从虚拟根路径开始的，URL是整个链接
+## Servlet原理
+- C/B 请求 → server服务端（含tomcat → servlet） → 结果返回C/B
+- servlet 线程池
+  - 对于tomcat每次的请求都给他分配一个线程，用完将线程返回servlet
+## tomcat
+- 安装
+  - /bin：startup.bat/sh开启 shutdown.sh/bat关闭
+  - webapp/
+  - config/：service.xml全局配置文件，一般不在这里进行详细配置 各种配置文件.xml catalina/目录配置文件.xml
+## 金融类
+- cics
+- SOAP通信
+
