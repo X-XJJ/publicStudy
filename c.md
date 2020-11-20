@@ -199,12 +199,12 @@ char *time;
 ？？需要看一下这俩的函数声明，啥格式
 
 ## 字符串相关
-### stdio.h
+### stdio.h 常用
 fprintf() |格式化输出到文本，即写入
 int fprintf(FILE *stream, const char *format, ...) 发送格式化输出到流 stream 中
 
 
-### string.h
+### string.h 常用
 - srtncpy() 复制指定长度字符串 是否默认添加\0？ char *strncpy(char *dest, const char *src, int n)
 
 strcpy()  |复制字符串strcpy(s,t) 复制t到s里 以t中\0为止 注意溢出问题 默认添加\0
@@ -373,6 +373,7 @@ timeval类型 和 gettimeofday()系列 毫秒级时间戳，几位？
 
 [c语言中的移位运算符](https://blog.csdn.net/qq_38181018/article/details/78236147)
 
+以下参考书《》？加啥来着……
 
 # 基本
 - C语言程序组成：函数 + 变量
