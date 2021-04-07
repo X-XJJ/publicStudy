@@ -203,6 +203,20 @@ git fetch 从远程拉取最新版到本地，不merge
 
 [Git master branch has no upstream branch的解决](https://blog.csdn.net/benben_2015/article/details/78803753)
 
+OpenSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443报错。
+
+多次尝试之后发现是代理的问题，所以执行命令，禁用代理配置即可（因为我使用的是https请求，所以取消https代理即可）：
+
+git --config --unset https.proxy
+
+如果是http，则把https换成http即可
+————————————————
+版权声明：本文为CSDN博主「郭罗氏」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/ljj125896/article/details/104350459
+
+360浏览器打不开github
+https://blog.csdn.net/u012114900/article/details/114937849
+
 
 #分支管理
 
