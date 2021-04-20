@@ -1,4 +1,5 @@
-# git
+
+# Git 开源の分布式版本控制系统
 
 yum -y install git
 Windows ：选择git bush工具，或Windows自带powershell
@@ -216,6 +217,16 @@ git --config --unset https.proxy
 
 360浏览器打不开github
 https://blog.csdn.net/u012114900/article/details/114937849
+
+git --config --list 查看现有配置
+
+
+OpenSSL SSL_read: Connection was reset, errno 10054
+
+这是服务器的SSL证书没有经过第三方机构的签署，所以报错。
+
+简单粗暴暂时解决：git config --global http.sslVerify "false"
+
 
 
 #分支管理
