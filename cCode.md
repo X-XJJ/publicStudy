@@ -1,6 +1,6 @@
 # 线性表
 - 插入x到表长pn的线性表的i位置
-~~~
+```
 int sq_insert(int list[], int *pn, int i, int x)
 {
     if(i < 0 || i > *pn) return 1;	//i不在可插范围
@@ -11,7 +11,7 @@ int sq_insert(int list[], int *pn, int i, int x)
     ++(*pn);
     return 0;
 }
-~~~
+```
 
 # 查找
 - 二分查找
