@@ -975,7 +975,7 @@ IP Internet protocol, host and domain name 主机名和域名, URI Uniform resou
   - 显示：返回包？字节 from 域名（ip）：icmp_seq ttl time
   - 通常默认情况被设置为阻碍ICMP通信，降低主机被攻击风险
 
-- traceroute或tracepath，win-tracert
+- traceroute或tracepath（windows下为tracert）
   - 跟踪数据包到网络主机的路由路径
   - 显示：主机名？域名？ip，运行状态信息，3次往返时间？三次握手？
   - 不提供身份信息的地方使用*表示
