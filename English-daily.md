@@ -7,13 +7,6 @@
 - vi. 不及物动词，to 名词，有被动形式，表示某种行为，intransitive verb。
 - prep. 介词
 
-# 《About Loki》
-词&词组 |含义                                 |词根词缀&衍生
---------|-------------------------------------|-------------
-mischief|
-
-
-
 
 # 《The Room Ⅰ》
 ## Menu
@@ -25,8 +18,6 @@ hint    |v.n. 暗示，透露，征兆，少量。
 volume  |n. 体积，容量，额度。|volumetric adj. ？
 graphic |n.adj. 图表，图形，图画的，生动的。
 screen  |v.n. 掩藏，袒护，筛查。屏幕，影视。|full screen 全屏。
-resolution |n 决定，解决，坚决，分辨率。|resolute adj. 坚定的。solution n. 解决方案，溶液。
-preset  |v. 预定，事先安排。
 custom  |n.adj. 风俗，个人习惯，顾客。定制的，自定义的。
 shader  |n. 明暗器，着色程序。
 texture |v.n. 使有某结构。质地，手感，神韵。
@@ -153,6 +144,15 @@ access | v.n.adj. 接近，使用，访问，存取。通道，进入，机会�
 
 
 
-
 # 《Ori and the Will of the Wisps》
+
+
+
+
+# 《About Loki》
+词&词组 |含义                                 |词根词缀&衍生
+--------|-------------------------------------|-------------
+mischief|n. 恶作剧，顽皮，不和。
+
+
 

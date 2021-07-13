@@ -123,6 +123,8 @@ win+G 录屏，XBOX内置
 
 - C:\Users\用户名\AppData\Local 用户软件的本地数据？如游戏存档，和啥？等
 
+- C:\Windows\System32\drivers\etc hosts文件所在
+
 
 # bat 文件
 - ms dos 批处理文件

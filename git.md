@@ -6,6 +6,8 @@ Windows ：选择git bush工具，或Windows自带powershell
 
 [官方手册（中文）](https://git-scm.com/book/zh/v2)
 
+[【通过可视化交互方法学习git命令】](https://learngitbranching.js.org/?locale=zh_CN)
+
 # 一些概念
 工作区
 暂存区
