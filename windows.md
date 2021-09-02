@@ -1,5 +1,5 @@
 ﻿
-- 收藏夹
+## 收藏夹
 - https://tool.lu/
 - http://coolaf.com/
 - https://www.cmd5.com/hash.aspx
@@ -41,6 +41,19 @@ slmg /ato
 - 转换
   - 格式化：右键格式化
   - 非格式化：U盘中打开cmd，convert h:/fs:ntfs
+
+
+## Microsoft Edge 新标签页打开内容
+- 谷歌浏览器内核，据说没法设置“在新标签页打开”
+- 以下“新标签页”都是开在标签栏最右边，不在当前标签页的旁边
+  - 地址栏：Alt + 回车 = 在新标签页打开当前地址栏的 网址，只会在XX两边自动加上 www.XX.com，不会自动搜索XX
+  - 链接：ctrl + 左键 = 在新标签页打开链接
+  - 链接：shift + 左键 = 在新窗口打开链接
+  - 收藏夹：滚轮 = 在新标签页打开链接
+- 切换：ctrl + tab = 切到右边，ctrl + shift + tab = 切到左边，ctrl + w = 关闭当前页
+
+- 话说为啥主用浏览器一直没换成edge，就是因为没有“在新标签页打开内容”，太不习惯了……
+
 
 # 快捷键
 - Crtl+A、Crtl+C、Crtl+V或者Ctrl+Alt+Del
