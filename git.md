@@ -8,6 +8,13 @@ Windows ：选择git bush工具，或Windows自带powershell
 
 [【通过可视化交互方法学习git命令】](https://learngitbranching.js.org/?locale=zh_CN)
 
+
+# 20210813后github不再支持密码验证
+[GitHub不再支持密码验证解决方案：SSH免密与Token登录配置](https://cloud.tencent.com/developer/article/1861466)
+[github开发人员在七夕搞事情：remote: Support for password authentication was removed on August 13, 2021.](https://blog.csdn.net/weixin_41010198/article/details/119698015)
+
+
+
 # 一些概念
 工作区
 暂存区
@@ -52,7 +59,7 @@ git config user.email
 [root@localhost /home/usr/hhh/Z07] # git commit -m '财政取数接口测试完成四分之三'
 [root@localhost /home/usr/hhh/Z07] # git remote add Z07 http://8.8.0.0:3000/hhh/Z07.git 
   - 上面是，把这个http://8.8.0.0:3000/hhh/Z07.git远程地址关联为Z07
-git remote 查看远程地址名 -v查看远程地址的具体信息
+git remote 查看远程地址名 -v 查看远程地址的具体信息
 git status
 
 [root@localhost /home/usr/hhh/Z07] # git push Z07 master
