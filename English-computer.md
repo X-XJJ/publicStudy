@@ -1,6 +1,11 @@
 # 专业英语 
 
 
+# 报错们
+assignment |n. 分配，任务，作业
+list 列表
+index 索引
+out of range |超出范围
 
 
 # Github & Git

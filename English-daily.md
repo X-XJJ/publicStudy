@@ -7,7 +7,7 @@
 - vi. 不及物动词，to 名词，有被动形式，表示某种行为，intransitive verb。
 - prep. 介词
 
-
+- reference v. 引用。n. 参考，涉及，介绍信。简写 ref
 
 
 # 《The Room Ⅰ》
