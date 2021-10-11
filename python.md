@@ -11,6 +11,17 @@
 
 
 # 基本语法
+- 命名
+  - 变量名：不能以数字开头，无法区分变量名和数字类型
+  - 被调用的py文件：不能以数字开头；不能含有“-”？？
+
+- 关于main函数
+  - C/C++、java、C#等是编译型语言，必须有且只有一个main函数作为程序的唯一入口
+  - python是解释型语言、脚本语言，main不是强制入口函数，主要是模块化的思维+习惯，使用main或者叫其他名字的主函数，更加清晰可读
+  - 语句从上到下顺序执行，可以直接当脚本写？？
+
+[Python 为什么没有 main 函数？为什么我不推荐写 main 函数？](https://zhuanlan.zhihu.com/p/145684478)
+
 - 语句结束符：回车换行
   - 分号：python不推荐用，有回车时可省略，但同一行中分割语句要用分号
 - 单行注释：#
@@ -27,16 +38,22 @@
   - ** 幂次，eg：a ** b 为 a^b（ ** 有好几种含义，幂次是其中之一？）
   - python无++和--
 
-- import 库名
-- from 库名 import 函数or变量名？？
+- import
+  - import 库名包名
+  - from 库名 import 函数or变量名？？
+  - import a.py
+    - a.py 与主程序文件同目录
+    - 自定义包（文件夹）下：需要一个 __init__.py 文件 为啥来着？？文件内容可以为空
+    - sys.path：sys.path 为一个list变量 存储package module的路径，可以print看内容
+    - sys.path.append？？？
+[建立自己的package包，直接导入自建py模块](https://blog.csdn.net/txh3093/article/details/106374412)
+[python 引用（import）文件夹下的py文件](https://www.cnblogs.com/kongbursi-2292702937/p/12149925.html)
 
-- import a.py
-  - a.py同目录？下需要一个 __init__.py 文件 ？？文件内容可以为空
 
 - 全数据输出，科学记数法输出，如1000！
 
 
-- 递归深度默认1000以内，修改递归深度值为x
+- python递归深度默认1000以内，修改递归深度值为x
 import sys
 sys.setrecursioonlimit(x)
 
@@ -61,9 +78,12 @@ sys.setrecursioonlimit(x)
 
 [Python中lambda表达式学习](https://blog.csdn.net/imzoer/article/details/8667176)
 - lambda表达式：函数速写，封装有限的逻辑，嵌入一个函数的定义
-  - lambda 参数1,参数2,... : 函数表达式
-    - f = lambda x,y,z : x+y+z 如 f(1,2,3) 输出6
+  - lambda 参数1,参数2,... : 函数表达式, 
+  - f = lambda x,y,z : x+y+z 如 f(1,2,3) 输出6
+[细说Python的lambda函数用法](https://zhuanlan.zhihu.com/p/80960485)
 
+
+- reduce() 对参数序列中的元素进行累积
 
 
 # 模块们（库？）
@@ -78,8 +98,8 @@ sys.setrecursioonlimit(x)
 - 注：库cmath：复数运算
 
 
-## 库 functools，
-- reduce()
+## 库 functools：用于高阶函数
+- reduce() 与python内置的reduce()函数一样
 
 ## 库 sympy：科学计算库
 

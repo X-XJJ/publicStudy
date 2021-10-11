@@ -6,6 +6,7 @@ assignment |n. 分配，任务，作业
 list 列表
 index 索引
 out of range |超出范围
+RecursionError: maximum recursion depth exceeded in comparison 超过最大递归深度？？
 
 
 # Github & Git
