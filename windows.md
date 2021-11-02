@@ -165,3 +165,7 @@ if exist %ffmpeg% (
 [BAT 批处理脚本 教程](https://www.cnblogs.com/zhouhbing/p/5039885.html)
 
 
+# 联想y7000/y7000p 电池问题
+[怎么看待联想y7000p近日出现大量仅电池无法开机，需要接电源才能开机，电池无法充电的现象?](https://www.zhihu.com/question/308400242?ivk_sa=1024320u)
+[关于联想拯救者Y7000/Y7000P电源显示0%的问题及解决办法](https://blog.csdn.net/Dominickk/article/details/111317123) 
+

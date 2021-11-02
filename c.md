@@ -15,6 +15,10 @@ Segmentation fault(Core Dump) https://www.cnblogs.com/foreverW/p/7295201.html
 C语言负数转正数的隐藏缺陷https://blog.csdn.net/u010603292/article/details/9451365
 即char int 等的取值范围，精度and溢出问题
 
+- e：在编程语言中，通常代表10，exponential的首字母，“指数”，如1.234e-06即1.234x10^(-6)
+  - 在数学中为 超越数2.71828……的字母表示形式
+  - 各种语言中表示超越数e，如python可以是math.e
+
 mkdir()
 [c 使用mkdir()函数创建路径](https://blog.csdn.net/freesonWANG/article/details/80792697)
 [mkdir()提示No such file or directory错误的解决方法](www.02405.com/program/php/1692.html)
