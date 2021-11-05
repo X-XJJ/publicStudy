@@ -158,3 +158,235 @@ nexus   |n. /ˈneksəs/ 关联，连结。
 
 
 
+# 应试
+
+
+
+## 英二大作文（150词-25min）——by AI归来、考研斯基
+（一）段
+① 毫无疑问在表里看出情况
+What looks beyond dispute in this diagram is the situation about 图表名情况A。 
+② 具体描述变化
+– 占比
+According to what is shown above，over the period from January to February，情况A ranks the first all the time，accounts for 70%。 
+（second，third）
+– 增长
+In the meanwhile，情况B accumulated from 10% to 20% considerably / sharply。
+（jumped，climbed，increased）
+– 下降
+On the contrary，情况C cut down from 8% to 6% slightly / gently。
+（dropped，reduced）
+– 不变
+However，情况D  remained basically invariable。E increased to 3%，F increased by 4%
+（kept almost unchanged）
+
+（二）段
+④ 总起句，探索不同的方面，去全面理解复杂现象的本质
+It is significant for us to explore different angles to fully understand the nature of this complex phenomenon。
+⑤ 原因，广平台，好处，未来放到有利位置
+To begin with，a growing number of people hole that 情况A will provide them with a broader platform to do 好处，which may put them in a beneficial position in the future。
+（A case in point is that，my roommate was addicted to doing 情况A during a period of time，which 给他好处，and most of us admired his capacity。）
+⑥ 原因，扮演角色，对学习生活both重要
+What's more，most of people bear in mind that 情况A plays a positive/negative role in 好处们，which would be of great importance to both our study and life。
+⑦ 原因，虚拟恐吓
+（Last but not least，if everyone failed to do 情况A，our society would be confronted with an unpromising and fruitless future。）
+
+（三）段
+⑧ 总结，所有因素放入考虑，预测百分比趋势
+Taking all these factors into consideration，we may predict that the percentage of 情况A will keep growing / reducing。
+⑨ 措施做法（挑两个并列）
+– 当局立法
+It is also crucial for authorities to make some laws to do sth。
+– 人们意识
+We should also enhance children and adults' awareness of sth。
+–个人不遗余力做，变更好
+We ought to spare no pains to do sth，and make sth better。
+–媒体呼吁
+Mass media，such as newspapers，televisions，radios and the Internet，should appeal to the folks to do sth。
+–家长老师做例子
+Parents and teachers can set a good example of doing sth for youngsters and teenagers by how they behave themselves。
+⑩ 通过这些，希望未来
+All in all，in these ways，a wonderful future is hopefully around the corner。
+
+- 英二往年题好像都是比较社会现象的命题？？
+
+## 备注
+（一）sb表达
+– 人类：human beings，the folks
+– 我们：most of us，children and adults
+– 专家：experts and professors
+– 青年：youngsters and teenagers
+– 少年：children and kids
+– 本科生：undergraduate，本科毕业生：graduate
+– 硕士生：postgraduate，硕士毕业生：master graduate
+– 博士生：doctor，博士毕业生：PhD graduate
+
+（二）好处（社会，环境，个人，精神，文化，交流）
+– 社会：社会进步，经济发展
+social progress
+economy development
+– 环境：防、治污染，改善生态，保护资源
+prevent and remedy pollution
+improve ecological environment
+protect ecological resources
+– 个人：丰富经验，开拓眼界，改善生活质量，有益身心健康
+enrich our experience efficiently
+expand our horizons 
+improve the quality of our life
+be the benefit of physical and mental health
+– 精神：培养团队、合作、竞争、创新精神，全面发展
+cultivate the spirit of teamwork
+（cooperation，competition，innovation）
+ all-round development of human being
+ – 文化：文化交流、保护，继承、发扬优秀传统文化
+ exchange of culture
+ protection of culture
+ inherit and promote the outstanding traditional culture
+ – 交流：缩短距离，更方便，促进沟通，共建地球村
+ shrink the distance
+ become more convenient
+ facilitate the communication
+ build the global village together
+
+
+## 小作文类型
+ email、letter、reply：书信、信函
+ notice：通知、告示
+ memo、memorandum、report：备忘录，报告
+
+ 周：week，Monday，Tuesday，Wednesday，Thursday，Friday，Saturday，Sunday
+ 月：month，January，February，March，April，May，June，July，August，September，October，November，December
+
+## 英二小作文（100词-20min）
+ Dear Sir or Madam，Friends，人名
+ （一）段
+ ① 自我介绍
+ – I am one of the staff members of your company。
+ – I am a student who graduate in the Department of Math of University。
+ – I am the president of the Students' Union of XX。
+ – How is everything going with you these days？I am glad to hear from you。
+ ② 写信目的
+ I am getting in touch with you for the purpose of doing sth。
+ ——建议 投诉 邀请 感谢 道歉 申请 推荐 辞职
+ – 感谢 appreciate you for
+ – 道歉 apologize you for
+ – 祝贺 congratulate you for
+ – 咨询 if it is possible for you to provide me with sth
+ – 建议 suggest that
+ – 招募 recruit volunteers
+ – 投诉 complain that
+ – 邀请 invite you to participate in
+ – 介绍 introduce you for
+ – 申请 apply for
+ – 倡议 call on all of you to do
+ – 推荐 recommend sth to you
+ – 辞职 request to resign from my present position
+
+ （二）段
+ ③ 过渡or主题
+ There stand at least two factors accounting for the letter。
+ ④⑤ 原因or分析
+ On the one hand，
+ On the other hand，
+
+ （三）段
+ ⑥感谢
+ I would like to take this opportunity to show my best wishes to 人or事。
+ ⑦ 期待回信
+ I am looking forward to your favorable reply at your earliest convenience。
+
+ 落款
+ Yours sincerely，
+ XX
+
+## 主题词
+ - 实在不会的主题词
+ such a scene / behavior
+ this kind of practice / phenomenon
+ - 具体
+ science and technology 自然，科技
+ refuse sorting，garbage classification 垃圾分类
+ exercise，have physical training 锻炼
+ electronic commerce 电子商务
+ online education 在线教育
+ aged tendency of population 人口老龄化
+ COVID-19 新冠
+ epidemic 疫情
+ statistic 统计
+
+ 一、个人品质类
+ 1、勤奋；努力 hard working； diligence；endeavor； painstaking efforts
+ 2、耐心 patience
+ 3、简朴 simplicity
+ 4、机遇 chance；opportunity；
+ 5、合作 teamwork；cooperation
+ 6、诚信 integrity；honesty；
+ 7、信任危机 Crisis of faith；trust crisis
+ 8、心态 happiness satisfaction；mentality
+ 9、挫折失败 adversity frustration；failure difficulties；challenge stress
+ 10、友谊 friendship
+ 11、谦逊谦虚/骄傲自满 modesty/ being modest；pride/Being self-satisfied
+ 12、自立，独立 self-discipline/regulation;self-reliance/dependence；
+ independence；being independent
+ 13、创新 creation； innovation； critical mind；
+ critical thinking； unconventional thinking [公众号：考研斯基]
+ 14、谨慎 prudence and determination
+ 15、毅力；坚持 perseverance，persistence； determination；insist
+ 16、乐观；热情乐观 optimistic；enthusiasm and optimism
+ 17、讲文明 be polite
+ 18、积累 accumulation
+ 19、顺境与逆境 Favorable Circumstances and adverse Circumstances
+ 20、理想 ideal； ambition； dream； goal
+ 21、博学与求知 learnedness and seeking knowledge/pursuit of knowledge
+ 22、活力 vitality
+ 23 身强体壮，充满活力 bursting with vitality and good health
+ 24、感恩 gratitude ；gratification
+ 25、鼓励 encouragement
+ 26、真诚 sincerity
+ 27、宽容 humanity；love；understanding and tolerance
+ 28、勇敢 courage and bravery
+ 29、敬业精神 professional dedication and professional ethics
+ 30、业务水平 competence
+ 31、苦难 suffering and hardship
+ 32、适应性 adaptability
+ 33、果敢性 decisiveness [公众号：考研斯基]
+ 34、羡慕；嫉妒 admiration; jealousy/envy
+ 35、榜样 example, model
+ 36、时间管理 time management
+ 37、守时 punctuality
+ 38、自律 self-discipline，self-control
+ 39、拼搏精神 the determined spirit
+ 40、个性 personality
+ 41、天才 genius
+ 42、责任 responsibility
+ 43、幽默感 a sence of humor
+ 44、挑战 challenge
+ 45、 团队精神 team spirit
+ 46、增强合作 strengthen/enhance the cooperation
+ 47、培养团队意识 cultivate/foster the sense of teamwork
+ 48、努力做某事 endeavor to do sth./ strive to do sth./do one's utmost to do sth
+ 49、半途而废 give up halfway
+ 50、批判性思维 critical thinking
+ 51、有进取心的 aggressive
+ 52、孜孜不倦的 tireless
+ 53、胸怀；抱负 ambition
+ 54、欲速则不达 haste makes waste
+ 55、付诸行动 take actions
+ 56、务实的 down-to-earth
+ 57、尊老爱幼 respect the old and care for the young
+ 58、工匠精神 spirit of the craftsman/craftsman's spirit/craftsmanship spirit
+ 59、精益求精 strive for the best/strive for excellence
+ 二、社会现象类
+ 1、献爱心 show your loving heart
+ 2、老龄问题；社会保障 social security medical care；population explosion； the aging problems
+ 3、啃老 live off one's parents
+ 4、人口普查 population census
+ 5、人口增长 the growth of China's population
+ 6、偶像崇拜 idol worship
+ 7、网红 influencer
+ 8、人际关系 interpersonal relationship
+ 9、家庭纽带 family bond
+ 10、职业规划 Career planning
+ 11、有效沟通 effective communication
+
+

@@ -65,25 +65,6 @@
   - .* ./ .^ 点乘，只计算矩阵中对应位置的元素 */
 [matlab中的乘除法](https://blog.csdn.net/u013925378/article/details/53695147/)
 
-
-- @ 操作符：定义函数句柄
-例如ln(x)，在matlab中是没有定义的，正确表示是log(x);
-但如果要直观表示自然对数，意义用以下语句表示：
-ln=@(x) log(x);
-执行后，ln(4)=log(4) , 即用ln 替换 log。
-以上表示可能无法看出‘@’的好处，再看下例：
-poly6 = @(t) 8t.^6+6t.^5+3t.^3+t.^2+t+520;
-fplot(ploy6,[0,100]);
-fzero(ploy6,13);
-在这种长且多次调用的情况下，用函数句柄就可以方便很多。
-[matlab中@的用法](https://blog.csdn.net/weixin_38009585/article/details/81016997)
-
-- 匿名数学？函数？？
-
-- inline() 定义函数？R2020b版本中提示未来将会删除inline，需使用匿名函数
-  - clearclcf = inline('a * x * x + b * x + c', 'a', 'b','c', 'x')f(1, 2, 3, 1)
-
-
 - 自定义输入输出？函数
   - function [输出形参, ...] = 函数名(输入形参, ...)
     - 输出形参只有一个时，方括号省略
@@ -92,11 +73,36 @@ fzero(ploy6,13);
 
 
 
-## 控制流相关
-- if else switch
-- for i = a : b，判断条件 a≤i≤b时执行循环，以 end 结束循环体，跳出循环后 i=b
-  - 带步长的for循环，for i = a:n:b，从a到b，循环系数自增步长为n。如 1:2:7，i=1、3、5、7
-  - 指定循环系数的for循环，如 for i = [1 2 4]，则 i=1、2、4
+-  控制流相关
+  - if else switch
+  - for i = a : b，判断条件 a≤i≤b时执行循环，以 end 结束循环体，跳出循环后 i=b
+    - 带步长的for循环，for i = a:n:b，从a到b，循环系数自增步长为n。如 1:2:7，i=1、3、5、7
+    - 指定循环系数的for循环，如 for i = [1 2 4]，则 i=1、2、4
+
+- 自定义输入输出？函数
+  - function [输出形参, ...] = 函数名(输入形参, ...)
+    - 输出形参只有一个时，方括号省略
+    - 调用方式：命令行输入 函数名(参数们)，[形参名们]=函数名(参数们)
+    - eg：function y = name1(x)，调用：name(1) 或 a=name(1)。function [a,b] = name2(x,y)，调用：[a,b]=name2(1,2)；若命令行只输入name2(1,2)，智慧自动输出第一个输出形参的值
+
+
+- @ 操作符：定义函数句柄（函数句柄：可用于传参、赋值，也可以当函数名使用）
+  - 变量名 = @特定的函数名，句柄指向特定函数
+    - 如 f = @sin，g=f(pi)即g=sin(pi) f = @log(x)
+    - 如 ln = @log，直观表示自然对数，ln(x)在matlab中没有定义，正确表示是log(x)
+  - 变量名 = @(输入参数列表)运算表达式，句柄指向函数表达式
+    - y = @(t) 8t.^6+6t.^5+3t.^3+t.^2+t+520; fplot(y,[0,100]); fzero(y,13);
+    - f = @(x,t) x(1)*exp(x(2)*t); fplot(@(t)f(x,t),[1,8],'b');
+
+
+- 匿名数学？函数？？
+f = @(x)sin(x)./x; % y=sinx/x
+U = @(a,x) a(1)*exp(a(2)*x); % U=Ae^bt a=a(1) b=a(2)
+
+
+- inline() 定义函数？R2020b版本中提示未来将会删除inline，需使用匿名函数
+  - clearclcf = inline('a * x * x + b * x + c', 'a', 'b','c', 'x')f(1, 2, 3, 1)
+
 
 - 数组（向量）：matlab存储和运算的基本单元
   - 一维数组：以空格or逗号分隔，a = [1,2,3] 或 a = [1 2 3]
@@ -104,24 +110,22 @@ fzero(ploy6,13);
   - 取数组元素，下标从1开始计数，和其他编程语言不同。如 数组A=[2 4 5] A(1)取的是数组第一个元素2，A(3)取第三个元素5
   - 数组中冒号“：”表示选择某一个维度上的所有索引值
     - eg：A(1,:)表示二维数组中第一行所有值，A(:,1)表示这个矩阵的第一列所有值
+    - 其实就是，A（1行，0列:0列）？
     - 三维数组B中，B(1,:,:)和B(:,1,:)和B(:,:,1)表示啥？？？
+    - B = A(:) 将A中元素按列排为1列赋值给B
   - 冒号表达式定义 a = [a:d:b] 表示生成一个 首项为a、公差为d、末项≤b的行向量
   - 类似：linespace(a,b,n)？？
+
+- 合并向量 xdata = XYdata(:,1); ydata2 = XYdata(26:50,2);
+
+- A' 将向量A转置
 
 - linspace 生成线性间距向量
   - linspace(x1,x2) 返回包含 x1 和 x2 之间的 100 个等间距点的行向量
   - linspace(x1,x2,n) 生成 n 个点，这些点的间距为 (x2-x1)/(n-1)
 
 
-
 - disp() 直接将内容输出在Matlab命令窗口中
-
-- 科学记数法显示数值：
-  - 默认是怎么样的？？怎么改？？
-  - format short e？g？，long g？
-  - 主页→预设→命令行窗口→文本显示→行距 loose-宽松的 compact-紧凑的
-
-
 
 
 # 常用标准数组
@@ -134,6 +138,21 @@ fzero(ploy6,13);
 - diag() 生成对角矩阵
 - size() 
 
+- 科学记数法显示数值：
+  - 默认是怎么样的？？怎么改？？
+  - format short e？g？，long g？
+  - 主页→预设→命令行窗口→文本显示→行距 loose-宽松的 compact-紧凑的
+
+-  系统预定义变量
+  - pi ： 圆周率
+  - inf，Inf ：无穷大量，-inf 无穷小量
+  - nan，NaN ：Not-a-Number，一个不定值，结果不确定，如 0/0，Inf/Inf，Inf-Inf，Infx0，sin(inf)等情况会出现。这种情况下，除数可以用很小的数代替0，如 3x10^(-11)即3e-11？
+    - inf/0 结果inf，0/inf 结果0
+  - eps ：浮点运算相对精度
+  - i，j ：虚部单位
+  - 特殊变量 ans
+
+  - 应尽量避免给系统预定义变量重新赋值
 
 
 
@@ -148,15 +167,13 @@ fzero(ploy6,13);
 
 [官方帮助文档？](https://ww2.mathworks.cn/help/matlab/ref/conv.html)
 
--  系统预定义变量
-  - pi ： 圆周率
-  - inf，Inf ：无穷大量，-inf 无穷小量
-  - nan，NaN ：Not-a-Number，一个不定值，如 0/0
-  - eps ：浮点运算相对精度
-  - i，j ：虚部单位
-  - 特殊变量 ans
 
-  - 应尽量避免给系统预定义变量重新赋值
+- str2num()
+
+
+- func2str() 将函数句柄转换为字符串，
+- str2func() 将函数字符串转换为函数句柄，
+
 
 # 常用数学函数
 - 三角函数 sin() cos() tan()，反三角函数 asin() acos() atan()
@@ -190,11 +207,26 @@ fzero(ploy6,13);
   - syms x; sym2poly(x^3 +2*x^2- 4*x -9) %返回 1 2 -4 -9
 
 
-- subs() 符号计算函数，将符号表达式中的某些符号变量替换为指定的新变量
+- feval() 计算函数
+  - [y1,...,yi] = feval(fun,x1,...,xi) 使用函数的名称or句柄、输入参数 x1,...,xi 来计算函数的结果
+
+
+- int() 计算数值积分？？
+  - s=int(fun,v,a,b) int表示integral数值积分，fun表示被积函数function，v代表variance积分变量，a和b分别是积分上下限，可以是不定积分
+- q = integral(fun,xmin,xmax,Name,Value)？？数值积分
+
+
+
+- subs() 符号计算函数，将符号表达式S中的 某些符号变量x 替换为指定的新变量
+  - R = subs(S) 由调用函数或Matlab工作空间中获取的值替代了在符号表达式S中的所有当前的变量
+  - R = subs(S, new) 用new的值代替符号表达式S中的默认符号
+  - R = subs(S, old, new) 利用new的值代替符号表达式中old的值。old为符号变量或是字符串变量名。new是一个符号货数值变量或表达式。
 [Matlab subs函数的用法](https://blog.csdn.net/guyuealian/article/details/53997490)
 
 
-- reshape() 按列方向！变换成特定维数的矩阵
+- reshape() 按列，变换为特定维数的矩阵，读取、存放都是按列
+  - reshape(A,m,n) 将A中的元素返回到mxn的矩阵中，元素数量需一致。有顺序需求的，考虑使用转置
+  - reshape(A,m,n,p,...)
 
 - find()
 
@@ -245,16 +277,23 @@ fzero(ploy6,13);
 - text() 向数据点添加文本说明
 
 - axis() 放缩坐标轴，设置坐标轴的限制范围
+  - axis([xmin xmax ymin ymax ...])    设置当前坐标轴的限制范围，可设置 x轴、y轴、z轴、色差范围
+    - axis([0,1,3,5]) 显示的x轴范围0~1，y轴范围3~5
+  - axis off 不显示坐标轴
+  - 等用法...
 
 - contour() 绘制矩阵的等高线图
 - clabel() 标注等高线图的高程 a=contour(...),clabel(a)
-
 
 - 为图像添加标题，标记坐标区，调整x轴y轴，网格线，沿标签美化图形
   xlabel('自变量 X'),ylabel('因变量 Y')
   title('牛顿插值多项式与三次样条函数')
   legend('三次样条插值点坐标','牛顿插值点坐标')
   grid on, axis equal
+
+- 在title、text、legend等等中写变量
+  - title( [ '函数值=', num2str(xdata) ],'测试' )
+  - [] 使[]内的内容在同一行or理解为同一个时候显示，默认情况 变量部分已经是下一个显示的了
 
 
 - mesh() 绘制三维网格图
@@ -275,8 +314,29 @@ fzero(ploy6,13);
 # 工具箱
 ## cftool 曲线拟合
 [Matlab——数据分析之曲线拟合工具cftool](https://blog.csdn.net/weixin_45770896/article/details/109697931)
-
-
+- 命令行or文件 输入 cftool 打开工具箱
+- 命令行or文件 输入xy数据向量and向量名，然后可选择？？
+- 拟合类型选项
+```
+  - Custom Equations：用户自定义的函数类型
+  - Exponential：指数逼近，有2种类型， a*exp(b*x) 、 a*exp(b*x) + c*exp(d*x)
+  - Fourier：傅立叶逼近，有7种类型，基础型是 a0 + a1*cos(x*w) + b1*sin(x*w)
+  - Gaussian：高斯逼近，有8种类型，基础型是 a1*exp(c1-((x-b1)/c1)^2)
+  - Interpolant：插值逼近，有4种类型，linear、nearest neighbor、cubic spline、shape-preserving
+  - Polynomial：多形式逼近，有9种类型，linear ~、quadratic ~、cubic ~、4-9th degree ~
+  - Power：幂逼近，有2种类型，a*x^b 、a*x^b + c
+  - Rational：有理数逼近，分子、分母共有的类型是linear ~、quadratic ~、cubic ~、4-5th degree ~；此外，分子还包括constant型
+  - Smoothing Spline：平滑逼近（翻译的不大恰当，不好意思）
+  - Sum of Sin Functions：正弦曲线逼近，有8种类型，基础型是 a1*sin(b1*x + c1)
+  - Weibull：只有一种，a*b*x^(b-1)*exp(-a*x^b)
+```
+- 结果 Goodness of fit 拟合优度？
+  - SSE 误差平方和，即 方差？和方差？SSE越接近0，拟合越好
+  - R-Square 复相关系数或复测定系数，即 决定系数？确定系数？越接近1，拟合越好？
+  - Adjusted R-Square 调整自由度复相关系数，即 校正后的决定系数？越接近1，拟合越好？
+  - RMSE 均方根误差，即 标准差？(Root mearn squared error)，越接近1，拟合越好？
+  - MSE 均方差？方差？
+[Matlab的cftool拟合后的Adjusted R-square是什么意思？](https://www.ilovematlab.cn/thread-52812-1-1.html)
 
 
 
