@@ -5,6 +5,8 @@
 - pycharm中不会自动识别cmd的安装？，setting→Project：untitiled→Python Interpreter→+号，搜索&install
   - 包的安装路径：…\PycharmProjects\untitled\venv\Lib\site-packages
 
+## Pytorch
+[面向Windows的Pytorch完整安装教程](https://blog.csdn.net/qianbin3200896/article/details/104244538)
 
 
 ## IDE
