@@ -6,8 +6,19 @@
 - 注释：<!-- 注释内容 -->
 - web浏览器中一般按 F12 打开调试模式
 - 标签：尖括号包围的关键词，开始标签和结束标签成对出现，<标签>内容</标签>，这个整体叫元素
+- 常用编辑器：VS Code，Sublime Text
+  - VSCode使用浏览器打开 html 文件需要 安装 "open in browser" 扩展
 
 ## 常用标签
+- <!DOCTYPE 版本名称>：声明html版本，版本名不区分大小写，html5的声明为<!DOCTYPE html>
+- <html></html>：HTML页面的根元素
+- <head></head>：头部元素，包含文档的元（meta）数据
+  - <meta charset="编码名称">：在head中声明网页的字符编码，中文网页一般使用<meta charset="utf-8">，部分浏览器如360使用 gbk 编码
+  - <title></title>：描述文档的标题
+- <body></body>：包含显示在浏览器页面中的可见内容
+  - <h1></h1>：定义一个大标题
+  - <p></p>：定义一个段落
+
 ```
 <!DOCTYPE html>
 <html>
@@ -21,18 +32,9 @@
   </body>
 </html>
 ```
-- <!DOCTYPE 版本名称>：声明html版本，版本名不区分大小写，html5的声明为<!DOCTYPE html>
-- <html></html>：HTML页面的根元素
-- <head></head>：头部元素，包含文档的元（meta）数据
-  - <meta charset="编码名称">：在head中声明网页的字符编码，中文网页一般使用<meta charset="utf-8">，部分浏览器如360使用 gbk 编码
-  - <title></title>：描述文档的标题
-- <body></body>：包含显示在浏览器页面中的可见内容
-  - <h1></h1>：定义一个大标题
-  - <p></p>：定义一个段落
 
 
-
-# 实用工具
+# VSCode？实用工具
 ## emmet
 
 类似关键字大括号自动补充

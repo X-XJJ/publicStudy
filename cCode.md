@@ -41,20 +41,20 @@ int binarySearch(int key, int list[], int n)
 ~~~
 int insertSort(int v[], int n)
 {//n-表长
-	int temp;
-	int i;
-	for(i = 1; i < n; i++)		//i=1 第一个元素已是一个有序子表
-	{
-			if(v[i] < v[i - 1])		//若v[i]<有序子表的末尾最大值 则需要找位置 v[i] 直接插入有序子表
-			{
-					temp = v[i];
-					for(int j = i-1; temp < v[j]; j--)
-					{
-							v[j+1] = v[j];		//有序子表向后挪位
-					}
-					v[j+1] = temp;		//找到 temp > v[j] 的位置 插入 temp 到 v[j] 后 
-			}
-	}
+  int temp;
+  int i;
+  for(i = 1; i < n; i++)	//i=1 第一个元素已是一个有序子表
+  {
+    if(v[i] < v[i - 1])		//若v[i]＜有序子表的末尾最大值 则需要找位置 v[i] 直接插入有序子表
+    {
+      temp = v[i];
+      for(int j = i-1; temp < v[j]; j--)
+      {
+        v[j+1] = v[j];		//有序子表向后挪位
+      }
+      v[j+1] = temp;		//找到 temp > v[j] 的位置 插入 temp 到 v[j] 后 
+    }
+  }
 }
 
 ~~~

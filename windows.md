@@ -35,6 +35,9 @@ slmg /ato
 - windows系统默认不允许通过桌面方式创建.（点）开头的文件夹或文件，但是并不代表不支持此类文件，可以用shell创建
   - mkdir = md 创文件夹；vim 或echo重定向 创文件，eg：echo test > .aaa
 
+[命令行参数中的空格。无法正确读取“C：\ Program Files”](http://cn.voidcc.com/question/p-msirzpku-cu.html)
+
+
 # U盘格式
 - FAT32格式的U盘文件大小有限制，最大4G
 - NTFS无限制
