@@ -13,7 +13,7 @@ Windows ：选择git bush工具，或Windows自带powershell
 [GitHub不再支持密码验证解决方案：SSH免密与Token登录配置](https://cloud.tencent.com/developer/article/1861466)
 [github开发人员在七夕搞事情：remote: Support for password authentication was removed on August 13, 2021.](https://blog.csdn.net/weixin_41010198/article/details/119698015)
 
-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
+[github使用Personal access tokens的方法](https://blog.csdn.net/u012081284/article/details/120129470)
 
 
 # 一些概念
