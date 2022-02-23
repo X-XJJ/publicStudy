@@ -4,16 +4,19 @@
 慕课网
 
 # html（HyperText Markup Language，HTML）
-- 超文本标记语言（HyperText Markup Language，HTML），用于创建web网页的标准标记语言，web浏览器中一般按 F12 打开调试模式
+- 超文本标记语言（HyperText Markup Language，HTML），用于创建web网页的标准标记语言，web浏览器中一般按 F12 打开调试模式，浏览器按先后顺序解释html代码
 - 常用编辑器：VS Code，Sublime Text
   - VSCode使用浏览器打开 html 文件需要 安装 "open in browser" 扩展
 - 后缀：.html .htm 都可使用，没有区别？
 - 标签：尖括号包围的关键词，开始标签和结束标签成对出现
-  - <标签>内容</标签>，这个整体叫“元素”。元素可嵌套，先后顺序需一致。不区分大小写，建议小写。
+  - <标签>内容</标签>，这个整体叫“元素”。元素可嵌套，先后顺序需一致
   - 标签内可以有属性，属性不一定全都需要。
+- 不用配结束标签的标签们：
+  - br，
+
 - 注释：<!-- 注释内容 -->
 - 语义化：明确标签用途
-
+- html不区分大小写，但建议小写。
 
 ## 常用html标签
 - 不用首尾成对的标签：meta、br、hr、input、
@@ -68,6 +71,7 @@
 ### 图片、链接、表格标签
 - <img src="图片地址" alt="下载失败时的替换文本" title="鼠标滑过提示的文本" width="显示宽度" height="显示高度">：定义图片，gif、png、jpeg格式
 - <a href="目标网址" title="鼠标滑过提示的文本" target="打开网页的方式">链接显示的文本</a>：定义一个html链接，target属性中_self 默认在当前界面打开链接，_blank 在新窗口打开链接
+- <nav></nav>：标注一个导航链接的区域，nav内的内容是<a></a>们
 - <table border="表格边框"></table>：表格开始结束标签，border值为数字，0无边框数字越大边框越粗
   - <caption></caption>：表格标题
   - <tr></tr>：表中的一行
@@ -88,9 +92,11 @@
     - checkbox：复选框
     - submit：提交按钮，按下后提交该表单数据到后台服务器
     - reset：重置按钮，按下后重置该表单数据
+    - button：按钮
+  - onClick：点击按钮时触发的动作？？如调用js函数？？？
   - checked：单选框、复选框使用，checked="checked"时默认选中状态
+  - value：框内、按钮上显示的文本
   - name：给后台程序asp、php使用
-  - value：框内显示的文本
   - placeholder：文本框占位符、输入框无内容时提示、输入内容时消失
   - id：标识，可用于label标签的for属性
 - <textarea rows="行数" cols="列数"></textarea>：文本输入域，在表单中输入大段文字。在CSS样式中rows可用height代替、cols用width代替
@@ -156,31 +162,47 @@
   p{color:red!important;} /*p段落显示red颜色*/
 ```
   - 注意：继承也有权值但很低，有的文献提出它只有0.1，所以可以理解为继承的权值最低。
+
 ### 分类
+- 一般选择器？？
+  - 语法：选择器名{css样式代码;}
+  - 应用的标签就是选择器名，如 p{color:red;} 应用到<p></p>上
+
 - 类选择器（点.）
-  - 语法：.类选择器名{css样式代码;}，英文圆点开头，如 .stress{color:red;} .size{font-size:12px}
+  - 语法：.类选择器名{css样式代码;}
+    - 英文圆点开头，如 .stress{color:red;} .size{font-size:12px}
   - 为标签设置一个类属性：class="类选择器名"，如 <span class="stress size">test</span>
   - 应用于任何元素，在一个html文档<p>中可使用多次，一个class=""内可以列多个类选择器
+
 - id选择器（井号#）
-  - 语法：#id选择器名{css样式代码;}，井号开头，如 #stress{color:red;}
+  - 语法：#id选择器名{css样式代码;}
+    - 井号开头，如 #stress{color:red;}
   - 为标签设置一个类属性：id="id选择器名"，如 <span id="stress">test</span>
   - 应用于任何元素，但在一个html文档<p>中只能使用一次，且一个class=""内只能有一个id选择器
+  
 - 子选择器（右尖括号>，作用于子选择器当前层）
-  - 语法：.类选择器名>子选择器名{css样式代码;}，如 .stress>span{color:red;}
+  - 语法：.类选择器名>子选择器名{css样式代码;}
+    - 如 .stress>span{color:red;}
   - 在类选择器范围内实现子选择器的样式，如 <p class="stress">无效果<span>test有效果</span>无效果</p>
+  
 - 包含选择器（空格 ，作用于包含选择器以下的所有层）
   - 语法：.类选择器名 包含选择器名{css样式代码;}，如 .stress span{color:red;}
   - 在类选择器范围内实现包含选择器的样式，如 <p class="stress">无效果<span>test有效果<li>test有效果</li></span>无效果</p>
+  
 - 通用选择器（星号*）
-  - 语法：*{css样式代码;}，如 *{color:red}
+  - 语法：*{css样式代码;}
+    - 如 *{color:red}
   - 匹配html中的所有标签元素，所有标签全设置*
+  
+- 分组选择器（逗号,）
+  - 语法：分组选择器名1,分组选择器名2{css样式代码;}
+    - 如 h1,span{color:red}，如 .first,#second span{}
+  - 将多个选择器范围内的内容都设置为同一个样式，如 上述代码等价于 h1{color:red} span{color:red}
+
 - 伪类选择器
   - 语法：伪类选择器名:………………待续，不太明白？？？？
   - 给不是html里的标签设置样式，如 a:hover{}，表示在a标签上使用:hover，设置鼠标滑过文字时文字显示的状态，a标签是可以兼容所有浏览器的“伪类选择符”？如<a>无效果</a>
-- 分组选择器（逗号,）
-  - 语法：分组选择器名1,分组选择器名2{css样式代码;}，如 h1,span{color:red}，如 .first,#second span{}
-  - 将多个选择器范围内的内容都设置为同一个样式，如 上述代码等价于 h1{color:red} span{color:red}
-
+  
 
 ## 常用样式属性
 ### 字体
@@ -190,6 +212,7 @@
 - font-style：字体样式，normal 为正常，italic 为字体本身就有倾斜样式的斜体，oblique 为强制斜体
 - color：颜色，英文命令 如 red、blue等，RGB整数or百分数颜色 如 rgb(133,45,200)、rgb(20%,33%,25%)等，十六进制颜色 如 #930、#00ffff等
 - font：字型简写，font样式可以简写为一行，以空格分割各属性，其中至少要有font-size、font-family的属性值，在font-size与line-height中间要有斜杠“/”。如 body{font:italic bold 12px/1.5em "宋体",sans-serif;}
+
 ### 文本
 - line-height：行间距，1.6em 为1.6倍行距
 - letter-spacing：字符间隔，50px 为50像素
@@ -201,6 +224,7 @@
   - px 像素，css规范中假设 90px = 1英寸，浏览器使用显示器的实际像素值
   - em，其大小为本标签元素中font-size值，如 font-size:12px 则 1em = 12px。若在font-size中使用了em，则该em以父标签的font-size为基础
   - % 百分比，直接使用时其基础也为本标签元素中font-size值
+
 ### CSS盒子模型
 - 元素分类：块状元素、内联元素（行内元素）、内联块状元素
 ```
@@ -220,7 +244,8 @@
 - 内联块状元素
   - 显示时和其他元素在同一行，可设置高度、宽度、行高、顶边距、底边距
   - 将元素 a 设置为内联块状元素：a{display:inline-block;}
-- 不显示元素a：a{display:none;}
+- 隐藏元素a：a{display:none;}
+
 - 盒子模型理解
   - 盒子 如<div>内容</div>，盒子有一个方形边框，盒子里有内容，内容可以是文字、图片、标签等，这些内容在边框内显示，盒子和内容显示的位置由以下内容决定：
     - 边框，样表中叫border，盒子的边框
@@ -260,13 +285,22 @@
   - margin-bottom：下外边距
   - margin-left：左外边距
   - 缩写规则同padding
+
+- list-style：列表属性，简写属性在一个声明中设置所有的列表属性。
+  - 可以设置的列表属性：list-style-type，list-style-position，list-style-image，none
+
+- cursor：定义了鼠标指针放在一个元素边界范围内时所用的光标形状
+
+
 ### CSS布局模型
 - 在网页中，元素有三种布局模型：Flow 流动模型，Float 浮动模型，Layer，层模型
 - Flow 流动模型：网页的默认布局模式
   - 排队显示：平级的块状元素从上到下按行顺序垂直延伸分布显示，平级的内联元素从左到右水平分布显示
 - Float 浮动模型：任何元素默认不能浮动，需定义
   - 定义：a{float:属性;}
-  - 属性：left 左浮动 即左对齐，right 右浮动 即右对齐
+  - 属性
+    - left 左浮动 即a标签内的内容们在一行内左对齐？？？
+    - right 右浮动 即右对齐
 - Layer 层模型：类似PS中的图层，操作能精确定位到图层
 - position 定位，分三种：绝对定位(position: absolute)，相对定位(position: relative)，固定定位(position: fixed)
 - 绝对定位：absolute
@@ -397,6 +431,14 @@
   - 子元素中translate位移的top、left都设为-50%。如 transform:translate(-50%, -50%);
 
 
+### CSS变量使用
+- 变量名以两个破折号（--）开头，如 --a，--cardName
+- 全局变量，使用 :root{} 关键字，:root 选择器匹配文档的根元素
+:root{
+--a:65px;
+--b:red;
+}
+使用var()函数引用变量，如 color: var(--b);
 
 
 - transform() 位移 旋转 动画 鼠标悬停
