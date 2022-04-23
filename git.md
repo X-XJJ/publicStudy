@@ -237,6 +237,34 @@ OpenSSL SSL_read: Connection was reset, errno 10054
 
 简单粗暴暂时解决：git config --global http.sslVerify "false"
 
+[解决 Failed to connect to github.com port 443:connection timed out](https://blog.csdn.net/Hodors/article/details/103226958)
+2022.02.25 有用
+按照
+
+#只对github.com
+git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
+
+#取消代理
+git config --global --unset http.https://github.com.proxy)
+设置
+
+
+- hosts
+http://github.com 140.82.113.3 
+http://gist.github.com 140.82.113.3
+http://help.github.com 185.199.108.154  
+http://nodeload.github.com 140.82.113.9
+http://github.global.ssl.fastly.net 199.232.69.194
+http://raw.github.com 185.199.108.133 
+http://status.github.com 140.82.113.18
+http://training.github.com 185.199.108.153 
+http://www.github.com 140.82.112.4
+————————————————
+版权声明：本文为CSDN博主「lmc7」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/qq_45921491/article/details/115977828
+
+
+
 
 
 #分支管理
