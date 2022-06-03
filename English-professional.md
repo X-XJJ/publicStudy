@@ -1,5 +1,9 @@
 # 专业英语 
 
+# 英文论文
+i.e.           |abbr.也就是，亦即(源自拉丁文id est)
+the set of sth |sth的集合
+
 
 # 报错们
 assignment |n. 分配，任务，作业
