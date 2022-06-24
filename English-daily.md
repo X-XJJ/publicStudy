@@ -69,10 +69,15 @@ riddle   |v.n. 使布满窟窿。谜语，神秘事件。
 
 
 # 《Ori and the Blind Forest：Definitive Edition》
-## Menu
+## Main Menu
 词&词组     |含义        |词根词缀&衍生
 ------------|------------|-------------
 definitive  |adj.n./di'/ 最终的，权威的。限定词，普通邮票。|define，definition（n.）
+edition     |n. 版本，版次
+average     |adj.n.v. 平均的。平均数、平均水准。平均为。
+advance     |n.v.adj. 前进，提高。促进，提前。预先的、高级的。
+
+## Menu
 leaderboard |n. 排行榜。
 sound effects volume |音效の音量
 vibration   |n./vai'/ 震动，心灵感应。|vibrate v. 震动。
@@ -142,10 +147,33 @@ split  |v.n.adj. 分离，劈开，断绝，裂缝，劈开的。
 cinder |v.n. 用煤渣铺，煤渣，灰烬。
 blast  |v.n. 爆炸，损害，猛攻，冲击波，一阵。
 
-## Ori's Game
-tap |v.n. 轻敲，窃听，采用，水龙头，阀门。
-access | v.n.adj. 接近，使用，访问，存取。通道，进入，机会，入口。对外公开的。
+## Ori's Ability Tree
+词&词组   |含义      |词根词缀&衍生
+----------|----------|-------------
+This bar indicates how much Spirit Light Ori collected. Absorb 18 more to gain another Ability Point!
+indicates |v. 表明，指示，象征。
+recharge
+magnet
+rekindle
 
+
+## Ori's Game
+词&词组   |含义      |词根词缀&衍生
+----------|----------|-------------
+resume    |n.v. 简历，摘要。重新开始，继续。
+tap       |v.n. 轻敲，窃听，采用，水龙头，阀门。
+access    |v.n.adj. 接近，使用，访问，存取。通道，进入，机会，入口。对外公开的。
+----------|----------|-------------
+Sunken Glades |沉没林地
+sink      |v.n.adj. 下沉、倒下、坐下。洗碗槽。贫民窟的。
+sunken    |adj.v. 沉没的、凹陷的。sink的过去式、过去分词。
+glade     |n. 林间空地
+cavern    |n. /'kæ/洞穴
+Hollow Grove |空洞森林
+hollow    |adj.n.vt.adv. /ˈhɒləʊ/ 空洞的、无诚意的。洞、坑洼。挖。彻底。
+grove     |n. 树林，果园，路。
+objective |adj.n. 客观的。目的、目标。
+shard     |n. 碎片
 
 
 # 《Ori and the Will of the Wisps》
