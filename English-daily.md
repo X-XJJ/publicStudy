@@ -130,12 +130,12 @@ dash  |v.n. 猛冲，匆忙，少量，破灭。
 -------|----------|-------------
 absorb |vt. 吸收，吸引；承受，理解，使全神贯注。|be absorbed in 全神贯注于。
 master |v.n.adj. 精通，控制，征服。主人，大师，硕士，院长。主人的，主要的，熟练的。
-rekindle |v. 重新点燃。|kindle v. 点燃，激起，照亮。
+rekindle the Soul Link|v. 重新点燃灵魂链接。|kindle v. 点燃，激起，照亮。
 efficiency |n. 效率，功效。|efficient adj. 有效的，有能力的。
 halve |vt. 二等分，减半。
 ultra |adj.adv.n. 极端的。非常。极端主义者。
 defense |vt.n. 谋划抵御。防守，防护。
-magnet |n. 磁铁。
+Spirit Magnet |精灵磁石。n. 磁铁。
 pickup |n. 收集，整理，拾起，拾起物。|pick up 捡起，获得。
 show up |显示，说明，展出。
 automatically |adj.adv. 不假思索的。自动地，机械地，无意识地。|-auto- 自动？
@@ -153,7 +153,6 @@ blast  |v.n. 爆炸，损害，猛攻，冲击波，一阵。
 This bar indicates how much Spirit Light Ori collected. Absorb 18 more to gain another Ability Point!
 indicates |v. 表明，指示，象征。
 recharge
-magnet
 rekindle
 
 
@@ -173,7 +172,12 @@ Hollow Grove |空洞森林
 hollow    |adj.n.vt.adv. /ˈhɒləʊ/ 空洞的、无诚意的。洞、坑洼。挖。彻底。
 grove     |n. 树林，果园，路。
 objective |adj.n. 客观的。目的、目标。
-shard     |n. 碎片
+Life Shard|n. 生命碎片
+The light of the Spirit Wells will also replenish your strength whenever you are weary.
+warp      |
+grab and move |
+This Spirt Gate blocks us... They were built for protection, before the days of decay 
+Spirit Caverns
 
 
 # 《Ori and the Will of the Wisps》
@@ -185,6 +189,8 @@ shard     |n. 碎片
 --------|-------------------------------------|-------------
 mischief|n. 恶作剧，顽皮，不和。
 nexus   |n. /ˈneksəs/ 关联，连结。
+
+
 
 
 

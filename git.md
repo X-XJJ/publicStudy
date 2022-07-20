@@ -27,6 +27,9 @@ Windows ：选择git bush工具，或Windows自带powershell
 分支branch
 fork
 
+更新git
+git update-git-for-windows
+
 
 # 配置账号 
 [git config配置](https://www.cnblogs.com/fireporsche/p/9359130.html)

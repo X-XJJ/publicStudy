@@ -1,4 +1,36 @@
 # 环境
+
+
+# Anaconda 使用
+- python程序需要运行环境，anaconda可以管理、切换不同的运行环境
+
+[Anaconda介绍、安装及使用教程](https://zhuanlan.zhihu.com/p/32925500)
+
+Anaconda，中文大蟒蛇，是一个开源的Python发行版本，其包含了conda、Python等180多个科学包及其依赖项。
+Anaconda包括Conda、Python以及一大堆安装好的工具包，比如：numpy、pandas等
+Miniconda包括Conda、Python
+conda是一个开源的包、环境管理器，可以用于在同一个机器上安装不同版本的软件包及其依赖，并能够在不同的环境之间切换
+
+conda clean
+conda config
+conda create
+conda help
+conda info
+conda install
+conda list #罗列出所有已安装的科学包及其依赖项
+conda package
+conda remove
+conda search
+conda uninstall
+conda update
+conda upgrade
+
+
+- 可以先在anaconda中创建新的虚拟环境
+- 也可以在pycharm中新建项目时，跟着新建对应的环境
+- 虚拟环境路径一般默认为，anaconda安装路径/envs/再创项目对应环境的文件夹
+
+
 ## python2？3
 
 - cmd中：pip install sympy
