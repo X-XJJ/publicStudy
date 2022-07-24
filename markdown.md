@@ -1,5 +1,7 @@
 # Markdown使用 
 
+- typora 丰富美观的Markdown显示，实时显示
+
 ## 这是标题层级
 ### 总共6级
 

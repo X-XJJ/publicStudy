@@ -11,12 +11,16 @@ Anaconda包括Conda、Python以及一大堆安装好的工具包，比如：nump
 Miniconda包括Conda、Python
 conda是一个开源的包、环境管理器，可以用于在同一个机器上安装不同版本的软件包及其依赖，并能够在不同的环境之间切换
 
+conda activate 环境名：进入环境
+conda deactivate 环境名：退出环境
+conda env list：打印环境列表
+
 conda clean
 conda config
 conda create
 conda help
 conda info
-conda install
+conda install 包名：安装包or库
 conda list #罗列出所有已安装的科学包及其依赖项
 conda package
 conda remove
@@ -28,7 +32,14 @@ conda upgrade
 
 - 可以先在anaconda中创建新的虚拟环境
 - 也可以在pycharm中新建项目时，跟着新建对应的环境
-- 虚拟环境路径一般默认为，anaconda安装路径/envs/再创项目对应环境的文件夹
+- 虚拟环境路径一般默认为，anaconda安装路径/envs/项目对应环境的文件夹
+
+- 在自建虚拟环境中，包or库的安装路径一般为：anaconda安装路径/envs/项目对应环境的文件夹/Lib/site-packages
+- 在base环境中，包or库的安装路径一般为：anaconda安装路径/Lib/site-packages
+
+
+windows下，conda环境在 PowerShell 中不能进入和切换，可能是系统和兼容的问题，暂未解决。在cmd中可正常运行。
+pycharm中“终端”可选择是powerShell或cmd
 
 
 ## python2？3
@@ -36,6 +47,11 @@ conda upgrade
 - cmd中：pip install sympy
 - pycharm中不会自动识别cmd的安装？，setting→Project：untitiled→Python Interpreter→+号，搜索&install
   - 包的安装路径：…\PycharmProjects\untitled\venv\Lib\site-packages
+
+- pip install 包名
+
+cplex、docplex两个包，conda中默认配置没有源，用pip
+
 
 ## Pytorch
 [面向Windows的Pytorch完整安装教程](https://blog.csdn.net/qianbin3200896/article/details/104244538)

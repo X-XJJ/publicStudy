@@ -13,6 +13,12 @@
 
 # cplex + python
 
+https://www.ibm.com/docs/en/icos
+
+https://www.ibm.com/docs/en/icos/22.1.0?topic=cparm-overview
+
+http://ibmdecisionoptimization.github.io/docplex-doc/
+
 [python 如何调用Cplex?](https://www.zhihu.com/question/51750510)
 
 

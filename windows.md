@@ -35,7 +35,19 @@ slmg /ato
 - windows系统默认不允许通过桌面方式创建.（点）开头的文件夹或文件，但是并不代表不支持此类文件，可以用shell创建
   - mkdir = md 创文件夹；vim 或echo重定向 创文件，eg：echo test > .aaa
 
+
 [命令行参数中的空格。无法正确读取“C：\ Program Files”](http://cn.voidcc.com/question/p-msirzpku-cu.html)
+
+- dir 即linux中的ls
+- ren 原名 改的名
+
+
+# 注册表编辑器 regedit
+
+- 修改user文件夹名，不允许直接修改：1、设置里正常改用户账户名。2、regedit中改注册表键值
+https://blog.csdn.net/qq_55917031/article/details/122104464
+https://www.jb51.net/os/win10/833998.html
+或切换 本地默认管理员账户，就有权限修改了
 
 
 # U盘格式
