@@ -61,9 +61,9 @@ CTEX是利用TEX排版系统的CTEX中文套装的简称。它集成了编辑器
 [vscode中配置latex](https://blog.csdn.net/Ruins_LEE/article/details/123555016?spm=1001.2014.3001.5506)
 [latex-vscode环境配置, 入门及ctex中文环境](https://blog.csdn.net/npe_ml/article/details/82912570)
 [教教小周做学术的道理第二弹之texlive+vscode环境配置太爽了](https://blog.csdn.net/universe_1207/article/details/121228816)
-[]()
-[]()
-[]()
+[vscode中配置latex](https://blog.csdn.net/Ruins_LEE/article/details/123555016)
+[VS Code 与texlive真乃天作之合](https://blog.csdn.net/weixin_43660619/article/details/107033739)
+[VSCODE 安装LATEX环境，参数配置，常见问题解决](https://blog.csdn.net/qq_41554005/article/details/120712126)
 []()
 []()
 []()
@@ -72,14 +72,149 @@ CTEX是利用TEX排版系统的CTEX中文套装的简称。它集成了编辑器
 []()
 
 
-- 在 VSCode+LaTexWorkshop 环境
+## 在 VSCode+LaTexWorkshop 环境
   - 根据 tex 位置→查找 pdf 对应位置：Ctrl + Alt + j
   - 根据 pdf 位置→查找 tex 对应位置：Ctrl + 鼠标左击
 
+VSCode-settings.json - bak
+~~~
+{
+  /* Latex Workshop */
+  "latex-workshop.latex.tools": [
+  {
+    "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+      "-interaction=nonstopmode",
+      "-file-line-error",
+      "-pdf",
+      "%DOC%"
+      ]
+  },
+  {
+    "name": "xelatex",
+    "command": "xelatex",
+    "args": [
+      "-synctex=1",
+    "-interaction=nonstopmode",
+    "-file-line-error",
+    "%DOC%"
+    ]
+  },          
+  {
+    "name": "pdflatex",
+    "command": "pdflatex",
+    "args": [
+      "-synctex=1",
+    "-interaction=nonstopmode",
+    "-file-line-error",
+    "%DOC%"
+    ]
+  },
+  {
+    "name": "bibtex",
+    "command": "bibtex",
+    "args": [
+      "%DOCFILE%"
+    ]
+  }
+  ],
+  "latex-workshop.latex.recipes": [
+  {
+    "name": "xelatex",
+    "tools": [
+      "xelatex"
+    ]
+  },
+  {
+    "name": "latexmk",
+    "tools": [
+      "latexmk"
+    ]
+  },
+
+  {
+    "name": "pdflatex -> bibtex -> pdflatex*2",
+    "tools": [
+      "pdflatex",
+    "bibtex",
+    "pdflatex",
+    "pdflatex"
+    ]
+  }
+  ],
+  "latex-workshop.latex.clean.fileTypes": [
+    "*.aux",
+  "*.bbl",
+  "*.blg",
+  "*.idx",
+  "*.ind",
+  "*.lof",
+  "*.lot",
+  "*.out",
+  "*.toc",
+  "*.acn",
+  "*.acr",
+  "*.alg",
+  "*.glg",
+  "*.glo",
+  "*.gls",
+  "*.ist",
+  "*.fls",
+  "*.log",
+  "*.fdb_latexmk"
+  ],
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.clean.enabled": true,
+
+  /* 自动保存 */
+  "files.autoSave": "onWindowChange",
+
+  /* 视区自动折行 */
+  "editor.wordWrap": "on",
+
+}
+~~~
 
 
-# Word、LaTeX 互转
-- Pandoc
+- 中文环境配置
+  - xelatex可以直接显示中文，不过很多显示效果是英语的排版习惯, 而且很多对中文的支持也不太好。
+  - ctex的使用也很简单, 直接\usepackage{ctex}就可以了. 注意这是xelatex的编译方式才可以, 其他的编译方式可能会失败. pdflatex的编译方式要这样写\documentclass[UTF8]{article}, 来表明编码方式是utf-8.
+
+  - ctex内置 6 种默认字体
+~~~
+\documentclass[UTF8]{article}
+\usepackage{hologo}
+\usepackage{ctex}
+
+\begin{document}
+
+你好 \hologo{LaTeX}\\
+
+{\heiti 黑体显示效果}\\
+{\kaishu 楷书显示效果}\\
+{\songti 宋体显示效果}\\
+{\lishu 隶书显示效果}\\
+{\youyuan 幼圆显示效果}\\
+{\fangsong 仿宋显示效果}\\
+
+\end{document}
+~~~
+
+
+
+# Word、LaTeX 互相转换
+- Pandoc：从tax转成各种格式，包括html、word等等，公式支持比较友好，可以把公式单转
+- pdf转word：福昕破解版挺好用的，公式存在乱码，图表文字目录都挺好
+
+[latex代码在word里转成word公式（简单方便不需下插件）](https://blog.csdn.net/shengsikandan/article/details/109905213)
+
+[学位论文Latex转Word](https://blog.csdn.net/qazwsxrx/article/details/124298871)
+
+[【最全】latex与word之间的各种转化方法和软件汇总](https://blog.csdn.net/weixin_46233323/article/details/105424033)
+
 
 
 
@@ -184,17 +319,35 @@ CTEX是利用TEX排版系统的CTEX中文套装的简称。它集成了编辑器
 - \mathbf{}:数学公式加粗
 - \pmg{}：特殊字符加粗
 
-- 下标：$x_a$ 在符号的后面打下划线“_”,那么下划线后面的符号就自动放在了下标的位置_
-- 上标：$x^a$
-- 上下标：连起来写就行 x_a^b = x^b_a
-
-[如何用latex编写上标、下标？](https://zhuanlan.zhihu.com/p/262907455)
+- 上下标
+  - 下标：$x_a$ 在符号的后面打下划线“_”,那么下划线后面的符号就自动放在了下标的位置_
+  - 上标：$x^a$
+  - 上下标：连起来写就行 x_a^b = x^b_a
+  - 连续下标用{}括起来
+  - 允许套娃
+  - [如何用latex编写上标、下标？](https://zhuanlan.zhihu.com/p/262907455)
 
 
 - makebox
 
 
+- [LaTeX技巧290：如何设置图表编号和章节相关联](https://www.latexstudio.net/archives/7927.html)
+
+
+
+
 ## 公式
+[LaTeX：数学公式](https://blog.csdn.net/weixin_39679367/article/details/109966436)
+
+
+[一个较为完整的中文图书Latex模板](https://blog.csdn.net/jueshu/article/details/83210629)
+
+
+- [LaTeX公式在线编辑器](https://www.latexlive.com/)
+  - [如何将截图中公式转换成为可用的mathtype公式](https://blog.csdn.net/YXYYBZ/article/details/121191621)
+
+
+
 - 公式内不能空行，否则编译失败
 
 - 常用宏
@@ -286,6 +439,9 @@ CTEX是利用TEX排版系统的CTEX中文套装的简称。它集成了编辑器
 
 - \hline：横线
 
+- scalebox{0.9}{表格tabular} 表格整体缩放
+
+
  \makebox[0.4\textwidth][c]{符号}&\makebox[0.5\textwidth]&{优}&[c]{良}&[c]{中}&[c]{差} \\
 
 
@@ -323,6 +479,12 @@ CTEX是利用TEX排版系统的CTEX中文套装的简称。它集成了编辑器
 
 
 ## 参考文献
+
+- bib
+
+- endnote、LaTeX
+
+- endnote、Word
 
 
 
