@@ -14,6 +14,28 @@
 -
 -
 
+
+- win10下，取巧设置shift+右键打开cmd
+  - [win10 shift+右键打开cmd](https://blog.csdn.net/qq_31475993/article/details/107962270)
+  - xxx.reg
+~~~
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdHere]
+@="在此处打开命令行窗口"
+"Extended"=""
+"NoWorkingDirectory"=""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\OpenCmdHere\command]
+@="PowerShell -windowstyle hidden -Command \"Start-Process cmd.exe -ArgumentList '/s,/k, pushd,%V' -Verb RunAs\""
+~~~
+
+
+- [win10设置打开闪退怎么办 电脑windows10设置打开闪退解决方法](https://blog.csdn.net/qq_19731521/article/details/123113085)
+
+
+
+
 # 激活win10
 slmgr.vbs /upk
 slmgr /ipk $license
