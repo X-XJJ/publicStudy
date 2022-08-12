@@ -5,9 +5,9 @@
 [MathType7安装使用及please restart word to load mathtype addin properly的问题。](https://blog.csdn.net/weixin_43115631/article/details/110067650)
 
 - 或者
-- word-文件-选项-信任中心-信任中心设置-添加新位置（ppt、excel同理？）
-- 添加 C:\Program Files\Microsoft Office\root\Office16\STARTUP\
-    - 在信任中心的 startup 下，都复制一下 MathPage.wll、MathType Commands 20xx.dotm、WordCmds.dot
+- 首先，word-文件-选项-信任中心-信任中心设置-添加新位置（ppt、excel同理？）
+- 其次，添加 C:\Program Files\Microsoft Office\root\Office16\STARTUP\
+    - 在信任中心的 startup 下，都复制一下 mathPage\64\MathPage.wll、Office Support\64\MathType Commands 20xx.dotm、WordCmds.dot
 
 
 # LaTeX、CTEX
@@ -55,6 +55,8 @@ CTEX是利用TEX排版系统的CTEX中文套装的简称。它集成了编辑器
 - 
 - TeX Live的iso解压后，index.html为引导手册，安装时解压文件所在路径，最好不要含有中文
 - 添加环境变量：安装路径\texlive\2022\bin\win32
+
+[textlive 安装出现的can't spawn cmd.exe问题](https://blog.csdn.net/Lirh_china/article/details/19435431)：在系统变量 path 增加一个项：C:\Windows\System32;
 
 
 [本地使用VS code + CTEX编辑latex文件](https://blog.csdn.net/xinjieyuan/article/details/125131934)
@@ -317,7 +319,9 @@ VSCode-settings.json - bak
 
 - \textbf{文本}:文本环境加粗
 - \mathbf{}:数学公式加粗
-- \pmg{}：特殊字符加粗
+- \pmb{}：特殊字符加粗
+
+
 
 - 上下标
   - 下标：$x_a$ 在符号的后面打下划线“_”,那么下划线后面的符号就自动放在了下标的位置_

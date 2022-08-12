@@ -31,6 +31,13 @@ python C:\Program Files\IBM\ILOG\CPLEX_Studio201\python\setup.py install
 
 PROGRA~1
 
+- 创建模型对象，模型类型：(0,1)规划 Binary Model，整数规划 Integer，
+
+- opt_model = cpx.Model(name="模型类型")
+
+
+
+
 
 # cplex + java
 

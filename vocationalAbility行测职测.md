@@ -12,11 +12,11 @@
 - 一般题目顺序：常识、言语、数量、判断、资料
 - 推荐答题顺序：资料、判断、言语、常识、数量
 
-- 国考：《行测
+- 国考：《行政职业能力测验》Administrative vocational ability test，申论
 - 省考：
 - 事考：
   - 《公基
-  - 《职业能力倾向测验》
+  - 《职业能力倾向测验》Vocational aptitude test
   - A类 综合管理类
 
   - 题型

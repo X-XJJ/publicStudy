@@ -34,6 +34,11 @@ Windows Registry Editor Version 5.00
 - [win10设置打开闪退怎么办 电脑windows10设置打开闪退解决方法](https://blog.csdn.net/qq_19731521/article/details/123113085)
 
 
+- win10 系统图标 显示：在 设置-主题 中找
+
+- 开始菜单 C:\ProgramData\Microsoft\Windows\Start Menu
+
+- “问题步骤记录器”：win+R运行窗口下“PSR”打开
 
 
 # 激活win10
@@ -43,12 +48,18 @@ slmgr /skms zh.us.to
 slmgr /ato
 
 slmgr.vbs -xpr 查询激活期限，在win-r下可运行
+slmgr.vbs -dlv 查询 Windows Script Host 软件授权服务信息
+
 
 如
 [使用kms激活win10企业版400年教程](http://www.xitongzu.com/jc/19471.html)
 slmgr /ipk YYVX9-NTFWV-6MDM3-9PT4T-4M68B
 slmgr /skms kms.03k.org
 slmg /ato
+
+
+
+
 
 # PowerShell
 - 计算信息摘要，如md5
@@ -62,6 +73,8 @@ slmg /ato
 
 - dir 即linux中的ls
 - ren 原名 改的名
+
+
 
 
 # 注册表编辑器 regedit

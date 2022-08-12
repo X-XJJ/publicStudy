@@ -18,6 +18,25 @@ Windows ：选择git bush工具，或Windows自带powershell
 [github使用Personal access tokens的方法](https://blog.csdn.net/u012081284/article/details/120129470)
 
 
+- 当前项目文件夹下 .git/config
+```
+[core]
+  repositoryformatversion = 0
+  filemode = false
+  bare = false
+  logallrefupdates = true
+  symlinks = false
+  ignorecase = true
+[remote "origin"]
+  url = https://oauth2:令牌@github.com/xx/xx.git/
+  fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "master"]
+  remote = origin
+  merge = refs/heads/master
+[user]
+  email = xx@xx.com
+  name = xx
+```
 
 
 
