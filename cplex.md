@@ -36,6 +36,7 @@ PROGRA~1
 - opt_model = cpx.Model(name="模型类型")
 
 
+[python运筹优化（一）：Cplex for python使用简介](https://zhuanlan.zhihu.com/p/124422566)
 
 
 

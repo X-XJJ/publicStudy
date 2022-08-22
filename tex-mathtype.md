@@ -43,7 +43,7 @@ CTEX是利用TEX排版系统的CTEX中文套装的简称。它集成了编辑器
 - 
 - [科技排版系统 CTEX:HomePage](http://www.ctex.org/HomePage)
 - 
-- VSCode实时显示TeX公式插件：https://zhuanlan.zhihu.com/p/469773497
+- VSCode实时显示TeX公式插件 Ultra Math Preview：https://zhuanlan.zhihu.com/p/469773497
 
 - 
 - [轻松搭建LaTeX+VSCode编辑环境（以CTeX为例）](https://blog.csdn.net/u010186354/article/details/104291015)
@@ -54,7 +54,8 @@ CTEX是利用TEX排版系统的CTEX中文套装的简称。它集成了编辑器
 - - CTeX、LaTeX、TeX Live，
 - 
 - TeX Live的iso解压后，index.html为引导手册，安装时解压文件所在路径，最好不要含有中文
-- 添加环境变量：安装路径\texlive\2022\bin\win32
+- 添加环境变量：D:\ProgramData\texlive\2022\bin\win32（这个对LaTeX workshop报 undefined $SHELL无用）
+- 添加环境变量：D:\ProgramData\texlive\texlive\2022\bin\win32（这个对LaTeX workshop报 undefined $SHELL有用）
 
 [textlive 安装出现的can't spawn cmd.exe问题](https://blog.csdn.net/Lirh_china/article/details/19435431)：在系统变量 path 增加一个项：C:\Windows\System32;
 
@@ -81,10 +82,18 @@ CTEX是利用TEX排版系统的CTEX中文套装的简称。它集成了编辑器
 VSCode-settings.json - bak
 ~~~
 {
-  /* Latex Workshop */
-  "latex-workshop.latex.tools": [
-  {
-    "name": "latexmk",
+  /* 自动保存 */
+  "files.autoSave": "onWindowChange",
+
+    /* 视区自动折行 */
+    "editor.wordWrap": "on",
+
+
+    /* Latex Workshop */
+    // 编译工具选项和命令
+    "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
       "command": "latexmk",
       "args": [
         "-synctex=1",
@@ -93,35 +102,36 @@ VSCode-settings.json - bak
       "-pdf",
       "%DOC%"
       ]
-  },
-  {
-    "name": "xelatex",
-    "command": "xelatex",
-    "args": [
-      "-synctex=1",
-    "-interaction=nonstopmode",
-    "-file-line-error",
-    "%DOC%"
-    ]
-  },          
-  {
-    "name": "pdflatex",
-    "command": "pdflatex",
-    "args": [
-      "-synctex=1",
-    "-interaction=nonstopmode",
-    "-file-line-error",
-    "%DOC%"
-    ]
-  },
-  {
-    "name": "bibtex",
-    "command": "bibtex",
-    "args": [
-      "%DOCFILE%"
-    ]
-  }
+    },
+    {
+      "name": "xelatex",  //可编译中文
+      "command": "xelatex",
+      "args": [
+        "-synctex=1",
+      "-interaction=nonstopmode",
+      "-file-line-error",
+      "%DOC%"
+      ]
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+      "-interaction=nonstopmode",
+      "-file-line-error",
+      "%DOC%"
+      ]
+    },
+    {
+      "name": "bibtex",
+      "command": "bibtex",
+      "args": [
+        "%DOCFILE%"
+      ]
+    }
   ],
+  // 配置每个编译的小环境，编译链使用xelatex为默认首选编译
   "latex-workshop.latex.recipes": [
   {
     "name": "xelatex",
@@ -135,7 +145,6 @@ VSCode-settings.json - bak
       "latexmk"
     ]
   },
-
   {
     "name": "pdflatex -> bibtex -> pdflatex*2",
     "tools": [
@@ -146,6 +155,7 @@ VSCode-settings.json - bak
     ]
   }
   ],
+  //设置在编译完成后所需要删除的文件格式
   "latex-workshop.latex.clean.fileTypes": [
     "*.aux",
   "*.bbl",
@@ -167,15 +177,12 @@ VSCode-settings.json - bak
   "*.log",
   "*.fdb_latexmk"
   ],
-  "latex-workshop.latex.autoBuild.run": "onSave",
-  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.autoBuild.run": "never", // 保存时编译 onSave never
+  "latex-workshop.view.pdf.viewer": "tab", // 设置默认pdf阅读器 tab-内置
+  "latex-workshop.showContextMenu": true, // 添加LaTeX workshop右键菜单
+  "latex-workshop.intellisense.package.enabled": true, //根据加载的包 自动完成命令或包
   "latex-workshop.latex.clean.enabled": true,
 
-  /* 自动保存 */
-  "files.autoSave": "onWindowChange",
-
-  /* 视区自动折行 */
-  "editor.wordWrap": "on",
 
 }
 ~~~

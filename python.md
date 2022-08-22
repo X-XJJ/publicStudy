@@ -285,6 +285,9 @@ print(*objects, sep=' ', end=' in" , file=sys.stdout，flush=False)
 
 ## pandas
 - pandas是基于numpy库的一种工具，纳入了大量库和一些标准的数据模型。
+- DataFrame：pandas下的一种数据结构，表格型
+  - 它含有一组有序的列，每列可以是不同的值类型（数值、字符串、布尔型值）。DataFrame 既有行索引也有列索引，它可以被看做由 Series 组成的字典（共同用一个索引）
+
 
 
 

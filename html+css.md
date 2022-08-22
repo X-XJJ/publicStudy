@@ -472,7 +472,7 @@ UI框架，前端，开发高效灵活，配合度高
 工具：Node.js
 npm install -g cleate-react-app 安装react
 
-- 组件
+- 组件：组件是什么？？？
   - 属性props 由外部jsx传入
   - 状态state 如动画变化等，控制界面状态，更新不用刷新整个界面，为局部即时
 -
@@ -484,3 +484,12 @@ npm install -g cleate-react-app 安装react
 -
 - 单向数据传递
 -
+
+
+
+# 本地调试
+localhost
+Windows打开：控制面板-程序-启用或关闭Windows功能-lnternet lnformation Services，-llS 管理控制台
+
+[localhost本地网站使用方法](http://www.scicat.cn/aa/20220226/2161682.html)
+

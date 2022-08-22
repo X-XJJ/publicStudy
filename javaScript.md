@@ -6,12 +6,15 @@
 
 
 # 基础语法
+## js代码编写位置
 - 在html内添加js代码
   - 使用 <script>JS代码</script> 在html中插入JavaScript代码
   - <script type="text/javascript">JS代码</script>：表示script内的内容为文本类型，且该文本是JavaScript语言
 - 单独创建JavaScript代码文件，后缀.js，文件内直接写js代码
   - <script src="name.js"></script>：在html代码中嵌入js文件
 - js代码可以放在html的任意位置，但一般放在head或者body部分，放head则浏览器解析head时就会执行
+
+## 基本语法
 - 注释：同C
 - 声明变量：var 变量名。变量以字母、下划线、$开头
 - “+”加号连接字符串

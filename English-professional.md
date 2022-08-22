@@ -20,6 +20,7 @@ git |n. 饭桶，蠢货
 hub |n. 中心，核心
 
 
+navigate v. 导航
 
 
 
