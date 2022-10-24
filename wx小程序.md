@@ -1,3 +1,8 @@
+
+
+- 大神们做的模版 colorUI 框架
+
+
 # 官方文档
 
 - 注释
@@ -30,6 +35,9 @@ button
 textarea
 
 input
+
+
+[微信小程序实现wxml视图向js传递参数的方法（点击view带参数进入js）](https://www.jianshu.com/p/6648730bc86a)
 
 <navigator url="链接?参数名=具体参数">作用同a</navigator>
 
@@ -95,6 +103,11 @@ xxx:function(){}
 
 - 请求网络组件？？api？？：wx.request()
   - 开发工具中，直接打 request 将补全所有参数，打wx.request只补“url”参数
+
+[微信小程序中发送网络请求](https://blog.csdn.net/qzw752890913/article/details/125426071)
+[5、微信小程序-网络请求和本地存储](https://blog.csdn.net/qq_40348833/article/details/124345713)
+
+一个找的暂时用来测试的服务器 https://www.showdoc.com.cn/128719739414963/2513235043485226
 
 
 - 提示框

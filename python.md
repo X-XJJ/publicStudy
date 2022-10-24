@@ -59,7 +59,6 @@ conda update conda                  #检查更新当前conda
 - 
 
 
-
 - 可以先在anaconda中创建新的虚拟环境
 - 也可以在pycharm中新建项目时，跟着新建对应的环境
 - 虚拟环境路径一般默认为，anaconda安装路径/envs/项目对应环境的文件夹
@@ -134,6 +133,7 @@ cplex、docplex两个包，conda中默认配置没有源，用pip
     - 正常执行完while后执行else，跳出while则不执行else（如break）
   - for XX in 序列:代码块 else:代码块
     - for i in range(0,4): <=> C的 for(int i=0;i<4;i++){} <=> C的 for(int i=0;i<=3;i++){}
+    - range[) 左闭右开
     - 正常执行完for后执行else，跳出for则不执行else（如break）
   - while 后写入0、长度为0的任意序列 时视为FALSE，写入非0整数、长度非0的任意序列 时视为TRUE
 
@@ -162,14 +162,18 @@ cplex、docplex两个包，conda中默认配置没有源，用pip
 [python 引用（import）文件夹下的py文件](https://www.cnblogs.com/kongbursi-2292702937/p/12149925.html)
 
 
+- 相对路径：./ 代表当前所在的目录，../ 代表上一层目录， / 代表根目录？
+- 相对路径：.\ 代表当前所在的目录，..\ 代表上一层目录， \ 代表根目录？
+
 - 全数据输出，科学记数法输出，如1000！
 
 - temp = input("str") ，接收一个输入（全默认为字符串类型）的同时给出提示信息str
 
+- sum() 对序列进行求和计算
 
 - 保留浮点型的小数点后n位，可以用 decimal包 里的 Decimal对象 和 getcontext()方法 来实现
 
-### Python 数据类型
+## Python 数据类型
 - 基本类型：整型 0、浮点型 0.0、布尔型
 - 容器类型：字符串、元组、列表、字典、集合
 
@@ -287,6 +291,8 @@ print(*objects, sep=' ', end=' in" , file=sys.stdout，flush=False)
 - pandas是基于numpy库的一种工具，纳入了大量库和一些标准的数据模型。
 - DataFrame：pandas下的一种数据结构，表格型
   - 它含有一组有序的列，每列可以是不同的值类型（数值、字符串、布尔型值）。DataFrame 既有行索引也有列索引，它可以被看做由 Series 组成的字典（共同用一个索引）
+
+[Python pandas.DataFrame.from_dict函数方法的使用](https://www.cjavapy.com/article/472/)
 
 
 
