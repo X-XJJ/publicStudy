@@ -7,5 +7,7 @@
 
 =VLOOKUP(C349,testZhi!$A$1:$E$346,5,FALSE)
 
+=IF(AND(B3=H3,G3=I3,K3="金委",J3=DATEVALUE("2021/12/31")),"√","错")
+
 
 

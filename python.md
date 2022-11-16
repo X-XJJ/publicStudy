@@ -181,6 +181,8 @@ cplex、docplex两个包，conda中默认配置没有源，用pip
 <class 'float'>
 <class 'bool'>
 
+[python怎么保留两位小数?几种方法总结！](https://m.w3cschool.cn/article/89475330.html)
+
 - 获取数据类型信息 type(object)
   - type()不会认为子类是一种父类类型，不考虑继承关系
   - isinstance(）会认为子类是一种父类类型，考虑继承关系。
@@ -189,33 +191,48 @@ cplex、docplex两个包，conda中默认配置没有源，用pip
 
 - 字符串，<class 'str'>，''或""，序列类型
 
-- 元组，<class 'tuple'>，()，序列类型
-  - 元组被创建后不能修改
-
-- 列表，<class 'list'>，[]，序列类型
-  - 创建列表
-    - 直接赋值
-    - range()
-    - 推导式
-
-- 字典，<class 'dict'>，{} 映射类型
-  - 创建字典
-    - dicTest = {:, :, :}
-    - 构造函数 dict()
-  - 无序的 键:值 对 的集合（key:value），一个字典内的键不可重复
-  - 以“关键字-键”为索引，，格式类似json
-  - eg：dicTest={'a':1,'b':2, 3:'c'}; items = dicTest.items(); for key in items:.....
-  - 'a' 为字典的一个键，1 为该键对应的值
-  - 取字典的键 keys = dicTest.keys()，取字典的值 values = dicTest.values()
-  - 字典类型 不能放在for循环中直接遍历，必须转化为dict items之后才能遍历
-
-- 集合，<class 'set'>，{}
+### 元组，<class 'tuple'>，()，序列类型
+- 元组被创建后不能修改
 
 
-- 数据类型转换
+### 列表，<class 'list'>，[]，序列类型
+- 创建列表
+  - 直接赋值
+  - range()
+  - 推导式
+
+
+[ppython_*x, = p的python语法](https://blog.csdn.net/weixin_39552538/article/details/111805082)
+
+[Python学习-将list列表写入文件](https://blog.csdn.net/DL_Iris/article/details/118603626)
+
+
+### 字典，<class 'dict'>，{} 映射类型
+- 创建字典
+  - dicTest = {:, :, :}
+  - 构造函数 dict()
+- 无序的 键:值 对 的集合（key:value），一个字典内的键不可重复
+- 以“关键字-键”为索引，，格式类似json
+- eg：dicTest={'a':1,'b':2, 3:'c'}; items = dicTest.items(); for key in items:.....
+- 'a' 为字典的一个键，1 为该键对应的值
+- 取字典的键 keys = dicTest.keys()，取字典的值 values = dicTest.values()
+- 字典类型 不能放在for循环中直接遍历，必须转化为dict items之后才能遍历
+
+- 一个键key对应多个值
+[python中defaultdict用法详解](https://blog.csdn.net/weixin_44799217/article/details/124380270) 
+
+[python字典排序方法](https://blog.csdn.net/LHJCSDNYL/article/details/122525942)
+
+
+
+### 集合，<class 'set'>，{}
+
+
+### 数据类型转换
   - 转换为整型int(x, base=10)，base进制默认为10进制
   - 转换为字符串str(object='')
   - 转换为浮点型float(x)
+
 
 
 - python递归深度默认1000以内，修改递归深度值为x
@@ -230,7 +247,16 @@ sys.setrecursioonlimit(x)
 
 
 
+strip()  去除头尾字符、空白符(包括n、r、t、' '，即：换行、回车、制表符、空格)
+lstrip() 去除开头字符、空白符(包括n、r、t、' '，即：换行、回车、制表符、空格)
+rstrip() 去除结尾字符、空白符(包括n、r、t、' '，即：换行、回车、制表符、空格)
+strip('xx') 去除头尾的xx字符
 
+读txt文件
+read()：一次性读取整个文件内容。推荐使用read(size)方法，size越大运行时间越长
+readline()：每次读取一行内容，内存不够时使用，一般不太用
+readlines()：一次性读取整个文件内容，并按行返回到list，方便我们遍历
+[python如何读取txt文件内容](https://www.php.cn/python-tutorials-479676.html)
 
 
 # 常用函数（ref：菜鸟教程）
