@@ -203,11 +203,12 @@ cplex、docplex两个包，conda中默认配置没有源，用pip
 
 
 [ppython_*x, = p的python语法](https://blog.csdn.net/weixin_39552538/article/details/111805082)
+x,y=p 相当于 x=p[0]; y=p[1]??
 
 [Python学习-将list列表写入文件](https://blog.csdn.net/DL_Iris/article/details/118603626)
 
 
-### 字典，<class 'dict'>，{} 映射类型
+### 字典，<class 'dict'>，{a:b} 映射类型
 - 创建字典
   - dicTest = {:, :, :}
   - 构造函数 dict()
@@ -222,6 +223,7 @@ cplex、docplex两个包，conda中默认配置没有源，用pip
 [python中defaultdict用法详解](https://blog.csdn.net/weixin_44799217/article/details/124380270) 
 
 [python字典排序方法](https://blog.csdn.net/LHJCSDNYL/article/details/122525942)
+- sorted()
 
 
 
@@ -313,6 +315,11 @@ print(*objects, sep=' ', end=' in" , file=sys.stdout，flush=False)
 ## numpy
 - NumPy(Numerical Python) 是 Python 语言的一个扩展程序库,支持大量的维度数组与矩阵运算,此外也针对数组运算提供大量的数学函数库。
 
+一般 import numpy as np
+
+np.array() 用于生成多维数组
+
+
 ## pandas
 - pandas是基于numpy库的一种工具，纳入了大量库和一些标准的数据模型。
 - DataFrame：pandas下的一种数据结构，表格型
@@ -381,6 +388,11 @@ ref：[Python 中的Sympy详细使用](https://www.jb51.net/article/219044.htm)
 - scipy.integrate 模块
 一维积分 scipy.integrate.quad
 二维积分 dblquad
+
+[python中scipy.optimize.leastsq（最小二乘拟合）用法](https://blog.csdn.net/weixin_44359479/article/details/115535622)
+
+[python如何拟合二元一次方程？](https://www.zhihu.com/question/370744594)
+
 
 
 # 一些总结？
