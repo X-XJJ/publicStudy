@@ -62,11 +62,11 @@ git update-git-for-windows
 读取的优先级依次 --local > --global > --system
 
 git config --global user.name "用户名"
-git config --global user.email 邮箱地址
+git config --global user.email "邮箱地址"
 
 项目根目录下单独配置 针对公司项目 则在当前项目下会优先使用当前项目配置
 git config user.name "用户名"
-git config user.email 邮箱地址
+git config user.email "邮箱地址"
 
 git config --list 查看当前配置 全局配置+当前项目配置？
 --global 对git的操作git config内容保存在.gitconfig的文件下
