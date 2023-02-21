@@ -32,7 +32,7 @@ https://community.ibm.com/community/user/datascience/blogs/xavier-nodet1/2020/07
 # cplex 与 docplex
 - docplex中的 cp 与 mp
 import docplex.mp.model 线性规划、整数规划？
-import docplex.cp.model 非线性规划、混合整数规划？变量在指数位置，可用 mode.expnent()？
+import docplex.cp.model 非线性规划、混合整数规划？变量在指数位置，可用 mode.exponent()？
 
 
 
