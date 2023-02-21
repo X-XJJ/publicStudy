@@ -104,6 +104,13 @@ https://www.jb51.net/os/win10/833998.html
 
 - 话说为啥主用浏览器一直没换成edge，就是因为没有“在新标签页打开内容”，太不习惯了……
 
+# cmd、powershell
+- 切换到d盘 d:
+- 切换到test文件夹 cd test 
+- 回到上一层 cd ..
+- 查看本级目录 dir = linux的ls
+- 需要路径时，空格不识别，加双引号，python "C:\Program Files\IBM\ILOG\CPLEX_Studio221\python\setup.py" install
+
 
 # 快捷键
 - Crtl+A、Crtl+C、Crtl+V或者Ctrl+Alt+Del

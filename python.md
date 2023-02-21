@@ -2,10 +2,11 @@
 - 常用IDE：pycharm
   - python解释器环境，可配置。settings - project Interpreter - 
 
+- 有关一些Windows下的执行权限问题：将conda.exe、或python.exe等需要的可执行文件，属性设为“以管理员身份运行”，
+
 
 
 # Anaconda 使用
-
 
 - python程序需要运行环境，anaconda可以管理、切换不同的运行环境
 
@@ -21,34 +22,58 @@ conda是一个开源的包、环境管理器，可以用于在同一个机器上
 
 
 - 使用conda命令
+  - -n为--name的简写
 
 
 - 创建
 conda create -n 虚拟环境名称 python=3.6
-
+conda create --prefix=/[绝对路径]/[环境名称] python=[python版本号]
 conda install -n your_env_name [package] #在虚拟环境中安装额外的包
+conda uninstall
 
-conda activate 环境名   #激活、切换到环境
-conda deactivate 环境名  #退出环境
-conda env list 或 conda info -e     #查看当前存在哪些虚拟环境
+- 激活环境
+conda activate 环境名
+conda deactivate 环境名  # 关闭环境
+conda env list 或 conda info -e     # 查看当前存在哪些虚拟环境
 
 - 删除
 conda remove -n your_env_name(虚拟环境名称) --all  
 conda remove --name your_env_name  package_name  # 删除环境中的某个包
 
+- 配置
+conda info
+conda config --show
+conda list  # 罗列出所有已安装的科学包及其依赖项
+conda help
+
+修改配置语法：
+
+conda config --add key value #添加语法
+conda config --remove key value #删除语法
+其中，key为 envs_dirs、pkgs_dirs等         value为key对应的值
+
+添加、删除envs_dirs:
+
+conda config --add envs_dirs dir
+conda config --remove envs_dirs dir
+例如：
+
+conda config --add envs_dirs E:/File/Anaconda3/envs
+conda config --remove envs_dirs /Users/Lsz/.conda/envs
+这里记住要用 ” / “
+
+如果想调整envs_dirs安装顺序， 也是采用conda config --add envs_dirs dir语法， 直接把顺序贴过去就行
+
+[Anaconda更改虚拟环境安装位置](https://www.cnblogs.com/djma/p/16491631.html)
+[Anaconda 修改默认虚拟环境安装位置](https://blog.csdn.net/weixin_44768070/article/details/126682896)
+
+
 
 conda clean
-conda config
-conda create
-conda help
-conda info
-conda install 包名：安装包or库
-conda list #罗列出所有已安装的科学包及其依赖项
 conda package
-conda remove
 conda search
-conda uninstall
 conda update
+conda update -n base -c defaults conda  # 更新conda
 conda upgrade
 
 conda update conda                  #检查更新当前conda
@@ -79,7 +104,9 @@ D:\ProgramData\Anaconda3\Library\bin
 
 - 在pycharm中创建conda环境解释器时报错：conda error unable to create prefix directory check that you have sufficient permissions
 - pycharm启动文件 属性 兼容性 更改所有用户的设置，管理员权限运行
-最好 conda.exe 也加个管理员权限
+
+使用conda时，报错，列的那个文件缺写入权限
+解决方法：找到后面列的那个文件夹（我的是D:\Anaconda）——右键——属性——安全——编辑——完全控制（或者只把写入勾上也行，我是懒人，想一劳永逸）——等一会儿开把游戏——解决
 
 
 ## python2？3
@@ -90,7 +117,7 @@ D:\ProgramData\Anaconda3\Library\bin
 
 - pip install 包名
 
-cplex、docplex两个包，conda中默认配置没有源，用pip
+cplex、docplex两个包，conda中默认配置没有源，用pip——此方法安装的是cplex社区版
 
 
 
@@ -102,10 +129,12 @@ cplex、docplex两个包，conda中默认配置没有源，用pip
 
 
 
+[python运行或调用另一个py文件或参数方式](https://www.jb51.net/article/260818.htm)
 
 # 基本语法
 
 - Python 中，万物皆为对象（object），整型也不例外。只要是对象，就有相应的属性（attributes）和方法（methods）
+- 脚本语言？
 
 - 使用 缩进 来表示代码块的边界，不用大括号{}
 
@@ -173,6 +202,26 @@ cplex、docplex两个包，conda中默认配置没有源，用pip
 
 - 保留浮点型的小数点后n位，可以用 decimal包 里的 Decimal对象 和 getcontext()方法 来实现
 
+- map() 根据提供的函数，对指定的序列 做映射
+  - map(函数function, 序列iterable, ...)，参数序列iterable中的每一个元素，依次调用function，返回所有调用结束后的结果，python2.x中返回为列表，python3.x中返回为迭代器-可使用list()转换为俩表
+  - eg：map(int,test[i]) 将test[i]中的所有元素转化为int型
+
+- str.join(序列sequence) 将序列sequence中的元素们，使用指定的字符串str连接为一个新的字符串
+  - eg：str = ' -' ; test = 'abc'; str.join(test) 即返回字符串“a -b -c”
+
+
+- python变量 作用域
+  - L （Local） 局部作用域
+  - E （Enclosing） 闭包函数外的函数中
+  - G （Global） 全局作用域
+  - B （Built-in） 内建作用域
+  - 以 L –> E –> G –> B 的规则查找，即：当变量首次使用时，在局部找不到，便会去局部外的局部找（例如闭包），再找不到就会去全局找，再者去内建中找
+
+- global 关键字
+[python的global函数学习](https://blog.csdn.net/qq_42103298/article/details/114789146)
+
+
+
 ## Python 数据类型
 - 基本类型：整型 0、浮点型 0.0、布尔型
 - 容器类型：字符串、元组、列表、字典、集合
@@ -192,7 +241,13 @@ cplex、docplex两个包，conda中默认配置没有源，用pip
 - 字符串，<class 'str'>，''或""，序列类型
 
 ### 元组，<class 'tuple'>，()，序列类型
+- test = ('a','b','c')
+- 通过索引获取元素，test[0] 为 a
+- 通过元素获取索引，test.index('b') 为 1
+- 统计元组中的元素个数，test.count('b') 为 1
+
 - 元组被创建后不能修改
+
 
 
 ### 列表，<class 'list'>，[]，序列类型
@@ -207,8 +262,17 @@ x,y=p 相当于 x=p[0]; y=p[1]??
 
 [Python学习-将list列表写入文件](https://blog.csdn.net/DL_Iris/article/details/118603626)
 
+- 列表、数组，赋值、浅拷贝、深拷贝
+  - list1 = list2，这是list1成为了list2的引用，改变list2时，list1会随之变化
+  - list1 = list2[:]，将list2赋值给list1，修改互不影响
+  - list1[m:] = list2，将list1从下标m的元素开始，全用list2替换
 
-### 字典，<class 'dict'>，{a:b} 映射类型
+
+[Python中关于列表list的赋值问题](https://blog.csdn.net/weixin_43981621/article/details/123247342)
+
+
+### 字典，<class 'dict'>，{} 映射类型
+- 形式：{a:b}
 - 创建字典
   - dicTest = {:, :, :}
   - 构造函数 dict()
@@ -225,9 +289,20 @@ x,y=p 相当于 x=p[0]; y=p[1]??
 [python字典排序方法](https://blog.csdn.net/LHJCSDNYL/article/details/122525942)
 - sorted()
 
+- 字典的复制
+  - dict1 = dict2 这是dict1成为了dict2的引用，改变dict2时，dict1会随之变化
+  - dict1 = dict2.copy() 这是复制，使用字典的.copy()方法
+  - dict1 = dict(dict2) 这是赋值，使用内置函数dict()实现复制
+
+
 
 
 ### 集合，<class 'set'>，{}
+- set() 函数
+  - 创建一个无序不重复元素集，可进行关系测试，删除重复数据，还可以计算交集、差集、并集等
+  - 返回新的集合对象，重复元素只保留一个
+- x = set('teest'); alist =[a,a,b,c]; y = set(alist)。则 x 为set(['t', 'e', 's',])？，b 为 {a, b, c}
+- 交集 x&y，并集 x|y，差集 x-y，x^y 补集
 
 
 ### 数据类型转换
@@ -259,6 +334,9 @@ read()：一次性读取整个文件内容。推荐使用read(size)方法，size
 readline()：每次读取一行内容，内存不够时使用，一般不太用
 readlines()：一次性读取整个文件内容，并按行返回到list，方便我们遍历
 [python如何读取txt文件内容](https://www.php.cn/python-tutorials-479676.html)
+
+## python的类
+[python中类的详细介绍及使用](https://blog.csdn.net/xiaoxianer321/article/details/117237251)
 
 
 # 常用函数（ref：菜鸟教程）
@@ -304,9 +382,13 @@ print(*objects, sep=' ', end=' in" , file=sys.stdout，flush=False)
 - enumerate() 相当于添加下标，返回枚举对象
   - enumerate(sequence, [start=0])，下标默认从0开始
 
-- round(x [,n]) 返回浮点数 x 取小数点后n位 的四舍五入值
-
-
+- round(x [,n]) 返回浮点数 x 取小数点后n位的 粗略的 四舍五入 值
+- Decimal(num).quantize(decimal("1."), rounding="模式") 按模式返回把num精确到整数位（1.）的值。避免十进制转二进制的误差。
+  - decimal("1.")中，整数位1.，十分位0.1，百分十填0.01，以此类推
+  - rounding的模式，ROUND_HALF_UP 为 四舍五入 模式，其他再说
+- 向上取整 math.ceil(x)
+- 向下取整 math.floor(x) 和 int(x)
+  - import math
 
 
 # 模块们（库？）
@@ -328,6 +410,35 @@ np.array() 用于生成多维数组
 [Python pandas.DataFrame.from_dict函数方法的使用](https://www.cjavapy.com/article/472/)
 
 
+## 操作表格 excel
+[Python办公自动化之Excel做表自动化：全网最全，看这一篇就够了！](https://zhuanlan.zhihu.com/p/385762133)
+
+### openpyxl
+在openpyxl中，主要用到三个概念：Workbooks，Sheets，Cells。
+
+Workbook就是一个excel工作表；
+Sheet是工作表中的一张表页；
+Cell就是简单的一个格。
+openpyxl就是围绕着这三个概念进行的，不管读写都是“三板斧”：打开Workbook，定位Sheet，操作Cell。
+
+### xlwings
+[xlwings最全操作；10秒搞定Xlwings全套操作](https://zhuanlan.zhihu.com/p/237583143)
+
+Python 使用 xlwings 往 excel 中写入一行数据的两种方法
+
+# -*- coding:utf-8 -*-
+import xlwings as xw
+
+list1 = [1,2,3,4,5]
+list2 = [[1],[2],[3],[4],[5]]
+
+sht = xw.Book().sheets('sheet1')  # 新增一个表格
+
+-  写入一行数据方法一
+sht.range('A1').value = list1
+
+- 写入一行数据方法二
+sht.range('A1').options(transpose=True).value = list2
 
 
 ## 模块 math：数学运算
