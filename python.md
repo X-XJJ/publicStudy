@@ -19,11 +19,8 @@ conda是一个开源的包、环境管理器，可以用于在同一个机器上
 
 - 使用用户界面
 
-
-
 - 使用conda命令
   - -n为--name的简写
-
 
 - 创建
 conda create -n 虚拟环境名称 python=3.6
@@ -196,7 +193,9 @@ cplex、docplex两个包，conda中默认配置没有源，用pip——此方法
 
 - 全数据输出，科学记数法输出，如1000！
 
-- temp = input("str") ，接收一个输入（全默认为字符串类型）的同时给出提示信息str
+- temp = input("请输入str") ，对话框给出提示信息“请输入str”，接收用户的一个完整输入语句（默认全为字符串类型），用户回车为止，将接受到的输入存入temp。当调用输入函数时，它会停止程序并等待用户输入。当用户按下回车键时，程序恢复并返回用户输入的内容。
+  - 默认接收到一个字符串 tmp = input()，输入“1 2 ab”后，得到tmp为字符串“1 2 ab”
+  - 调用字符串处理函数，进行输入后处理，如tmp = input().split(' ')，输入“1 2 ab”后，得到tmp为列表['1','2','ab'] 
 
 - sum() 对序列进行求和计算
 
@@ -210,6 +209,15 @@ cplex、docplex两个包，conda中默认配置没有源，用pip——此方法
   - eg：str = ' -' ; test = 'abc'; str.join(test) 即返回字符串“a -b -c”
 
 
+- 列表中随机选择元素
+  - random模块，random.choice(列表名)
+  - secrets模块，secrets.choice(列表名)，secrets 提供了一种实现 PRNG 的加密安全方法。在现实生活中的应用，如存储密码、认证、加密和解密以及令牌。secrets 比使用 random 要安全得多，因为它只适用于模拟或不处理敏感数据的操作。
+  - Numpy模块，numpy.random.chioce()，具体再说
+
+[如何在 Python 中从列表中随机选择元素](https://www.zadmei.com/rhzpzclb.html)
+
+
+
 - python变量 作用域
   - L （Local） 局部作用域
   - E （Enclosing） 闭包函数外的函数中
@@ -220,6 +228,7 @@ cplex、docplex两个包，conda中默认配置没有源，用pip——此方法
 - global 关键字
 [python的global函数学习](https://blog.csdn.net/qq_42103298/article/details/114789146)
 
+[python中打开文件和关闭文件的方法](https://www.ngui.cc/el/1132918.html?action=onClick)
 
 
 ## Python 数据类型
@@ -239,6 +248,9 @@ cplex、docplex两个包，conda中默认配置没有源，用pip——此方法
   - eg：dicTest={'a':1,'b':2}; print(type(dicTest)) 将输出“<class 'dict'>”
 
 - 字符串，<class 'str'>，''或""，序列类型
+  - split()方法，返回一个列表，例 tmp = 'aa'; 
+    - 语法：tmpsrt.split(str="",num=string.count(str))[n]
+    - str为分隔符，默认为空格
 
 ### 元组，<class 'tuple'>，()，序列类型
 - test = ('a','b','c')
@@ -270,6 +282,12 @@ x,y=p 相当于 x=p[0]; y=p[1]??
 
 [Python中关于列表list的赋值问题](https://blog.csdn.net/weixin_43981621/article/details/123247342)
 
+- 删除 aa=[1,2,3]
+  = del aa 或 del(aa)，删除列表or删除指定数据，eg：test = [1,2]; del test 删列表; del test[0] 删元素
+  - aa.pop(n)，删除下标为n的数据，返回被删的数据值，缺省默认删最后一个
+  - aa.remove(数据值)，删除列表中某数据的第一个匹配项，eg：test.remove(2) 或 test.remove(test[1])
+  - aa.clear()，清空列表
+
 
 ### 字典，<class 'dict'>，{} 映射类型
 - 形式：{a:b}
@@ -294,7 +312,9 @@ x,y=p 相当于 x=p[0]; y=p[1]??
   - dict1 = dict2.copy() 这是复制，使用字典的.copy()方法
   - dict1 = dict(dict2) 这是赋值，使用内置函数dict()实现复制
 
-
+- 删除
+  - 删除某个键值对：dict1.pop(key)-返回该key对应的value 或 del dict1[key]
+  - 删除整个字典：del dict1
 
 
 ### 集合，<class 'set'>，{}
@@ -400,6 +420,7 @@ print(*objects, sep=' ', end=' in" , file=sys.stdout，flush=False)
 一般 import numpy as np
 
 np.array() 用于生成多维数组
+np.arange() 返回一个有起点、终点、固定步长的序列
 
 
 ## pandas
@@ -409,6 +430,47 @@ np.array() 用于生成多维数组
 
 [Python pandas.DataFrame.from_dict函数方法的使用](https://www.cjavapy.com/article/472/)
 
+
+## matplotlib
+- 画图表
+
+import matplotlib.pyplot as plt
+
+plt.xlabel() 横坐标标题
+plt.ylabel() 纵坐标标题
+
+plt.bat(x,y,width=,lable=)  根据x和y的内容作图 width为柱子宽度
+plt.title() 图表标题
+plt.show()
+
+plt.style.use('ggplot') 表示模拟 ggplot2 的风格。
+plt.figure() 先创建一个基础图。
+
+ax1 = fig.add_subplot(1,1,1) 然后创建一个子图（或多个子图），在子图上操作，1,1,1 表示创建一行一列的子图，并在第一个（此时也是唯一一个）子图上操作。
+
+align='center' 条形与标签中间对齐。
+color='darkblue' 设置条形的颜色
+
+ax1.xaxis.set_ticks_position('bottom') 刻度线只显示在 x 轴 底部。
+ax1.yaxis.set_ticks_position('left') 刻度线只显示在 y 轴 左侧。
+
+ax1.set_xticks(customers_index) 设置 X轴刻度。
+ax1.set_xticklabels(customers) # 设置 X轴刻度标签。
+
+ax1.set_xlabel('Customer Name', fontsize = 14) 设置 X轴标签。
+
+ax1.xaxis.set_tick_params(labelrotation = 45, labelsize = 12) labelrotation =45 标签旋转45°，labelsize 标签字体。
+
+ax1.legend() 显示图例
+
+plt.savefig('bar_plot.png', dpi=400, bbox_inches='tight') 将图片保存在当前文件夹下，并设置文件名；dpi 设置图片分辨率；bbox_inches 保存图片时去掉四周的空白部分
+
+
+[通过python画矢量图（matplotlib，有代码）](https://blog.csdn.net/qq_38222051/article/details/117786600)
+
+[Python子图绘制及常用设置（subplot、subplots绘图 ;plt&oo API)](https://zhuanlan.zhihu.com/p/579495880)
+fig,axs = plt.subplots(m,n,figsize=()) 
+其中 axs 是二维的，需要用 axs[0,0] 来选择当前子图
 
 ## 操作表格 excel
 [Python办公自动化之Excel做表自动化：全网最全，看这一篇就够了！](https://zhuanlan.zhihu.com/p/385762133)

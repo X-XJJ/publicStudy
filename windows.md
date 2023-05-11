@@ -40,6 +40,9 @@ Windows Registry Editor Version 5.00
 
 - “问题步骤记录器”：win+R运行窗口下“PSR”打开
 
+[解决Windows11桌面右键打开更多选项](https://blog.csdn.net/ABC_efg123456/article/details/125460942)
+[Windows 11 右击，默认显示 Windows 10 的更多选项](https://ranye.blog.csdn.net/article/details/129143968)
+
 
 # 激活win10
 slmgr.vbs /upk

@@ -38,7 +38,8 @@ import docplex.cp.model 非线性规划、混合整数规划？变量在指数�
 
 法1、
 官方最后步骤：如果想要通过 Python API 使用 CPLEX 或 CP Optimizer 引擎，那么需要告知 Python 可在何处找到它们。  要执行此操作，请将以下命令输入到终端：
-python D:\Program Files\IBM\ILOG\CPLEX_Studio221\python\setup.py install
+python "D:\Program Files\IBM\ILOG\CPLEX_Studio221\python\setup.py" install
+- 路径中含有空格，会默认截断了
 
 python setup.py install
 
@@ -55,9 +56,6 @@ python setup.py install
 拷贝安装好的cplex包到对应的项目的site-packages下
 [DOcplex介绍](https://blog.csdn.net/yaologos/article/details/85284768)
 [DOcplex系列（二）——怎样成功安装和调用学术版DOcplex](https://blog.csdn.net/LemurHui/article/details/103377318)
-
-
-
 
 
 
