@@ -411,6 +411,10 @@ print(*objects, sep=' ', end=' in" , file=sys.stdout，flush=False)
   - import math
 
 
+在python中，只要两个对象的类型相同，且它们是内置类型(字典除外)，那么这两个对象就能进行比较。关键词：内置类型、同类型。所以，两个对象如果类型不同，就没法比较，比如数值类型的数值不能和字符串类型的数值或字母比较。
+[python等值和大小比较](https://www.cnblogs.com/f-ck-need-u/p/10124559.html)
+
+
 # 模块们（库？）
 
 
@@ -465,6 +469,11 @@ ax1.legend() 显示图例
 
 plt.savefig('bar_plot.png', dpi=400, bbox_inches='tight') 将图片保存在当前文件夹下，并设置文件名；dpi 设置图片分辨率；bbox_inches 保存图片时去掉四周的空白部分
 
+savefig()的format参数指出后台支持的文件格式包含：.png, .pdf, .ps, .eps, .svg。 但不限于这些，当输入一个错误的格式如.bmp，系统会显示错误，并提示其支持的格式： 支持的格式包括：.eps, .jpeg, .jpg, .pdf, .pgf, .png, .ps, .raw, .rgba, .svg, .svgz, .tif, .tiff。
+根据Wiley的关于图像的指导准则，一般折线图的dpi设置为600，而图像的dpi设置为300。具体的dpi可根据个人要求，一般为1200/ 600/ 300。 
+最后需要说明的是，类似这样图例legend放在图像外侧时，如果不设置图像大小等参数，保存的图往往是不完整的
+[Python_matplotlib保存矢量图](https://blog.csdn.net/Poul_henry/article/details/88294297)
+
 
 [通过python画矢量图（matplotlib，有代码）](https://blog.csdn.net/qq_38222051/article/details/117786600)
 
@@ -485,6 +494,12 @@ openpyxl就是围绕着这三个概念进行的，不管读写都是“三板斧
 
 ### xlwings
 [xlwings最全操作；10秒搞定Xlwings全套操作](https://zhuanlan.zhihu.com/p/237583143)
+
+读取数据
+data = sheet.range('a1')
+data = sheet.range('a1','b3').value # 取单元格(a1,b3)的数据
+data = sheet.range(f'a1:b3').value # 取a1到b3的范围数据，默认按行
+num = 5; data = sheet.range(f'a1:b{num}').value
 
 Python 使用 xlwings 往 excel 中写入一行数据的两种方法
 

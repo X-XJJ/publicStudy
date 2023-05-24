@@ -12,7 +12,7 @@ tex
 ## Zotero
 
 
-
+[关于参考文献的格式，一次性讲清楚！](https://zhuanlan.zhihu.com/p/258523437?utm_source=wechat_session)
 
 
 # 论文写法

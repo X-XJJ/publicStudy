@@ -9,6 +9,12 @@
 - 其次，添加 C:\Program Files\Microsoft Office\root\Office16\STARTUP\
     - 在信任中心的 startup 下，都复制一下 mathPage\64\MathPage.wll、Office Support\64\MathType Commands 20xx.dotm、WordCmds.dot
 
+- 角标，如一撇的，不用框[Mathtype如何打出偏导、一撇](https://blog.csdn.net/weixin_47289438/article/details/110632281)
+  - 先打下标，再打一撇时，显示时分开的
+  - 反过来，显示挤着的
+
+[MathType快速编辑公式攻略](https://blog.csdn.net/corfox_liu/article/details/43084247)
+
 
 # LaTeX、CTEX
 
