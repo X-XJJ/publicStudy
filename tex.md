@@ -1,20 +1,3 @@
-# MathType
-公式编写用mathtype——发现可以先用office-word自带的，然后在全部“转换公式”成mathtype格式的
-
-[MathType安装及please restart word to load mathtype addin properly的问题](https://blog.csdn.net/alsj123456/article/details/117083075)
-[MathType7安装使用及please restart word to load mathtype addin properly的问题。](https://blog.csdn.net/weixin_43115631/article/details/110067650)
-
-- 或者
-- 首先，word-文件-选项-信任中心-信任中心设置-添加新位置（ppt、excel同理？）
-- 其次，添加 C:\Program Files\Microsoft Office\root\Office16\STARTUP\
-    - 在信任中心的 startup 下，都复制一下 mathPage\64\MathPage.wll、Office Support\64\MathType Commands 20xx.dotm、WordCmds.dot
-
-- 角标，如一撇的，不用框[Mathtype如何打出偏导、一撇](https://blog.csdn.net/weixin_47289438/article/details/110632281)
-  - 先打下标，再打一撇时，显示时分开的
-  - 反过来，显示挤着的
-
-[MathType快速编辑公式攻略](https://blog.csdn.net/corfox_liu/article/details/43084247)
-
 
 # LaTeX、CTEX
 

@@ -1,3 +1,27 @@
+
+Python中，万物皆对象，所有的操作都是针对对象的，那什么是对象，5是一个int对象，‘oblong’是一个str对象，异常也是一个对象，抽象一点是，人，猫，够也是一个对象
+
+那对于一个对象，它就有包括两方面的特征： 
+
+
+属性：去描述它的特征 
+
+
+方法： 它所具有的行为 
+
+
+所以，对象=属性+方法 （其实方法也是一种属性，一种区别于数据属性的可调用属性
+
+把具有相同属性和方法的对象就可以归为一类，即Class。类就好比是一张蓝图，使用一个类可以创建多个对象实例 
+即人，猫，狗都属于哺乳动物类
+
+类是对象的抽象化，对象是类的实例化。类不代表具体的事物，而对象表示具体的事物
+
+类也是有属性和方法的。
+
+数据类型也是对象。
+
+
 # 环境
 - 常用IDE：pycharm
   - python解释器环境，可配置。settings - project Interpreter - 
@@ -8,7 +32,7 @@
 
 # Anaconda 使用
 
-- python程序需要运行环境，anaconda可以管理、切换不同的运行环境
+- python程序需要运行环境，anaconda用于管理、切换不同的运行环境
 
 [Anaconda介绍、安装及使用教程](https://zhuanlan.zhihu.com/p/32925500)
 
@@ -28,10 +52,14 @@ conda create --prefix=/[绝对路径]/[环境名称] python=[python版本号]
 conda install -n your_env_name [package] #在虚拟环境中安装额外的包
 conda uninstall
 
+- 复制
+conda create -n 新环境名 --clone 旧环境名
+
 - 激活环境
 conda activate 环境名
 conda deactivate 环境名  # 关闭环境
 conda env list 或 conda info -e     # 查看当前存在哪些虚拟环境
+
 
 - 删除
 conda remove -n your_env_name(虚拟环境名称) --all  
@@ -127,6 +155,7 @@ cplex、docplex两个包，conda中默认配置没有源，用pip——此方法
 
 
 [python运行或调用另一个py文件或参数方式](https://www.jb51.net/article/260818.htm)
+
 
 # 基本语法
 
@@ -252,6 +281,10 @@ cplex、docplex两个包，conda中默认配置没有源，用pip——此方法
     - 语法：tmpsrt.split(str="",num=string.count(str))[n]
     - str为分隔符，默认为空格
 
+- index(x,start,end)方法
+  - 查找并返回x所在位置的索引下标值，范围start~end，如 list.index("测试")
+
+
 ### 元组，<class 'tuple'>，()，序列类型
 - test = ('a','b','c')
 - 通过索引获取元素，test[0] 为 a
@@ -269,8 +302,15 @@ cplex、docplex两个包，conda中默认配置没有源，用pip——此方法
   - 推导式
 
 
-[ppython_*x, = p的python语法](https://blog.csdn.net/weixin_39552538/article/details/111805082)
-x,y=p 相当于 x=p[0]; y=p[1]??
+[ppython 星号x, = p的python语法](https://blog.csdn.net/weixin_39552538/article/details/111805082)
+- x,y=p 相当于 x=p[0]; y=p[1]??，p = [1,2,3,4,5]
+```
+a, *x = p 其中a为1，x为[2,3,4,5]
+*x ,= p，可以
+注意：*x = p 是错误用法。
+```
+相当于x = list(p)，大概可以理解为对列表p的复制。这个语法是 extended iterable unpacking，翻译过来可以叫做元组解包，元组拆包，迭代解包，
+也可以使用星号来表示 忽略多余的元素。
 
 [Python学习-将list列表写入文件](https://blog.csdn.net/DL_Iris/article/details/118603626)
 
@@ -399,20 +439,33 @@ print(*objects, sep=' ', end=' in" , file=sys.stdout，flush=False)
 
 - reduce() 对参数序列中的元素进行累积
 
-- enumerate() 相当于添加下标，返回枚举对象
+- enumerate() 将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中，相当于添加下标，返回枚举对象
   - enumerate(sequence, [start=0])，下标默认从0开始
+  - for i,j in enumerate(exs)
 
-- round(x [,n]) 返回浮点数 x 取小数点后n位的 粗略的 四舍五入 值
+- round(x [,n]) 四舍五入，返回浮点数 x 取小数点后n位的 粗略的 四舍五入 值
+n>0，四舍五入到指定的小数位
+n=0，或缺省，四舍五入到最接近的整数
+n<0，在小数点左侧进行四舍五入
+四舍五入规则：
+要求保留位数的后一位<=4，则进位，如round(5.214,2)保留小数点后两位，结果是 5.21
+要求保留位数的后一位“=5”，且该位数后面没有数字，则不进位，如round(5.215,2)，结果为5.21
+要求保留位数的后一位“=5”，且该位数后面有数字，则进位，如round(5.2151,2)，结果为5.22
+要求保留位数的后一位“>=6”，则进位。如round(5.216,2)，结果为5.22
+
 - Decimal(num).quantize(decimal("1."), rounding="模式") 按模式返回把num精确到整数位（1.）的值。避免十进制转二进制的误差。
   - decimal("1.")中，整数位1.，十分位0.1，百分十填0.01，以此类推
   - rounding的模式，ROUND_HALF_UP 为 四舍五入 模式，其他再说
 - 向上取整 math.ceil(x)
 - 向下取整 math.floor(x) 和 int(x)
-  - import math
+- math.modf(): 取整数部分和小数部分，返回一个元组:(小数部分,整数部分)。注意小数部分的结果有异议
 
 
 在python中，只要两个对象的类型相同，且它们是内置类型(字典除外)，那么这两个对象就能进行比较。关键词：内置类型、同类型。所以，两个对象如果类型不同，就没法比较，比如数值类型的数值不能和字符串类型的数值或字母比较。
 [python等值和大小比较](https://www.cnblogs.com/f-ck-need-u/p/10124559.html)
+
+
+## 推导式
 
 
 # 模块们（库？）
@@ -424,7 +477,13 @@ print(*objects, sep=' ', end=' in" , file=sys.stdout，flush=False)
 一般 import numpy as np
 
 np.array() 用于生成多维数组
+  - 如 去掉0值，a = []，a = np.array(a)，a = a[a!=0].tolist()
+
 np.arange() 返回一个有起点、终点、固定步长的序列
+
+np.exp(x) 为 e^x
+np.sqrt(x) 为 x开平方
+np.power(x,y) 为 x^y
 
 
 ## pandas
@@ -440,12 +499,29 @@ np.arange() 返回一个有起点、终点、固定步长的序列
 
 import matplotlib.pyplot as plt
 
+plt.xlim(a,b) 显示x轴的作图范围
+plt.ylim(a,b) 显示y轴的作图范围
+plt.xticks() 表达x轴的刻度内容的范围
+
 plt.xlabel() 横坐标标题
 plt.ylabel() 纵坐标标题
 
 plt.bat(x,y,width=,lable=)  根据x和y的内容作图 width为柱子宽度
 plt.title() 图表标题
 plt.show()
+
+- 标题在竖直方向的位置
+
+import matplotlib.pyplot as plt
+plt.subplot(211, fc='r')
+plt.title('title')
+plt.subplot(212, fc='b')
+plt.title('title', y=-0.2)
+plt.show()
+
+- matplotlib.pyplot.title方法可以通过设置参数y的值改变标题在竖直方向的位置，只要设置y为负值，就可以将标题显示在图片下方，一般-0.2就行。
+
+
 
 plt.style.use('ggplot') 表示模拟 ggplot2 的风格。
 plt.figure() 先创建一个基础图。
@@ -474,12 +550,26 @@ savefig()的format参数指出后台支持的文件格式包含：.png, .pdf, .p
 最后需要说明的是，类似这样图例legend放在图像外侧时，如果不设置图像大小等参数，保存的图往往是不完整的
 [Python_matplotlib保存矢量图](https://blog.csdn.net/Poul_henry/article/details/88294297)
 
-
 [通过python画矢量图（matplotlib，有代码）](https://blog.csdn.net/qq_38222051/article/details/117786600)
 
 [Python子图绘制及常用设置（subplot、subplots绘图 ;plt&oo API)](https://zhuanlan.zhihu.com/p/579495880)
-fig,axs = plt.subplots(m,n,figsize=()) 
-其中 axs 是二维的，需要用 axs[0,0] 来选择当前子图
+fig, axs = plt.subplots(m,n,figsize=()) 
+其中subplots返回的 axs 是二维的，需要用 axs[0,0] 来选择当前子图
+
+[python把标签图例放图外的下面 自动放在外侧](https://blog.csdn.net/Caiqiudan/article/details/107747381)
+plt.legend(bbox_to_anchor=(0.5, -0.2),loc=8,ncol=10) # , borderaxespad=0
+
+[python画图时常用的颜色——color=‘ ’](https://blog.csdn.net/xiaobai1_1/article/details/118708433)
+
+[【python】python matplotlib绘制并保存多张图片+绘制多张子图](https://blog.csdn.net/baidu_35692628/article/details/125358100)
+[python 一个figure上显示多个子图像](https://blog.csdn.net/qq_41597943/article/details/126425019)
+
+[Python matplotlip 柱状图 柱形图 条形图 标签 图例全集](https://blog.csdn.net/qq_35240689/article/details/126743893)
+[python如何绘制柱状图](https://blog.csdn.net/ben_na_/article/details/124231092)
+
+[【Pyhton基础绘图】柱状图之坐标轴截断](https://blog.csdn.net/HMXNX/article/details/125175055)
+[Python 作图实现坐标轴截断（打断）](https://blog.csdn.net/maryyu8873/article/details/84313423)
+
 
 ## 操作表格 excel
 [Python办公自动化之Excel做表自动化：全网最全，看这一篇就够了！](https://zhuanlan.zhihu.com/p/385762133)
@@ -497,6 +587,7 @@ openpyxl就是围绕着这三个概念进行的，不管读写都是“三板斧
 
 读取数据
 data = sheet.range('a1')
+data = sheet.range('a1').expand()
 data = sheet.range('a1','b3').value # 取单元格(a1,b3)的数据
 data = sheet.range(f'a1:b3').value # 取a1到b3的范围数据，默认按行
 num = 5; data = sheet.range(f'a1:b{num}').value
@@ -599,4 +690,12 @@ ref：[Python 中的Sympy详细使用](https://www.jb51.net/article/219044.htm)
 
 ## 求阶乘
 [python 求阶乘的四种方法](https://www.jianshu.com/p/1c92a970baf1)
+
+
+- 报错 
+Python 的 libpng warning: iCCP: cHRM chunk does not match sRGB 
+不用qq输入法即可
+
+
+
 

@@ -62,6 +62,8 @@ python setup.py install
 [python 如何调用Cplex?](https://www.zhihu.com/question/51750510)
 
 [python调用cplex_python运筹优化（一）：Cplex for python使用简介](https://blog.csdn.net/weixin_39763293/article/details/110283400)
+[python 调用cplex（设置 CPLEX 的 Python API）](https://zhuanlan.zhihu.com/p/101713127)
+
 
 
 PROGRA~1
