@@ -15,7 +15,7 @@
 - 国考：《行政职业能力测验》Administrative vocational ability test，申论
 - 省考：
 - 事考：
-  - 《公基
+  - 《公基》
   - 《职业能力倾向测验》Vocational aptitude test
   - A类 综合管理类
 

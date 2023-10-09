@@ -235,3 +235,7 @@ if exist %ffmpeg% (
 [怎么看待联想y7000p近日出现大量仅电池无法开机，需要接电源才能开机，电池无法充电的现象?](https://www.zhihu.com/question/308400242?ivk_sa=1024320u)
 [关于联想拯救者Y7000/Y7000P电源显示0%的问题及解决办法](https://blog.csdn.net/Dominickk/article/details/111317123) 
 
+# 设备和打印机
+hp1010没有更新wein10的驱动，利用Vasta驱动，添加打印机-从磁盘
+[windows10安装Hp1010/1012/1015打印机教程](http://www.dnzp.com/m/jy/202306/163703.html)
+[hp1010驱动下载,win10安装laserJet1010驱动](https://www.ibangquan.com/blog/533066.html)

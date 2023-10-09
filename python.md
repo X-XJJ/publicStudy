@@ -561,6 +561,8 @@ plt.legend(bbox_to_anchor=(0.5, -0.2),loc=8,ncol=10) # , borderaxespad=0
 
 [python画图时常用的颜色——color=‘ ’](https://blog.csdn.net/xiaobai1_1/article/details/118708433)
 
+[【Python】柱状图与饼状图如何使用黑白色绘制](https://www.cnblogs.com/shan-gui-yao/p/15996683.html)
+
 [【python】python matplotlib绘制并保存多张图片+绘制多张子图](https://blog.csdn.net/baidu_35692628/article/details/125358100)
 [python 一个figure上显示多个子图像](https://blog.csdn.net/qq_41597943/article/details/126425019)
 
