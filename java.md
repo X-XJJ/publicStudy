@@ -9,13 +9,130 @@
 
 - 即时编译，运行在虚拟机上，边解释边执行，解释型语言，自动垃圾回收处理
 
-# 不熟的基本语法
-- 关键字 new：创建新对象的方法之一
+# 基本语法
+- 类，class 类名{}
+  - 类是java程序的基本组成单元
+  - 每个程序都必须有一个main()方法，主类就是含有main()的类
+- 关键字 new：为一个类创建新对象的方法之一，即 实例化一个xx类的对象
+  - 类名 对象名 = new 类名(不填or填构造方法的参数); // 实例化 该类 的一个对象
+  - TestClassName test = null; test = new TestClassName();
+  - TestInterfaceClassName test = null; test = new TestImplementsClassName(); // 是接口类时，new后面的类名则为实现该接口类的类
 - 常量，即开头加fanal：final Type valName，如 final int i = 1;
+- 枚举，enum 枚举数组名{a,b,c}
 - 数组
 - 一维数组：
 - 声明：Type arrayName[] 或 Type[] arrayName，如 int intArray[]; 或 int[] intArray;
 - 创建：
+
+- 方法，即 函数，public static void 方法名(){}
+
+- this 关键字，
+  - this.成员变量名，表示 使用本类中的变量、方法
+  - 表示就近的对象
+  - 只用 this，没有.，表示使用当前的对象，使用自己本身，如 当前的对象作为参数，使用当前的对象
+
+- abstract 表示抽象
+
+- 理解：类 = 洗衣机，实例化一个对象 = 现实来了一个洗衣机，接口 = 洗衣机上的按键，让人知道怎么使用，但不需要知道 洗衣机内部如何实现洗衣服
+
+- 构造方法
+  - 只能是【public 方法名(){}】形式，没有返回值类型
+  - 类中的一种特殊方法，每个类都有一个自己的构造方法，名字必须【与该类名同名】，在创建对象时，由编译器自动调用，并且在整个对象的生命周期内只调用一次。
+  - 系统默认给的是 无参数 构造方法
+  - 自己写的，系统就用自己写的，可以写成有参数的，如果有参数，则在 new Data()时，括号内也必须带对应的参数
+  - 作用：主要完成对象的初始化工作，将对象中的成员进行初始化，并不负责给对象开辟空间。
+  - 构造方法的调用，是在创建一个对象时使用new操作进行的
+  - 类中必定有构造方法，若不写，系统自动添加无参构造方法。接口不允许被实例化，所以接口中没有构造方法
+
+public class Data {
+    public int year;
+    public int month;
+    public int day;
+ 
+    //构造方法：
+    public Data(int year, int month, int day) {
+        this.year = year;
+        this.month = month;
+        this.day = day;
+        System.out.println("调用构造方法");
+    }
+ 
+    //Data类里的公有方法
+    public void printDate() {
+        System.out.println(year + "-" + month + "-" + day);
+    }
+ 
+    public static void main(String[] args) {
+        //创建一个对象
+        Data data = new Data(2022,11,13);
+        data.printDate();
+    }
+}
+
+[详解JAVA中的构造方法](https://blog.csdn.net/m0_70322372/article/details/127829707)
+
+
+## 接口
+- 在 接口类 中，只定义方法，不实现，只会有括号和参数()，没有方法体{}。
+- 在用来实现接口的类里，一定会实现接口类中的 除了构造方法外的 所有公有方法？
+- 接口本身，不可以进行实例化，即 不可以用 new
+  - 接口名 对象名 = new 实现接口的子类名();
+  - 接口名 对象名 = null; 对象名 = new 实现接口的子类名();
+- interface 是定义/创建接口的关键字，表示 接口
+- implements 用来将 实现接口的类 和 该接口 进行关联，用来实现接口的类 也可以理解为 接口类的子类？（implement翻译为实现）
+
+// 创建接口类
+interface 接口名{
+  public 变量名 or 变量定义赋值; // 变量默认是 public static final 修饰的，可缺省
+  public 方法名(); // 方法默认是抽象方法 public abstract 修饰的，可缺省
+  public test(int[] a);
+}
+// 用这个类来实现接口类中的方法
+class 类名 implements 接口名{
+  public 方法名(){}
+  public test(int[] a){a=3;return a;}
+}
+
+
+## 继承，父类子类
+- extends 关键字，表示 继承
+- abstract 定义抽象类、抽象方法。抽象类不可以实例化，即 不可以 new
+  - 父类名 对象名 = new 子类名;
+  - 父类名 对象名 = null; 对象名 = new 子类名();
+- 如果父类定义为 抽象类 abstract 和？或？抽象方法 abstract ，则在子类中才具体实现，即 用于实现 多态
+- 抽象方法只有括号和参数()，不加方法体{}
+
+- supper()，必须且只能出现在子类的方法or构造方法中，用于在子类中调用父类的构造方法，必须在子类构造方法的方法体里的第一行
+
+
+public class 父类名{
+}
+
+public abstract class 父类名{
+  public 父类名(int a, int b){...} // 父类的构造函数
+  public abstract void testName();
+}
+
+public class 子类名 extends 父类名{
+  public 子类名(int a, int b){ super(a,b); } // 子类的构造函数，super()用于调用父类的构造函数
+  public void testName(){}
+}
+
+[Java中super详解](https://blog.csdn.net/qq_42933309/article/details/124024427)
+
+
+组合 关系的类，一般属性有 protected 类型，# 表示
+
+
+
+### 软考下午最后一题
+这一题 完全不懂设计模式也能做。但需要对继承和多态有足够理解。
+题目就3种，
+1.写类前面的关键字，当前类里没有实现具体方法就是 interface 且 在后面有其他类来实现这个类里的方法， 有实现具体方法的abstract class？？
+2.写缺失的成员，子类父类对比着 找谁缺了啥就行，如果是个抽象方法，注意接口不用写abstract，类需要写。
+3.写子类的具体实现，基本都是用父类/传进的参数，去调用某个抽象方法，注意参数，如果抽象方法定义的参数是具体的类，那你要填的空基本就是aaa.bbb(this)了
+
+
 
 # 开发环境
 - 平台：Java应用程序接口API + Java虚拟机JVM

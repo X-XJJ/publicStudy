@@ -982,7 +982,7 @@ double pop(void)
   ~~~
   int x = 1, y = 2, z[10];
   int *ip;	//ip是指向int型的指针 表达式*ip是一个int型数
-  ip = &x;	//ip指向x x的地址赋给ip 变ip之前任何出现x的地方都能用*ip替换
+  ip = &x;	//ip成为指向x的指针 取x的地址赋给ip，在ip改值之前任何需要x值的地方都能用*ip替换
   y = *ip;	//y变1 取ip指向的变量 赋给y
   *ip = 0;	//x变0 将0赋给ip指向的变量
   ip = &z[0];	//ip变为指向z[0] ip存z[0]的地址值 <=> ip = z;

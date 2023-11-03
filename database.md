@@ -418,7 +418,9 @@ create view 视图名 [(列名1 [,列名2 ...])]
 不同数据库的角色、权限、有所不同？？
 grant
 --GRANT 对象权限 on 对象 TO 用户
-grant select, insert, update, delete on JSQUSER to STUDENT;
+grant select, insert, update, delete on JSQUSER to STUDENT [更多权限];
+grant insert on JSQUSER to STUDENT with grant option; 允许STUDENT将insert权限授予他人
+grant insert on JSQUSER to STUDENT public; public可将权限赋给全体用户
  
 --GRANT 系统权限 to 用户
  grant select any table to STUDENT;
@@ -501,6 +503,8 @@ drop sequence 序列名;
 
 - 函数依赖
   - eg：（学号，姓名，年龄），主键能确定一部分属性-部分函数依赖，如 学号能确定姓名，但姓名不能确定学号
+
+- 主属性：所有包含在主键中的属性
 
 # 范式 关系型数据库
 - 范式：本质是集合，集合内容是 符合某种级别的关系模式

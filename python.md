@@ -159,6 +159,9 @@ cplex、docplex两个包，conda中默认配置没有源，用pip——此方法
 
 # 基本语法
 
+- python没有do while、switch case，可以在for等循环后 直接加 else，会顺序执行
+
+
 - Python 中，万物皆为对象（object），整型也不例外。只要是对象，就有相应的属性（attributes）和方法（methods）
 - 脚本语言？
 
@@ -285,8 +288,11 @@ cplex、docplex两个包，conda中默认配置没有源，用pip——此方法
   - 查找并返回x所在位置的索引下标值，范围start~end，如 list.index("测试")
 
 
-### 元组，<class 'tuple'>，()，序列类型
+### 元组，<class 'tuple'>，用括号()，序列类型
 - test = ('a','b','c')
+- test = (1,) 是元组，test = (1) 为int类型
+- test = a,b,a,b  默认创建一个元组
+- x = tuple() 返回一个空元组
 - 通过索引获取元素，test[0] 为 a
 - 通过元素获取索引，test.index('b') 为 1
 - 统计元组中的元素个数，test.count('b') 为 1
