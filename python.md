@@ -25,6 +25,7 @@ Python中，万物皆对象，所有的操作都是针对对象的，那什么�
 # 环境
 - 常用IDE：pycharm
   - python解释器环境，可配置。settings - project Interpreter - 
+  - 自动调整代码格式：ctrl + alt + L
 
 - 有关一些Windows下的执行权限问题：将conda.exe、或python.exe等需要的可执行文件，属性设为“以管理员身份运行”，
 
@@ -203,7 +204,7 @@ cplex、docplex两个包，conda中默认配置没有源，用pip——此方法
   - in、not in，是否存在，eg：if 'b' not in ['A','a','B']: print('b')
   - is、not is，对比两个变量的内存地址
   - ==、!= 对比两个变量的值
-  - >、<、<=、>=，还可以直接连起来写，eg：a>1 && a<5 可以写成 5>a>1
+  - >、<、<=、>=，大于小于等于也可以直接连起来写，eg：a>1 && a<5 可以写成 5>a>1
 
   - 三元操作符，条件表达式，eg：small = x if x < y else y，small为x和y中小的那个
  
@@ -306,6 +307,8 @@ cplex、docplex两个包，conda中默认配置没有源，用pip——此方法
   - 直接赋值
   - range()
   - 推导式
+
+a.append() 追加元素
 
 
 [ppython 星号x, = p的python语法](https://blog.csdn.net/weixin_39552538/article/details/111805082)

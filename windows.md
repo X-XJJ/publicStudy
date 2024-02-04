@@ -239,3 +239,16 @@ if exist %ffmpeg% (
 hp1010没有更新wein10的驱动，利用Vasta驱动，添加打印机-从磁盘
 [windows10安装Hp1010/1012/1015打印机教程](http://www.dnzp.com/m/jy/202306/163703.html)
 [hp1010驱动下载,win10安装laserJet1010驱动](https://www.ibangquan.com/blog/533066.html)
+
+
+- qq拼音缓存目录
+C:\ProgramData\Tencent\QQPinyin\users\
+
+
+
+
+
+
+
+
+
