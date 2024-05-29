@@ -13,7 +13,7 @@
 - http://www.chakahao.com/cardbin/chakahao_abc.html
 -
 -
-
+win10休眠唤醒 http://www.360doc.com/content/23/1226/14/23184234_1108855329.shtml
 
 - win10下，取巧设置shift+右键打开cmd
   - [win10 shift+右键打开cmd](https://blog.csdn.net/qq_31475993/article/details/107962270)

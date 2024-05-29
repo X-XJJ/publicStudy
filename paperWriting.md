@@ -61,6 +61,17 @@ zotero-better-notes：集成了思维导图等工具，可边看文献边管理
 [Zotero使用心得（笔记）](https://zhuanlan.zhihu.com/p/458084656)
 
 
+[【Zotero】【国标csl调教（二）】参考文献表中出现添加日期，以及[J/OL] [D/OL]的修改方法](https://blog.csdn.net/weixin_49232187/article/details/135554873)
+
+[Zotero使用GB/7714-2015相关csl时文末显示的访问日期如何隐藏？](https://zhuanlan.zhihu.com/p/349555378)
+或显示
+
+[zotero中编写CSL文件自定义参考文献格式](https://blog.csdn.net/Dr_maker/article/details/127600006)
+
+[超实用！zotero引用文献自定义CSL全流程](https://zhuanlan.zhihu.com/p/671026223)
+
+
+
 # 公式工具 MathType
 
 - 公式预置-保存到文件，格式化公式-使用公式文件进行格式化 
