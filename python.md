@@ -27,11 +27,13 @@ Python中，万物皆对象，所有的操作都是针对对象的，那什么�
   - python解释器环境，可配置。settings - project Interpreter - 
   - 自动调整代码格式：ctrl + alt + L
 
-- 有关一些Windows下的执行权限问题：将conda.exe、或python.exe等需要的可执行文件，属性设为“以管理员身份运行”，
+- 有关一些Windows下的执行权限问题：将conda.exe、或python.exe等需要的可执行文件，“属性-兼容性”设为“以管理员身份运行”，
 
 
 
 # Anaconda 使用
+
+[官网下载](https://www.anaconda.com/download/success)
 
 - python程序需要运行环境，anaconda用于管理、切换不同的运行环境
 
@@ -150,15 +152,10 @@ cplex、docplex两个包，conda中默认配置没有源，用pip——此方法
 - 安装 opencv、cv2、sklearn，图像识别、计算机视觉等领域需要
 
 
-## Pytorch
-[面向Windows的Pytorch完整安装教程](https://blog.csdn.net/qianbin3200896/article/details/104244538)
-
-
+# 基本语法
 
 [python运行或调用另一个py文件或参数方式](https://www.jb51.net/article/260818.htm)
 
-
-# 基本语法
 
 - python没有do while、switch case，可以在for等循环后 直接加 else，会顺序执行
 

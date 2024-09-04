@@ -245,6 +245,14 @@ hp1010没有更新wein10的驱动，利用Vasta驱动，添加打印机-从磁�
 C:\ProgramData\Tencent\QQPinyin\users\
 
 
+[win10电脑定时开机怎么设置?](https://www.fixapple.com.cn/question/29652.html)
+
+- 电脑如何设置在断电恢复后自动重启系统
+重启电脑后按Fx功能键进BIOS；
+2、选择Power——After Power Loss，有以下三个选项：
+Power On：不记录正常操作，选择该项后一关机就自动重启
+Power Off：正常情况下是选择该项，开机关机都是手动控制
+Last State：如果是正常关机，那么不会重新开机，如果是断电或其他异常关机情况，就会自动重启电脑
 
 
 
