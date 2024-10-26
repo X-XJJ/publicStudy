@@ -136,6 +136,46 @@ D:\ProgramData\Anaconda3\Library\bin
 使用conda时，报错，列的那个文件缺写入权限
 解决方法：找到后面列的那个文件夹（我的是D:\Anaconda）——右键——属性——安全——编辑——完全控制（或者只把写入勾上也行，我是懒人，想一劳永逸）——等一会儿开把游戏——解决
 
+[Pycharm配置conda环境(解决新版本无法识别可执行文件问题)](https://blog.csdn.net/2401_84495872/article/details/139919853)
+新建项目->选择自定义环境->选择现有->类型为conda->选择路径:注意，这里的路径指的是你的虚拟环境所在的存储位置，并且一定要注意，新版本的pycharm不是选择python.exe或者conda.exe这两个可执行文件，而是选择conda.bat这个可执行文件(一般在bin文件夹下)->选择环境:选择你为项目创建的虚拟环境就行
+
+
+
+- C:\User\xxx\.condarc 一些配置
+~~~
+channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  - defaults
+show_channel_urls: true
+envs_dirs:
+  - D:\ProgramData\anaconda3\envs
+pkgs_dirs:
+  - D:\ProgramData\anaconda3\pkgs
+  - D:\ProgramData\anaconda3\.conda
+~~~
+
+- 一些源
+default_channels:
+  - defaults
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+ - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/pytorch
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+custom_channels:
+  - conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  - msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  - bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  - menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  - pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  - simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+
+
+
 
 ## python2？3
 

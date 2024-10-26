@@ -224,7 +224,7 @@ C+W ??好像无功能
 :set nonu = :set nonumber 关闭行号
 
 :set guifont 查看/设置字体和字号 font字体 gui图形用户界面Graphical User Interface
-- :set guifont=* 弹出窗口，显示可选的字体和大小
+:set guifont = 弹出窗口，显示可选的字体和大小
 :set gfw = :set guifontwide 字体大小
 :colo [方案] = colorscheme 配色方案，windows下desert较顺眼，linux下peachpuff，desert，torte较顺眼
 
@@ -239,7 +239,7 @@ C+W ??好像无功能
 - :w filename 另存为 
 - :q 离开vim (:wq = ZZ = :x 保存并离开 zz 当前行挪到屏幕中间)；:qall = :qa 关闭全部并离开；
 - :h help
-- :pwd 打印当前工作目录print working directory
+- :pwd 打印当前工作目录路径 print working directory
 
 - 编码相关
  Round-Trip Time，RTT  :set encoding 缓冲区编码，vim内部运行机制的设定，默认与系统当前locale(现场)相同
@@ -470,6 +470,8 @@ nnoremap 按键映射
   - 
   - zr 打开当前之前的折叠
   - zm 删除？关闭？所有折叠
+
+  - C+.？？
 
 [Vim 折叠](https://www.jianshu.com/p/16e0b822b682)
 

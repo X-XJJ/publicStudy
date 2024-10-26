@@ -6,6 +6,7 @@
 - test：用到的地方，都换为存在的 cplex2010.lib
 - 观察截图，教程里的一套 都是12100
 
+学术版 https://www.ibm.com/academic/
 
 https://www.ibm.com/docs/en/icos
 
@@ -39,7 +40,7 @@ import docplex.cp.model 非线性规划、混合整数规划？变量在指数�
 法1、
 官方最后步骤：如果想要通过 Python API 使用 CPLEX 或 CP Optimizer 引擎，那么需要告知 Python 可在何处找到它们。  要执行此操作，请将以下命令输入到终端：
 python "D:\Program Files\IBM\ILOG\CPLEX_Studio221\python\setup.py" install
-- 路径中含有空格，会默认截断了
+- 路径中含有空格，会默认截断了。∴安装时换个没空格的路径
 
 python setup.py install
 

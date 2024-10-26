@@ -15,6 +15,18 @@
 -
 win10休眠唤醒 http://www.360doc.com/content/23/1226/14/23184234_1108855329.shtml
 
+[在远程连接中实现win键喝alt+tab快捷键](https://wuuconix.link/2021/10/14/win-shortcut/)
+- 利用PowerToys工具改按键映射
+个人习惯的原因，键盘上的右alt和右ctrl平时我根本不用。我便将Alt(Right)映射为Win。将ctrl(Right)映射成Alt。 这样Alt(Right)就成为了一个win键，可以进行快捷键操作。Ctrl(Right)+Tab就实现了alt+tab的功能
+- mine：ALt(Right)→win，Shift(Right)→Alt
+
+
+[【经验分享】Win10 使用DP线每次重启之后窗口缩小重置在左上角](https://blog.csdn.net/qq_44319167/article/details/140344461)
+- 不止提到的键值，把后缀是.cx和.cy的都改了看看，还有键值看起来像分辨率的
+- 还是不行，果然AMD显卡，只能禁用试试
+[关于使用向日葵等远程软件，关闭主机显示器后远程画面缩小的解决办法](https://blog.csdn.net/weixin_44634558/article/details/122670242)
+
+
 - win10下，取巧设置shift+右键打开cmd
   - [win10 shift+右键打开cmd](https://blog.csdn.net/qq_31475993/article/details/107962270)
   - xxx.reg
@@ -193,6 +205,9 @@ win+G 录屏，XBOX内置
 1、睡眠和休眠，系统都会将内存中的数据全部存在一个休眠文件中，不同的是休眠存硬盘，可断电，睡眠存在内存，不可以断电。
 休眠：恢复时间较长且需要较大的硬盘空间，可断电，休眠是“关机”的一种模式，原理是在执行休眠时，会把内存中暂存的数据写入到【硬盘】中。执行休眠的时候，CPU、内存、硬盘等等都不会工作，基本等同于断电关机。——灯灭
 睡眠：选择睡眠模式时，系统会将正在处理的数据保存到【内存】中，除内存以外的所有设备都停止供电。这里有个一个特别注意的事情，如果此时停电了，那么内存也断电了，数据就会丢失！——灯亮
+
+
+
 
 # 系统文件？？目录作用？？
 ## Program Files
