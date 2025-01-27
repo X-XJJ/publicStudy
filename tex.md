@@ -3,25 +3,36 @@
 # 在线编辑Latex：overleaf
 [overleaf](https://www.overleaf.com)
 
+- Latex支持的是矢量图格式：svg，ps，eps，pdf，word，emf
+- 推荐转为 pdf 后，再插入LaTeX
 
+[官网中文排版](https://www.overleaf.com/learn/latex/Chinese)
+```
+- 中英文混编
+如果完整的 ctex 本地化类和包感觉过于冗余，而你只想排版一些中文字符，可以使用 xeCJK 包——该包仅在用 XeLaTeX 编译时才有效。
+```
+\documentclass{article}
+\usepackage{xeCJK}
+\begin{document}
+\section{前言}
+这是一些文字。
+
+\section{关于数学部分}
+数学、中英文皆可以混排。You can intersperse math, Chinese and English (Latin script) without adding extra environments.
+
+這是繁體中文。
+\end{document}
+```
 
 
 # LaTeX、CTEX
-
 - 1、概念不同：
-
 LATEX：LaTeX就是TEX的众多宏集之一，是由Leslie Lamport编写的。编写的目的是使版面设置内容和文档的具体内容尽可能分离，让写文档的人更加专注于文档的撰写，而少花些心思在排版上。
-
 CTEX：CTEX是TEX中的一个版本，是CTEX 中文套装的简称，是把MiKTEX 和一些常用的相关工具，如GSview，WinEdt 等包装在一起制作的一个简易安装程序，并对其中的中文支持部分进行了配置，使得安装后马上就可以使用中文。
-
-2、性质不同：
-
+- 2、性质不同：
 LATEX：LaTeX 是在 TeX 基础上的一种格式。
-
 CTEX ：是关于 TeX 的一个完整的具体软件包。
-
 - 
-
 TEX是斯坦福大学的教授Donald E.Knuth开发的一个功能强大的幕后排版系统。他当时在撰写名为The Art of Computer Programming的书，由于出版商把他书中的数学式子排版得很难看，他决定推迟出版，自行研发一套排版系统进行排版。这个系统就是TEX系统。
 LaTeX：
 TEX是很低阶的排版语言，对于绝大多数人来说，学起来会很吃力，而且排版工作也会变得相当繁复，难以被更多人使用，效率也不是很高。所以，一些经常用到的功能，如果我们事先定义好，到要用的时候只引用一小段代码就可以实现一个相对复杂的功能，那不仅提高了排版效率，而且版面也会清晰很多。这种事先定义好的功能，叫做宏集(macro)。
@@ -31,17 +42,12 @@ CTEX：
 CTEX是利用TEX排版系统的CTEX中文套装的简称。它集成了编辑器 、WinEdt和 PostScript处理软件 Ghostscript 和 GSview 等主要工具。 CTeX中文套装在 MiKTeX的基础上增加了对中文的完整支持。 CTeX中文套装支持 CCT 和 CJK 两种中文 TeX处理方式。
 一般用windows操作系统的人会选择CTEX中的WinEdt软件作为编写LaTeX文档的工具，因为它里面会将latex命令改变颜色，并且将多种命令都集成到图形界面中，又简化了排版操作。
 
-
-
 - wj老师ppt，安装CTEX，更新MiKTeX
-- 
 - 中文期刊可能更多要求使用CTEX，到时候不行再安。
-- 
 - [科技排版系统 CTEX:HomePage](http://www.ctex.org/HomePage)
 - 
 - VSCode实时显示TeX公式插件 Ultra Math Preview：https://zhuanlan.zhihu.com/p/469773497
 
-- 
 - [轻松搭建LaTeX+VSCode编辑环境（以CTeX为例）](https://blog.csdn.net/u010186354/article/details/104291015)
 - - 目前没找到 LaTeX Preview 扩展包，无法实时预览
 - 
@@ -226,13 +232,16 @@ VSCode-settings.json - bak
 - \声明关键字[]{}：通常[]可选 {}必选
 - % 注释
 
-- 目录下文件
-  - .tex
-  - .log
+- tex目录下文件
+  - .tex 用于输出XX文档的源码
+  - .log 日志
   - .out
   - .aux
-  - .pdf
-  - 添加的模版文件 .cls 文档格式规模文件
+  - .cls 文档格式规模文件
+  - .bib bib格式的引用
+  - .pdf 生成or引用的pdf
+  - .sty
+  - .bst
 
 
 ## 常用声明命令
