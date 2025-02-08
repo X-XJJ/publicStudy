@@ -159,6 +159,12 @@ zotero-better-notes：集成了思维导图等工具，可边看文献边管理
 [超实用！zotero引用文献自定义CSL全流程](https://zhuanlan.zhihu.com/p/671026223)
 
 
+[Zotero如何导出简洁版本的BibTeX文本](https://blog.csdn.net/m0_59060135/article/details/143827816)
+
+
+[Zotero + Better BibTeX + Overleaf 文献管理](https://zhuanlan.zhihu.com/p/682273751)
+
+
 - Zotero7 插件 Ethereal Style “期刊标签”设置备份
   - Fields：sciif, CCF, sciUp, ccf, sci, eii, sciBase, pku, sciwarn,ssci, utd24, ajg
   - Map：SCI=JCR,  /SCIIF/=IF, SCI基础版=中JCRB,SCI升级版=中JCRU,  /^(\d+)\.(\d{1})\d*$/=$1.$2, EI检索=EI,  北大中文核心=北核,  SCIWARN=🚫,  /医学(\d+)区/=医$1,  /生物学(\d+)区/=生$1,  /农林科学(\d+)区/=农$1,  /环境科学与生态学(\d+)区/=环$1,  /化学(\d+)区/=化$1,  /工程技术(\d+)区/=工$1,  /数学(\d+)区/=数$1,  /物理与天体物理(\d+)区/=物$1,  /地球科学(\d+)区/=地$1,  /材料科学(\d+)区/=材$1,  /计算机科学(\d+)区/=计$1,  /经济学(\d+)区/=经$1,  /法学(\d+)区/=法$1,  /管理学(\d+)区/=管$1,  /心理学(\d+)区/=心$1,  /人文科学(\d+)区/=人$1,  /教育学(\d+)区/=教$1,  /综合性期刊(\d+)区/=综$1
