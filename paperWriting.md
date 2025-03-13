@@ -8,19 +8,16 @@
   - 黄色：未分类的通常重点内容
 
   - 红色：变量、缩写、公式
-  - 绿色：定义、定理、引理、证明（脚踏绿色大地）
+  - 绿色：定义、定理、引理、证明、算法（脚踏绿色大地）……等标号的
 
-  - 蓝色：背景、动机、问题、目标、标题、描述（追寻蓝色天空）
+  - 蓝色：背景、动机、目标、标题、描述（追寻蓝色天空），不标号的叙述
 
-  - 紫色：（洋红色-标记易混）
+  - 紫色：章节标题-标注没有生成目录的地方。（洋红色-标记易混）
   - 洋红色：（紫色红色-标记易混）
   - 橙色：（黄色-标记易混）
   - 灰色：（紫色易混）
 
-  章节标题（没有目录的再标）
 
-
-  - 
 
 - 不需要精读的论文，直接在线查看，用“沉浸式翻译”，更好读啊！
 
@@ -29,10 +26,10 @@
 - 字体：正文 微软雅黑比较清晰，一般16号以上
 - 图片：格式→图片效果→阴影，看起来有层次感
 
-
 - 推理
   - inference：因→果
   - reasoning：果→因
+
 
 # 基础常识
 - SCI：科学引文索引 Science Citation Index，自然社会科学领域文献数据库，收录期刊，是Web of Science的重要部分。检索网站：Web of Science 为主
@@ -67,10 +64,51 @@
 [哈佛经济系李光耀孙子做经济学术presentation的经验和建议！](https://mp.weixin.qq.com/s/LukUjmrtmAM22RCJVuitRg)
 
 
+ 
 
-# 方向顶刊
-TON
-？？
+
+# 方向期刊
+
+- 计算机体系结构/并行与分布计算/存储系统
+  - 期刊A，**TPDS**，IEEE Transactions on Parallel and Distributed Systems（云计算、分布式）
+  - 期刊A，TC，IEEE Transactions on Computers
+  - 期刊C，FGCS，Future Generation Computer Systems
+
+- 计算机网络
+  - 期刊A，**TMC**，IEEE Transactions on Mobile Computing（移动群智感知）
+  - 期刊A，**TON**，IEEE/ACM Transactions on Networking（网络流等）
+
+- 交叉/综合/新兴。计算经济学
+  - 会议A，WINE，Conference on Web and Internet Economics
+  - 会议C，SAGT，International Symposium on Algorithmic Game Theory
+  - EC
+  - 期刊B，TASAE，IEEE Transactions on Automation Science and Engineering
+
+- 软件工程/系统软件/程序设计语言
+  - 期刊A，**TSC**，IEEE Transactions on Services Computing
+  - 会议B，ICWS，IEEE International Conference on Web Services
+
+- 人工智能
+  - 会议A，AAAI，AAAI Conference on Artificial Intelligence
+  - 会议A，ACL，Annual Meeting of the Association for Computational Linguistics
+  - 会议A，CVPR，IEEE/CVF Computer Vision and Pattern Recognition Conference，图像相关
+
+- 数据库/数据挖掘/内容检索
+  - 会议A，ICDE，IEEE International Conference on Data Engineering
+  - 期刊B，TKDD，ACM Transactions on Knowledge Discovery from Data
+
+
+
+## 投稿
+
+[Elsevier(爱思唯尔)期刊—Latex模板下载、使用、投稿过程](https://blog.csdn.net/weixin_39450145/article/details/138257903)
+[LaTex Elsevier(爱斯维尔)模板使用详细教程](https://blog.csdn.net/weixin_47138614/article/details/139409301)
+[Elsevier（爱思唯尔）LaTex 模板详细说明](https://blog.csdn.net/qq_31347869/article/details/128161240)
+
+[爱思唯尔（Elsevier）论文模板中添加作者简介和图片（biography）](https://blog.csdn.net/lyh458/article/details/127602676)
+
+[Elsevier期刊投稿经验教训（以Signal Processing（SIGPRO）为例）](https://blog.csdn.net/suoluo_2020/article/details/136283884)
+
 
 
 # 实用工具

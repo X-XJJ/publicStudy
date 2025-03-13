@@ -1,11 +1,25 @@
 # 算法 algorithm
 
 
+- P问题，P = Polynomial time 多项式时间
+  - 解决问题的步骤数量、所需要的时间，是 问题大小 的 某个多项式函数（最坏情况）
+  - 属于 NP 问题
 
+- NP问题，non-deterministic polynomial time 非确定性多项式问题
+  - 有关多项式时间检验，即 可以在多项式时间内，检验出正确解
+  - 有限、但足够多的计算机，就可以检验所有可能的答案，就可以在多项式时间内找到正确的答案（最坏情况）
+  - 属于 NP 问题
 
-P问题，
-NP问题，非确定性多项式 non-deterministic polynomial 问题
-NP-hard问题，
+- NP完全问题 NP-complete
+  - 任何NP问题，都可以在多项式时间内转化为该类or另一类NP问题中的任何一个
+  - 属于 NP 问题，包含了每个NP问题中真正困难的部分。能完全解决NP-complete问题的程序 就能解决NP问题
+
+- NP难问题，NP-hard
+  - 无法在多项式时间内检验的问题
+
+- Co-NP：容易排除错误答案的问题
+- P-space：可以在给定无限时间的情况下解决的问题
+- ……
 
 [算法复习7 - NP问题（NPC、NP完全、NP-hard、停机问题）超详解](https://zhuanlan.zhihu.com/p/673064230)
 

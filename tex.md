@@ -8,6 +8,34 @@
 
 [官网中文排版](https://www.overleaf.com/learn/latex/Chinese)
 
+[【学习笔记】史上最全的 overleaf 使用笔记！涵盖图表公式文献伪代码！](【学习笔记】史上最全的 overleaf 使用笔记！涵盖图表公式文献伪代码！)
+
+[利用Overleaf使用Latex插入算法伪代码](https://blog.csdn.net/qq_45100200/article/details/132171188)
+
+[【Overleaf】Latex表格基本方法的使用](https://blog.csdn.net/iiiliuyang/article/details/125020378)
+
+[overleaf每章中，定理定义等怎么统一编号啊？](https://ask.csdn.net/questions/8066809)
+
+[数学建模 latex 图片以及表格排版整理（overleaf）](https://blog.csdn.net/Hjh1906008151/article/details/129196581)
+
+[LATEX 公式编号、子公式编号方法](https://zhuanlan.zhihu.com/p/99406531)
+
+[[LaTeX学习] [7] 公式编号形式：主编号+子编号](https://zhuanlan.zhihu.com/p/600358859)
+
+[overleaf的学习：公式篇](https://zhuanlan.zhihu.com/p/544066837)
+
+[latex数学公式环境--equation，align，aligned，subequations](https://zhuanlan.zhihu.com/p/614487132)
+
+[LaTex 希腊字母、数学符号、公式换行](https://blog.csdn.net/scott198510/article/details/124660622)
+[latex常见符号、用法及希腊字母、花体字母](https://blog.csdn.net/weixin_50917576/article/details/141131508)
+
+\[\sum\limits_{\scriptstylei \in {{\cal N}_1},t \in \hfill\atop
+\scriptstyle\left[ {{a_i},{a_i} + {e_i} - 1} \right]\hfill} {{s_{ir}}{x_{ij}}}  + \sum\limits_{\scriptstylei \in {{\cal N}_2},t \in \hfill\atop
+\scriptstyle\left[ {{a_i},{a_i} + {e_i} - 1} \right]\hfill} {{s_{ir}}\left( {{x_{ijA}} + {x_{ijB}}} \right)}  \le {c_{jr}},\forall j \in {\cal M},\forall r \in {\cal R},\forall t \in {\cal T}\]
+
+\[]\ 无编号单行公式
+$$ 行内嵌入公式
+
 - 中英文混编
 如果完整的 ctex 本地化类和包感觉过于冗余，而你只想排版一些中文字符，可以使用 xeCJK 包——该包仅在用 XeLaTeX 编译时才有效。
 ```
@@ -25,7 +53,8 @@
 ```
 
 
-[]()
+- cleveref 增强交叉引用，自动地按照不同元素的类型（如章节、图表等）生成格式化的引用，支持定制
+[LaTex cleveref 宏包用法](https://www.cnblogs.com/Undefined443/p/18190083)
 
 
 
@@ -74,12 +103,6 @@ CTEX是利用TEX排版系统的CTEX中文套装的简称。它集成了编辑器
 [vscode中配置latex](https://blog.csdn.net/Ruins_LEE/article/details/123555016)
 [VS Code 与texlive真乃天作之合](https://blog.csdn.net/weixin_43660619/article/details/107033739)
 [VSCODE 安装LATEX环境，参数配置，常见问题解决](https://blog.csdn.net/qq_41554005/article/details/120712126)
-[]()
-[]()
-[]()
-[]()
-[]()
-[]()
 
 
 ## 在 VSCode+LaTexWorkshop 环境
@@ -234,18 +257,19 @@ VSCode-settings.json - bak
 
 
 # tax 编写
-- \声明关键字[]{}：通常[]可选 {}必选
+- \ 声明关键字[]{}：通常[]可选 {}必选
 - % 注释
 
 - tex目录下文件
-  - .tex 用于输出XX文档的源码
+  - .tex 用于输出pdf文档的源码
   - .log 日志
+  - .bib 参考文献库源
+  - .pdf 生成or引用的pdf
+  - .cls 文档格式类文件
+  - .sty 用于格式化的附加宏包
+  - .bst 参考文献的排版格式
   - .out
   - .aux
-  - .cls 文档格式规模文件
-  - .bib bib格式的引用
-  - .pdf 生成or引用的pdf
-  - .sty
   - .bst
 
 
@@ -321,6 +345,7 @@ VSCode-settings.json - bak
 \smallskip             \medskip               \bigskip
 
 - 页面控制命令
+$$ 行内嵌入公式
 \textwidth=14.5cm
 \textheight=21.5cm
 系统默认：字号10pt = 五号字；西文字体为罗马字体；textwidth=12.2cm,textheight=18.6cm。相当于美国标准信纸大小。
@@ -364,7 +389,14 @@ VSCode-settings.json - bak
 
 
 - [LaTeX公式在线编辑器](https://www.latexlive.com/)
+
+
+- mathtype
+  - 公式编辑页面复制为tex格式：编辑页面 → 预置 →剪切和复制预置，选择需要的复制格式
   - [如何将截图中公式转换成为可用的mathtype公式](https://blog.csdn.net/YXYYBZ/article/details/121191621)
+  - 改公式“内联、行间”属性：编辑页面 → 格式 → 内联公式
+  - 公式和tex互转：选中word中公式们 → 插件面板 →切换tex，再点换回来
+  - [MathType 转 LaTex | LaTex 转 MathType | MathType 批量修改公式格式 | 转换注意事项](https://blog.csdn.net/u013669912/article/details/144211241)
 
 
 
@@ -496,21 +528,5 @@ VSCode-settings.json - bak
   \caption{问题三表格}
 \end{table}
 ~~~
-
-
-## 参考文献
-
-- bib
-
-- endnote、LaTeX
-
-- endnote、Word
-
-
-
-
-
-## 模版使用 .cls
-- 将 .cls 文件放到 .tex文件同目录下
 
 
