@@ -1,25 +1,20 @@
 
 # 读文献
-
 - 高亮——短句
 - 下划线——长句、标题、索引
-
 - 自用颜色标记（Zotero标记）
   - 黄色：未分类的通常重点内容
-
   - 红色：变量、缩写、公式
   - 绿色：定义、定理、引理、证明、算法（脚踏绿色大地）……等标号的
-
   - 蓝色：背景、动机、目标、标题、描述（追寻蓝色天空），不标号的叙述
-
-  - 紫色：章节标题-标注没有生成目录的地方。（洋红色-标记易混）
+  - 紫色：章节标题。（洋红色-标记易混）
   - 洋红色：（紫色红色-标记易混）
   - 橙色：（黄色-标记易混）
   - 灰色：（紫色易混）
 
-
-
-- 不需要精读的论文，直接在线查看，用“沉浸式翻译”，更好读啊！
+- 不需要精读加笔记的论文，直接在线查看，用“沉浸式翻译”，更好读啊！
+- or 左边pdf写笔记，右边在线网页对照。
+- 有写论文没有在线显示，可找找有没有预印版，网址换成预印版。
 
 # ppt相关
 - 比例：格物楼1栋 4：3，2栋 16：9
@@ -65,9 +60,14 @@
 
 
  
+- 刘希 の
+- 多臂老虎机 策略？机制？
+- 运筹学-原始对偶
 
 
 # 方向期刊
+
+- stork
 
 - 计算机体系结构/并行与分布计算/存储系统
   - 期刊A，**TPDS**，IEEE Transactions on Parallel and Distributed Systems（云计算、分布式）
@@ -90,6 +90,7 @@
 
 - 人工智能
   - 会议A，AAAI，AAAI Conference on Artificial Intelligence
+  - 会议A，NeurIPS，Conference on Neural  Information Processing Systems
   - 会议A，ACL，Annual Meeting of the Association for Computational Linguistics
   - 会议A，CVPR，IEEE/CVF Computer Vision and Pattern Recognition Conference，图像相关
 
@@ -118,6 +119,10 @@
 - word插图、插表小技巧：先插入文本框，在文本框里插入图片和图片名
   - 需要矢量图时，svg插入会有信息错误等等，推荐word里用emf格式矢量图
 
+- ppt
+ - 插件 iSlide
+ - 插件 thinkcell 有学生免费
+
 - Inkscape：可以将矢量图另存为emf等各种格式
 
 
@@ -140,7 +145,6 @@
 # 英文模板工具 PhraseBank 同类句式的内容堆砌
 
 
-# PPT插件 iSlide
 
 
 ## 文献管理 Zotero
@@ -186,7 +190,6 @@ zotero-better-notes：集成了思维导图等工具，可边看文献边管理
 
 [Zotero使用心得（笔记）](https://zhuanlan.zhihu.com/p/458084656)
 
-
 [【Zotero】【国标csl调教（二）】参考文献表中出现添加日期，以及[J/OL] [D/OL]的修改方法](https://blog.csdn.net/weixin_49232187/article/details/135554873)
 
 [Zotero使用GB/7714-2015相关csl时文末显示的访问日期如何隐藏？](https://zhuanlan.zhihu.com/p/349555378)
@@ -196,9 +199,7 @@ zotero-better-notes：集成了思维导图等工具，可边看文献边管理
 
 [超实用！zotero引用文献自定义CSL全流程](https://zhuanlan.zhihu.com/p/671026223)
 
-
 [Zotero如何导出简洁版本的BibTeX文本](https://blog.csdn.net/m0_59060135/article/details/143827816)
-
 
 [Zotero + Better BibTeX + Overleaf 文献管理](https://zhuanlan.zhihu.com/p/682273751)
 
@@ -243,7 +244,6 @@ Zotero也想到了这个问题，软件留了个接口，支持WebDev协议扩�
 
 
 
-
 # 论文写法
 
 - 1、introduction
@@ -258,11 +258,9 @@ Zotero也想到了这个问题，软件留了个接口，支持WebDev协议扩�
 i.e. 也就是说 拉丁语id est
 s.t. 约束条件 subject to
 
-
 - 定义：下定义，说明性质、陈述
 
 - 定理：证明一个方案符合某个定义
-
 
 
 ## 变量写法（默认字体新罗马）

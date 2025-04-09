@@ -23,6 +23,9 @@
 
 [算法复习7 - NP问题（NPC、NP完全、NP-hard、停机问题）超详解](https://zhuanlan.zhihu.com/p/673064230)
 
+[(210829) Tutorial-覆盖问题](https://zhuanlan.zhihu.com/p/408556395)
+
+
 
 ## 3-SAT问题
 
