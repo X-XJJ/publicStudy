@@ -1,6 +1,11 @@
 ﻿
 - C+x 表示Ctrl+x
 
+[如何解决VSCode Vim中文输入法切换问题？](https://www.zhihu.com/question/303850876)
+
+- 插件 smart input pro
+
+
 # shell内启动vim
 vim 直接启动
 vim filename 打开vim并创建文件(可选择带后缀格式名)

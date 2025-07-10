@@ -1,20 +1,24 @@
 
+
 # 读文献
 - 高亮——短句
 - 下划线——长句、标题、索引
 - 自用颜色标记（Zotero标记）
-  - 黄色：未分类的通常重点内容
-  - 红色：变量、缩写、公式
-  - 绿色：定义、定理、引理、证明、算法（脚踏绿色大地）……等标号的
-  - 蓝色：背景、动机、目标、标题、描述（追寻蓝色天空），不标号的叙述
+  - 黄色：未分类的通常重点内容，如 专有名词、基础知识…
+  - 红色：变量、公式、符号…首次定义-高亮，推导等-下划线。
+  - 绿色：有序号的 定义、定理、引理、命题、算法…（脚踏绿色大地）
+  - 蓝色：没序号的 背景、动机、目标、标题、描述…（追寻蓝色天空）。总结连接-高亮，其他句-下划线。
   - 紫色：章节标题。（洋红色-标记易混）
   - 洋红色：（紫色红色-标记易混）
-  - 橙色：（黄色-标记易混）
-  - 灰色：（紫色易混）
+  - 橙色：疑问。（黄色-标记易混）
+  - 灰色：例子。（紫色易混）
 
 - 不需要精读加笔记的论文，直接在线查看，用“沉浸式翻译”，更好读啊！
 - or 左边pdf写笔记，右边在线网页对照。
 - 有写论文没有在线显示，可找找有没有预印版，网址换成预印版。
+
+
+
 
 # ppt相关
 - 比例：格物楼1栋 4：3，2栋 16：9
@@ -24,6 +28,18 @@
 - 推理
   - inference：因→果
   - reasoning：果→因
+
+
+# 翻译、润色不能变的专有名词
+- truthful，truthfulness，incentive，
+- monotone
+- critical value
+- binary search
+- social 
+- utility
+- revenue
+- metaverse
+- ……
 
 
 # 基础常识
@@ -59,10 +75,19 @@
 [哈佛经济系李光耀孙子做经济学术presentation的经验和建议！](https://mp.weixin.qq.com/s/LukUjmrtmAM22RCJVuitRg)
 
 
- 
+# 应用背景
+- 算力网、算力卫星
+
 - 刘希 の
 - 多臂老虎机 策略？机制？
 - 运筹学-原始对偶
+
+# 动机
+- 讲故事，做这个研究有什么意义
+- 当前的方法，存在什么不好的地方，造成什么不好的影响，【具体的】不好的地方、不好的影响。
+
+# 实验
+- 变量变化：二八定律，eg：10，20，50，80，100.
 
 
 # 方向期刊
@@ -100,7 +125,12 @@
 
 
 
+
 ## 投稿
+
+- 订阅的、正常投稿的：用xjsxxjj邮。
+- OA（Open Access）开放获取的：用106扣扣邮。——会有一堆OA的call for papers，甚至是无关学科的期刊会议，毕竟收到过 生物医学、手术、心理学、行为科学、毒理学、心脏病学、糖尿病、精神病、牙科、药物学、公共卫生、教育科学、癌症护理、声音与震动、工程测绘、分子与细胞、航空航天、石墨烯传感器、材料学、气象学、废物回收和管理、生物学、植物学、环境科学、食品科学、新能源、社会科学、化学化合物、……。还有广告，把文章做成60s的动画、播客等等……
+
 
 [Elsevier(爱思唯尔)期刊—Latex模板下载、使用、投稿过程](https://blog.csdn.net/weixin_39450145/article/details/138257903)
 [LaTex Elsevier(爱斯维尔)模板使用详细教程](https://blog.csdn.net/weixin_47138614/article/details/139409301)
@@ -200,13 +230,16 @@ zotero-better-notes：集成了思维导图等工具，可边看文献边管理
 [超实用！zotero引用文献自定义CSL全流程](https://zhuanlan.zhihu.com/p/671026223)
 
 [Zotero如何导出简洁版本的BibTeX文本](https://blog.csdn.net/m0_59060135/article/details/143827816)
+- 插件Better BibTeX
 
 [Zotero + Better BibTeX + Overleaf 文献管理](https://zhuanlan.zhihu.com/p/682273751)
 
 
 - Zotero7 插件 Ethereal Style “期刊标签”设置备份
   - Fields：sciif, CCF, sciUp, ccf, sci, eii, sciBase, pku, sciwarn,ssci, utd24, ajg
+```
   - Map：SCI=JCR,  /SCIIF/=IF, SCI基础版=中JCRB,SCI升级版=中JCRU,  /^(\d+)\.(\d{1})\d*$/=$1.$2, EI检索=EI,  北大中文核心=北核,  SCIWARN=🚫,  /医学(\d+)区/=医$1,  /生物学(\d+)区/=生$1,  /农林科学(\d+)区/=农$1,  /环境科学与生态学(\d+)区/=环$1,  /化学(\d+)区/=化$1,  /工程技术(\d+)区/=工$1,  /数学(\d+)区/=数$1,  /物理与天体物理(\d+)区/=物$1,  /地球科学(\d+)区/=地$1,  /材料科学(\d+)区/=材$1,  /计算机科学(\d+)区/=计$1,  /经济学(\d+)区/=经$1,  /法学(\d+)区/=法$1,  /管理学(\d+)区/=管$1,  /心理学(\d+)区/=心$1,  /人文科学(\d+)区/=人$1,  /教育学(\d+)区/=教$1,  /综合性期刊(\d+)区/=综$1
+```
 
 
 - Zotero + 坚果云
@@ -224,6 +257,7 @@ Zotero也想到了这个问题，软件留了个接口，支持WebDev协议扩�
 [word中mathtype7公式右编号右对齐解决方法，超实用！](https://zhuanlan.zhihu.com/p/507833012)
 
 公式编写用mathtype——发现可以先用office-word自带的，然后在全部“转换公式”成mathtype格式的
+——**注意的坑！！！**，自定义的新罗马粗体斜体，转换完的没有粗体，变回纯斜体了！！要用 \boldsymbol{} 写向量。
 
 [MathType安装及please restart word to load mathtype addin properly的问题](https://blog.csdn.net/alsj123456/article/details/117083075)
 [MathType7安装使用及please restart word to load mathtype addin properly的问题。](https://blog.csdn.net/weixin_43115631/article/details/110067650)

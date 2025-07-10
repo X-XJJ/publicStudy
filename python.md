@@ -175,6 +175,8 @@ custom_channels:
   - simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
 
 
+- 显式进度条的库 tqdm
+- 
 
 
 ## python2？3

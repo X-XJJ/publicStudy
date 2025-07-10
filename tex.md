@@ -56,7 +56,12 @@ $$ 行内嵌入公式
 - cleveref 增强交叉引用，自动地按照不同元素的类型（如章节、图表等）生成格式化的引用，支持定制
 [LaTex cleveref 宏包用法](https://www.cnblogs.com/Undefined443/p/18190083)
 
+[LaTeX删除线、下划线、波浪线](https://blog.csdn.net/weixin_44399975/article/details/129746107)
+- usepackage{soul}
+- usepackage{ulem}
+- 删除线：\sout{}
 
+[latex \cite, \citet, \citep](https://blog.csdn.net/colddie/article/details/78554206)
 
 
 # LaTeX、CTEX
@@ -260,6 +265,11 @@ VSCode-settings.json - bak
 - \ 声明关键字[]{}：通常[]可选 {}必选
 - % 注释
 
+- 英文双引号：左双引为“``”，右双引为“''”
+[Latex打双引号](https://blog.csdn.net/sinat_38079265/article/details/120779434)
+[LaTeX文档中的英文双引号怎么打不出来？](https://www.ainiseo.com/hosting/18974.html)
+
+
 - tex目录下文件
   - .tex 用于输出pdf文档的源码
   - .log 日志
@@ -283,10 +293,11 @@ VSCode-settings.json - bak
     - slides 幻灯格式的文档类，使用无衬线字体。
     - minimal 一个极其精简的文档类，只设定了纸张大小和基本字号，用作代码测试的最小工作示例(Minimal Working Example)。
     - atricle 英文
-    - carticle ctexart 中文？？
+    - ctexart 中文？？
     - beamer 做ppt
   - option：文档选项
     - UTF8
+
 
 - \usepackage[options]{package}：调用宏包
   - package：包名，常用包如插图、彩文等
